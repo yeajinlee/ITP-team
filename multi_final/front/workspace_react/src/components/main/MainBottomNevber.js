@@ -1,22 +1,18 @@
 import React from 'react';
 import { Navbar, Container, Nav, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import './css/MainBottomNevber.scss';
 
 const MainNevber = () => {
 
-        
-
-
     return (
-        <div>
+        <div className='bottomNevber'>
             <>
             <Navbar>
-                <Container style={NavberMenu}>
+                <Container>
                     <Nav className="me-auto">
-                        <Nav.Link href="#itTrend" >공지사항</Nav.Link>
-                        <Nav.Link href="#iTTechnology">자주 묻는 질문</Nav.Link>
+                        <Nav.Link href="#notice" >공지사항</Nav.Link>
+                        <Nav.Link href="#FAQ">자주 묻는 질문</Nav.Link>
                         </Nav>
                         </Container>
                         </Navbar>
@@ -25,7 +21,5 @@ const MainNevber = () => {
                         );
                     };
 
-    const NavberMenu = {
-        backgroundColor : "#008080",
-    }
+
 export default MainNevber;

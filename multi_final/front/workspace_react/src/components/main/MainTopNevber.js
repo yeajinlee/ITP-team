@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Navbar, Container, Nav, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './css/MainTopNevber.scss';
 
 
 const MainNevber = () => {
 
-        
-
-
     return (
-        <div>
+        <div className='topNevber'>
             <h1>ITP</h1>
-            <>
+            <Fragment className='tsopNevber'>
             <Navbar>
-                <Container style={NavberMenu}>
+                <Container >
                     <Nav className="me-auto">
                         <Nav.Link href="#itTrend" >IT 트렌드</Nav.Link>
                         <Nav.Link href="#iTTechnology">IT 기술</Nav.Link>
@@ -22,12 +19,12 @@ const MainNevber = () => {
                         </Nav>
                         </Container>
                         </Navbar>
-                        </>
+                        </Fragment>
                         </div>
                         );
                     };
 
-    const NavberMenu = {
+/*     const NavberMenu = {
         backgroundColor : "#008080",
-    }
+    } */
 export default MainNevber;
