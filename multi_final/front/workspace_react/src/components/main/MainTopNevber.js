@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+
+
 const MainNevber = () => {
 
         
@@ -16,7 +18,7 @@ const MainNevber = () => {
             <Navbar>
                 <Container style={NavberMenu}>
                     <Nav className="me-auto">
-                        <Nav.Link href="#itTrend" >IT 트렌드</Nav.Link>
+                        <Nav.Link to="/itTrendMain">IT 트렌드</Nav.Link>
                         <Nav.Link href="#iTTechnology">IT 기술</Nav.Link>
                         <Nav.Link href="#commuityCommunication">소통공간</Nav.Link>
                         </Nav>
@@ -24,6 +26,7 @@ const MainNevber = () => {
                         </Navbar>
                         </>
                         </div>
+                    
                         );
                     };
 
