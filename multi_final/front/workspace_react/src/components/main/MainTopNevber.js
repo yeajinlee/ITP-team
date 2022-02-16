@@ -15,7 +15,7 @@ const MainNevber = () => {
             <Navbar>
                 <Container >
                     <Nav className="me-auto">
-                        <Nav.Link to="/itTrendMain">IT 트렌드</Nav.Link>
+                        <Nav.Link to="#itTrendMain">IT 트렌드</Nav.Link>
                         <Nav.Link href="#iTTechnology">IT 기술</Nav.Link>
                         <Nav.Link href="#commuityCommunication">소통공간</Nav.Link>
                         </Nav>
