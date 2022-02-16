@@ -33,8 +33,13 @@ const MainCarousel = () => {
   </Carousel.Item>
   <Carousel.Item>
     <img
+<<<<<<< HEAD
       className="d-block w-50"
       src="https://media.vlpt.us/images/hyuri/post/9ccf76d0-7c49-4dd2-877d-2937347878a1/Java.jpg"
+=======
+      className="d-block w-100"
+      src={banner3}
+>>>>>>> 31d69e35a49bc32aceb9bba746a5c6245cc85fd2
       alt="Third slide"
     />
 
