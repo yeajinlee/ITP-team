@@ -5,7 +5,6 @@ import MainNavber from './nav';
 const login = () => {
     return (
         <div>
-            <MainNavber />
         </div>
     );
 };

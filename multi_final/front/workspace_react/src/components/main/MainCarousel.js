@@ -47,5 +47,4 @@ const MainCarousel = () => {
         </div>
     );
 };
-
 export default MainCarousel;
