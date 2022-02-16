@@ -1,15 +1,17 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import banner2 from '../image/banner2.jpg';
+import './css/MainImage.scss';
 
 const MainCarousel = () => {
     return (
-        <div>
+        <div class='cardImage'>
 <Carousel fade>
   <Carousel.Item>
     <img
-      className="d-block w-100"
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/140px-Unofficial_JavaScript_logo_2.svg.png"
+      width="50%"
+      src={banner2}
       alt="First slide"
     />
     <Carousel.Caption>
@@ -20,7 +22,7 @@ const MainCarousel = () => {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="holder.js/800x400?text=Second slide&bg=282c34"
+      src="https://media.vlpt.us/images/hyuri/post/304960c9-ed7a-44a2-a99d-98963241dfa7/react-logo.png"
       alt="Second slide"
     />
 
@@ -31,8 +33,8 @@ const MainCarousel = () => {
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=Third slide&bg=20232a"
+      className="d-block w-50"
+      src="https://media.vlpt.us/images/hyuri/post/9ccf76d0-7c49-4dd2-877d-2937347878a1/Java.jpg"
       alt="Third slide"
     />
 
