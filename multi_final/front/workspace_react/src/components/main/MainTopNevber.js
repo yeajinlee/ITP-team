@@ -9,9 +9,10 @@ const MainNevber = () => {
     return (
         <div className='topNevber'>
             <h1>ITP</h1>
-            <Fragment className='tsopNevber'>
+            <Fragment>
+                <div>
             <Navbar>
-                <Container >
+                <Container className='header' >
                     <Nav className="me-auto">
                         <Nav.Link href="#itTrend" >IT 트렌드</Nav.Link>
                         <Nav.Link href="#iTTechnology">IT 기술</Nav.Link>
@@ -19,6 +20,7 @@ const MainNevber = () => {
                         </Nav>
                         </Container>
                         </Navbar>
+                        </div>
                         </Fragment>
                         </div>
                         );
