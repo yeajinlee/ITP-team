@@ -6,6 +6,7 @@ import Login from "./page/login";
 import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 
+import Register from "./page/Register";
 
 const App = () => {
   
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/itTech" element={<ItTechnologyMain/>} />
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
+      <Route path="/Register" element={<Register />} />
     </Routes>
     <MainBottomNevber />
      </div>
