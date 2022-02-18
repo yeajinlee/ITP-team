@@ -28,7 +28,7 @@ const MainNevber = () => {
                 <div>
                     <Link to='#itTrend' class="link-light" style={{ textDecoration: 'none'}}> IT 트렌드</Link></div>
                 <div>
-                <Link to='#iTTechnology' class="link-light" style={{ textDecoration: 'none'}}>IT 기술</Link></div>
+                <Link to='/iTTech' class="link-light" style={{ textDecoration: 'none'}}>IT 기술</Link></div>
                 <div>
                 <Link to='#commuityCommunication' class="link-light" style={{ textDecoration: 'none'}}>소통 공간</Link></div>
 
@@ -41,7 +41,7 @@ const MainNevber = () => {
                         <Nav.Link href="#itTrend" className='itT' >IT 트렌드</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                        <Nav.Link href="#iTTechnology">IT 기술</Nav.Link>
+                        <Nav.Link href="/itTech">IT 기술</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                         <Nav.Link href="#commuityCommunication">소통공간</Nav.Link>
