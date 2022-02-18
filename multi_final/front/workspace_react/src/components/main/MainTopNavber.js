@@ -10,7 +10,7 @@ const MainNevber = () => {
         <div className='topNavber'>
             <header>
                 <p className='subject'>
-                    <img src='./assets/ItpLogo.png' width='2.5%' alt='Logo'/>&nbsp;ITP
+                    <img src='./assets/ItpLogo_2.png' width='10%' alt='Logo'/>&nbsp;ITP
                     <div className='Register'>
                         <Link to="/Register" class="link-dark" style={{ textDecoration: 'none'}}>
                             회원가입
