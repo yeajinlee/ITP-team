@@ -3,6 +3,7 @@ import { Navbar, Container, Nav, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
  import './css/MainBottomNavber.scss';
 
+
 const MainNevber = () => {
 
     return (
@@ -13,7 +14,7 @@ const MainNevber = () => {
                 <Container className='bottom'>
                     <Nav className="me-auto">
                         <div>
-                        <Nav.Link href="#notice">공지사항</Nav.Link>
+                        <Nav.Link href="/notice">공지사항</Nav.Link>
                         <Nav.Link href="#FAQ">이용약관</Nav.Link>
                         </div>
                         <div>
