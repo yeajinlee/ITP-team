@@ -55,7 +55,4 @@ const MainNevber = () => {
                         );
                     };
 
-/*     const NavberMenu = {
-        backgroundColor : "#008080",
-    } */
 export default MainNevber;

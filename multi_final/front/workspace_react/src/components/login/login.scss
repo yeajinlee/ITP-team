@@ -1,11 +1,28 @@
-form.loginform {
+div.title {
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+div.emailLogin {
   justify-content: center;
   text-align: center;
 }
 
-div p {
-  font-weight: bold;
-  font-size: x-large;
+div.passwordLogin {
   justify-content: center;
+  text-align: center;
+}
+div.btn {
+  margin: auto;
+  display: block;
+}
+div.loginBottom {
+  justify-content: center;
+  text-align: center;
+  color: black;
+}
+div.loginCheck {
   text-align: center;
 }
