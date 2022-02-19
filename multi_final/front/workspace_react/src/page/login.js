@@ -4,8 +4,8 @@ import '../components/login/login.scss';
 import { Link, } from 'react-router-dom';
 import { Formik } from 'formik';
 
-const login = () => {
-    const initialValues = {// 각 양식 필드의 초기 값을 설명하는 객체
+function login() {
+        const initialValues = {// 각 양식 필드의 초기 값을 설명하는 객체
         // 각 키에 주어진 이름은 Formik에서 감시 할 입력 필드의 이름 값과 일치해야한다
         email: "",
         pw: "",
