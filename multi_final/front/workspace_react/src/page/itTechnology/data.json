@@ -1,0 +1,21 @@
+{
+"skills":[
+    {
+        "no":1,
+        "title":"The plan for React",
+        "subtitle":"react subtitle",
+        "content":"react content",
+        "img":"https://t1.daumcdn.net/cfile/tistory/24457C4F58663DD011"
+    
+    },
+    {
+        "no":2,
+        "title":"The plan for JavaScript",
+        "subtitle":"javascript subtitle",
+        "content":"javascript content",
+        "img":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"
+    
+    }
+
+]
+}
