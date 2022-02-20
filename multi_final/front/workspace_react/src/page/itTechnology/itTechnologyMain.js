@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/itTechnologyMain.scss'
 import { Link } from 'react-router-dom';
 import dummy from './data.json';
-import { Button } from 'react-bootstrap';
+
 
 // const skilldata=[
 //     {

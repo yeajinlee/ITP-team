@@ -17,7 +17,7 @@ const ItTechnologyDetail = () => {
             <ul>
                 <li>title:{dummy.skills[no-1].title}</li>
                 <li>subtitle:{dummy.skills[no-1].subtitle}</li>
-                <li>content:{dummy.skills[no-1].content}</li>
+                <li>content:{dummy.skills[no-1].content.split('\n')}</li>
             </ul>
             <button className="post-view-go-list-btn" onClick={() =>navigate('/itTech')}>목록으로 돌아가기</button>
         </div>
