@@ -1,4 +1,33 @@
-div div.nickname {
+// 회원가입 상단
+div.title {
   justify-content: center;
   text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+// form 전체 적용
+form {
+  text-align: center;
+}
+
+// input 밑에 작은 글씨
+div p.RegisterBottom {
+  font-size: 5px;
+}
+
+// input 내부 글씨
+input::placeholder {
+  font-size: 13px;
+}
+
+// 닉네임
+
+// 메일
+
+// 비밀번호
+
+// 비밀번호 확인
+div.passwordLoginCheck div.pwCheckError {
+  font-size: 10px;
 }
