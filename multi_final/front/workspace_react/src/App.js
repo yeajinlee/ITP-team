@@ -8,6 +8,8 @@ import NoticeDetail from "./page/Notice/NoticeDetail";
 import AddNotice from "./page/Notice/AddNotice";
 import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
+import ItTrendMain from'./page/itTrend/itTrendMain.js';
+import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
 import Register from "./page/Register";
 
 
@@ -24,6 +26,8 @@ const App = () => {
       <Route path="/addNotice" element={<AddNotice/>}/>
       <Route path="/itTech" element={<ItTechnologyMain/>} />
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
+      <Route path="/itTrend" element={<ItTrendMain/>} />
+      <Route path="/itTrend/:no" element={<ItTrendDetail/>} />
       <Route path="/Register" element={<Register />} />
     </Routes>
     <MainBottomNevber />
