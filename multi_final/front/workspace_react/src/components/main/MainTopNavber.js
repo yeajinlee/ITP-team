@@ -28,7 +28,7 @@ const MainNevber = () => {
 
             <nav>
                 <div>
-                    <Link to='#itTrend' class="link-light" style={{ textDecoration: 'none'}}> IT 트렌드</Link></div>
+                    <Link to='/itTrend' class="link-light" style={{ textDecoration: 'none'}}> IT 트렌드</Link></div>
                 <div>
                 <Link to='/iTTech' class="link-light" style={{ textDecoration: 'none'}}>IT 기술</Link></div>
                 <div>
@@ -40,7 +40,7 @@ const MainNevber = () => {
                 <Container className='header' >
                     <Nav className="justify-content-center">
                         <Nav.Item>
-                        <Nav.Link href="#itTrend" className='itT' >IT 트렌드</Nav.Link>
+                        <Nav.Link href="/itTrend" className='itT' >IT 트렌드</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                         <Nav.Link href="/itTech">IT 기술</Nav.Link>
