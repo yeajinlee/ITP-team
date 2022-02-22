@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+$text-Color: green;
+$color-background: white;
+
+div.topNavber {
+  font-family: 'Jua', sans-serif;
+  background-color: #008080;
+  justify-content: center;
+  align-items: 'center';
+  color: black;
+}
+div p.subject {
+  background: $color-background;
+  font-size: xx-large;
+}
+div p div.myPage {
+  font-size: large;
+  justify-content: center;
+  text-align: center;
+  float: right;
+}
+div p div Link.Login_link {
+  text-decoration: none;
+}
+div p div.Logout {
+  font-size: large;
+  justify-content: center;
+  text-align: center;
+  float: right;
+}
+nav {
+  overflow: hidden;
+}
+nav > div {
+  /* 수평정렬, 5개의 button을 각각 20% width만큼 할당 */
+  justify-content: center;
+  text-align: center;
+  float: left;
+  width: 20%;
+
+  /* 세로길이 설정 */
+  height: 45px;
+  line-height: 45px;
+}
+div.header {
+  font-family: 'Jua', sans-serif;
+  color: $text-Color;
+}
+div.topNav {
+  color: #008080;
+}

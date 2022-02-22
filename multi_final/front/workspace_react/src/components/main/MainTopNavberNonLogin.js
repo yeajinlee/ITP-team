@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Navbar, Container, Nav, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/MainTopNavber.scss';
+import './css/MainTopNavberNonLogin.scss';
 import { Link } from 'react-router-dom';
 
 const MainNevber = () => {

@@ -1,6 +1,5 @@
 import { Route, Routes, } from "react-router-dom";
 import Main from "./page/Main";
-import MainTopNavber from "./components/main/MainTopNavber";
 import MainBottomNevber from "./components/main/MainBottomNavber.js";
 import Login from "./page/login";
 import Notice from "./page/Notice/Notice";
@@ -17,11 +16,13 @@ import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 import MyPageGroupBoard from "./page/myPage/myPageBoard/myPageGroupBoard";
 import MyPageGroupComment from "./page/myPage/myPageBoard/myPageGroupComment";
+/* import LoginOrNonLogin from "./components/main/LoginOrNonLogin"; */
+import TopNavber from "./components/main/MainTopNavberNonLogin"
 const App = () => {
   
   return (   
     <div className="App">
-      <MainTopNavber />
+      <TopNavber />
     <Routes>
       {/* 메인 */}
       <Route index element={<Main />} />
