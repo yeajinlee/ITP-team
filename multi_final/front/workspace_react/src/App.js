@@ -7,6 +7,8 @@ import NoticeDetail from "./page/Notice/NoticeDetail";
 import AddNotice from "./page/Notice/AddNotice";
 import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
+import ItTrendMain from'./page/itTrend/itTrendMain.js';
+import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
 import Register from "./page/Register";
 import MyPageCommunityBoard from "./page/myPage/myPageBoard/myPageCommunityBoard";
 import MyPageCommunityComment from "./page/myPage/myPageBoard/myPageCommunityComment";
@@ -35,6 +37,9 @@ const App = () => {
       {/* IT 기술 */}
       <Route path="/itTech" element={<ItTechnologyMain/>} />
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
+      {/* IT 트렌드 */}
+      <Route path="/itTrend" element={<ItTrendMain/>} />
+      <Route path="/itTrend/:no" element={<ItTrendDetail/>} />
       {/* My Page */}
       <Route path="/myPageCommunityBoard" element={<MyPageCommunityBoard />} />
       <Route path="/myPageCommunityComment" element={<MyPageCommunityComment />} />

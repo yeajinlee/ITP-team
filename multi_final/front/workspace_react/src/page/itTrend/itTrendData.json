@@ -1,0 +1,28 @@
+{
+    "trend" : [
+        {
+            "no": 1,
+            "title": "기사 1 제목",
+            "subtitle": "기사 1 소제목",
+            "content": "기사 1 내용",
+            "img": "https://imgnews.pstatic.net/image/092/2022/02/21/0002248234_001_20220221161401346.jpg?type=w647",
+            "date" : "2022.02.21"
+        },
+        {
+            "no": 2,
+            "title": "기사 2 제목",
+            "subtitle": "기사 2 소제목",
+            "content": "기사 2 내용",
+            "img": "https://imgnews.pstatic.net/image/081/2022/02/21/0003253137_001_20220221134201693.jpg?type=w647",
+            "date" : "2022.02.21"
+        },
+        {
+            "no": 3,
+            "title": "기사 3 제목",
+            "subtitle": "기사 3 소제목",
+            "content": "기사 3 내용",
+            "img": "https://imgnews.pstatic.net/image/138/2022/02/21/0002119355_001_20220221162801397.png?type=w647",
+            "date" : "2022.02.21"
+        }
+    ]
+}
