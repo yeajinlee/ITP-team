@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Navbar, Container, Nav, } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/MainTopNavber.scss';
+import './css/MainTopNavberLogin.scss';
 import { Link } from 'react-router-dom';
 
 const MainNevber = () => {
@@ -13,14 +13,14 @@ const MainNevber = () => {
                     <Link to="/">
                     <img src='./assets/ItpLogo_2.png' width='10%' alt='Logo'/>&nbsp;ITP
                     </Link>
-                    <div className='Register'>
-                        <Link to="/Register" class="link-dark" style={{ textDecoration: 'none'}}>
-                            회원가입
+                    <div className='Logout'>
+                        <Link to="/" class="link-dark" style={{ textDecoration: 'none'}}>
+                            로그아웃
                         </Link>
                     </div>
-                    <div className='Login'>
-                        <Link to="/login" class="link-dark" style={{ textDecoration: 'none'}}>
-                            로그인 &nbsp;&nbsp;
+                    <div className='myPage'>
+                        <Link to="/myPage" class="link-dark" style={{ textDecoration: 'none'}}>
+                            마이페이지 &nbsp;&nbsp;
                         </Link>
                     </div>
                 </p>
