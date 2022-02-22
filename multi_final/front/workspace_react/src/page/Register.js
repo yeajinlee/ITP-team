@@ -20,7 +20,7 @@ function Register() {
         const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         const pwRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
         const nicknameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9]{2,15}$/;
-        const pwCheckRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+        /* const pwCheckRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/; */
 
         //닉네임 값이 없을 경우
         if (!values.nickname) {
@@ -112,6 +112,9 @@ function Register() {
                                 <div className="btn">
                                     <Link to="/login">
                                     <input type="submit" className={dirty && isValid ? "" : "disabled-btn"} value="회원가입" />
+                                    </Link>
+                                    <Link to="/myPageCommunityBoard">
+                                        <div>마이페이지 테스트 이동용</div>
                                     </Link>
                                 </div>
                             </form>

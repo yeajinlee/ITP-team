@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../components/login/login.scss';
 import { Link, } from 'react-router-dom';
 import { Formik } from 'formik';
 
