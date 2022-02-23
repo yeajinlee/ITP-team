@@ -16,18 +16,17 @@ import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 import MyPageGroupBoard from "./page/myPage/myPageBoard/myPageGroupBoard";
 import MyPageGroupComment from "./page/myPage/myPageBoard/myPageGroupComment";
-/* import LoginOrNonLogin from "./components/main/LoginOrNonLogin"; */
-import TopNavber from "./components/main/MainTopNavberNonLogin"
+import MainOnLogin from "./page/MainOnLogin"; 
 const App = () => {
   
   return (   
     <div className="App">
-      <TopNavber />
     <Routes>
       {/* 메인 */}
       <Route index element={<Main />} />
       {/* 로그인 */}
       <Route path="/login" element={<Login />} />
+      <Route path="/mainOnLogin" element={<MainOnLogin />} />
       {/* 회원가입 */}
       <Route path="/Register" element={<Register />} />
       {/* 공지사항 */}
