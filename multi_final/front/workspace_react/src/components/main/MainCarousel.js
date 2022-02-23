@@ -6,7 +6,7 @@ import './css/MainImage.scss';
 
 const MainCarousel = () => {
     return (
-        <div class='cardImage'>
+        <div class='cardImage' className='carousel'>
 <Carousel fade>
   <Carousel.Item>
     <img

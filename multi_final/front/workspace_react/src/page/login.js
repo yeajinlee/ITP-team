@@ -82,8 +82,9 @@ function login() {
                             <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
                         </div>
                         <div className="btn">
-                            <input type="submit" className={dirty && isValid ? "" : "disabled-btn"} value="로그인">
-                            </input>
+                        <Link to="/MainOnLogin">
+                            <input type="submit" className={dirty && isValid ? "" : "disabled-btn"} value="로그인" />
+                            </Link>
                         </div> 
                         <div className="loginBottom">
                             <Link to="#passwordfind" class="link-dark" style={{ textDecoration: 'none' }}>비밀번호 재설정 </Link>ㅣ
