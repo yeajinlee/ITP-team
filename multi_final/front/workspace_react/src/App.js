@@ -1,4 +1,4 @@
-import { Route, Routes, } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Main from "./page/Main";
 import MainBottomNevber from "./components/main/MainBottomNavber.js";
 import Login from "./page/login";
@@ -16,11 +16,15 @@ import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 import MyPageGroupBoard from "./page/myPage/myPageBoard/myPageGroupBoard";
 import MyPageGroupComment from "./page/myPage/myPageBoard/myPageGroupComment";
+import MainTopNavberLogin from "./components/main/MainTopNavber";
 import MainOnLogin from "./page/MainOnLogin"; 
 const App = () => {
   
-  return (   
-    <div className="App">
+  return (
+
+// if문으로 참, 거짓 판단 후 출력하는 것도 고민해볼 것.
+      <div>
+        <MainTopNavberLogin />
     <Routes>
       {/* 메인 */}
       <Route index element={<Main />} />
@@ -48,7 +52,7 @@ const App = () => {
       <Route path="/myPageGroupComment" element={<MyPageGroupComment />} />
     </Routes>
     <MainBottomNevber />
-     </div>
+    </div>
   );
 };
 export default App;

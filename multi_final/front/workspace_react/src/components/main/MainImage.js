@@ -7,28 +7,35 @@ const Mainimage = () => {
     return (
         <div>
           <br />
-            <p class='itT'>IT 기술 최신 동향</p>
-            {/* IT 기술 */}
-            <CardGroup>
-  <Card>
-    <Card.Img src='./assets/react_logo.png' />
-    <Card.Body>
-      <Card.Title>[React] The Plan for React 18</Card.Title>
-    </Card.Body>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src='./assets/JAVASCRIPT.png' />
-    <Card.Body>
-      <Card.Title>[JavaScript] 2022 기술 동향</Card.Title>
-    </Card.Body>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src='./assets/Java.jpg' />
-    <Card.Body>
-      <Card.Title>[Java] 2022 기술 동향</Card.Title>
-    </Card.Body>
-  </Card>
-</CardGroup>
+          <p class='itT'>IT 기술 최신 동향</p>
+          {/* IT 기술 */}
+          <CardGroup>
+            <div>
+              <Card>
+                <Card.Img src='./assets/react_logo.png' />
+                <Card.Body>
+                  <Card.Title>[React] The Plan for React 18</Card.Title>
+                </Card.Body>
+              </Card>
+            </div>
+            <div>
+              <Card>
+                <Card.Img variant="top" src='./assets/JAVASCRIPT.png' />
+                <Card.Body>
+                  <Card.Title>[JavaScript] 2022 기술 동향</Card.Title>
+                </Card.Body>
+              </Card>
+            </div>
+
+            <div>
+              <Card>
+                <Card.Img variant="top" src='./assets/Java.jpg' />
+                <Card.Body>
+                  <Card.Title>[Java] 2022 기술 동향</Card.Title>
+                </Card.Body>
+              </Card>
+            </div>
+          </CardGroup>
 
 {/* 소통공간 */}
 <br />
