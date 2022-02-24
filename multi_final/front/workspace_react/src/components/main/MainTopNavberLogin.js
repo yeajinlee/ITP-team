@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/MainTopNavberLogin.scss';
 import { Link } from 'react-router-dom';
 
-const MainNevber = () => {
+const MainTopNavberLogin = () => {
+
 
     return (
         <div className='topNavber'>
@@ -19,7 +20,7 @@ const MainNevber = () => {
                         </Link>
                     </div>
                     <div className='myPage'>
-                        <Link to="/myPage" class="link-dark" style={{ textDecoration: 'none'}}>
+                        <Link to="/myPageCommunityBoard" class="link-dark" style={{ textDecoration: 'none'}}>
                             마이페이지 &nbsp;&nbsp;
                         </Link>
                     </div>
@@ -57,4 +58,4 @@ const MainNevber = () => {
                         );
                     };
 
-export default MainNevber;
+export default MainTopNavberLogin;

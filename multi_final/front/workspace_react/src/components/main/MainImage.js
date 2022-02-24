@@ -79,7 +79,7 @@ const Mainimage = () => {
 </CardGroup>
 
 {/* 최신글 */}
-<p>최신 글</p>
+<p className='recentPost'>최신 글</p>
 <ListGroup as="ol" numbered>
   <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
   <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
