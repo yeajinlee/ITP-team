@@ -1,5 +1,4 @@
-import React, { Fragment } from 'react';
-import { Navbar, Container, Nav, } from 'react-bootstrap';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/MainTopNavberNonLogin.scss';
 import { Link } from 'react-router-dom';
@@ -11,7 +10,11 @@ const MainTopNavberNonLogin = () => {
         
         <div className='mainTopNavber'>
 
-            <header>
+<header>
+    {/* if를 통해서 구간 나눌 것. 
+    if문 비교할 때 db 연동이 되있어야함. axios로 DB랑 회원에 관한 정보를 만들어놔야함. 
+    입력값과 axios로 불러온 값이 일치하는지 안하는지에 따라 메뉴를 나누면 됨.
+    import로 테이블에 있는 값을 다 가져와도 됨. */}
                 <p className='subject'>
                     <Link to="/">
                     <img src='./assets/ItpLogo_2.png' width='10%' alt='Logo'/>&nbsp;ITP
@@ -35,26 +38,7 @@ const MainTopNavberNonLogin = () => {
                 <div><Link to='#commuityCommunication' class="link-light" style={{ textDecoration: 'none'}}>소통 공간</Link></div>
                 
             </nav>
-            <div className='testNav'>
-            <Fragment>
-            <Navbar>
-                <Container className='header' >
-                    <Nav className="justify-content-center">
-                        <Nav.Item>
-                        <Nav.Link href="/itTrend" className='itT' >IT 트렌드</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                        <Nav.Link href="/itTech">IT 기술</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                        <Nav.Link href="#commuityCommunication">소통공간</Nav.Link>
-                        </Nav.Item>
-                        
-                        </Nav>
-                        </Container>
-                        </Navbar>
-                        </Fragment>
-                        </div>
+
                         </div>
                         
                         );

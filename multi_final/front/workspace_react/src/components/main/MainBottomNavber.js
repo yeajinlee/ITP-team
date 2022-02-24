@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Container, Nav, } from 'react-bootstrap';
+
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
  import './css/MainBottomNavber.scss';
 
@@ -8,6 +10,12 @@ const MainNevber = () => {
 
     return (
         <div className='bottomNavber'>
+                        <nav className='mainNavber'>
+                <div><Link to='/itTrend' class="link-light" style={{ textDecoration: 'none'}}> IT 트렌드</Link></div>
+                <div><Link to='/iTTech' class="link-light" style={{ textDecoration: 'none'}}>IT 기술</Link></div>
+                <div><Link to='#commuityCommunication' class="link-light" style={{ textDecoration: 'none'}}>소통 공간</Link></div>
+                
+            </nav>
             <>
             <Navbar>
                 <div>
