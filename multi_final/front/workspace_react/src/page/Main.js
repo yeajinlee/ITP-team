@@ -8,7 +8,6 @@ const Main = () => {
 
     return (
         <div>
-          <MainTopNavber />
           <MainCarousel />
           <Mainimage />
         </div>

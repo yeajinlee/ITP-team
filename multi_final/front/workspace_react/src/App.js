@@ -18,6 +18,9 @@ import MyPageGroupBoard from "./page/myPage/myPageBoard/myPageGroupBoard";
 import MyPageGroupComment from "./page/myPage/myPageBoard/myPageGroupComment";
 import MainTopNavberLogin from "./components/main/MainTopNavber";
 import MainOnLogin from "./page/MainOnLogin"; 
+import Infolaw from "./page/bottomNavber/Infolaw";
+import Useterm from "./page/bottomNavber/Useterm";
+
 const App = () => {
   
   return (
@@ -37,6 +40,9 @@ const App = () => {
       <Route path="/notice" element={<Notice />}/>
       <Route path="/notice/:no" element={<NoticeDetail/>}/>
       <Route path="/addNotice" element={<AddNotice/>}/>
+      {/* 이용약관 및 개인정보처리방침 */}
+      <Route path="/Useterm" element={<Useterm />} />
+      <Route path="/Infolaw" element={<Infolaw/>} />
       {/* IT 기술 */}
       <Route path="/itTech" element={<ItTechnologyMain/>} />
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
