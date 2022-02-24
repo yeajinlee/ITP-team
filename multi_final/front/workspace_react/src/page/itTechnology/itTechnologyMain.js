@@ -2,42 +2,7 @@ import React,{useState,useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/itTechnologyMain.scss'
 import { Link } from 'react-router-dom';
-//import dummy from './data.json'; 
 import axios from 'axios';
-
-
-// import { Button } from 'react-bootstrap'; 
-
-// const skilldata=[
-//     {
-//         no:1,
-//         title:"The plan for React",
-//         subtitle:"react subtitle",
-//         img:"https://t1.daumcdn.net/cfile/tistory/24457C4F58663DD011"
-    
-//     },
-//     {
-//         no:2,
-//         title:"The plan for JavaScript",
-//         subtitle:"react subtitle",
-//         img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png"
-    
-//     }
-
-// ];
-
-// function Skill(props){
-    
-//     return(
-//         <div>
-//         <img width="100px" height="100px"  alt="First slide"  src={props.img}/>
-//         <span>   {props.no}
-//         {props.title} {props.subtitle}</span>
-        
-//         </div>
-//     );
-// }
-
 
 
 const ItTechnologyMain=()=>{

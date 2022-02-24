@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/itTechnologyMain.scss'
 import { useParams,useNavigate } from 'react-router-dom';
-//import dummy from './data.json';
 import axios from 'axios';
 
 const ItTechnologyDetail = () => {
@@ -45,7 +44,7 @@ if (!techs) return null;
                 <div>
                 <li>title:{tech.title}</li>
                 <li>subtitle:{tech.subtitle}</li>
-                <li>content:{tech.content.split('\n')}</li>
+                <li>content:{tech.content}</li>
                 </div>
             ))}
           
