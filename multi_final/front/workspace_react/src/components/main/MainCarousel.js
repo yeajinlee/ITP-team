@@ -10,7 +10,7 @@ const MainCarousel = () => {
 <Carousel fade>
   <Carousel.Item>
     <img
-      width="50%"
+      width="100%"
       src={banner2}
       alt="First slide"
     />

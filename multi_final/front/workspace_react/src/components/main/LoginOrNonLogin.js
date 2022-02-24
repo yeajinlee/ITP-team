@@ -1,24 +1,18 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Login from "../main/MainTopNavberLogin.js";
-import NotLogin from "../main/MainTopNavberNonLogin";
+import React, { useState } from 'react';
+import { signIn } from '../../page/auth';
 
-function LoginOrNonLogin() {
-  let isAuthorized = sessionStorage.getItem("isAuthorized");
+const LoginOrNonLogin = () => {
+  const [user, setUser] = useState(null);
+  const authenticated = user != null;
 
+  const login = ({ email, password }) => setUser(signIn({ email, password}));
+  const logout = () => setUser(null);
+  
   return (
     <div>
-      {!isAuthorized ? <Route to="/login" /> : <Route to="/" />}
-      <Routes>
-        <Route path="/login">
-          <Login />
-        </Route>
-
-        <Route path="/">
-          <NotLogin />
-        </Route>
-      </Routes>
+      
     </div>
   );
-}
+};
+
 export default LoginOrNonLogin;
