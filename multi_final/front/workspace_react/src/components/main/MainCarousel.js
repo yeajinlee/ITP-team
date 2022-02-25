@@ -1,47 +1,46 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import './css/MainCarousel.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import banner2 from '../image/banner2.jpg';
-import './css/MainImage.scss';
+import banner3 from '../image/banner3.jpg';
+import { Carousel } from 'react-bootstrap';
 
 const MainCarousel = () => {
     return (
-        <div class='cardImage' className='carousel'>
+        <div 
+        style= {{ 
+          justifyContent: 'center',
+          margin: '0 auto',
+          alignContent: 'center',
+          display: 'block',
+          width: 1024,
+          paddingTop: 30,
+          paddingLeft: 116
+        }}
+          id='cardImage'
+          className='carousel'>
 <Carousel fade>
   <Carousel.Item>
     <img
-      width="100%"
+    className="d-flex"
       src={banner2}
       alt="First slide"
     />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
-      src="https://media.vlpt.us/images/hyuri/post/304960c9-ed7a-44a2-a99d-98963241dfa7/react-logo.png"
+    
+    className="d-flex"
+      src={banner3}
       alt="Second slide"
     />
-
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+    className="d-flex"
       src={banner2}
       alt="Third slide"
     />
-
-    <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
         </div>

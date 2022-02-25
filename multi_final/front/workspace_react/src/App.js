@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
+import "./App.scss";
 import Main from "./page/Main";
 import MainBottomNevber from "./components/main/MainBottomNavber.js";
 import Login from "./page/login";
-import Notice from "./page/Notice/Notice";
-import NoticeDetail from "./page/Notice/NoticeDetail";
-import AddNotice from "./page/Notice/AddNotice";
+import Notice from "./page/bottomNavber/Notice/Notice";
+import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
+import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
@@ -26,7 +27,7 @@ const App = () => {
   return (
 
 // if문으로 참, 거짓 판단 후 출력하는 것도 고민해볼 것.
-      <div>
+      <div className="all">
         <MainTopNavberLogin />
     <Routes>
       {/* 메인 */}

@@ -17,25 +17,28 @@ const MainTopNavberNonLogin = () => {
     import로 테이블에 있는 값을 다 가져와도 됨. */}
                 <p className='subject'>
                     <Link to="/">
-                    <img src='./assets/ItpLogo_2.png' width='10%' alt='Logo'/>&nbsp;ITP
-                    </Link>
-                    <div className='Register'>
+                    <img src='./assets/ItpLogo_2.png' width='10%' alt='Logo'/>
+                    </Link>                    
+                    <div className='loginAndRegister'>
+                        <Link to="/login" class="link-dark" style={{ textDecoration: 'none'}}>
+                            로그인 
+                        </Link>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
                         <Link to="/Register" class="link-dark" style={{ textDecoration: 'none'}}>
                             회원가입
                         </Link>
                     </div>
-                    <div className='Login'>
-                        <Link to="/login" class="link-dark" style={{ textDecoration: 'none'}}>
-                            로그인 &nbsp;&nbsp;
-                        </Link>
-                    </div>
+                    
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" />
+<label>검색기능 구현 예정</label>
+
                 </p>
             </header>
 
-            <nav className='mainNavber'>
-                <div><Link to='/itTrend' class="link-light" style={{ textDecoration: 'none'}}> IT 트렌드</Link></div>
-                <div><Link to='/iTTech' class="link-light" style={{ textDecoration: 'none'}}>IT 기술</Link></div>
-                <div><Link to='#commuityCommunication' class="link-light" style={{ textDecoration: 'none'}}>소통 공간</Link></div>
+            <nav id='topNav' className='mainNavber'>
+                <div className='topNavFirst'><Link to='/itTrend' class="link-light" style={{ textDecoration: 'none'}}> IT 트렌드</Link></div>
+                <div className='topNavSecond'><Link to='/iTTech' class="link-light" style={{ textDecoration: 'none'}}>IT 기술</Link></div>
+                <div className='topNavThird'><Link to='#commuityCommunication' class="link-light" style={{ textDecoration: 'none'}}>소통 공간</Link></div>
                 
             </nav>
 

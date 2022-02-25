@@ -1,16 +1,20 @@
 import React from 'react';
-import { Card, CardGroup, ListGroup} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/MainImage.scss';
+import { Card, ListGroup} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Mainimage = () => {
     return (
+
+      
         <div>
           <br />
           <p class='itT'>IT 기술 최신 동향</p>
-          {/* IT 기술 */}
-          <CardGroup>
-            <div>
+          <br />
+          <div id='itTrend'>
+            {/* IT 기술 */}
+            <div className='first'>
               <Card>
                 <Card.Img src='./assets/react_logo.png' />
                 <Card.Body>
@@ -18,7 +22,7 @@ const Mainimage = () => {
                 </Card.Body>
               </Card>
             </div>
-            <div>
+            <div className='second'>
               <Card>
                 <Card.Img variant="top" src='./assets/JAVASCRIPT.png' />
                 <Card.Body>
@@ -26,8 +30,7 @@ const Mainimage = () => {
                 </Card.Body>
               </Card>
             </div>
-
-            <div>
+            <div className='third'>
               <Card>
                 <Card.Img variant="top" src='./assets/Java.jpg' />
                 <Card.Body>
@@ -35,63 +38,32 @@ const Mainimage = () => {
                 </Card.Body>
               </Card>
             </div>
-          </CardGroup>
+          </div>
 
 {/* 소통공간 */}
 <br />
 <br />
-
-<p class='community'>모임찾기</p>
-<CardGroup>
-  <Card>
-    <Card.Img variant="top" src='./assets/react_logo.png' />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This is a wider card with supporting text below as a natural lead-in to
-        additional content. This content is a little bit longer.
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src='./assets/react_logo.png' />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This card has supporting text below as a natural lead-in to additional
-        content.{' '}
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src='./assets/react_logo.png' />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This is a wider card with supporting text below as a natural lead-in to
-        additional content. This card has even longer content than the first to
-        show that equal height action.
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
-</CardGroup>
-
+<div id='communityRecent'>
+<div className='finding'>
+<p className='community'>모임찾기</p>
+<ListGroup as="ol" numbered>
+  <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
+  <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
+  <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
+</ListGroup>
+</div>
+<br />
 {/* 최신글 */}
+<div className='recent'>
 <p className='recentPost'>최신 글</p>
 <ListGroup as="ol" numbered>
   <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
   <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
   <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
 </ListGroup>
+</div>
+</div>
+
         </div>
     );
 };
