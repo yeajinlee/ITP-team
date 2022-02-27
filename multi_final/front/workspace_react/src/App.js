@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import "./App.scss";
 import Main from "./page/Main";
 import MainBottomNevber from "./components/main/MainBottomNavber.js";
 import Login from "./page/login";
@@ -27,7 +28,7 @@ const App = () => {
   return (
 
 // if문으로 참, 거짓 판단 후 출력하는 것도 고민해볼 것.
-      <div>
+      <div className="all">
         <MainTopNavberLogin />
     <Routes>
       {/* 메인 */}
