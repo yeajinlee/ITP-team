@@ -11,15 +11,32 @@ const NoticeDetail = () => {
   const BackToNotice = () => {
     navigate('/notice');
   };
+  // const ChangeNotices=()=>{
+  //   navigate('/changeNotice')
+    
+  // };
   const[Noticedatas,setNoticedata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  
+  function Update(no){
+   navigate(`/changeNotice/${no}`)
+  }
+  function Delete(no){
+    //e.preventDefault();
+     
+    axios.delete(`http://localhost:8085/deleteNotice/${no}`)
+         .then(res=>console.log('delete',res)).catch(err=>console.log(err))
+      }
+  
+    
+  
 
   useEffect(()=>{
       const fetchNotice=async()=>{
           try {
-              //error 와 tech 를 초기화
+              //error 와 notice 를 초기화
               setError(null);
               setNoticedata(null);
               // loading 상태를 true
@@ -37,6 +54,8 @@ const NoticeDetail = () => {
   fetchNotice();
   
 },[no]);
+
+
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
 if (!Noticedatas) return null;
@@ -68,7 +87,11 @@ if (!Noticedatas) return null;
       ))}
      </div>
       <input type="button" value="목록으로" onClick={BackToNotice} />
+      <input type="button" value="수정하기" onClick={()=>Update(no)} />
+      <input type="button" value="삭제하기" onClick={(e)=>Delete(no)} />
+    
     </div>
+  
   );
 };
 
