@@ -22,6 +22,7 @@ import MainTopNavberLogin from "./components/main/MainTopNavber";
 import MainOnLogin from "./page/MainOnLogin"; 
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
+import GroupMain from "./page/communityCommunication/groupMain";
 
 const App = () => {
   
@@ -59,6 +60,8 @@ const App = () => {
       <Route path="/myPageInformationModify" element={<MyPageInformationModify />} />
       <Route path="/myPageGroupBoard" element={<MyPageGroupBoard />} />
       <Route path="/myPageGroupComment" element={<MyPageGroupComment />} />
+      {/* 모임찾기 */}
+      <Route path="/communityGroup" element={<GroupMain />} />
     </Routes>
     <MainBottomNevber />
     </div>
