@@ -2,48 +2,48 @@
 
 $text-Color: green;
 $color-background: white;
-
+* {
+  margin: 0;
+  padding: 0;
+}
 div.mainTopNavber {
   font-family: 'Jua', sans-serif;
   background: $color-background;
-  background-color: #008080;
   justify-content: center;
   align-items: 'center';
-  color: black;
+  color: white;
+  width: 1440px; // 2560(QHD), 1920(FHD), 1680, 1440
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 20px;
+  background-color: #008080;
 }
 div p.subject {
   background: $color-background;
   font-size: xx-large;
 }
-div p div.Login {
+div p div.loginAndRegister {
   font-size: large;
   justify-content: center;
   text-align: center;
   float: right;
 }
-div p div Link.Login_link {
-  text-decoration: none;
-}
-div p div.Register {
-  font-size: large;
+#topNav {
+  display: flex;
   justify-content: center;
   text-align: center;
-  float: right;
-}
-nav {
-  overflow: hidden;
-}
-nav > div {
-  /* 수평정렬, 5개의 button을 각각 20% width만큼 할당 */
-  justify-content: center;
-  text-align: center;
-  float: left;
-  width: 33%;
+  margin-bottom: 10px;
 
-  /* 세로길이 설정 */
-  height: 45px;
-  line-height: 45px;
-}
-div.header {
-  font-family: 'Jua', sans-serif;
+  div.topNavFrist {
+    width: 33%;
+  }
+  div.topNavSecond {
+    width: 33%;
+  }
+  div.topNavThird {
+    width: 33%;
+  }
+  div.header {
+    font-family: 'Jua', sans-serif;
+  }
 }

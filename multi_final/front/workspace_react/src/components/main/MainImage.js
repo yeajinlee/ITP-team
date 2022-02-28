@@ -1,16 +1,21 @@
 import React from 'react';
-import { Card, CardGroup, ListGroup} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/MainImage.scss';
+import { Card, Table, Tab, Tabs} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import communityBoradData from './jsonFile/CommunityBoradData.json';
+import noticeData from './jsonFile/GroupBoradData.json';
+import { Link } from 'react-router-dom';
 
 const Mainimage = () => {
     return (
+
+      
         <div>
           <br />
           <p class='itT'>IT 기술 최신 동향</p>
-          {/* IT 기술 */}
-          <CardGroup>
-            <div>
+          <div id='itTrend'>
+            {/* IT 기술 */}
+            <div className='first'>
               <Card>
                 <Card.Img src='./assets/react_logo.png' />
                 <Card.Body>
@@ -18,7 +23,7 @@ const Mainimage = () => {
                 </Card.Body>
               </Card>
             </div>
-            <div>
+            <div className='second'>
               <Card>
                 <Card.Img variant="top" src='./assets/JAVASCRIPT.png' />
                 <Card.Body>
@@ -26,8 +31,7 @@ const Mainimage = () => {
                 </Card.Body>
               </Card>
             </div>
-
-            <div>
+            <div className='third'>
               <Card>
                 <Card.Img variant="top" src='./assets/Java.jpg' />
                 <Card.Body>
@@ -35,63 +39,115 @@ const Mainimage = () => {
                 </Card.Body>
               </Card>
             </div>
-          </CardGroup>
-
-{/* 소통공간 */}
-<br />
-<br />
-
-<p class='community'>모임찾기</p>
-<CardGroup>
-  <Card>
-    <Card.Img variant="top" src='./assets/react_logo.png' />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This is a wider card with supporting text below as a natural lead-in to
-        additional content. This content is a little bit longer.
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src='./assets/react_logo.png' />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This card has supporting text below as a natural lead-in to additional
-        content.{' '}
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
-  <Card>
-    <Card.Img variant="top" src='./assets/react_logo.png' />
-    <Card.Body>
-      <Card.Title>Card title</Card.Title>
-      <Card.Text>
-        This is a wider card with supporting text below as a natural lead-in to
-        additional content. This card has even longer content than the first to
-        show that equal height action.
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
-    </Card.Footer>
-  </Card>
-</CardGroup>
-
-{/* 최신글 */}
-<p className='recentPost'>최신 글</p>
-<ListGroup as="ol" numbered>
-  <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
-  <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
-  <ListGroup.Item as="li">Cras justo odio</ListGroup.Item>
-</ListGroup>
+          </div>
+          {/* -----------------------------------------게시글 --------------------------------*/}
+          <br />
+          <div id='communityRecent'>
+            <Tabs defaultActiveKey="communicationBorad"  className="mb-3">
+              <Tab eventKey="communicationBorad" title="소통공간">
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {communityBoradData.community.map((n,index) => (
+                            <tr key={index}>
+                              <td>{n.no}</td>
+                              <td>
+                                <Link to={'/Community/'+n.no} style={{ textDecoration: 'none' }}>
+                                  {n.title}
+                                  </Link>
+                              </td>
+                              <td>
+                                {n.date}
+                              </td>
+                            </tr>
+                            ))}
+                  </tbody>
+                </Table>
+              </Tab>
+              <Tab eventKey="groupBorad" title="모임찾기">
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {noticeData.group.map((n,index) => (
+                      <tr key={index}>
+                        <td>{n.no}</td>
+                        <td>
+                          <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
+                            {n.title}
+                          </Link>
+                        </td>
+                        <td>
+                          {n.date}
+                        </td>
+                       </tr>
+                       ))}
+                  </tbody>
+                </Table>
+              </Tab>
+            </Tabs>
+          </div>
+          <div className='testTable'>
+          <Table>
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {noticeData.group.map((n,index) => (
+                      <tr key={index}>
+                        <td>{n.no}</td>
+                        <td>
+                          <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
+                            {n.title}
+                          </Link>
+                        </td>
+                        <td>
+                          {n.date}
+                        </td>
+                       </tr>
+                       ))}
+                  </tbody>
+                </Table>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {noticeData.group.map((n,index) => (
+                      <tr key={index}>
+                        <td>{n.no}</td>
+                        <td>
+                          <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
+                            {n.title}
+                          </Link>
+                        </td>
+                        <td>
+                          {n.date}
+                        </td>
+                       </tr>
+                       ))}
+                  </tbody>
+                </Table>
+                </div>
         </div>
     );
 };
