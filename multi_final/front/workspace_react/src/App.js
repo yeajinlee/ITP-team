@@ -5,7 +5,7 @@ import Login from "./page/login";
 import Notice from "./page/Notice/Notice";
 import NoticeDetail from "./page/Notice/NoticeDetail";
 import AddNotice from "./page/Notice/AddNotice";
-import ItTechnologyMain from './page/itTechnology/ItTechnologyMain.js'; 
+import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
