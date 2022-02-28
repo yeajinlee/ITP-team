@@ -11,10 +11,7 @@ const NoticeDetail = () => {
   const BackToNotice = () => {
     navigate('/notice');
   };
-  // const ChangeNotices=()=>{
-  //   navigate('/changeNotice')
-    
-  // };
+ 
   const[Noticedatas,setNoticedata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -27,7 +24,7 @@ const NoticeDetail = () => {
     //e.preventDefault();
      
     axios.delete(`http://localhost:8085/deleteNotice/${no}`)
-         .then(res=>console.log('delete',res)).catch(err=>console.log(err))
+         .then(navigate('/notice')).catch(err=>console.log(err))
       }
   
     
@@ -88,7 +85,7 @@ if (!Noticedatas) return null;
      </div>
       <input type="button" value="목록으로" onClick={BackToNotice} />
       <input type="button" value="수정하기" onClick={()=>Update(no)} />
-      <input type="button" value="삭제하기" onClick={(e)=>Delete(no)} />
+      <input type="button" value="삭제하기" onClick={()=>Delete(no)} />
     
     </div>
   
