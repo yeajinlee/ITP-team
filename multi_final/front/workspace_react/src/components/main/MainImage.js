@@ -3,7 +3,6 @@ import './css/MainImage.scss';
 import { Card, Table, Tab, Tabs} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import communityBoradData from './jsonFile/CommunityBoradData.json';
-
 import noticeData from './jsonFile/GroupBoradData.json';
 import { Link } from 'react-router-dom';
 
@@ -99,6 +98,56 @@ const Mainimage = () => {
               </Tab>
             </Tabs>
           </div>
+          <div className='testTable'>
+          <Table>
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {noticeData.group.map((n,index) => (
+                      <tr key={index}>
+                        <td>{n.no}</td>
+                        <td>
+                          <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
+                            {n.title}
+                          </Link>
+                        </td>
+                        <td>
+                          {n.date}
+                        </td>
+                       </tr>
+                       ))}
+                  </tbody>
+                </Table>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {noticeData.group.map((n,index) => (
+                      <tr key={index}>
+                        <td>{n.no}</td>
+                        <td>
+                          <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
+                            {n.title}
+                          </Link>
+                        </td>
+                        <td>
+                          {n.date}
+                        </td>
+                       </tr>
+                       ))}
+                  </tbody>
+                </Table>
+                </div>
         </div>
     );
 };

@@ -36,9 +36,9 @@ const MainTopNavberNonLogin = () => {
             <nav id='topNav' className='mainNavber'>
                 <div className='topNavFirst'><Link to='/itTrend' class="link-light" style={{ textDecoration: 'none'}}> IT 트렌드</Link></div>
                 <div className='topNavSecond'><Link to='/iTTech' class="link-light" style={{ textDecoration: 'none'}}>IT 기술</Link></div>
-                <div className='topNavThird'><Link to='#communityGroup' class="link-light" style={{ textDecoration: 'none'}}>소통공간</Link>
+                <div className='topNavThird'><Link to='/communityGroup' class="link-light" style={{ textDecoration: 'none'}}>모임찾기</Link>
                 &nbsp;&nbsp;ㅣ&nbsp;&nbsp;
-                <Link to='#communityCommunication' class="link-light" style={{ textDecoration: 'none'}}>모임찾기</Link>
+                <Link to='#communicationMain' class="link-light" style={{ textDecoration: 'none'}}>소통공간</Link>
                 </div>
                 <nav class="navbar navbar-light" >
     <form class="d-flex">
