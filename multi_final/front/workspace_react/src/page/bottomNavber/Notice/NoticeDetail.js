@@ -21,8 +21,7 @@ const NoticeDetail = () => {
    navigate(`/changeNotice/${no}`)
   }
   function Delete(no){
-    //e.preventDefault();
-     
+       
     axios.delete(`http://localhost:8085/deleteNotice/${no}`)
          .then(navigate('/notice')).catch(err=>console.log(err))
       }
