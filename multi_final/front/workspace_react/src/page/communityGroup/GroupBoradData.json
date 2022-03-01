@@ -4,7 +4,8 @@
             "title": "리액트 스터디 모집",
             "content": "리액트 스터디 하실 분 모집합니다",
             "writer": "홍길동",
-            "topic": "React" 
+            "topic": "React",
+            "img": "./assets/reactLogo.png"
         }
     ]
 }

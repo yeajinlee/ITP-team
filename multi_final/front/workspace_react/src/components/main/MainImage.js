@@ -17,7 +17,7 @@ const Mainimage = () => {
             {/* IT 기술 */}
             <div className='first'>
               <Card>
-                <Card.Img src='./assets/react_logo.png' />
+                <Card.Img src='./assets/reactLogo.png' />
                 <Card.Body>
                   <Card.Title>[React] The Plan for React 18</Card.Title>
                 </Card.Body>
@@ -25,7 +25,7 @@ const Mainimage = () => {
             </div>
             <div className='second'>
               <Card>
-                <Card.Img variant="top" src='./assets/JAVASCRIPT.png' />
+                <Card.Img variant="top" src='./assets/JavascriptLogo.png' />
                 <Card.Body>
                   <Card.Title>[JavaScript] 2022 기술 동향</Card.Title>
                 </Card.Body>
@@ -33,7 +33,7 @@ const Mainimage = () => {
             </div>
             <div className='third'>
               <Card>
-                <Card.Img variant="top" src='./assets/Java.jpg' />
+                <Card.Img variant="top" src='./assets/JavaLogo.jpg' />
                 <Card.Body>
                   <Card.Title>[Java] 2022 기술 동향</Card.Title>
                 </Card.Body>
