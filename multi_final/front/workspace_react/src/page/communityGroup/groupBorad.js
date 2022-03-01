@@ -13,20 +13,19 @@ const groupBorad = () => {
           <br />
           <div id='firstLine' className='boardFirstLine'>
             <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src="./assets/react_logo.png" />
-
-              {groupBoard.group.map((n,index) => <Card.Body>
-              <Card.Title className='title'>{n.title}</Card.Title>
-              <Card.Text className='cardText'>{n.content}</Card.Text>
-              <br />
-                <Card.Link className='link' href="#">{n.writer}</Card.Link>
-                <Card.Link className='link' href="#">{n.topic}</Card.Link>
-            </Card.Body>
-            )}
-              <Card.Body className='bodyLink'>
+              {groupBoard.group.map((n,index) =>
+              <Card.Body>
+                <Card.Img variant='top' src={n.img} />
+                <Card.Title className='title'>{n.title}</Card.Title>
+                <Card.Text className='cardText'>{n.content}</Card.Text>
+                <br />
+                <Card.Body className='bodyLink'>
+                  <Card.Link className='link' href="#">{n.writer}</Card.Link>
+                  <Card.Link className='link' href="#">{n.topic}</Card.Link>
+                </Card.Body>
               </Card.Body>
+            )}
             </Card>
-
           </div>
           <br /><br /><br />
           <div id='button' >
