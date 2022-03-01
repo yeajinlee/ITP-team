@@ -22,7 +22,7 @@ import MainTopNavberLogin from "./components/main/MainTopNavber";
 import MainOnLogin from "./page/MainOnLogin"; 
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
-import GroupMain from "./page/communityCommunication/groupMain";
+import GroupMain from "./page/communityGroup/groupMain";
 
 const App = () => {
   
