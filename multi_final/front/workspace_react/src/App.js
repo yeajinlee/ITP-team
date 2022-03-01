@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
 import Main from "./page/Main";
 import MainBottomNevber from "./components/main/MainBottomNavber.js";
 import Login from "./page/login";
