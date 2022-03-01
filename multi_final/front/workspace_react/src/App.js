@@ -5,7 +5,8 @@ import Login from "./page/login";
 import Notice from "./page/bottomNavber/Notice/Notice";
 import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
-import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
+import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
+import ItTechnologyMain from './page/itTechnology/ItTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
@@ -41,6 +42,7 @@ const App = () => {
       <Route path="/notice" element={<Notice />}/>
       <Route path="/notice/:no" element={<NoticeDetail/>}/>
       <Route path="/addNotice" element={<AddNotice/>}/>
+      <Route path="/changeNotice/:no" element={<ChangeNotice/>}/>
       {/* 이용약관 및 개인정보처리방침 */}
       <Route path="/Useterm" element={<Useterm />} />
       <Route path="/Infolaw" element={<Infolaw/>} />
