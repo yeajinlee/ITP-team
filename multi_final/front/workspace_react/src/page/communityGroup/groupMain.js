@@ -1,9 +1,8 @@
-import React from 'react';
 import MainCarousel from '../../components/main/MainCarousel';
 
-import GroupBorad from './groupBorad';
+import GroupBorad from './GroupBorad';
 
-const communicationMain = () => {
+const GroupMain = () => {
     return (
         <div>
             <MainCarousel />
@@ -13,4 +12,4 @@ const communicationMain = () => {
     );
 };
 
-export default communicationMain;
+export default GroupMain;

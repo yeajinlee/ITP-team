@@ -7,7 +7,7 @@ import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
 import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
-import ItTechnologyDetail from './page/itTechnology/itTechnologyDetail.js';
+import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
 import Register from "./page/Register";
@@ -21,7 +21,7 @@ import MainTopNavberLogin from "./components/main/MainTopNavber";
 import MainOnLogin from "./page/MainOnLogin"; 
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
-import GroupMain from "./page/communityGroup/groupMain";
+import GroupMain from "./page/communityGroup/GroupMain";
 import Faq from "./page/FAQ/FAQ";
 const App = () => {
   

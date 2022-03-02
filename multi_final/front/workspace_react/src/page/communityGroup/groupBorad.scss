@@ -26,7 +26,9 @@
 }
 
 div.boardFirstLine {
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+	grid-template-rows: 300px 300px;
   justify-content: space-evenly;
   width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
   margin: 0 auto;
