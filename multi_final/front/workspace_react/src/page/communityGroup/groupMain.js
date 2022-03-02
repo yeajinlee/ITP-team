@@ -1,14 +1,14 @@
 import React from 'react';
 import MainCarousel from '../../components/main/MainCarousel';
 
-import GroupBorad from './groupBorad';
+import GroupBoard from './groupBoard';
 
 const communicationMain = () => {
     return (
         <div>
             <MainCarousel />
             <br />
-            <GroupBorad />
+            <GroupBoard />
         </div>
     );
 };
