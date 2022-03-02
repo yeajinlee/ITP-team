@@ -5,7 +5,7 @@ import Login from "./page/login";
 import Notice from "./page/bottomNavber/Notice/Notice";
 import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
-import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
+import ItTechnologyMain from './page/itTechnology/ItTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
@@ -49,7 +49,8 @@ const App = () => {
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
       {/* IT 트렌드 */}
       <Route path="/itTrend" element={<ItTrendMain/>} />
-      <Route path="/itTrend/:no" element={<ItTrendDetail/>} />
+      {/* <Route path="/itTrend/:no" element={<ItTrendDetail/>} /> */}
+      <Route path="/itTrend/detail" element={<ItTrendDetail/>} />
       {/* My Page */}
       <Route path="/myPageCommunityBoard" element={<MyPageCommunityBoard />} />
       <Route path="/myPageCommunityComment" element={<MyPageCommunityComment />} />

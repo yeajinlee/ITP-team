@@ -27,6 +27,7 @@ const Article2 = () => {
     if(!articles2) {
         return null;
     }
+    articles2.articles.splice(0, 2);
     return (
       <div>
         {articles2.articles.map((a, index) => (
@@ -34,7 +35,6 @@ const Article2 = () => {
             <Link to={a.url}>
               <img src={a.urlToImage} alt="" width={300} height={200}></img>
               {a.title}<br/>
-              
             </Link>
           </div>
         ))}
@@ -42,22 +42,5 @@ const Article2 = () => {
     );
   };
 
-/*function Article2() {
-    return (
-        <div>
-        {trendData.trend.map((article)=>(
-        <div className='article2'>
-             <div key={article.no} >
-           <Link to={"/itTrend/" + article.no}>
-           <img width="300px" height="200px" src={article.img} alt="img" />
-           {article.title}
-           {article.subtitle}
-           </Link>
-           </div>
-        </div>
-        ))}
-        </div>
-    )
-}*/
 
 export default Article2

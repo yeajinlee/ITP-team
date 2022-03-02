@@ -20,7 +20,7 @@ const Article1 = () => {
             setLoading(false);
         };
         fetchData();
-    }, []);
+    },[]);
     if (loading) {
         return <div>오늘의 트렌드를 불러오는 중</div>;
     }
@@ -31,8 +31,16 @@ const Article1 = () => {
       <div>
         {articles1.articles.map((a, index) => (
           <div key={index} className='article1'>
-            <Link to={a.url}>
+            <Link to={{
+                pathname:"/itTrend/detail",
+                state: {
+                    title: a.title,
+                    url: a.url,
+                    urlToImage: a.urlToImage
+                }
+            }}>
               <img src={a.urlToImage} alt="" width={300} height={200}></img>
+              {a.index}
               {a.title}
             </Link>
           </div>
@@ -42,39 +50,4 @@ const Article1 = () => {
 };
 
 
-/*function Article1() {
-    return (
-        <div>
-        {trendData.trend.map((article)=>(
-        <div className='article1'>
-            <div key={article.no} >
-           <Link to={"/itTrend/" + article.no}>
-           <img width="300px" height="200px" src={article.img} alt="img" />
-           {article.title} <br/>
-           {article.subtitle}
-           </Link>
-           </div>
-        </div>
-        ))}
-        </div>
-        
-    )
-}*/
-
 export default Article1;
-
-/*function Article1() {
-    return (
-        <div className='article1'>
-            {trendData.trend.map((article)=>(
-            <Link to={"/itTrend/" + article.no}>
-           <img width="300px" height="200px" src={article.img} alt="img" />
-           {article.title} <br/>
-           {article.subtitle}
-           </Link>
-            ))}
-        </div>
-    )
-}
-
-export default Article1; */

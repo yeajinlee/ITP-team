@@ -19,7 +19,7 @@
     overflow: hidden; // 영역 감추기
     text-overflow: ellipsis; // ...로 만들기
     white-space: nowrap; // 아래줄 내려가는 것 막기
-    max-width: calc(100% - px);
+    // max-width: calc(100% - px);
   }
 }
 
