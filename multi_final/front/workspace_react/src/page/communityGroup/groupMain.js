@@ -1,13 +1,13 @@
 import MainCarousel from '../../components/main/MainCarousel';
 
-import GroupBorad from './GroupBorad';
+import GroupBoard from './GroupBoard';
 
 const GroupMain = () => {
     return (
         <div>
             <MainCarousel />
             <br />
-            <GroupBorad />
+            <GroupBoard />
         </div>
     );
 };
