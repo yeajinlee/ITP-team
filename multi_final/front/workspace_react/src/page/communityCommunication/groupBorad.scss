@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#firstLine {
+  .title {
+    font-size: 18px;
+  }
+  .bodyLink {
+    justify-content: center;
+    text-align: center;
+  }
+  .link {
+    text-decoration: none;
+    color: black;
+  }
+  .cardText {
+    overflow: hidden; // 영역 감추기
+    text-overflow: ellipsis; // ...로 만들기
+    white-space: nowrap; // 아래줄 내려가는 것 막기
+    //max-width: calc(100% - px);
+  }
+}
+
+div.boardFirstLine {
+  display: flex;
+  justify-content: space-evenly;
+  width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#button {
+  div.buttonPosition {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+// height 픽스 조절, 입력 글자가 늘어날때는 잘려나가게. 보이는 것만 안보이게. (생략 기능) 자바스크립트 코드로 몇 글자 이상 넘어가면 생략되게
+/* 
+div {
+  overflow: scroll;
+}
+div {
+  overflow: hidden;
+}
+
+*/

@@ -3,6 +3,10 @@
 $text-Color: green;
 $color-background: white;
 
+* {
+  margin: 0;
+  padding: 0;
+}
 div.topNavber {
   font-family: 'Jua', sans-serif;
   background-color: #008080;
@@ -10,6 +14,7 @@ div.topNavber {
   align-items: 'center';
   color: black;
 }
+
 div p.subject {
   background: $color-background;
   font-size: xx-large;
