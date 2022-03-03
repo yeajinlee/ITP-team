@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#board {
+  background-color: #f4f4f4;
+  display: flex;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 1440px; // 2560(QHD), 1920(FHD), 1680, 1440
+  height: 1440px;
+
+  .boardList {
+    width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+    align-items: center;
+    margin: 100px;
+  }
+}
+#sideBar {
+  display: flex;
+  border-right: 1px solid #e0e0e0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  width: 20%;
+  padding-top: 50px;
+
+  .Menu {
+    margin-top: 30px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+}
