@@ -4,16 +4,15 @@ import trendData from './itTrendData.json';
 import axios from 'axios';
 import stringReplaceAll from 'string-replace-all';
 
+const reg = /[^\wㄱ-힣]/g;
 const titleUrl = (title) => {
-  var barTitle = stringReplaceAll(title, ' ' , '-');
-  if (barTitle.includes('%')) barTitle = stringReplaceAll(barTitle,'%','-');
-  if (barTitle.includes('/')) barTitle = stringReplaceAll(barTitle,'/','-');
-  return barTitle;
+  return title.replace(reg,"-");
 };
 
 const Article2 = () => {
     const [articles2, setArticles2] = useState(null);
     const[loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     useEffect(() => {
         const fetchData = async() => {
             setLoading(true);
@@ -24,6 +23,7 @@ const Article2 = () => {
                 console.log(articles2);
             } catch (error) {
                 console.log(error);
+                setError(error);
             }
             setLoading(false);
         };
@@ -31,6 +31,9 @@ const Article2 = () => {
     }, []);
     if (loading) {
         return <div>이번주의 트렌드를 불러오는 중</div>;
+    }
+    if (error) {
+      return <div>오류가 발생했습니다. 관리자에게 문의해주세요.</div>
     }
     if(!articles2) {
         return null;

@@ -11,16 +11,18 @@ const ItTrendDetail = () => {
     const BackToItTrendMain = () => {
         navigate('/itTrend');
       };
-    const [articledBody, setArticleBody] = useState(null);
+    const [trendDetail, setTrendDetail] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     useEffect(() => {
         const fetchData = async() => {
             setLoading(true);
             try {
                 const response = await axios.get(`http://localhost:8085/itTrend/${title}`);
-                setArticleBody(response.data);
+                setTrendDetail(response.data);
             } catch (error) {
                 console.log(error);
+                setError(error);
             }
             setLoading(false);
         };
@@ -29,22 +31,29 @@ const ItTrendDetail = () => {
     if(loading) {
         return <div>트렌드 기사 내용을 불러오는 중</div>
     }
-    if(!articledBody) {
-        return null;
+    if (error) {
+        return (
+            <div>
+                오류가 발생했습니다. 관리자에게 문의해주세요.
+                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+            </div>
+        );
+    }
+    if(!trendDetail) {
+        return (
+            <div>
+                본문 보기를 지원하지 않는 기사입니다.
+                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+            </div>
+        );
     }
 
     return(
         <div>
-            <h3>기사 제목 영역</h3>
-            {/* <ul>
-                <li>{trendData.trend[no-1].img}</li>
-                <li>title:{trendData.trend[no-1].title}</li>
-                <li>subtitle:{trendData.trend[no-1].subtitle}</li>
-                <li>content:{trendData.trend[no-1].content}</li>
-            </ul> */}
-            <div>사진 영역</div>
-            <div>{articledBody}</div>
-            
+            <h3>{trendDetail.title}</h3>
+            <div><img src={trendDetail.urlToImage} alt="" width={500}></img></div>
+            <div>{trendDetail.content}</div>
+            <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
             <input type="button" value="목록으로" onClick={BackToItTrendMain} />
         </div>    
     ); 
