@@ -22,9 +22,10 @@ import MainOnLogin from "./page/MainOnLogin";
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
 import GroupMain from "./page/communityGroup/groupMain";
-import GroupWriting from "./page/communityGroup/writing/writingMain";
+import GroupWriting from "./page/communityGroup/writing/gWritingMain";
+import CommunicationMain from "./page/communityCommunication/communicationMain";
+import CommunicationWriting from "./page/communityCommunication/writing/cWritingMain"
 import Faq from "./page/FAQ/FAQ";
-
 
 const App = () => {
   
@@ -65,6 +66,9 @@ const App = () => {
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
       <Route path="/groupWriting" element={<GroupWriting />} />
+      {/* 소통공간 */}
+      <Route path="/communication" element={<CommunicationMain/>} />
+      <Route path="/CommunicationWriting" element={<CommunicationWriting />} />
       {/* 자주 묻는 질문 */}
       <Route path="/faq" element={<Faq />} />
     </Routes>

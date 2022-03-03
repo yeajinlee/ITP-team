@@ -1,7 +1,7 @@
 import React from 'react';
 import MainCarousel from '../../components/main/MainCarousel';
 
-import GroupBoard from './groupBoard';
+import GroupBoard from './GroupBoard';
 
 const communicationMain = () => {
     return (
