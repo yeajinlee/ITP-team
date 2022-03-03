@@ -10,6 +10,12 @@
   margin: 0 auto;
   overflow: hidden;
 
+  .boardFirstLine {
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+  }
   .writingButton {
     background-color: #3b9d9d;
     color: white;
@@ -81,18 +87,22 @@ div.boardFirstLine {
 
 #button {
   div.buttonPosition {
-    justify-content: center;
-    text-align: center;
+    #groupButton {
+      padding-top: 80px;
+      padding-bottom: 40px;
+      .buttonPosition {
+        justify-content: center;
+        text-align: center;
+      }
+    }
   }
 }
 
 // height 픽스 조절, 입력 글자가 늘어날때는 잘려나가게. 보이는 것만 안보이게. (생략 기능) 자바스크립트 코드로 몇 글자 이상 넘어가면 생략되게
-/* 
-div {
-  overflow: scroll;
-}
-div {
-  overflow: hidden;
-}
 
-*/
+// div {
+//   overflow: scroll;
+// }
+// div {
+//   overflow: hidden;
+// }
