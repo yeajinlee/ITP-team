@@ -3,8 +3,8 @@ import './css/MainImage.scss';
 import { Card, Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import communityBoradData from './jsonFile/CommunityBoradData.json';
-import noticeData from './jsonFile/GroupBoradData.json';
 import { Link } from 'react-router-dom';
+import groupBoard from '../../page/communityGroup/GroupBoradData.json';
 
 const Mainimage = () => {
     return (
@@ -42,7 +42,32 @@ const Mainimage = () => {
           </div>
           {/* -----------------------------------------게시글 --------------------------------*/}
           <br />
-          <div className='testTable'>
+          <p style={{ 
+            fontSize: '25px',
+            textAlign: 'center'
+            }}>
+              모임찾기
+              </p>
+          <div id='groupLine' className='groupBoardLine'>
+            <Card style={{ width: '18rem' }}>
+              {groupBoard.group.map((n,index) =>
+              <Card.Body>
+                <Card.Img variant='top' src={n.img} />
+                <Card.Title className='title'>{n.title}</Card.Title>
+                <Card.Text className='cardText'>{n.content}</Card.Text>
+                <br />
+                <Card.Body className='bodyLink'>
+                  <Card.Link className='link' href="#">{n.writer}</Card.Link>
+                  <Card.Link className='link' href="#">{n.topic}</Card.Link>
+                </Card.Body>
+              </Card.Body>
+            )}
+            </Card>
+          </div>
+
+          <div id='mainBoard' className='boardTable'>
+            <br />
+            <p>소통 공간</p>
           <Table>
                   <thead>
                     <tr>
@@ -65,30 +90,6 @@ const Mainimage = () => {
                               </td>
                             </tr>
                             ))}
-                  </tbody>
-                </Table>
-                <Table>
-                  <thead>
-                    <tr>
-                      <th>번호</th>
-                      <th>제목</th>
-                      <th>작성일</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {noticeData.group.map((n,index) => (
-                      <tr key={index}>
-                        <td>{n.no}</td>
-                        <td>
-                          <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
-                            {n.title}
-                          </Link>
-                        </td>
-                        <td>
-                          {n.date}
-                        </td>
-                       </tr>
-                       ))}
                   </tbody>
                 </Table>
                 </div>
