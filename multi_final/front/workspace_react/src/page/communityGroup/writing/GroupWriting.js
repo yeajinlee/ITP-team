@@ -4,7 +4,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './GroupWritingMain.scss';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 const GroupWriting = () => {
     const [Content, setContent] = useState({ 
@@ -23,6 +23,34 @@ const GroupWriting = () => {
       })
       console.log(Content);
     };
+
+    // const submit=()=>{
+    //  console.log(g_title);
+    //  console.log(g_subtitle);
+    //  console.log(g_content);
+      
+      
+    //   axios.post(`http://localhost:8085/addGroup`,null,{
+    //     params:{
+    //       'g_name':g_name,
+    //       'g_title':g_title,
+    //       'g_subtitle':g_subtitle,
+    //       'g_content':g_content,
+    //       'g_img':'g_img',
+    //       'g_tag':'g_tag'
+         
+    //     }
+    //   })
+    //   .then(res=>{
+    //     console.log(res)
+    //     console.log(res.data.n_title)
+    //     console.log(res.data.n_content)
+       
+    //     document.location.href=`/notice`;//성공시 목록으로 돌아가기
+    //   })
+    //   .catch()
+    // }
+   
     return (
       <div id='writingAll' className="writingMain">
         <div className='titleAndSubject'>
@@ -32,9 +60,16 @@ const GroupWriting = () => {
           onChange={getValue}
           name='title'
           />
+
+          <input className="subtitle-input"
+          type='text'
+          placeholder='소제목'
+          onChange={getValue}
+          name='subtitle'
+          />
           <Form.Select className='writingSubject'>
             <option>주제</option>
-            <option value="study">스터디</option>
+            <option value="study" >스터디</option>
             <option value="project">프로젝트</option>
             <option value="etc">기타</option>
             </Form.Select>
@@ -75,6 +110,7 @@ const GroupWriting = () => {
           className="submit-button"
           onclick={() => {
             setViewContent(viewContent.concat({...Content}));
+           
           }}
           >
             등록

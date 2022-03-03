@@ -21,10 +21,11 @@ import MainTopNavberLogin from "./components/main/MainTopNavber";
 import MainOnLogin from "./page/MainOnLogin"; 
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
-import GroupMain from "./page/communityGroup/GroupMain";
+import GroupMain from "./page/communityGroup/groupMain";
 import GroupWriting from "./page/communityGroup/writing/writingMain";
 import Faq from "./page/FAQ/FAQ";
-
+import GroupBoardDetail from "./page/communityGroup/GroupBoardDetail";
+import GroupBoardChange from "./page/communityGroup/GroupBoardChange";
 
 const App = () => {
   
@@ -65,6 +66,8 @@ const App = () => {
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
       <Route path="/groupWriting" element={<GroupWriting />} />
+      <Route path="/communityGroup/:no" element={<GroupBoardDetail />} />
+      <Route path="/changeGroup/:no" element={<GroupBoardChange/>} />
       {/* 자주 묻는 질문 */}
       <Route path="/faq" element={<Faq />} />
     </Routes>

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
-import { Card, Button, ButtonGroup, ButtonToolbar} from 'react-bootstrap';
+import { Card, Button} from 'react-bootstrap';
 /* import { Link } from 'react-router-dom'; */
-import './groupBorad.scss'
+import './groupBoard.scss'
 //import groupBoard from './GroupBoradData.json'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
@@ -9,20 +9,28 @@ import { Link } from 'react-router-dom';
 
 
 const GroupBorad = () => {
-  const[page,setpage]=useState('1');
-  const[Groupdatas,setGroupdata]=useState(null);
+  const page=1;
+  const[Groupdatas,setGroupdata]=useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const[title,settitle]=useState('');
   const[search,setsearch]=useState('');
 
- const handleClick=(e)=>{
-   setpage(e.target.id);
+  const[currentpage,setcurrentpage]=useState(1);
+  const itemsPerPage=6;
+  const pageNumberLimit=5;
+  const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
+  const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
+
  
-};
 const handlesearch=()=>{
   setsearch(title);
  
+ 
+}
+
+const handleClickpage=(e)=>{
+  setcurrentpage(Number(e.target.id))
 }
 
 // const Searchgetgroup=useCallback(()=>{
@@ -31,19 +39,39 @@ const handlesearch=()=>{
 //   });
 // },[page])
 
- // const [currentpage,setCurrentPage]=useState(1);
-  // const [itemsPerPage,setItemsPerPage]=useState(4);
 
- 
+console.log(Groupdatas.length);
 
-  // const pages=[];
-  // for(let i=1;i<Math.ceil(Groupdatas.length/3);i++){
-  //   pages.push(i);
-  // }
-  
-  // // const indexOfLastItem=currentpage*itemsPerPage;
-  // // const indexOfFirstItem=indexOfLastItem-itemsPerPage;
-  // // const currentItems=Groupdatas.slice(indexOfFirstItem,indexOfLastItem);
+  const pagenums=[];
+  for(let i=1;i<=Math.ceil((Groupdatas.length)/itemsPerPage);i++){
+    pagenums.push(i);
+  }
+  console.log(pagenums);
+
+  const indexOfLastItem=currentpage*itemsPerPage; //마지막 갯수
+  const indexOfFirstItem=indexOfLastItem-itemsPerPage;
+  const currentItems=Groupdatas.slice(indexOfFirstItem,indexOfLastItem);
+
+  console.log(currentItems);
+
+  const renderPagenum=pagenums.map((number)=>{
+    if(number<maxpageNumberLimit+1&&number>minpageNumberLimit){
+    return(
+      
+      <li 
+      key={number} 
+      id={number} 
+      onClick={handleClickpage}
+      className={currentpage===number?"active":null}>
+      {number}
+      </li>
+      
+    );
+    }else{
+      return null;
+    }
+  });
+
 
 
   // const PaginateNumbers=pages.map((pagenum)=>{
@@ -63,7 +91,7 @@ const handlesearch=()=>{
           // loading 상태를 true
           setLoading(true); 
           
-          const response=await axios.get(`http://localhost:8085/group/list/?page=${page}`,null);
+          const response=await axios.get(`http://localhost:8085/group/listAll`,null);
           setGroupdata(response.data);
           
         }catch(e){
@@ -77,7 +105,33 @@ fetchGroup();
 
  },[page]);
 
-   
+  const handlenextbtn=()=>{
+    setcurrentpage(currentpage+1);
+    
+    if(currentpage+1>maxpageNumberLimit){
+      setmaxpageNumberLimit(maxpageNumberLimit+pageNumberLimit);
+      setminpageNumberLimit(minpageNumberLimit+pageNumberLimit);
+    }
+  }
+
+  const handleprevbtn=()=>{
+    setcurrentpage(currentpage-1);
+    
+    if((currentpage-1)%pageNumberLimit===0){
+      setmaxpageNumberLimit(maxpageNumberLimit-pageNumberLimit);
+      setminpageNumberLimit(minpageNumberLimit-pageNumberLimit);
+    }
+  }
+
+  let pageIncrementBtn=null;
+  if(pagenums.length>maxpageNumberLimit){
+    pageIncrementBtn=<li onClick={handlenextbtn}>&hellip;</li>
+  }
+
+  let pageDecrementBtn=null;
+  if(pagenums.length>maxpageNumberLimit){
+    pageDecrementBtn=<li onClick={handleprevbtn}>&hellip;</li>
+  }
 
 
  if (loading) return <div>로딩중..</div>;
@@ -88,30 +142,52 @@ if (!Groupdatas) return null;
           <br />
           
           <div id='firstLine' className='boardFirstLine'>
-          {Groupdatas.filter((val)=>{
-            if(search===""){
-              return val
-            }else if(val.g_title.includes(search)){
-              return val
-            }
-          }).map((Groupdata) =>
-            <Card style={{ width: '18rem' }} >
-               <Card.Body key={Groupdata.g_no}>
-                <Card.Img variant='top' src={Groupdata.g_img} />
-                <Card.Title className='title'>{Groupdata.g_title}</Card.Title>
-                <Card.Text className='cardText'>{Groupdata.g_subtitle}</Card.Text>
-                <br />
-                <Card.Body className='bodyLink'>
-                  <Card.Link className='link' href="#">{Groupdata.g_name}</Card.Link>
-                  <Card.Link className='link' href="#">{Groupdata.g_tag}</Card.Link>
-                </Card.Body>
+            
+         { currentItems.filter((Groupdatas)=>{
+          if(search===""){
+         return Groupdatas
+         }else if(Groupdatas.g_title.includes(search)){
+         return Groupdatas
+         }
+         }).map((currentItems) =>
+          <Card style={{ width: '18rem' }} >
+            <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
+             <Card.Body key={currentItems.g_no}>
+              <Card.Img variant='top' src={currentItems.g_img} />
+              <Card.Title className='title'>{currentItems.g_title}</Card.Title>
+              <Card.Text className='cardText'> {currentItems.g_subtitle}</Card.Text>
+              <br />
+              <Card.Body className='bodyLink'>
+                <Card.Link className='link' href="#">{currentItems.g_name}</Card.Link>
+                <Card.Link className='link' href="#">{currentItems.g_tag}</Card.Link>
               </Card.Body>
-             </Card>
-           )}
-            <Link to='/groupWriting'><Button className='writingButton'>글쓰기</Button></Link>
+            </Card.Body>
+            </Link>
+           </Card>
+         )}
+        
+          
+      
           <br /><br /><br /><br />
           </div>
           <br /><br /><br />
+          <ul className='pagenumbers'>
+            <li>
+              <button onClick={handleprevbtn}
+              disabled={currentpage===pagenums[0]?true:false}>
+                Prev
+              </button>
+            </li>
+            {pageIncrementBtn}
+            {renderPagenum}
+            {pageDecrementBtn}
+            <li>
+              <button onClick={handlenextbtn}
+              disabled={currentpage===pagenums[pagenums.length-1]?true:false}>
+                Next
+              </button>
+            </li>
+            </ul>
           <>
  
          
@@ -124,29 +200,9 @@ if (!Groupdatas) return null;
     />
   
   <button type="button" onClick={handlesearch}>검색</button>
+  <Link to='/groupWriting'><Button className='writingButton'>글쓰기</Button></Link>
   </>
-          <div id='button' >
-              <ButtonToolbar className='buttonPosition' >
-              <ButtonGroup className="me-2">
-                <Button>&lt;</Button> 
-              </ButtonGroup>
-              <ButtonGroup className="me-2">
-                <Button id="1" onClick={handleClick}>1</Button> 
-              </ButtonGroup>
-              <ButtonGroup className="me-2">
-                <Button value="2" id="2" onClick={handleClick}>2</Button> 
-              </ButtonGroup>
-              <ButtonGroup className="me-2">
-                <Button id="3" onClick={handleClick}>3</Button> 
-              </ButtonGroup>
-              <ButtonGroup className="me-2">
-                <Button id="4" onClick={handleClick}>4</Button> 
-              </ButtonGroup>
-              <ButtonGroup >
-                <Button>&gt;</Button>
-              </ButtonGroup>
-            </ButtonToolbar>
-          </div>
+     
 <br /><br />
         </div>
     );
