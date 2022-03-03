@@ -19,9 +19,9 @@ const itTrendMain = () => {
             <div className='todayTrend'>
                 <Article1/>           
             </div>
-            {/* <div className='passTrend'>
+            <div className='passTrend'>
                 <Article2/>
-            </div> */}
+            </div>
         </Fragment>
    );
 };

@@ -2,6 +2,14 @@ import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import trendData from './itTrendData.json';
 import axios from 'axios';
+import stringReplaceAll from 'string-replace-all';
+
+const titleUrl = (title) => {
+  var barTitle = stringReplaceAll(title, ' ' , '-');
+  if (barTitle.includes('%')) barTitle = stringReplaceAll(barTitle,'%','-');
+  if (barTitle.includes('/')) barTitle = stringReplaceAll(barTitle,'/','-');
+  return barTitle;
+};
 
 const Article1 = () => {
     const [articles1, setArticles1] = useState(null);
@@ -31,16 +39,8 @@ const Article1 = () => {
       <div>
         {articles1.articles.map((a, index) => (
           <div key={index} className='article1'>
-            <Link to={{
-                pathname:"/itTrend/detail",
-                state: {
-                    title: a.title,
-                    url: a.url,
-                    urlToImage: a.urlToImage
-                }
-            }}>
+            <Link to={titleUrl(a.title)}>
               <img src={a.urlToImage} alt="" width={300} height={200}></img>
-              {a.index}
               {a.title}
             </Link>
           </div>

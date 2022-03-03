@@ -5,7 +5,8 @@ import Login from "./page/login";
 import Notice from "./page/bottomNavber/Notice/Notice";
 import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
-import ItTechnologyMain from './page/itTechnology/ItTechnologyMain.js'; 
+import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
+import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
@@ -20,8 +21,8 @@ import MainTopNavberLogin from "./components/main/MainTopNavber";
 import MainOnLogin from "./page/MainOnLogin"; 
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
-import GroupMain from "./page/communityCommunication/groupMain";
-
+import GroupMain from "./page/communityGroup/groupMain";
+import Faq from "./page/FAQ/FAQ";
 const App = () => {
   
   return (
@@ -41,6 +42,7 @@ const App = () => {
       <Route path="/notice" element={<Notice />}/>
       <Route path="/notice/:no" element={<NoticeDetail/>}/>
       <Route path="/addNotice" element={<AddNotice/>}/>
+      <Route path="/changeNotice/:no" element={<ChangeNotice/>}/>
       {/* 이용약관 및 개인정보처리방침 */}
       <Route path="/Useterm" element={<Useterm />} />
       <Route path="/Infolaw" element={<Infolaw/>} />
@@ -49,8 +51,7 @@ const App = () => {
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
       {/* IT 트렌드 */}
       <Route path="/itTrend" element={<ItTrendMain/>} />
-      {/* <Route path="/itTrend/:no" element={<ItTrendDetail/>} /> */}
-      <Route path="/itTrend/detail" element={<ItTrendDetail/>} />
+      <Route path="/itTrend/:title" element={<ItTrendDetail/>} />
       {/* My Page */}
       <Route path="/myPageCommunityBoard" element={<MyPageCommunityBoard />} />
       <Route path="/myPageCommunityComment" element={<MyPageCommunityComment />} />
@@ -60,6 +61,8 @@ const App = () => {
       <Route path="/myPageGroupComment" element={<MyPageGroupComment />} />
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
+      {/* 자주 묻는 질문 */}
+      <Route path="/faq" element={<Faq />} />
     </Routes>
     <MainBottomNevber />
     </div>

@@ -2,6 +2,14 @@ import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import trendData from './itTrendData.json';
 import axios from 'axios';
+import stringReplaceAll from 'string-replace-all';
+
+const titleUrl = (title) => {
+  var barTitle = stringReplaceAll(title, ' ' , '-');
+  if (barTitle.includes('%')) barTitle = stringReplaceAll(barTitle,'%','-');
+  if (barTitle.includes('/')) barTitle = stringReplaceAll(barTitle,'/','-');
+  return barTitle;
+};
 
 const Article2 = () => {
     const [articles2, setArticles2] = useState(null);
@@ -32,7 +40,7 @@ const Article2 = () => {
       <div>
         {articles2.articles.map((a, index) => (
           <div key={index} className="article2">
-            <Link to={a.url}>
+            <Link to={titleUrl(a.title)}>
               <img src={a.urlToImage} alt="" width={300} height={200}></img>
               {a.title}<br/>
             </Link>
@@ -43,4 +51,4 @@ const Article2 = () => {
   };
 
 
-export default Article2
+export default Article2;

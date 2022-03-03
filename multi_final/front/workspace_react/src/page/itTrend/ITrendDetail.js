@@ -4,8 +4,9 @@ import { useParams,useNavigate, useLocation } from 'react-router-dom';
 import trendData from './itTrendData.json';
 import axios from 'axios';
 
-const ItTrendDetail = ({location}) => {
-    // const{no}=useParams();
+const ItTrendDetail = () => {
+    const { title } = useParams();
+    console.log(title);
     const navigate = useNavigate(); 
     const BackToItTrendMain = () => {
         navigate('/itTrend');
@@ -16,7 +17,7 @@ const ItTrendDetail = ({location}) => {
         const fetchData = async() => {
             setLoading(true);
             try {
-                const response = await axios.get('http://localhost:8085/itTrend');
+                const response = await axios.get(`http://localhost:8085/itTrend/${title}`);
                 setArticleBody(response.data);
             } catch (error) {
                 console.log(error);
