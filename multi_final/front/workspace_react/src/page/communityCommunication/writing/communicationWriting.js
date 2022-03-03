@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import './GroupWritingMain.scss';
-import { Form, Button } from 'react-bootstrap';
+import './communicationWriting.scss';
+import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line
+// eslint-disable-next-line    
 const GroupWriting = () => {
     const [Content, setContent] = useState({ 
         title: '',
         content: ''
         
     })
-    
+
 
     const [viewContent, setViewContent] = useState([]);
 
@@ -25,21 +25,23 @@ const GroupWriting = () => {
       console.log(Content);
     };
     return (
-      
       <div id='writingAll' className="writingMain">
-        <div className='titleAndSubject'>
+        <div className='cTitleAndSubject'>
           <input className="title-input"
           type='text'
           placeholder='제목'
           onChange={getValue}
           name='title'
           />
-          <Form.Select className='writingSubject'>
+          <Form.Select className='cWritingSubject'>
             <option>주제</option>
-            <option value="study">스터디</option>
-            <option value="project">프로젝트</option>
-            <option value="etc">기타</option>
-            </Form.Select>
+            <option value='free'>자유</option>
+            <option value='React'>React</option>
+            <option value='Java'>Java</option>
+            <option value='JavaScript'>JavaScript</option>
+            <option value='Etc'>기타</option>
+          </Form.Select>
+            <br />
         </div>
         <div className='content'>
         <CKEditor
@@ -66,8 +68,8 @@ const GroupWriting = () => {
         }}
         />
         </div>
-        <div id='button'>
-          <Link to='/communityGroup'>
+        <div id='cButton'>
+          <Link to='/communication'>
             <Button className='cancel me-2'>
               취소
             </Button>

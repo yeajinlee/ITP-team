@@ -12,7 +12,6 @@ const groupBoard = () => {
     return (
         <div id='firstLine'>
           <Link to='/groupWriting'><Button className='writingButton'>글쓰기</Button></Link>
-          <br /><br /><br /><br />
           <div className='boardFirstLine'>
             <Card style={{ width: '18rem' }}>
               {groupBoardData.group.map((n,index) =>
@@ -29,8 +28,7 @@ const groupBoard = () => {
             )}
             </Card>
           </div>
-          <br /><br /><br />
-          <div id='button' >
+          <div id='groupButton' >
             <ButtonToolbar className='buttonPosition' >
               <ButtonGroup className="me-2">
                 <Button>&lt;</Button> 
@@ -52,7 +50,6 @@ const groupBoard = () => {
               </ButtonGroup>
             </ButtonToolbar>
           </div>
-<br /><br />
         </div>
     );
 };
