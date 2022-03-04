@@ -26,9 +26,6 @@ const NoticeDetail = () => {
          .then(navigate('/notice')).catch(err=>console.log(err))
       }
   
-    
-  
-
   useEffect(()=>{
       const fetchNotice=async()=>{
           try {

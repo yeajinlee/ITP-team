@@ -1,23 +1,32 @@
-div.title {
-  justify-content: center;
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-div.emailLogin {
-  justify-content: center;
-  text-align: center;
-}
-
-div.passwordLogin {
-  justify-content: center;
-  text-align: center;
-}
-div.btn {
-  margin: auto;
-  display: block;
-}
-div.loginCheck {
-  text-align: center;
+#Login {
+  .title {
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .emailLogin {
+    justify-content: center;
+    text-align: center;
+  }
+  .passwordLogin {
+    justify-content: center;
+    text-align: center;
+  }
+  #btn {
+    background-color: #3b9d9d;
+    border-radius: 10px;
+    color: white;
+    outline: 0;
+    border: 0;
+    width: 150px;
+    height: 30px;
+  }
+  .loginCheck {
+    text-align: center;
+  }
+  .loginBottom {
+    text-decoration: none;
+    padding-bottom: 50px;
+  }
 }

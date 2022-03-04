@@ -1,35 +1,45 @@
 import { Routes, Route } from "react-router-dom";
+// 메인
+import MainTopNavberLogin from "./components/main/MainTopNavber";
 import Main from "./page/Main";
 import MainBottomNevber from "./components/main/MainBottomNavber.js";
+// 로그인 및 회원가입
 import Login from "./page/login";
+import Register from "./page/Register";
+import MainOnLogin from "./page/MainOnLogin"; 
+// 공지사항 및 자주 묻는 질문
 import Notice from "./page/bottomNavber/Notice/Notice";
 import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
+import Faq from "./page/FAQ/FAQ";
+// IT 기술
 import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
+// IT 트렌드
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
-import Register from "./page/Register";
-import MyPageCommunityBoard from "./page/myPage/myPageBoard/myPageCommunityBoard";
+// My Page
+import MyPageMain from "./page/myPage/myPageMain";
 import MyPageCommunityComment from "./page/myPage/myPageBoard/myPageCommunityComment";
 import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 import MyPageGroupBoard from "./page/myPage/myPageBoard/myPageGroupBoard";
 import MyPageGroupComment from "./page/myPage/myPageBoard/myPageGroupComment";
-import MainTopNavberLogin from "./components/main/MainTopNavber";
-import MainOnLogin from "./page/MainOnLogin"; 
+// 이용약관 및 개인정보처리방침
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
+// 모임찾기
 import GroupMain from "./page/communityGroup/groupMain";
 import GroupWriting from "./page/communityGroup/writing/gWritingMain";
+// 소통공간
 import CommunicationMain from "./page/communityCommunication/communicationMain";
 import CommunicationWriting from "./page/communityCommunication/writing/cWritingMain"
-import Faq from "./page/FAQ/FAQ";
 import GroupBoardDetail from "./page/communityGroup/GroupBoardDetail";
 import GroupBoardChange from "./page/communityGroup/GroupBoardChange";
 import CommunityDetail from "./page/communityCommunication/CommunityDetail"
 import CommunityChange from "./page/communityCommunication/CommunityChange"
+
 const App = () => {
   
   return (
@@ -58,9 +68,9 @@ const App = () => {
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
       {/* IT 트렌드 */}
       <Route path="/itTrend" element={<ItTrendMain/>} />
-      <Route path="/itTrend/:no" element={<ItTrendDetail/>} />
+      <Route path="/itTrend/:title" element={<ItTrendDetail/>} />
       {/* My Page */}
-      <Route path="/myPageCommunityBoard" element={<MyPageCommunityBoard />} />
+      <Route path="/myPageMain" element={<MyPageMain />} />
       <Route path="/myPageCommunityComment" element={<MyPageCommunityComment />} />
       <Route path="/myPageGroupRequest" element={<MyPageGroupRequest />} />
       <Route path="/myPageInformationModify" element={<MyPageInformationModify />} />

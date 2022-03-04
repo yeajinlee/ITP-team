@@ -113,7 +113,7 @@ function Register() {
                                     <Link to="/login">
                                     <input type="submit" className={dirty && isValid ? "" : "disabled-btn"} value="회원가입" />
                                     </Link>
-                                    <Link to="/myPageCommunityBoard">
+                                    <Link to="/myPageMain">
                                         <div>마이페이지 테스트 이동용</div>
                                     </Link>
                                 </div>
