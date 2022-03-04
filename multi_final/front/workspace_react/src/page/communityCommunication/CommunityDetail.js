@@ -3,40 +3,43 @@ import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import CommunityReply from './CommunityReply'
 
-
-const NoticeDetail = () => {
+const CommunityDetail = () => {
   const { no } = useParams();
   const navigate = useNavigate();
-  const BackToNotice = () => {
-    navigate('/notice');
+  const BackToComBoard = () => {
+    navigate('/communication');
   };
  
-  const[Noticedatas,setNoticedata]=useState(null);
+  const[Comdatas,setComdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   
   function Update(no){
-   navigate(`/changeNotice/${no}`)
+   navigate(`/changeCom/${no}`)
   }
   function Delete(no){
        
-    axios.delete(`http://localhost:8085/deleteNotice/${no}`)
-         .then(navigate('/notice')).catch(err=>console.log(err))
+    axios.delete(`http://localhost:8085/deleteGroup/${no}`)
+         .then(navigate('/communityGroup')).catch(err=>console.log(err))
       }
   
+    
+  
+
   useEffect(()=>{
-      const fetchNotice=async()=>{
+      const fetchCom=async()=>{
           try {
               //error 와 notice 를 초기화
               setError(null);
-              setNoticedata(null);
+              setComdata(null);
               // loading 상태를 true
               setLoading(true);    
-              const response=await axios.get(`http://localhost:8085/notice/${no}`);
+              const response=await axios.get(`http://localhost:8085/com/${no}`);
               console.log(response.data);
-              setNoticedata(response.data);
+              setComdata(response.data);
           }catch(e){
               setError(e);
           }
@@ -44,45 +47,47 @@ const NoticeDetail = () => {
         
       
   };
-  fetchNotice();
+  fetchCom();
   
 },[no]);
 
 
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
-if (!Noticedatas) return null;
+if (!Comdatas) return null;
 
   return (
     <div>
       
-      <h3>공지사항</h3>
+      <h3>소통공간</h3>
      <div>
-      {Noticedatas.map((Noticedata,index) => (
+      {Comdatas.map((Comdata,index) => (
       <Table>
         
         <tbody>
           <tr key={index}>
-            <th>제목</th> <td>{Noticedata.n_title}</td>
+            <th>제목</th> <td>{Comdata.c_title}</td>
           </tr>
           <tr>
-            <th>작성자</th> <td>관리자</td>
+            <th>작성자</th> <td>{Comdata.c_name}</td>
           </tr>
           <tr>
-            <th>작성일</th> <td>{Noticedata.n_date}</td>
+            <th>카테고리</th> <td>{Comdata.c_tag}</td>
           </tr>
+          
           <tr>
-            <td colSpan={2}>{Noticedata.n_content}</td>
+            <td colSpan={2}>{Comdata.c_content}</td>
           </tr>
         </tbody>
         
       </Table>
       ))}
      </div>
-      <input type="button" value="목록으로" onClick={BackToNotice} />
+      <input type="button" value="목록으로" onClick={BackToComBoard} />
       <input type="button" value="수정하기" onClick={()=>Update(no)} />
       <input type="button" value="삭제하기" onClick={()=>Delete(no)} />
-    
+      
+        <CommunityReply/>
     </div>
   
   );
@@ -90,4 +95,4 @@ if (!Noticedatas) return null;
 
 
 
-export default NoticeDetail;
+export default CommunityDetail;

@@ -1,24 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams,useNavigate, useLocation } from 'react-router-dom';
 import trendData from './itTrendData.json';
+import axios from 'axios';
 
 const ItTrendDetail = () => {
-    const{no}=useParams();
+    const { title } = useParams();
+    console.log(title);
     const navigate = useNavigate(); 
     const BackToItTrendMain = () => {
         navigate('/itTrend');
       };
+    const [trendDetail, setTrendDetail] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const fetchData = async() => {
+            setLoading(true);
+            try {
+                const response = await axios.get(`http://localhost:8085/itTrend/${title}`);
+                setTrendDetail(response.data);
+            } catch (error) {
+                console.log(error);
+                setError(error);
+            }
+            setLoading(false);
+        };
+        fetchData();
+    },[]);
+    if(loading) {
+        return <div>트렌드 기사 내용을 불러오는 중</div>
+    }
+    if (error) {
+        return (
+            <div>
+                오류가 발생했습니다. 관리자에게 문의해주세요.
+                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+            </div>
+        );
+    }
+    if(!trendDetail) {
+        return (
+            <div>
+                본문 보기를 지원하지 않는 기사입니다.
+                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+            </div>
+        );
+    }
 
     return(
         <div>
-            <h2>상세페이지</h2>
-            <ul>
-                <li>{trendData.trend[no-1].img}</li>
-                <li>title:{trendData.trend[no-1].title}</li>
-                <li>subtitle:{trendData.trend[no-1].subtitle}</li>
-                <li>content:{trendData.trend[no-1].content}</li>
-            </ul>
+            <h3>{trendDetail.title}</h3>
+            <div><img src={trendDetail.urlToImage} alt="" width={500}></img></div>
+            <div>{trendDetail.content}</div>
+            <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
             <input type="button" value="목록으로" onClick={BackToItTrendMain} />
         </div>    
     ); 

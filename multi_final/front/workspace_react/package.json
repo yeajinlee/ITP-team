@@ -25,6 +25,7 @@
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
     "sass": "^1.49.7",
+    "string-replace-all": "^1.0.3",
     "styled-components": "^5.3.3",
     "styled-reset": "^4.3.4",
     "web-vitals": "^2.1.0",

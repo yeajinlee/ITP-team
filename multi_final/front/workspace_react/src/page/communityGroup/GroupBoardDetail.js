@@ -5,38 +5,41 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
-const NoticeDetail = () => {
+const GroupBoardDetail = () => {
   const { no } = useParams();
   const navigate = useNavigate();
-  const BackToNotice = () => {
-    navigate('/notice');
+  const BackToGroupBoard = () => {
+    navigate('/communityGroup');
   };
  
-  const[Noticedatas,setNoticedata]=useState(null);
+  const[Groupdatas,setGroupdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   
   function Update(no){
-   navigate(`/changeNotice/${no}`)
+   navigate(`/changeGroup/${no}`)
   }
   function Delete(no){
        
-    axios.delete(`http://localhost:8085/deleteNotice/${no}`)
-         .then(navigate('/notice')).catch(err=>console.log(err))
+    axios.delete(`http://localhost:8085/deleteGroup/${no}`)
+         .then(navigate('/communityGroup')).catch(err=>console.log(err))
       }
   
+    
+  
+
   useEffect(()=>{
       const fetchNotice=async()=>{
           try {
               //error 와 notice 를 초기화
               setError(null);
-              setNoticedata(null);
+              setGroupdata(null);
               // loading 상태를 true
               setLoading(true);    
-              const response=await axios.get(`http://localhost:8085/notice/${no}`);
+              const response=await axios.get(`http://localhost:8085/group/${no}`);
               console.log(response.data);
-              setNoticedata(response.data);
+              setGroupdata(response.data);
           }catch(e){
               setError(e);
           }
@@ -51,37 +54,39 @@ const NoticeDetail = () => {
 
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
-if (!Noticedatas) return null;
+if (!Groupdatas) return null;
 
   return (
     <div>
       
-      <h3>공지사항</h3>
+      <h3>모임찾기</h3>
      <div>
-      {Noticedatas.map((Noticedata,index) => (
+      {Groupdatas.map((Groupdata,index) => (
       <Table>
         
         <tbody>
           <tr key={index}>
-            <th>제목</th> <td>{Noticedata.n_title}</td>
+            <th>제목</th> <td>{Groupdata.g_title}</td>
           </tr>
           <tr>
-            <th>작성자</th> <td>관리자</td>
+            <th>작성자</th> <td>{Groupdata.g_name}</td>
           </tr>
           <tr>
-            <th>작성일</th> <td>{Noticedata.n_date}</td>
+            <th>카테고리</th> <td>{Groupdata.g_tag}</td>
           </tr>
+          
           <tr>
-            <td colSpan={2}>{Noticedata.n_content}</td>
+            <td colSpan={2}>{Groupdata.g_content}</td>
           </tr>
         </tbody>
         
       </Table>
       ))}
      </div>
-      <input type="button" value="목록으로" onClick={BackToNotice} />
+      <input type="button" value="목록으로" onClick={BackToGroupBoard} />
       <input type="button" value="수정하기" onClick={()=>Update(no)} />
       <input type="button" value="삭제하기" onClick={()=>Delete(no)} />
+      <input type="button" value="신청하기"/>
     
     </div>
   
@@ -90,4 +95,4 @@ if (!Noticedatas) return null;
 
 
 
-export default NoticeDetail;
+export default GroupBoardDetail;
