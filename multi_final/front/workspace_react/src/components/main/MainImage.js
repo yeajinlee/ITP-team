@@ -10,8 +10,7 @@ const Mainimage = () => {
     return (
 
       
-        <div>
-          <br />
+        <div id='imageMain'>
           <p class='itT'>IT 기술 최신 동향</p>
           <div id='itTrend'>
             {/* IT 기술 */}
@@ -41,21 +40,14 @@ const Mainimage = () => {
             </div>
           </div>
           {/* -----------------------------------------게시글 --------------------------------*/}
-          <br />
-          <p style={{ 
-            fontSize: '25px',
-            textAlign: 'center'
-            }}>
-              모임찾기
-              </p>
-          <div id='groupLine' className='groupBoardLine'>
-            <Card style={{ width: '18rem' }}>
+          <p className='homeGroup'>모임찾기</p>
+          <div id='groupLine' >
+            <Card style={{ width: '18rem' }} className='groupBoardLine'>
               {groupBoard.group.map((n,index) =>
               <Card.Body>
                 <Card.Img variant='top' src={n.img} />
                 <Card.Title className='title'>{n.title}</Card.Title>
                 <Card.Text className='cardText'>{n.content}</Card.Text>
-                <br />
                 <Card.Body className='bodyLink'>
                   <Card.Link className='link' href="#">{n.writer}</Card.Link>
                   <Card.Link className='link' href="#">{n.topic}</Card.Link>
@@ -64,15 +56,15 @@ const Mainimage = () => {
             )}
             </Card>
           </div>
-
-          <div id='mainBoard' className='boardTable'>
-            <br />
-            <p>소통 공간</p>
-          <Table>
+          <p className='communityHome'>소통 공간</p>
+          <div id='mainBoard' >
+            
+          <Table className='boardTable'>
                   <thead>
                     <tr>
                       <th>번호</th>
                       <th>제목</th>
+                      <th>작성자</th>
                       <th>작성일</th>
                     </tr>
                   </thead>
@@ -85,6 +77,9 @@ const Mainimage = () => {
                                   {n.title}
                                   </Link>
                               </td>
+                                <td>
+                                    {n.writer}
+                                </td>
                               <td>
                                 {n.date}
                               </td>
