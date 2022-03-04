@@ -21,12 +21,9 @@ import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
 // My Page
 import MyPageMain from "./page/myPage/myPageMain";
-import MyPageCommunityBoard from "./page/myPage/myPageBoard/myPageCommunityBoard";
-import MyPageCommunityComment from "./page/myPage/myPageBoard/myPageCommunityComment";
+import MyPageComment from "./page/myPage/myPageBoard/myPageComment";
 import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
-import MyPageGroupBoard from "./page/myPage/myPageBoard/myPageGroupBoard";
-import MyPageGroupComment from "./page/myPage/myPageBoard/myPageGroupComment";
 // 이용약관 및 개인정보처리방침
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
@@ -67,12 +64,10 @@ const App = () => {
       <Route path="/itTrend" element={<ItTrendMain/>} />
       <Route path="/itTrend/:no" element={<ItTrendDetail/>} />
       {/* My Page */}
-      <Route path="/myPageMain" element={<MyPageMain />} />
-      <Route path="/myPageCommunityComment" element={<MyPageCommunityComment />} />
+      <Route path="/myPageBoard" element={<MyPageMain />} />
+      <Route path="/myPageComment" element={<MyPageComment />} />
       <Route path="/myPageGroupRequest" element={<MyPageGroupRequest />} />
       <Route path="/myPageInformationModify" element={<MyPageInformationModify />} />
-      <Route path="/myPageGroupBoard" element={<MyPageGroupBoard />} />
-      <Route path="/myPageGroupComment" element={<MyPageGroupComment />} />
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
       <Route path="/groupWriting" element={<GroupWriting />} />
