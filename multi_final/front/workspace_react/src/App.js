@@ -21,7 +21,6 @@ import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
 // My Page
 import MyPageMain from "./page/myPage/myPageMain";
-import MyPageCommunityBoard from "./page/myPage/myPageBoard/myPageCommunityBoard";
 import MyPageCommunityComment from "./page/myPage/myPageBoard/myPageCommunityComment";
 import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
@@ -36,6 +35,10 @@ import GroupWriting from "./page/communityGroup/writing/gWritingMain";
 // 소통공간
 import CommunicationMain from "./page/communityCommunication/communicationMain";
 import CommunicationWriting from "./page/communityCommunication/writing/cWritingMain"
+import GroupBoardDetail from "./page/communityGroup/GroupBoardDetail";
+import GroupBoardChange from "./page/communityGroup/GroupBoardChange";
+import CommunityDetail from "./page/communityCommunication/CommunityDetail"
+import CommunityChange from "./page/communityCommunication/CommunityChange"
 
 const App = () => {
   
@@ -76,9 +79,13 @@ const App = () => {
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
       <Route path="/groupWriting" element={<GroupWriting />} />
+      <Route path="/communityGroup/:no" element={<GroupBoardDetail />} />
+      <Route path="/changeGroup/:no" element={<GroupBoardChange/>} />
       {/* 소통공간 */}
       <Route path="/communication" element={<CommunicationMain/>} />
       <Route path="/CommunicationWriting" element={<CommunicationWriting />} />
+      <Route path="/Communication/:no" element={<CommunityDetail />} />
+      <Route path="/ChangeCom/:no" element={<CommunityChange />} />
       {/* 자주 묻는 질문 */}
       <Route path="/faq" element={<Faq />} />
     </Routes>
