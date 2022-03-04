@@ -15,7 +15,7 @@ import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
 import Faq from "./page/FAQ/FAQ";
 // IT 기술
 import ItTechnologyMain from './page/itTechnology/itTechnologyMain.js'; 
-import ItTechnologyDetail from './page/itTechnology/itTechnologyDetail.js';
+import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 // IT 트렌드
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
 import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
@@ -65,7 +65,7 @@ const App = () => {
       <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
       {/* IT 트렌드 */}
       <Route path="/itTrend" element={<ItTrendMain/>} />
-      <Route path="/itTrend/:no" element={<ItTrendDetail/>} />
+      <Route path="/itTrend/:title" element={<ItTrendDetail/>} />
       {/* My Page */}
       <Route path="/myPageMain" element={<MyPageMain />} />
       <Route path="/myPageCommunityComment" element={<MyPageCommunityComment />} />

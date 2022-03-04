@@ -1,23 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import trendData from './itTrendData.json';
+import axios from 'axios';
+import stringReplaceAll from 'string-replace-all';
 
-function Article2() {
+const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\一-龥\s]/g;
+const titleUrl = (title) => {
+  return title.replace(reg,"-");
+};
+
+const Article2 = () => {
+    const [articles2, setArticles2] = useState(null);
+    const[loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const fetchData = async() => {
+            setLoading(true);
+            try {
+                const response = await axios.get('http://localhost:8085/article2');
+                console.log(response);
+                setArticles2(response.data);
+                console.log(articles2);
+            } catch (error) {
+                console.log(error);
+                setError(error);
+            }
+            setLoading(false);
+        };
+        fetchData();
+    }, []);
+    if (loading) {
+        return <div>이번주의 트렌드를 불러오는 중</div>;
+    }
+    if (error) {
+      return <div>오류가 발생했습니다. 관리자에게 문의해주세요.</div>
+    }
+    if(!articles2) {
+        return null;
+    }
+    articles2.articles.splice(0, 2);
     return (
-        <div>
-        {trendData.trend.map((article)=>(
-        <div className='article2'>
-             <div key={article.no} >
-           <Link to={"/itTrend/" + article.no}>
-           <img width="300px" height="200px" src={article.img} alt="img" />
-           {article.title}
-           {article.subtitle}
-           </Link>
-           </div>
-        </div>
+      <div>
+        {articles2.articles.map((a, index) => (
+          <div key={index} className="article2">
+            <Link to={titleUrl(a.title)}>
+              <img src={a.urlToImage} alt="" width={300} height={200}></img>
+              {a.title}<br/>
+            </Link>
+          </div>
         ))}
-        </div>
-    )
-}
+      </div>
+    );
+  };
 
-export default Article2
+
+export default Article2;
