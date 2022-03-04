@@ -14,6 +14,7 @@ import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
 import Faq from "./page/FAQ/FAQ";
 // IT 기술
+
 import ItTechnologyMain from './page/itTechnology/ItTechnologyMain.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 // IT 트렌드
