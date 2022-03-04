@@ -28,7 +28,8 @@ import CommunicationWriting from "./page/communityCommunication/writing/cWriting
 import Faq from "./page/FAQ/FAQ";
 import GroupBoardDetail from "./page/communityGroup/GroupBoardDetail";
 import GroupBoardChange from "./page/communityGroup/GroupBoardChange";
-
+import CommunityDetail from "./page/communityCommunication/CommunityDetail"
+import CommunityChange from "./page/communityCommunication/CommunityChange"
 const App = () => {
   
   return (
@@ -73,6 +74,8 @@ const App = () => {
       {/* 소통공간 */}
       <Route path="/communication" element={<CommunicationMain/>} />
       <Route path="/CommunicationWriting" element={<CommunicationWriting />} />
+      <Route path="/Communication/:no" element={<CommunityDetail />} />
+      <Route path="/ChangeCom/:no" element={<CommunityChange />} />
       {/* 자주 묻는 질문 */}
       <Route path="/faq" element={<Faq />} />
     </Routes>

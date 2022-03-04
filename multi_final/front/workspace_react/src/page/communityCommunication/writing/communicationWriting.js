@@ -1,90 +1,95 @@
 import React, {useState} from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './communicationWriting.scss';
-import { Button, Form } from 'react-bootstrap';
+
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-// eslint-disable-next-line    
-const GroupWriting = () => {
-    const [Content, setContent] = useState({ 
-        title: '',
-        content: ''
+
+// eslint-disable-next-line
+const CommunicationWriting = () => {
+     
+    const [c_title,setc_title] =useState('')
+    
+
+    const[c_content,setc_content]=useState('')
+    const c_name='User'
+
+    var today = new Date();
+
+    var year = today.getFullYear();
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+    
+    const c_date= year + '-' + month  + '-' + day;
+
+    const handlec_title=(e)=>{
+      setc_title(e.target.value)
+      console.log(c_title);
+     
+    }
+
+   
+    const handlec_content=(e)=>{
+      setc_content(e.target.value)
+      console.log(c_content);
+    }
+
+
+    const submit=()=>{
+     console.log(c_title);
+
+     console.log(c_content);
+      
+      
+      axios.post(`http://localhost:8085/addCom`,null,{
+        params:{
+          'c_name':c_name,
+          'c_title':c_title,
+          'c_content':c_content,
+          'c_date':c_date,
         
-    })
-
-
-    const [viewContent, setViewContent] = useState([]);
-
-    const getValue = e => {
-      const { name, value } = e.target;
-      setContent({
-        ...Content,
-        [name]: value
+         
+        }
       })
-      console.log(Content);
-    };
+      .then(res=>{
+        console.log(res)
+        console.log(res.data.c_title)
+        console.log(res.data.c_content)
+       
+        document.location.href=`/communityGroup`;//성공시 목록으로 돌아가기
+      })
+      .catch()
+    }
+   
     return (
+      
       <div id='writingAll' className="writingMain">
-        <div className='cTitleAndSubject'>
-          <input className="title-input"
-          type='text'
-          placeholder='제목'
-          onChange={getValue}
-          name='title'
-          />
-          <Form.Select className='cWritingSubject'>
-            <option>주제</option>
-            <option value='free'>자유</option>
-            <option value='React'>React</option>
-            <option value='Java'>Java</option>
-            <option value='JavaScript'>JavaScript</option>
-            <option value='Etc'>기타</option>
-          </Form.Select>
-            <br />
+        <div className='titleAndSubject'>
+        <input onChange={(e)=>handlec_title(e)} type="text" id="c_title" name="c_title" value={c_title}/>
+
+      
         </div>
         <div className='content'>
-        <CKEditor
-        editor={ClassicEditor}
-        data="<p>내용</p>"
-        onReady={editor => {
-          // You can store the "editor" and use when it is needed.
-          console.log('Editor is ready to use!', editor);
-        }}
-        onChange={(event, editor) => {
-          const data = editor.getData();
-          console.log({ event, editor, data });
-          setContent({
-            ...Content,
-            content: data
-          })
-          console.log(Content);
-        }}
-        onBlur={(event, editor) => {
-          console.log('Blur.', editor);
-        }}
-        onFocus={(event, editor) => {
-          console.log('Focus.', editor);
-        }}
-        />
+        <textarea onChange={(e)=>handlec_content(e)} type="text" id="c_content" name="c_content" value={c_content}></textarea>
+        
         </div>
-        <div id='cButton'>
-          <Link to='/communication'>
-            <Button className='cancel me-2'>
+        <div id='button'>
+          <Link to='/communityGroup'>
+            <button className='cancel me-2'>
               취소
-            </Button>
+            </button>
           </Link>
-          <Button 
+          <button
+          type="submit"
           className="submit-button"
-          onclick={() => {
-            setViewContent(viewContent.concat({...Content}));
-          }}
-          >
-            등록
-          </Button>
+          value="등록" 
+          onClick={()=>submit()}
+         />
+            
+        
         </div>
       </div>
   );
 }
 
-export default GroupWriting;
+export default CommunicationWriting;

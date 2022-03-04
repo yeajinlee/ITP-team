@@ -1,108 +1,94 @@
 import React, {useState} from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './GroupWritingMain.scss';
-import { Form, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 
 
 // eslint-disable-next-line
 const GroupWriting = () => {
-    const [Content, setContent] = useState({ 
-        title: '',
-        content: ''
-        
-    })
+     
+
+
+    const [g_title,setg_title] =useState('')
     
+    const [g_subtitle,setg_subtitle] =useState('')
+    const[g_content,setg_content]=useState('')
+    const[g_tag,setg_tag]=useState('')
+    const g_img='https://blog.kakaocdn.net/dn/cZsyTw/btq0u5VBWge/F7xmauYA6r8nnbXSz2vJhK/img.png'
+    const g_name='User'
 
-    const [viewContent, setViewContent] = useState([]);
+    const handleg_title=(e)=>{
+      setg_title(e.target.value)
+      console.log(g_title);
+     
+    }
 
-    const getValue = e => {
-      const { name, value } = e.target;
-      setContent({
-        ...Content,
-        [name]: value
-      })
-      console.log(Content);
-    };
+    const handleg_subtitle=(e)=>{
+      setg_subtitle(e.target.value)
+      console.log(g_subtitle);
+    }
+    const handleg_content=(e)=>{
+      setg_content(e.target.value)
+      console.log(g_content);
+    }
 
-    // const submit=()=>{
-    //  console.log(g_title);
-    //  console.log(g_subtitle);
-    //  console.log(g_content);
+    const handleg_tag=(e)=>{
+      setg_tag(e.target.value)
+      console.log(g_tag)
+    }
+
+    const submit=()=>{
+     console.log(g_title);
+     console.log(g_subtitle);
+     console.log(g_content);
       
       
-    //   axios.post(`http://localhost:8085/addGroup`,null,{
-    //     params:{
-    //       'g_name':g_name,
-    //       'g_title':g_title,
-    //       'g_subtitle':g_subtitle,
-    //       'g_content':g_content,
-    //       'g_img':'g_img',
-    //       'g_tag':'g_tag'
+      axios.post(`http://localhost:8085/addgroup`,null,{
+        params:{
+          'g_name':g_name,
+          'g_title':g_title,
+          'g_subtitle':g_subtitle,
+          'g_content':g_content,
+          'g_img':g_img,
+          'g_tag':g_tag
          
-    //     }
-    //   })
-    //   .then(res=>{
-    //     console.log(res)
-    //     console.log(res.data.n_title)
-    //     console.log(res.data.n_content)
+        }
+      })
+      .then(res=>{
+        console.log(res)
+        console.log(res.data.g_title)
+        console.log(res.data.g_content)
        
-    //     document.location.href=`/notice`;//성공시 목록으로 돌아가기
-    //   })
-    //   .catch()
-    // }
+        document.location.href=`/communityGroup`;//성공시 목록으로 돌아가기
+      })
+      .catch()
+    }
    
     return (
       
       <div id='writingAll' className="writingMain">
         <div className='titleAndSubject'>
-          <input className="title-input"
-          type='text'
-          placeholder='제목'
-          onChange={getValue}
-          name='title'
-          />
-
-          <input className="subtitle-input"
-          type='text'
-          placeholder='소제목'
-          onChange={getValue}
-          name='subtitle'
-          />
-          <Form.Select className='writingSubject'>
+          <form>
+          <p>제목:
+        <input onChange={(e)=>handleg_title(e)} type="text" id="g_title" name="g_title" value={g_title}/></p>
+        <p>소제목:
+        <input onChange={(e)=>handleg_subtitle(e)} type="text" id="g_subtitle" name="g_subtitle" value={g_subtitle}/> 
+        
+          <select className='writingSubject' value={g_tag} onChange={(e)=>handleg_tag(e)} >
             <option>주제</option>
-            <option value="study" >스터디</option>
-            <option value="project">프로젝트</option>
-            <option value="etc">기타</option>
-            </Form.Select>
+            <option value="스터디" >스터디  </option>
+            <option value="프로젝트">프로젝트  </option>
+            <option value="기타">기타  </option>
+            </select>
+            </p>
+            <div className='content'>
+        <textarea onChange={(e)=>handleg_content(e)} type="text" id="g_content" name="g_content" value={g_content} ></textarea>
+        
         </div>
-        <div className='content'>
-        <CKEditor
-        editor={ClassicEditor}
-        data="<p>내용</p>"
-        onReady={editor => {
-          // You can store the "editor" and use when it is needed.
-          console.log('Editor is ready to use!', editor);
-        }}
-        onChange={(event, editor) => {
-          const data = editor.getData();
-          console.log({ event, editor, data });
-          setContent({
-            ...Content,
-            content: data
-          })
-          console.log(Content);
-        }}
-        onBlur={(event, editor) => {
-          console.log('Blur.', editor);
-        }}
-        onFocus={(event, editor) => {
-          console.log('Focus.', editor);
-        }}
-        />
+            </form>
         </div>
+     
         <div id='button'>
           <Link to='/communityGroup'>
             <Button className='cancel me-2'>
@@ -110,11 +96,9 @@ const GroupWriting = () => {
             </Button>
           </Link>
           <Button 
+          type="submit"
           className="submit-button"
-          onclick={() => {
-            setViewContent(viewContent.concat({...Content}));
-           
-          }}
+          onClick={()=>submit()}
           >
             등록
           </Button>

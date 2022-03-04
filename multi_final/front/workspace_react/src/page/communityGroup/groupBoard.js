@@ -33,11 +33,6 @@ const handleClickpage=(e)=>{
   setcurrentpage(Number(e.target.id))
 }
 
-// const Searchgetgroup=useCallback(()=>{
-//   Axios.get(`http://localhost:8085/group/list/searchbytitle?page=${page}?g_title=${search}`).then((res)=>{
-//     setGroupdata(res.data);
-//   });
-// },[page])
 
 
 console.log(Groupdatas.length);
@@ -73,19 +68,10 @@ console.log(Groupdatas.length);
   });
 
 
-
-  // const PaginateNumbers=pages.map((pagenum)=>{
-  //   return(
-  //     <li key={pagenum} id={pagenum} onClick={handleClick}>
-  //       {pagenum}
-  //       </li>
-  //   );
-  // })
-
   useEffect(()=>{
     const fetchGroup=async()=>{
       try {
-          //error 와 tech 를 초기화
+     
           setError(null);
           
           // loading 상태를 true
