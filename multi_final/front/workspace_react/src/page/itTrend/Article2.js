@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import trendData from './itTrendData.json';
 import axios from 'axios';
-import stringReplaceAll from 'string-replace-all';
 
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\一-龥\s]/g;
 const titleUrl = (title) => {
