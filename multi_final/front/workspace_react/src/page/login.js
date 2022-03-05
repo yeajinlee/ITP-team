@@ -2,7 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, } from 'react-router-dom';
 import { Formik } from 'formik';
-
+import MainCarousel from '../components/main/MainCarousel';
+import '../components/login/login.scss'
 
 function login() {
  
@@ -57,7 +58,8 @@ function login() {
                 //💡 formik의 render API 속성들 입니다.
                 const { values, handleChange, handleSubmit, errors, touched, handleBlur, isValid, dirty } = formik;
                 return (
-                <div className="signIn">
+                <div id='Login'>
+                    <MainCarousel />
                     <br />
                     <div className="title">로그인</div>
                     <br />
@@ -81,9 +83,9 @@ function login() {
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                             <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
                         </div>
-                        <div className="btn">
+                        <div>
                         <Link to="/MainOnLogin">
-                            <input type="submit" className={dirty && isValid ? "" : "disabled-btn"} value="로그인" />
+                            <button id='btn' type="submit" className={dirty && isValid ? "" : "disabled-btn"} >로그인</button>
                             </Link>
                         </div> 
                         <div className="loginBottom">

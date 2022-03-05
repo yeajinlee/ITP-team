@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import SidebarItem from "./pageSide";
-import "./sidebar.scss";
 
 
 function sidebar() {
@@ -14,7 +13,7 @@ function sidebar() {
     { name: "정보 수정", path: "/myPageInformationModify"}
   ];
   return (
-  <div className="side">
+  <div id='sideBar'>
     내가 쓴 글
     <div className="Menu">
       {myWrite.map((menu, index) => {
