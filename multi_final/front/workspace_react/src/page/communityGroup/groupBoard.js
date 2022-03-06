@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import { Card, Button} from 'react-bootstrap';
-/* import { Link } from 'react-router-dom'; */
 import './groupBoard.scss'
 //import groupBoard from './GroupBoradData.json'
 import axios from 'axios'
@@ -124,40 +123,39 @@ fetchGroup();
  if (error) return <div>에러가 발생했습니다</div>;
 if (!Groupdatas) return null;
     return (
-        <div>
-          <br />
-          
-          <div id='firstLine' className='boardFirstLine'>
-            
-         { currentItems.filter((Groupdatas)=>{
-          if(search===""){
-         return Groupdatas
-         }else if(Groupdatas.g_title.includes(search)){
-         return Groupdatas
-         }
-         }).map((currentItems) =>
-          <Card style={{ width: '18rem' }} >
-            <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
-             <Card.Body key={currentItems.g_no}>
-              <Card.Img variant='top' src={currentItems.g_img} />
-              <Card.Title className='title'>{currentItems.g_title}</Card.Title>
-              <Card.Text className='cardText'> {currentItems.g_subtitle}</Card.Text>
-              <br />
-              <Card.Body className='bodyLink'>
-                <Card.Link className='link' href="#">{currentItems.g_name}</Card.Link>
-                <Card.Link className='link' href="#">{currentItems.g_tag}</Card.Link>
-              </Card.Body>
-            </Card.Body>
-            </Link>
-           </Card>
-         )}
-        
-          
-      
-          <br /><br /><br /><br />
+        <div id='GroupBoardMain'>
+          <div>
+          <Link to='/groupWriting' >
+            <Button  className='writingButton'>글쓰기</Button>
+          </Link>
           </div>
+          <div className='boardFirstLine'>
+            {currentItems.filter((Groupdatas)=>{
+              if(search===""){
+                return Groupdatas
+              }else if(Groupdatas.g_title.includes(search)){
+                return Groupdatas
+              }
+            }).map((currentItems) =>
+            <Card id='groupCard' style={{ width: '18rem' }}>
+              <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
+                <Card.Body key={currentItems.g_no}>
+                  <Card.Img variant='top' src={currentItems.g_img} />
+                  <Card.Title className='title'>{currentItems.g_title}</Card.Title>
+                  <Card.Text className='cardText'> {currentItems.g_subtitle}</Card.Text>
+                  <Card.Body className='bodyLink'>
+                    <Card.Link className='link' href="#">{currentItems.g_name}</Card.Link>
+                    <Card.Link className='link' href="#">{currentItems.g_tag}</Card.Link>
+                  </Card.Body>
+                </Card.Body>
+              </Link>
+            </Card>
+                    )}
+            <br /><br /><br /><br />
+          </div>
+            <div >
           <br /><br /><br />
-          <ul className='pagenumbers'>
+          <ul id='pageButton'>
             <li>
               <button onClick={handleprevbtn}
               disabled={currentpage===pagenums[0]?true:false}>
@@ -174,21 +172,16 @@ if (!Groupdatas) return null;
               </button>
             </li>
             </ul>
-          <>
- 
-         
-    <input 
-      type="text"
-      onChange={(e)=>settitle(e.target.value)} 
-      id="title"
-      value={title}
-      //aria-describedby="basic-addon1"
-    />
-  
-  <button type="button" onClick={handlesearch}>검색</button>
-  <Link to='/groupWriting'><Button className='writingButton'>글쓰기</Button></Link>
-  </>
-     
+            </div>
+            <div id='groupSearch'>
+              <input 
+                type="text"
+                onChange={(e)=>settitle(e.target.value)} 
+                className="searchInput"
+                value={title}
+              />
+              <button className='searchButton' type="button" onClick={handlesearch} >검색</button>
+            </div>
 <br /><br />
         </div>
     );
