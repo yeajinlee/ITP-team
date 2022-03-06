@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+p.itTechPageTitle {
+  font-size: 25px;
+  float: left;
+}
+#itTechMain {
+  justify-content: center;
+  text-align: center;
+  width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+  margin: 0 auto;
+  overflow: hidden;
+  ul {
+    list-style: none;
+    margin-top: 100px;
+  }
+  .itTechLink {
+    text-decoration: none;
+    color: black;
+  }
+  li {
+    margin-bottom: 80px;
+  }
+  .itTechSpan {
+    display: flex;
+  }
+  .boardTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+  }
+  .boardContent {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}

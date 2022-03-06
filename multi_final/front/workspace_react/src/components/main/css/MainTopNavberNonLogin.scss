@@ -54,10 +54,12 @@ $color-background: white;
       .itGroupNav {
         text-decoration: none;
         color: white;
+        margin-right: 10px;
       }
       .itCommuNav {
         text-decoration: none;
         color: white;
+        margin-left: 10px;
         margin-right: 30px;
       }
     }
@@ -67,9 +69,3 @@ $color-background: white;
     }
   }
 }
-/* div p div.loginAndRegister {
-  font-size: large;
-  justify-content: center;
-  text-align: center;
-  float: right;
-} */

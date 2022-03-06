@@ -29,7 +29,7 @@ const MainTopNavberNonLogin = () => {
                         IT 트렌드</Link>
                     <Link to='/iTTech' className='itTechNav'>IT 기술</Link>
                     <Link to='/communityGroup' className='itGroupNav'>모임찾기</Link>
-                    &nbsp;&nbsp;ㅣ&nbsp;&nbsp;
+                    ㅣ
                     <Link to='/communication' className='itCommuNav'>소통공간</Link>
                     </div>
                 <div className='searchMain'>
