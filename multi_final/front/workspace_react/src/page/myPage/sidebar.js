@@ -1,12 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import SidebarItem from "./pageSide";
 
 
-function sidebar() {
+function Sidebar() {
+  const { m_name } = useParams();
   const myWrite = [
-    { name: "작성 글", path: "/myPageBoard" },
-    { name: "댓글", path: "/myPageComment" },
+    { name: "작성 글", path: `/myPageBoard/${m_name}` },
+    { name: "댓글", path: `/myPageComment/${m_name}` },
   ];
   const menus = [
     { name: "모임 신청", path: "/myPageGroupRequest" },
@@ -53,4 +54,4 @@ function sidebar() {
   );
 }
 
-export default sidebar;
+export default Sidebar;

@@ -1,12 +1,78 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../sidebar';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table, Tab, Tabs } from 'react-bootstrap';
-import communityBoradData from './jsonFile/CommunityBoradData.json';
-import groupData from './jsonFile/GroupBoradData.json';
+import axios from 'axios';
 
-function myPageCommunityBoard(props) {
+
+function MyPageCommunityBoard(props) {
+    const { m_name } = useParams();
+    const[Groupdatas,setGroupdata]=useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const[Comdatas,setComdata]=useState([]);
+  
+  useEffect(()=>{
+    const fetchGroup=async()=>{
+      try {
+     
+          setError(null);
+          
+          // loading 상태를 true
+          setLoading(true); 
+          
+          const response=await axios.get(`http://localhost:8085/mypage/group/?m_name=${m_name}`,null,{
+            params:{
+                'm_name':m_name,
+              }
+          });
+          setGroupdata(response.data);
+          
+        }catch(e){
+          setError(e);
+      }
+      setLoading(false);
+    
+  
+};
+fetchGroup();
+
+ },[]);
+
+ 
+ useEffect(()=>{
+    const fetchCom=async()=>{
+      try {
+     
+          setError(null);
+          
+          // loading 상태를 true
+          setLoading(true); 
+          
+          const response=await axios.get(`http://localhost:8085/mypage/com?m_name=${m_name}`,null,{
+            params:{
+                'm_name':m_name,
+              }
+          });
+          setComdata(response.data);
+          
+        }catch(e){
+          setError(e);
+      }
+      setLoading(false);
+    
+  
+};
+fetchCom();
+
+ },[]);
+
+ 
+ if (loading) return <div>로딩중..</div>;
+ if (error) return <div>에러가 발생했습니다</div>;
+if (!Groupdatas) return null;
+if (!Comdatas) return null;
     return (
         <div id='board'>
             <Sidebar /> 
@@ -18,20 +84,20 @@ function myPageCommunityBoard(props) {
                             <tr>
                                 <th>번호</th>
                                 <th>제목</th>
-                                <th>작성일</th>
+                                <th>카테고리</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {groupData.group.map((n,index) => (
-                            <tr key={index}>
-                                <td>{n.no}</td>
+                            {Groupdatas.map((Groupdata) => (
+                            <tr key={Groupdata.g_no}>
+                                <td>{Groupdata.g_no}</td>
                                 <td>
-                                    <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
-                                        {n.title}
+                                    <Link to={'/communityGroup/'+Groupdata.g_no} style={{ textDecoration: 'none' }}>
+                                        {Groupdata.g_title}
                                     </Link>
                                 </td>
                                 <td>
-                                    {n.date}
+                                    {Groupdata.g_tag}
                                 </td>
                             </tr>
                             ))}
@@ -48,16 +114,16 @@ function myPageCommunityBoard(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {communityBoradData.community.map((n,index) => (
-                            <tr key={index}>
-                                <td>{n.no}</td>
+                            {Comdatas.map((Comdata) => (
+                            <tr key={Comdata.c_no}>
+                                <td>{Comdata.c_no}</td>
                                 <td>
-                                    <Link to={'/Community/'+n.no} style={{ textDecoration: 'none' }}>
-                                        {n.title}
+                                    <Link to={'/Communication/'+Comdata.c_no} style={{ textDecoration: 'none' }}>
+                                        {Comdata.c_title}
                                     </Link>
                                 </td>
                                 <td>
-                                    {n.date}
+                                    {Comdata.c_date}
                                 </td>
                             </tr>
                             ))}
@@ -70,4 +136,4 @@ function myPageCommunityBoard(props) {
     );
 }
 
-export default myPageCommunityBoard;
+export default MyPageCommunityBoard;

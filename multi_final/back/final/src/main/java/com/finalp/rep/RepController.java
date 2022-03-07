@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.finalp.com.ComDTO;
+
 
 
 
@@ -36,6 +38,13 @@ public class RepController {
 	public List<RepDTO> getcomdetailList(@PathVariable("r_no") int r_no) {
 		return mapper.getrepdetailList(r_no);
 	}
+	
+	//아이디에 해당하는 내용만 조회
+	@GetMapping("/mypage/rep")
+	public List<RepDTO> getmyrepList(@RequestParam("m_name") String m_name){
+		return mapper.getmyrepList(m_name);  
+	}
+	
 	
 	//입력
 	
