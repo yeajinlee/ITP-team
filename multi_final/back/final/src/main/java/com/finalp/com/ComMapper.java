@@ -35,6 +35,10 @@ public interface ComMapper {
 	@Select("select * from itp_com where c_no=#{c_no}")
 	public List<ComDTO> getcomdetailList(@Param("c_no") int c_no);
 	
+	//메인화면에 보여질 최신순 3개
+	@Select("select * from itp_com order by c_no desc limit 5")
+	public List<ComDTO> getcomListmain();
+	
 	//추가
 	@Insert("INSERT INTO itp_com(c_name,c_title,c_content,c_date) values(#{c_name},#{c_title},#{c_content},#{c_date})")
 	int insertCom(

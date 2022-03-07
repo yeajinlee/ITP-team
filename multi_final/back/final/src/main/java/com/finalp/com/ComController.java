@@ -39,6 +39,11 @@ public class ComController {
 	public List<ComDTO> getcomListdata(){
 		return mapper.getcomListdata();  
 	}
+	//최신순 조회
+	@GetMapping("/com/recent")
+	public List<ComDTO> getcomListmain(){
+		return mapper.getcomListmain();
+	}
 	//페이징 조회
 	@GetMapping("/com/list")
 	public List<ComDTO> getcomList(@RequestParam("page") String page){

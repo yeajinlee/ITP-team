@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.finalp.com.ComDTO;
+
 
 
 @Mapper
@@ -25,9 +27,16 @@ public interface GroupMapper {
 			+ "and (select count(*) from itp_group)-(6*(#{page}-1))")
 	List<GroupDTO> getgroupList(@Param("page") String page);
 	
+	@Select("select * from itp_group where g_name=#{m_name}")
+	List<GroupDTO> getmygroupList(@Param("m_name") String m_name);
+	
 	
 	@Select("select * from itp_group")
 	List<GroupDTO> getgroupListAlll();
+	
+	//메인화면에 보여질 최신순 3개
+	@Select("select * from itp_group order by g_no desc limit 3")
+	public List<GroupDTO> getgroupListmain();
 	
 	//제목으로 검색
 	@Select(
