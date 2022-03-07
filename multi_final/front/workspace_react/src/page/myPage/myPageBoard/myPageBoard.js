@@ -11,9 +11,9 @@ function myPageCommunityBoard(props) {
         <div id='myPageMain'>
             <Sidebar /> 
             <div id='board'>
-            <Tabs>
+            <Tabs className='myPageTabs'>
                 <Tab eventKey="group" title="모임찾기">
-                    <Table>
+                    <Table className='myPageTable'>
                         <thead>
                             <tr>
                                 <th>번호</th>
@@ -39,7 +39,7 @@ function myPageCommunityBoard(props) {
                     </Table>
                 </Tab>
                 <Tab eventKey="communication" title="소통공간">
-                    <Table>
+                    <Table className='myPageTable'>
                         <thead>
                             <tr>
                                 <th>번호</th>
