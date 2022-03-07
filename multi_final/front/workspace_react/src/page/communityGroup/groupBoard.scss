@@ -2,20 +2,13 @@
   margin: 0;
   padding: 0;
 }
-
-#firstLine {
+#GroupBoardMain {
   justify-content: center;
   text-align: center;
   width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
   margin: 0 auto;
   overflow: hidden;
-
-  .boardFirstLine {
-    padding-top: 100px;
-    display: flex;
-    justify-content: space-evenly;
-    width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
-  }
+  margin-bottom: 40px;
   .writingButton {
     background-color: #3b9d9d;
     color: white;
@@ -24,76 +17,73 @@
     border: 0;
     float: right;
     width: 100px;
+    margin-bottom: 40px;
   }
-  .title {
-    font-size: 18px;
+  .boardFirstLine {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 300px 300px;
+    justify-content: space-evenly;
+    width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+    margin: 0 auto;
+    overflow: hidden;
   }
-  .bodyLink {
+  #groupCard {
+    margin-bottom: 30px;
+    .title {
+      font-size: 18px;
+    }
+    .bodyLink {
+      justify-content: center;
+      text-align: center;
+    }
+    .link {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    .cardText {
+      overflow: hidden; // 영역 감추기
+      text-overflow: ellipsis; // ...로 만들기
+      white-space: nowrap; // 아래줄 내려가는 것 막기
+    }
+  }
+  #pageButton {
+    display: flex;
+    list-style: none;
     justify-content: center;
     text-align: center;
+    li {
+      padding: 10px;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+    li.active {
+      background-color: black;
+      color: white;
+    }
+    li button {
+      background-color: transparent;
+      border: none;
+      color: black;
+      cursor: pointer;
+    }
+    li button:hover {
+      background-color: black;
+      color: white;
+    }
+    li button:focus {
+      outline: none;
+    }
   }
-  .link {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-  .cardText {
-    overflow: hidden; // 영역 감추기
-    text-overflow: ellipsis; // ...로 만들기
-    white-space: nowrap; // 아래줄 내려가는 것 막기
-  }
-}
-
-.pagenumbers {
-  display: flex;
-  list-style: none;
-}
-
-.pagenumbers li {
-  padding: 10px;
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.pagenumbers li.active {
-  background-color: black;
-  color: white;
-}
-
-.pagenumbers li button {
-  background-color: transparent;
-  border: none;
-  color: black;
-  cursor: pointer;
-}
-
-.pagenumbers li button:hover {
-  background-color: black;
-  color: white;
-}
-
-.pagenumbers li button:focus {
-  outline: none;
-}
-div.boardFirstLine {
-  display: grid;
-  grid-template-columns: 300px 300px 300px;
-  grid-template-rows: 300px 300px;
-  justify-content: space-evenly;
-  width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-#button {
-  div.buttonPosition {
-    #groupButton {
-      padding-top: 80px;
-      padding-bottom: 40px;
-      .buttonPosition {
-        justify-content: center;
-        text-align: center;
-      }
+  #groupSearch {
+    justify-content: center;
+    text-align: center;
+    .searchInput {
+      margin-right: 20px;
+    }
+    .searchButton {
+      //버튼 테두리 필요
     }
   }
 }
