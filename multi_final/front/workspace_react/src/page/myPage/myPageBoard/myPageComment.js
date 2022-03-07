@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../sidebar';
 import { Link, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./myPageComment.scss";
 import { Table, Tab, Tabs } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -44,12 +43,12 @@ fetchCom();
 if (!Repdatas) return null;
 
     return (
-        <div id='board'>
+        <div id='myPageMain'>
             <Sidebar /> 
-            <div className='boardList'>
-            <Tabs>
-                <Tab eventKey="group" title="소통공간">
-                    <Table>
+            <div id='board'>
+            <Tabs className='myPageTabs'>
+                <Tab eventKey="communication" title="소통공간">
+                    <Table className='myPageTable'>
                         <thead>
                             <tr>
                                 <th>번호</th>

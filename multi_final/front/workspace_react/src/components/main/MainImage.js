@@ -101,10 +101,9 @@ fetchCommain();
             textAlign: 'center'
             }}>
               모임찾기
-              </p>
+            </p>
 
-             <div id='groupLine' className='groupBoardLine'>
-          
+             <div id='groupLine' >
                  {Groupdatas.map((Groupdata) =>
             <Card style={{ width: '18rem' }}>
          <Link to={"/communityGroup/"+ Groupdata.g_no} style={{ textDecoration: 'none' }}>

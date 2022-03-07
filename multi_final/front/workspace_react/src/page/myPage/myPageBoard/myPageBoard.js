@@ -74,12 +74,12 @@ fetchCom();
 if (!Groupdatas) return null;
 if (!Comdatas) return null;
     return (
-        <div id='board'>
+        <div id='myPageMain'>
             <Sidebar /> 
-            <div className='boardList'>
-            <Tabs>
+            <div id='board'>
+            <Tabs className='myPageTabs'>
                 <Tab eventKey="group" title="모임찾기">
-                    <Table>
+                    <Table className='myPageTable'>
                         <thead>
                             <tr>
                                 <th>번호</th>
@@ -105,7 +105,7 @@ if (!Comdatas) return null;
                     </Table>
                 </Tab>
                 <Tab eventKey="communication" title="소통공간">
-                    <Table>
+                    <Table className='myPageTable'>
                         <thead>
                             <tr>
                                 <th>번호</th>
