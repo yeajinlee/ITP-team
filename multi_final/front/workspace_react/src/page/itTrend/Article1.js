@@ -35,7 +35,7 @@ const Article1 = () => {
       return <div>오류가 발생했습니다. 관리자에게 문의해주세요.</div>
     }
     if(!articles1) {
-        return null;
+        return <div>오류가 발생했습니다. 관리자에게 문의해주세요.</div>;
     }
     return (
       <div>

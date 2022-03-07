@@ -26,7 +26,7 @@ const MainCarousel = () => {
       alt="First slide"
     />
   </Carousel.Item>
-  <Carousel.Item>
+  {/* <Carousel.Item>
     <img
     
     className="d-flex"
@@ -40,7 +40,7 @@ const MainCarousel = () => {
       src='./assets/banner_test3.png'
       alt="Third slide"
     />
-  </Carousel.Item>
+  </Carousel.Item> */}
 </Carousel>
         </div>
     );

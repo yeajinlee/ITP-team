@@ -6,7 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
@@ -16,6 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpUtils;
 
 import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
@@ -41,6 +46,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.sun.xml.bind.api.impl.NameConverter.Standard;
 
 
@@ -54,6 +60,31 @@ public class ItTrendController {
 	Map articlesMap = new HashMap();
 	String content = null;
 	
+	//트렌드메인 api 두 번 호출해야하는 부분 수정 예정
+//	@GetMapping("/itTrend")
+//	public Object getTrend() {
+//		URI uri = UriComponentsBuilder
+//				.fromUriString("https://newsapi.org/")
+//				.path("v2/top-headlines")
+//				.queryParam("country", "kr")
+//				.queryParam("category", "technology")
+//				.queryParam("pageSize", 13)
+//				.queryParam("page", 1)
+//				.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
+//				.encode(Charset.forName("utf-8"))
+//				.encode()
+//				.build()
+//				.toUri();
+//		RequestEntity<Void> req = RequestEntity
+//								.get(uri)
+//								.build();
+//		RestTemplate restTemplate = new RestTemplate();
+//		ResponseEntity<Object> result = restTemplate.exchange(req, Object.class);
+//		return result.getBody();
+//		
+//	}
+	
+	
 	@GetMapping("/article1")
 	public Object getArticle1() {
 		// 실제 api 호출 부분
@@ -62,7 +93,6 @@ public class ItTrendController {
 					.path("v2/top-headlines")
 					.queryParam("country", "kr")
 					.queryParam("category", "technology")
-//					.queryParam("q", "테크")
 					.queryParam("pageSize", 3)
 					.queryParam("page", 1)
 					.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
@@ -77,14 +107,7 @@ public class ItTrendController {
 			ResponseEntity<Object> result = restTemplate.exchange(req, Object.class);
 			topObject = result.getBody();
 
-		//dummy api 부분
-//		try {
-//			ObjectMapper om = new ObjectMapper();
-//			om.enable(SerializationFeature.INDENT_OUTPUT);
-//			topObject = om.readValue(new File("dummyApi/dummyApi1.json"), Object.class);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		
 		
 		
 		return topObject;
@@ -117,7 +140,6 @@ public class ItTrendController {
 	@GetMapping("/itTrend/{title}")
 	public Map<String, Object> getTrendDetail(@PathVariable("title") String urlTitle) {
 		
-		//반환할 Map
 		
 		String oriTitle = urlTitle.replaceAll("-", " ");
 		System.out.println(oriTitle);
@@ -186,7 +208,7 @@ public class ItTrendController {
 			if (url.contains("news.samsung.com")) articleElements = article.select(".text_cont");
 			content = articleElements.text();
 			if (url.contains("youtube.com") || url.contains("biz.chosun.com") || articleElements.hasText() == false) {
-				content = null;
+				content = "본문보기가 제공되지 않는 기사입니다.";
 			}
 			
 		} catch (IOException e) {
@@ -196,5 +218,17 @@ public class ItTrendController {
 
 	}
 	
+	//요약 api
+//	public void getSummary(String content) {
+//		JsonObject param = new JsonObject();
+//		try {
+//			URL url = new URL("https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize");
+//			HttpURLConnection conn = (HttpURLConnection) url.openConnection();		
+//		} catch (MalformedURLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 	
 }
