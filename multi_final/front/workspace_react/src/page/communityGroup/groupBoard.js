@@ -137,52 +137,49 @@ if (!Groupdatas) return null;
                 return Groupdatas
               }
             }).map((currentItems) =>
-            <Card id='groupCard' style={{ width: '18rem' }}>
-              <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
-                <Card.Body key={currentItems.g_no}>
+            <Card id='groupCard' className='groupCardCss' style={{ width: '18rem' }}>
+              <Card.Body key={currentItems.g_no}>
+                <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
                   <Card.Img variant='top' src={currentItems.g_img} />
                   <Card.Title className='title'>{currentItems.g_title}</Card.Title>
                   <Card.Text className='cardText'> {currentItems.g_subtitle}</Card.Text>
-                  <Card.Body className='bodyLink'>
-                    <Card.Link className='link' href="#">{currentItems.g_name}</Card.Link>
-                    <Card.Link className='link' href="#">{currentItems.g_tag}</Card.Link>
-                  </Card.Body>
+                </Link>
+                <Card.Body className='bodyLink'>
+                  <Card.Link className='link'>{currentItems.g_name}</Card.Link>
+                  <Card.Link className='link'>{currentItems.g_tag}</Card.Link>
                 </Card.Body>
-              </Link>
+              </Card.Body>
             </Card>
-                    )}
-            <br /><br /><br /><br />
+            )}
           </div>
-            <div >
-          <br /><br /><br />
-          <ul id='pageButton'>
-            <li>
-              <button onClick={handleprevbtn}
-              disabled={currentpage===pagenums[0]?true:false}>
-                Prev
-              </button>
-            </li>
-            {pageIncrementBtn}
-            {renderPagenum}
-            {pageDecrementBtn}
-            <li>
-              <button onClick={handlenextbtn}
-              disabled={currentpage===pagenums[pagenums.length-1]?true:false}>
-                Next
-              </button>
-            </li>
+          <div id='groupSearch'>
+            <input 
+              type="text"
+              onChange={(e)=>settitle(e.target.value)} 
+              className="searchInput"
+              value={title}
+            />
+            <button className='searchButton' type="button" onClick={handlesearch} >검색</button>
+          </div>
+          <div>
+            <ul id='pageButton'>
+              <li>
+                <button onClick={handleprevbtn}
+                disabled={currentpage===pagenums[0]?true:false}>
+                  &lt;
+                </button>
+              </li>
+              {pageIncrementBtn}
+              {renderPagenum}
+              {pageDecrementBtn}
+              <li>
+                <button onClick={handlenextbtn}
+                disabled={currentpage===pagenums[pagenums.length-1]?true:false}>
+                  &gt;
+                </button>
+              </li>
             </ul>
-            </div>
-            <div id='groupSearch'>
-              <input 
-                type="text"
-                onChange={(e)=>settitle(e.target.value)} 
-                className="searchInput"
-                value={title}
-              />
-              <button className='searchButton' type="button" onClick={handlesearch} >검색</button>
-            </div>
-<br /><br />
+          </div>
         </div>
     );
 };
