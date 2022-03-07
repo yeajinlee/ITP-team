@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
+
 @CrossOrigin("*")
 @RestController
 public class GroupController {
@@ -41,10 +42,19 @@ public class GroupController {
 	
 	//전체내용조회
 	@GetMapping("/group/listAll")
-	public List<GroupDTO> getgroupList(){
+	public List<GroupDTO> getgroupListAlll(){
 		return mapper.getgroupListAlll();  
 	}
-	
+	//아이디에 해당하는 내용만 조회
+	@GetMapping("/mypage/group")
+	public List<GroupDTO> getmygroupList(@RequestParam("m_name") String m_name){
+		return mapper.getmygroupList(m_name);  
+	}
+	//최신순 조회
+		@GetMapping("/group/recent")
+		public List<GroupDTO> getgroupListmain(){
+			return mapper.getgroupListmain();
+		}
 	//페이징 조회
 		@GetMapping("/group/list")
 		public List<GroupDTO> getgroupList(@RequestParam("page") String page){
