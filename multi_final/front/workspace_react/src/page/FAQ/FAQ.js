@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from './Accordion';
 import { accordionData } from './FAQ_List';
+import './FAQ.scss';
 
 const FAQ = () => {
   return (

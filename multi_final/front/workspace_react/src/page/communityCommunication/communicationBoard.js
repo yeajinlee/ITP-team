@@ -153,35 +153,34 @@ if (!Comdatas) return null;
                     </tbody>
                 </Table>
             </div>
-          <div id='communicationButton' >
-          <ul className='pagenumbers'>
-            <li>
-              <button onClick={handleprevbtn}
-              disabled={currentpage===pagenums[0]?true:false}>
-                Prev
-              </button>
-            </li>
-            {pageIncrementBtn}
-            {renderPagenum}
-            {pageDecrementBtn}
-            <li>
-              <button onClick={handlenextbtn}
-              disabled={currentpage===pagenums[pagenums.length-1]?true:false}>
-                Next
-              </button>
-            </li>
-            </ul>
-           
+          <div id='communitySearch'>
+            <input 
+              type="text"
+              onChange={(e)=>settitle(e.target.value)} 
+              className="searchInput"
+              value={title}
+            />
+            <button className='searchButton' type="button" onClick={handlesearch} >검색</button>
           </div>
-          <input 
-      type="text"
-      onChange={(e)=>settitle(e.target.value)} 
-      id="title"
-      value={title}
-      //aria-describedby="basic-addon1"
-    />
-  
-  <button type="button" onClick={handlesearch}>검색</button>
+          <div>
+            <ul id='communityPageButton'>
+              <li>
+                <button onClick={handleprevbtn}
+                disabled={currentpage===pagenums[0]?true:false}>
+                  &lt;
+                </button>
+              </li>
+              {pageIncrementBtn}
+              {renderPagenum}
+              {pageDecrementBtn}
+              <li>
+                <button onClick={handlenextbtn}
+                disabled={currentpage===pagenums[pagenums.length-1]?true:false}>
+                  &gt;
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
     );
 };

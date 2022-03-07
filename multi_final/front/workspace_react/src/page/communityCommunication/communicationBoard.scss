@@ -24,11 +24,51 @@ div.communicationBoard {
   margin: 0 auto;
   overflow: hidden;
 }
-#communicationButton {
-  padding-top: 50px;
-  padding-bottom: 100px;
-  .buttonPosition {
-    justify-content: center;
-    text-align: center;
+#communitySearch {
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  .searchInput {
+    margin-right: 20px;
+    border: 1px solid black;
+  }
+  .searchButton {
+    border: 1px solid #3b9d9d;
+    background-color: #3b9d9d;
+    color: white;
+    border-radius: 5px;
+    outline: 0;
+    width: 50px;
+    height: 30px;
+  }
+}
+#communityPageButton {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  li {
+    padding: 10px;
+    border: 1px solid #3b9d9d;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  li.active {
+    background-color: #3b9d9d;
+    color: white;
+  }
+  li button {
+    background-color: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;
+  }
+  li button:hover {
+    color: #3b9d9d;
+  }
+  li button:focus {
+    outline: none;
   }
 }

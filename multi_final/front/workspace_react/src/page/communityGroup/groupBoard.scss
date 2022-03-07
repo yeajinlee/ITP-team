@@ -29,23 +29,49 @@
     overflow: hidden;
   }
   #groupCard {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+
+    .groupCardCss {
+      outline: 0;
+    }
     .title {
+      margin-top: 20px;
+      text-align: left;
       font-size: 18px;
+      color: black;
+    }
+    .cardText {
+      text-align: left;
+      color: black;
+      overflow: hidden; // 영역 감추기
+      text-overflow: ellipsis; // ...로 만들기
+      white-space: nowrap; // 아래줄 내려가는 것 막기
     }
     .bodyLink {
-      justify-content: center;
-      text-align: center;
+      margin-top: 10px;
     }
     .link {
       text-decoration: none;
       color: black;
       font-weight: bold;
     }
-    .cardText {
-      overflow: hidden; // 영역 감추기
-      text-overflow: ellipsis; // ...로 만들기
-      white-space: nowrap; // 아래줄 내려가는 것 막기
+  }
+  #groupSearch {
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+    .searchInput {
+      margin-right: 20px;
+      border: 1px solid black;
+    }
+    .searchButton {
+      border: 1px solid #3b9d9d;
+      background-color: #3b9d9d;
+      color: white;
+      border-radius: 5px;
+      outline: 0;
+      width: 50px;
+      height: 30px;
     }
   }
   #pageButton {
@@ -53,13 +79,16 @@
     list-style: none;
     justify-content: center;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
     li {
       padding: 10px;
-      border: 1px solid black;
+      border: 1px solid #3b9d9d;
+      margin-right: 10px;
       cursor: pointer;
     }
     li.active {
-      background-color: black;
+      background-color: #3b9d9d;
       color: white;
     }
     li button {
@@ -69,21 +98,10 @@
       cursor: pointer;
     }
     li button:hover {
-      background-color: black;
-      color: white;
+      color: #3b9d9d;
     }
     li button:focus {
       outline: none;
-    }
-  }
-  #groupSearch {
-    justify-content: center;
-    text-align: center;
-    .searchInput {
-      margin-right: 20px;
-    }
-    .searchButton {
-      //버튼 테두리 필요
     }
   }
 }
