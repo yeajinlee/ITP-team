@@ -42,7 +42,8 @@ const ItTrendDetail = () => {
     if(!trendDetail) {
         return (
             <div>
-                본문 보기를 지원하지 않는 기사입니다.
+                본문 요약 보기를 지원하지 않는 기사입니다.
+                <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
                 <input type="button" value="목록으로" onClick={BackToItTrendMain} />
             </div>
         );

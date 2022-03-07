@@ -1,6 +1,6 @@
 import MainCarousel from '../../components/main/MainCarousel';
 
-import GroupBoard from './GroupBoard';
+import GroupBoard from './groupBoard';
 
 const GroupMain = () => {
     return (
