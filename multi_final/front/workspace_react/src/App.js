@@ -67,8 +67,8 @@ const App = () => {
       <Route path="/itTrend" element={<ItTrendMain/>} />
       <Route path="/itTrend/:title" element={<ItTrendDetail/>} />
       {/* My Page */}
-      <Route path="/myPageBoard" element={<MyPageMain />} />
-      <Route path="/myPageComment" element={<MyPageComment />} />
+      <Route path="/myPageBoard/:m_name" element={<MyPageMain />} />
+      <Route path="/myPageComment/:m_name" element={<MyPageComment />} />
       <Route path="/myPageInformationModify" element={<MyPageInformationModify />} />
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />

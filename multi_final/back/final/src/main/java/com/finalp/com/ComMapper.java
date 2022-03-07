@@ -12,8 +12,6 @@ import org.apache.ibatis.annotations.Update;
 
 
 
-
-
 @Mapper
 public interface ComMapper {
 	@Select("select count(*) from itp_com")
@@ -25,6 +23,10 @@ public interface ComMapper {
 
 	@Select("select * from itp_com")
 	List<ComDTO> getcomListdata();
+	
+	
+	@Select("select * from itp_com where c_name=#{m_name}")
+	List<ComDTO> getmycomList(@Param("m_name") String m_name);
 	
 	//제목검색
 	@Select(
