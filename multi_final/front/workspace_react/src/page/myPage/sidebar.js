@@ -9,7 +9,6 @@ function sidebar() {
     { name: "댓글", path: "/myPageComment" },
   ];
   const menus = [
-    { name: "모임 신청", path: "/myPageGroupRequest" },
     { name: "정보 수정", path: "/myPageInformationModify"}
   ];
   return (

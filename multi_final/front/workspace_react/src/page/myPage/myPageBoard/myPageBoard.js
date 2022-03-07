@@ -8,9 +8,9 @@ import groupData from './jsonFile/GroupBoradData.json';
 
 function myPageCommunityBoard(props) {
     return (
-        <div id='board'>
+        <div id='myPageMain'>
             <Sidebar /> 
-            <div className='boardList'>
+            <div id='board'>
             <Tabs>
                 <Tab eventKey="group" title="모임찾기">
                     <Table>
@@ -18,7 +18,7 @@ function myPageCommunityBoard(props) {
                             <tr>
                                 <th>번호</th>
                                 <th>제목</th>
-                                <th>작성일</th>
+                                <th>카테고리</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,12 +26,12 @@ function myPageCommunityBoard(props) {
                             <tr key={index}>
                                 <td>{n.no}</td>
                                 <td>
-                                    <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
+                                    <Link to={'/Group/'+n.no} className='myPageLink'>
                                         {n.title}
                                     </Link>
                                 </td>
                                 <td>
-                                    {n.date}
+                                    {n.category}
                                 </td>
                             </tr>
                             ))}
@@ -52,7 +52,7 @@ function myPageCommunityBoard(props) {
                             <tr key={index}>
                                 <td>{n.no}</td>
                                 <td>
-                                    <Link to={'/Community/'+n.no} style={{ textDecoration: 'none' }}>
+                                    <Link to={'/Community/'+n.no} className='myPageLink'>
                                         {n.title}
                                     </Link>
                                 </td>

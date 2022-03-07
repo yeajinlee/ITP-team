@@ -22,13 +22,12 @@ import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
 // My Page
 import MyPageMain from "./page/myPage/myPageMain";
 import MyPageComment from "./page/myPage/myPageBoard/myPageComment";
-import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 // 이용약관 및 개인정보처리방침
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
 // 모임찾기
-import GroupMain from "./page/communityGroup/groupMain";
+import GroupMain from "./page/communityGroup/GroupMain";
 import GroupWriting from "./page/communityGroup/writing/gWritingMain";
 // 소통공간
 import CommunicationMain from "./page/communityCommunication/communicationMain";
@@ -70,7 +69,6 @@ const App = () => {
       {/* My Page */}
       <Route path="/myPageBoard" element={<MyPageMain />} />
       <Route path="/myPageComment" element={<MyPageComment />} />
-      <Route path="/myPageGroupRequest" element={<MyPageGroupRequest />} />
       <Route path="/myPageInformationModify" element={<MyPageInformationModify />} />
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
