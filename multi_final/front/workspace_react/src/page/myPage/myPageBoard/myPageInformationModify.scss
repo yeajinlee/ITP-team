@@ -1,12 +1,24 @@
-div.nickname {
-  font-weight: bold;
-  font-size: 20px;
-}
-div.password {
-  font-weight: bold;
-  font-size: 20px;
-}
-div.passwordChange {
+#Modify {
+  padding-left: 10px;
+  display: inline-table;
+  #nickname {
+    label {
+      padding-bottom: 20px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .nicknameInput {
+      width: 200px;
+      height: 40px;
+    }
+    span {
+      padding-left: 20px;
+    }
+    .password {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
 }
 
 div div.buttonGroup {
