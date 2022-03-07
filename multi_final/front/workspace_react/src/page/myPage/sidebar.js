@@ -5,8 +5,8 @@ import SidebarItem from "./pageSide";
 
 function sidebar() {
   const myWrite = [
-    { name: "작성 글", path: "/myPageCommunityBoard" },
-    { name: "댓글", path: "/myPageCommunityComment" },
+    { name: "작성 글", path: "/myPageBoard" },
+    { name: "댓글", path: "/myPageComment" },
   ];
   const menus = [
     { name: "모임 신청", path: "/myPageGroupRequest" },

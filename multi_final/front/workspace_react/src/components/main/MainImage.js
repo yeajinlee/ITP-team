@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './css/MainImage.scss';
 import { Card, Table} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import communityBoradData from './jsonFile/CommunityBoradData.json';
 import { Link } from 'react-router-dom';
 //import groupBoard from '../../page/communityGroup/GroupBoradData.json';
 import axios from 'axios';
@@ -66,8 +65,7 @@ fetchCommain();
     return (
 
       
-        <div>
-          <br />
+        <div id='imageMain'>
           <p class='itT'>IT 기술 최신 동향</p>
           <div id='itTrend'>
             {/* IT 기술 */}
@@ -124,15 +122,15 @@ fetchCommain();
             </Card>
                )}
           </div>
-
-          <div id='mainBoard' className='boardTable'>
-            <br />
-            <p>소통 공간</p>
-          <Table>
+          <p className='communityHome'>소통 공간</p>
+          <div id='mainBoard' >
+            
+          <Table className='boardTable'>
                   <thead>
                     <tr>
                       <th>번호</th>
                       <th>제목</th>
+                      <th>작성자</th>
                       <th>작성일</th>
                     </tr>
                   </thead>
@@ -145,6 +143,9 @@ fetchCommain();
                                   {Comdata.c_title}
                                   </Link>
                               </td>
+                                <td>
+                                    {Comdata.c_name}
+                                </td>
                               <td>
                                 {Comdata.c_date}
                               </td>

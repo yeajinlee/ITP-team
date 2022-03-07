@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/itTechnologyMain.scss'
+import './itTechnologyMain.scss'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -35,25 +35,27 @@ if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
 if (!techs) return null;
     return (
-            
-            // <div className="div">
-            // <h2>it기술</h2>
-           <ul className="skill_list">
-            {techs.map((tech)=>(
-                <li key={tech.no}>
-              <Link to={"/itTech/" + tech.no}>
-                  <span>
-            <img width="100px" height="100px" src={tech.img} alt="img"/>
-            {tech.title} {tech.subtitle}
-            </span>
-     
         
-       </Link>
-                </li>
-            ))}
-            </ul>
-          
-            //  </div>
+            <div id='itTechMain'>
+            <p className='itTechPageTitle'>IT 기술</p>
+            <div>
+                <ul className="skill_list">
+                    {techs.map((tech)=>(
+                        <li key={tech.no}>
+                            <Link to={"/itTech/" + tech.no} className="itTechLink">
+                                <span className='itTechSpan'>
+                                    <img width="200px" height="200px" src={tech.img} alt="img"/>
+                                    <div>
+                                        <p className='boardTitle'>{tech.title}</p>
+                                        <p className='boardContent'>{tech.subtitle}</p>
+                                    </div>
+                                </span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+                </div>
+            </div>
 
 
     )}

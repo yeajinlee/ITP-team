@@ -2,11 +2,12 @@ import React from 'react';
 import Sidebar from '../sidebar';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./myPageComment.scss";
 import { Table, Tab, Tabs } from 'react-bootstrap';
-import communityBoradData from './jsonFile/CommunityBoradData.json';
-import noticeData from './jsonFile/GroupBoradData.json';
+import communityCommentData from './jsonFile/CommunityComment.json'
+import groupData from './jsonFile/GroupBoradComment.json';
 
-function myPageCommunityBoard(props) {
+const myPageCommunityComment = () => {
     return (
         <div id='board'>
             <Sidebar /> 
@@ -18,17 +19,21 @@ function myPageCommunityBoard(props) {
                             <tr>
                                 <th>번호</th>
                                 <th>제목</th>
+                                <th>작성 댓글</th>
                                 <th>작성일</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {noticeData.group.map((n,index) => (
+                            {groupData.group.map((n,index) => (
                             <tr key={index}>
                                 <td>{n.no}</td>
                                 <td>
                                     <Link to={'/Group/'+n.no} style={{ textDecoration: 'none' }}>
                                         {n.title}
                                     </Link>
+                                </td>
+                                <td>
+                                    {n.content}
                                 </td>
                                 <td>
                                     {n.date}
@@ -44,17 +49,21 @@ function myPageCommunityBoard(props) {
                             <tr>
                                 <th>번호</th>
                                 <th>제목</th>
+                                <th>작성 댓글</th>
                                 <th>작성일</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {communityBoradData.community.map((n,index) => (
+                            {communityCommentData.community.map((n,index) => (
                             <tr key={index}>
                                 <td>{n.no}</td>
                                 <td>
                                     <Link to={'/Community/'+n.no} style={{ textDecoration: 'none' }}>
                                         {n.title}
                                     </Link>
+                                </td>
+                                <td>
+                                    {n.content}
                                 </td>
                                 <td>
                                     {n.date}
@@ -68,6 +77,6 @@ function myPageCommunityBoard(props) {
             </div>
         </div>
     );
-}
+};
 
-export default myPageCommunityBoard;
+export default myPageCommunityComment;

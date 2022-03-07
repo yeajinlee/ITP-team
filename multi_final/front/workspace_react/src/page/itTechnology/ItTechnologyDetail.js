@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/itTechnologyMain.scss'
+import './itTechnologyMain.scss'
 import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
