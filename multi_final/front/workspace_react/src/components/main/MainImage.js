@@ -109,7 +109,7 @@ fetchCommain();
           
                  {Groupdatas.map((Groupdata) =>
             <Card style={{ width: '18rem' }}>
-
+         <Link to={"/communityGroup/"+ Groupdata.g_no} style={{ textDecoration: 'none' }}>
               <Card.Body key={Groupdata.g_no}>
                 <Card.Img variant='top' src={Groupdata.g_img} />
                 <Card.Title className='title'>{Groupdata.g_title}</Card.Title>
@@ -120,7 +120,7 @@ fetchCommain();
                   <Card.Link className='link' href="#">{Groupdata.g_tag}</Card.Link>
                 </Card.Body>
               </Card.Body>
-         
+         </Link>
             </Card>
                )}
           </div>
@@ -141,7 +141,7 @@ fetchCommain();
                             <tr key={Comdata.c_no}>
                               <td>{Comdata.c_no}</td>
                               <td>
-                                <Link to={'/Community/'+Comdata.c_no} style={{ textDecoration: 'none' }}>
+                                <Link to={'/Communication/'+Comdata.c_no} style={{ textDecoration: 'none' }}>
                                   {Comdata.c_title}
                                   </Link>
                               </td>
