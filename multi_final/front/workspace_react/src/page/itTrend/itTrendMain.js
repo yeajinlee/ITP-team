@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 //import { Card, CardGroup, ListGroup} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Article1 from './Article1.js';
 import Article2 from './Article2.js';
-import '../css/itTrendMain.scss'
+import './itTrendMain.scss'
 
 
 const itTrendMain = () => {
@@ -12,17 +12,18 @@ const itTrendMain = () => {
     const month = today.getMonth()+1;
     const date = today.getDate();
     return (
-        <Fragment>
+        <div id="trendAll">
             <div className='time'>
-                <p>{year}.{month}.{date} 트렌드</p>       
+                <p>{year}.{month}.{date} 최신 뉴스</p>       
             </div>
             <div className='todayTrend'>
                 <Article1/>           
             </div>
-            <div className='passTrend'>
+            <div id='passTrend'>
+            <p>이전 뉴스</p>     
                 <Article2/>
             </div>
-        </Fragment>
+        </div>
    );
 };
 

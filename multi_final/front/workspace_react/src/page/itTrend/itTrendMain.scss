@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#trendAll {
+  justify-content: center;
+  text-align: center;
+  width: 1440px; // 2560(QHD), 1920(FHD), 1680, 1440
+  margin: 0 auto;
+  overflow: hidden;
+  .time {
+    display: flex;
+    justify-content: center;
+  }
+
+  .time p {
+    font-size: 25px;
+    text-align: center;
+    width: 250px;
+    height: 60px;
+    margin-top: 50px;
+    padding-top: 10px;
+    border-radius: 20px;
+    background-color: #008080;
+    color: white;
+  }
+
+  .todayTrend {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #f1f1f1;
+    margin-bottom: 50px;
+  }
+
+  #article1 {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    .todayLink {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  #passTrend {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      font-size: 25px;
+      text-align: center;
+      width: 250px;
+      height: 60px;
+      margin-bottom: 50px;
+      padding-top: 10px;
+      border-radius: 20px;
+      background-color: #3b9d9d;
+      color: white;
+    }
+    #article2 {
+      display: flex;
+      flex-wrap: wrap;
+      white-space: normal;
+      .article2A {
+        flex-shrink: 0;
+        flex: 1 1 30%;
+        width: 100px;
+        margin-bottom: 80px;
+        margin-right: 20px;
+      }
+      img {
+        width: 300px;
+        height: 200px;
+      }
+      .articleLink {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}

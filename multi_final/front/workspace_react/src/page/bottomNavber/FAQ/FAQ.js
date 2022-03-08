@@ -6,8 +6,8 @@ import './FAQ.scss';
 
 const FAQ = () => {
   return (
-    <div>
-      <h1>자주 묻는 질문</h1>
+    <div id='FaqAll'>
+      <p>자주 묻는 질문</p>
       <div className="accordion">
         {accordionData.map(({ title, content }) => (
           <Accordion title={title} content={content} />

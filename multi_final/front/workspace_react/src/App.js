@@ -12,20 +12,20 @@ import Notice from "./page/bottomNavber/Notice/Notice";
 import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
-import Faq from "./page/FAQ/FAQ";
+import Faq from "./page/bottomNavber/FAQ/FAQ";
 // IT 기술
 import ItTechnologyMain from './page/itTechnology/itTechnologyAll.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 // IT 트렌드
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
-import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
+import ItTrendDetail from "./page/itTrend/ItTrendDetail.js";
 // My Page
 import MyPageMain from "./page/myPage/myPageMain";
 import MyPageComment from "./page/myPage/myPageBoard/myPageComment";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 // 이용약관 및 개인정보처리방침
-import Infolaw from "./page/bottomNavber/Infolaw";
-import Useterm from "./page/bottomNavber/Useterm";
+import Infolaw from "./page/bottomNavber/InfoLaw";
+import Useterm from "./page/bottomNavber/UseTerm";
 // 모임찾기
 import GroupMain from "./page/communityGroup/GroupMain";
 import GroupWriting from "./page/communityGroup/writing/gWritingMain";

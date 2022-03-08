@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams,useNavigate, useLocation } from 'react-router-dom';
-import trendData from './itTrendData.json';
+import './itTrendDetail.scss'
 import axios from 'axios';
 
 const ItTrendDetail = () => {
@@ -35,7 +35,7 @@ const ItTrendDetail = () => {
         return (
             <div>
                 오류가 발생했습니다. 관리자에게 문의해주세요.
-                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+                <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} > </button>
             </div>
         );
     }
@@ -43,19 +43,26 @@ const ItTrendDetail = () => {
         return (
             <div>
                 본문 요약 보기를 지원하지 않는 기사입니다.
-                <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
-                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+                <button className='detailButton' value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}> </button>
+                <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} > </button>
             </div>
         );
     }
 
     return(
-        <div>
-            <h3>{trendDetail.title}</h3>
-            <div><img src={trendDetail.urlToImage} alt="" width={500}></img></div>
-            <div>{trendDetail.content}</div>
-            <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
-            <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+        <div id="itTrendDetailAll" className='detailMain'>
+            <p>{trendDetail.title}</p>
+            <div>
+                <img src={trendDetail.urlToImage} alt="" />
+            </div>
+            <div className='trendContent' >
+                {trendDetail.content}
+            </div>
+            <div >
+            <button className='detailButton' value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}>
+                원문보기</button>
+            <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} >목록으로</button>
+            </div>
         </div>    
     ); 
 };
