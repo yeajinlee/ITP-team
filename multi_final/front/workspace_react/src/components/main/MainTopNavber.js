@@ -26,7 +26,7 @@ const MainTopNavberNonLogin = () => {
             <nav id='topNav'>
                 <div id='navbarMain'>
                     <Link to='/itTrend' className='itTrendNav'>
-                        IT 트렌드</Link>
+                        IT 뉴스</Link>
                     <Link to='/iTTech' className='itTechNav'>IT 기술</Link>
                     <Link to='/communityGroup' className='itGroupNav'>모임찾기</Link>
                     ㅣ

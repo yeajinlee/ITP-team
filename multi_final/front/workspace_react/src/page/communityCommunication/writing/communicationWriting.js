@@ -73,9 +73,9 @@ const CommunicationWriting = () => {
         <textarea onChange={(e)=>handlec_content(e)} type="text" id="c_content" name="c_content" value={c_content}></textarea>
         
         </div>
-        <div id='button'>
+        <div id='cButton'>
           <Link to='/communityGroup'>
-            <button className='cancel me-2'>
+            <button className='cancel'>
               취소
             </button>
           </Link>
