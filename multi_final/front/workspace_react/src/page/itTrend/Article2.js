@@ -45,8 +45,8 @@ const Article2 = () => {
             <Link to={titleUrl(a.title)}>
               <img src={a.urlToImage} alt="" width={300} height={200}></img>
               {a.title}<br/>
-              {/* {a.description}<br/>
-              {a.publishedAt} */}
+              {a.description}<br/>
+              {/* {a.publishedAt} */}
             </Link>
           </div>
         ))}
