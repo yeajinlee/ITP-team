@@ -24,8 +24,8 @@ import MyPageMain from "./page/myPage/myPageMain";
 import MyPageComment from "./page/myPage/myPageBoard/myPageComment";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 // 이용약관 및 개인정보처리방침
-import Infolaw from "./page/bottomNavber/infoLaw";
-import Useterm from "./page/bottomNavber/useTerm";
+import Infolaw from "./page/bottomNavber/Infolaw";
+import Useterm from "./page/bottomNavber/Useterm";
 // 모임찾기
 import GroupMain from "./page/communityGroup/GroupMain";
 import GroupWriting from "./page/communityGroup/writing/gWritingMain";
