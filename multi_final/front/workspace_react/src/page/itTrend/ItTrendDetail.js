@@ -42,9 +42,23 @@ const ItTrendDetail = () => {
     if(!trendDetail) {
         return (
             <div>
-                본문 요약 보기를 지원하지 않는 기사입니다.
+                오류가 발생했습니다. 관리자에게 문의해주세요.
                 <button className='detailButton' value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}> </button>
                 <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} > </button>
+            </div>
+        );
+    }
+
+    if(trendDetail.summary === " ") {
+        return (
+            <div>
+                <h3>{trendDetail.title}</h3>
+                <div><img src={trendDetail.urlToImage} alt="" width={500}></img></div>
+                본문 요약 보기를 지원하지 않는 기사입니다.<br/>
+                {/* <div>{trendDetail.description}</div> */}
+                {trendDetail.content}
+                <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
+                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
             </div>
         );
     }
@@ -55,8 +69,15 @@ const ItTrendDetail = () => {
             <div>
                 <img src={trendDetail.urlToImage} alt="" />
             </div>
-            <div className='trendContent' >
-                {trendDetail.content}
+            <div className='trendContent'>
+                {trendDetail.summary.split('\\n').map((line) => {
+                    return (
+                        <div>
+                            {line}<br/>
+                        </div>
+                    );
+                })}
+                {/* {trendDetail.summary} */}
             </div>
             <div >
             <button className='detailButton' value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}>
