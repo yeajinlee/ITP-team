@@ -12,23 +12,22 @@ import Notice from "./page/bottomNavber/Notice/Notice";
 import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
-import Faq from "./page/FAQ/FAQ";
+import Faq from "./page/bottomNavber/FAQ/FAQ";
 // IT 기술
 import ItTechnologyMain from './page/itTechnology/itTechnologyAll.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 // IT 트렌드
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
-import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
+import ItTrendDetail from "./page/itTrend/ItTrendDetail.js";
 // My Page
 import MyPageMain from "./page/myPage/myPageMain";
 import MyPageComment from "./page/myPage/myPageBoard/myPageComment";
-import MyPageGroupRequest from "./page/myPage/myPageBoard/myPageGroupRequest";
 import MyPageInformationModify from "./page/myPage/myPageBoard/myPageInformationModify";
 // 이용약관 및 개인정보처리방침
 import Infolaw from "./page/bottomNavber/Infolaw";
 import Useterm from "./page/bottomNavber/Useterm";
 // 모임찾기
-import GroupMain from "./page/communityGroup/groupMain";
+import GroupMain from "./page/communityGroup/GroupMain";
 import GroupWriting from "./page/communityGroup/writing/gWritingMain";
 // 소통공간
 import CommunicationMain from "./page/communityCommunication/communicationMain";
@@ -68,9 +67,8 @@ const App = () => {
       <Route path="/itTrend" element={<ItTrendMain/>} />
       <Route path="/itTrend/:title" element={<ItTrendDetail/>} />
       {/* My Page */}
-      <Route path="/myPageBoard" element={<MyPageMain />} />
-      <Route path="/myPageComment" element={<MyPageComment />} />
-      <Route path="/myPageGroupRequest" element={<MyPageGroupRequest />} />
+      <Route path="/myPageBoard/:m_name" element={<MyPageMain />} />
+      <Route path="/myPageComment/:m_name" element={<MyPageComment />} />
       <Route path="/myPageInformationModify" element={<MyPageInformationModify />} />
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />

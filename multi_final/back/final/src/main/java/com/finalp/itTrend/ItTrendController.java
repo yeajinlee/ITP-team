@@ -98,7 +98,7 @@ public class ItTrendController {
 					.queryParam("category", "technology")
 					.queryParam("pageSize", 3)
 					.queryParam("page", 1)
-					.queryParam("q", "it")
+//					.queryParam("q", "it")
 					.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
 					.encode(Charset.forName("utf-8"))
 					.encode()
@@ -127,7 +127,7 @@ public class ItTrendController {
 				.queryParam("category", "technology")
 				.queryParam("pageSize", 13)
 				.queryParam("page", 1)
-				.queryParam("q", "it")
+//				.queryParam("q", "it")
 				.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
 				.encode(Charset.forName("utf-8"))
 				.encode()
@@ -146,7 +146,7 @@ public class ItTrendController {
 	public Map<String, Object> getTrendDetail(@PathVariable("title") String urlTitle) {
 		
 		
-		String oriTitle = urlTitle.replaceAll("-", " ");
+		String oriTitle = urlTitle.replace("-", " ");
 		System.out.println(oriTitle);
 		try {
 			URI uri = UriComponentsBuilder
@@ -179,11 +179,6 @@ public class ItTrendController {
 			
 			String url = articlesMap.get("url").toString();
 			getContent(url);
-			content.replaceAll("\"", " ");
-			if (content.length() > 2000) {
-				content = content.substring(0, 1950);
-			}
-			System.out.println(content);
 			getSummary(content);
 			
 			//Map에 데이터 추가
@@ -210,16 +205,20 @@ public class ItTrendController {
 			Elements articleElements = new Elements();
 
 			// 본문텍스트 추출
-			articleElements = article.select("[itemprop=articleBody] p");
+			articleElements = article.select("[itemprop=articleBody]");
 			if (url.contains("asiatime.co.kr")) articleElements = article.select("body div p");
 			if (url.contains("tokenpost.kr")) articleElements = article.select(".viewArticle p");
 			if (url.contains("coinreaders")) articleElements = article.select("#textinput");
 			if (url.contains("etoday.co.kr")) articleElements = article.select(".view_contents");
 			if (url.contains("dispatch.co.kr")) articleElements = article.select("article");
-			if (url.contains("news.nate.com")) articleElements = article.select("#articleContetns");
+			if (url.contains("news.nate.com")) articleElements = article.select("#realArtcContents");
 			if (url.contains("news.samsung.com")) articleElements = article.select(".text_cont");
 			if (url.contains("autopostkorea.com")) articleElements = article.select("[itemprop=text] p");
+			if (url.contains("hankyung.com")) articleElements = article.select("#articletxt");
+
 			content = articleElements.text();
+			content = trimContent(content);
+			
 			if (url.contains("youtube.com") || url.contains("biz.chosun.com") || articleElements.hasText() == false) {
 				content = "본문보기가 제공되지 않는 기사입니다.";
 			}
@@ -228,12 +227,12 @@ public class ItTrendController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 	}
 	
 	//요약 api
 	public void getSummary(String content) throws Exception {
-		System.out.println("getSummary content: " + content);
 		StringBuilder response = new StringBuilder();
 		URL url = new URL("https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize");
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -250,7 +249,7 @@ public class ItTrendController {
 				"    \"language\": \"ko\",\r\n" + 
 				"    \"model\": \"news\",\r\n" + 
 				"    \"tone\": 0,\r\n" + 
-				"    \"summaryCount\": 2\r\n" + 
+				"    \"summaryCount\": 3\r\n" + 
 				"  }\r\n" + 
 				"}";
 		
@@ -265,20 +264,19 @@ public class ItTrendController {
 			while ((responseLine = br.readLine()) != null) {
 				response.append(responseLine.trim());
 			}
-			System.out.println(response.toString());
+			
+			System.out.println("response" + response.toString());
 
 			os.close();
-			
 			summary = response.toString();
+			summary = trimSummary(summary);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-//			String sContent = new String(content.getBytes(), 0, 3000);
-//			try {
-//				getSummary(sContent);
-//			} catch (Exception e2) {
+
 				summary = " ";
 				
-//			}
+
 			
 		}
 		
@@ -286,4 +284,35 @@ public class ItTrendController {
 	
 	}
 	
+	public String trimContent(String content) {
+		//요약 api 글자수제한에 맞게 줄임
+		if (content.length() > 2000) {
+			content = content.substring(0, 1950);
+		}
+		//기사 본문 내 " 제거
+		content = content.replace("\"", "'");
+		//기사 본문 내 [] 내용 제거
+		if (content.contains("[")) {
+			content = content.substring(content.indexOf("]")+1);
+			if(content.contains("[")) {
+				int index = content.indexOf("[");
+				content = content.substring(0, index);
+			}
+		}
+		if (content.contains("▶")) {
+			int index = content.indexOf("▶");
+			content = content.substring(0, index);
+		}
+		
+		System.out.println(content);
+		
+		return content;
+	}
+	
+	
+	public String trimSummary(String summary) {
+		summary = summary.replace("\"", "");
+		summary = summary.substring(9, summary.length()-1);
+		return summary;
+	}
 }

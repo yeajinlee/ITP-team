@@ -2,34 +2,53 @@
   margin: 0;
   padding: 0;
 }
-
-#board {
-  background-color: #f4f4f4;
+#myPageMain {
   display: flex;
   margin: 0 auto;
   overflow: hidden;
   width: 1440px; // 2560(QHD), 1920(FHD), 1680, 1440
   height: 1440px;
+  background-color: #f4f4f4;
 
-  .boardList {
+  #board {
+    //작성 글과 댓글에만 해당
+    background-color: white;
+    margin: 0 auto;
+    overflow: hidden;
     width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
-    align-items: center;
-    margin: 100px;
+    height: 500px;
+    margin-top: 50px;
+    border-radius: 20px;
+    .myPageLink {
+      color: black;
+      text-decoration: none;
+    }
+    .myPageTabs {
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    .myPageTable {
+      width: 1040px;
+      margin-left: 20px;
+    }
   }
 }
+
 #sideBar {
   display: flex;
   border-right: 1px solid #e0e0e0;
   flex-direction: column;
   align-items: center;
-  justify-content: baseline;
-  width: 20%;
-  padding-top: 50px;
-
+  justify-content: center;
+  border-radius: 20px;
+  height: 300px;
+  background-color: white;
+  margin-left: 50px;
+  margin-top: 50px;
   .Menu {
     margin-top: 30px;
+    margin-left: 20px;
     width: 200px;
-    display: flex;
     flex-direction: column;
   }
 }

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "./notice.scss"
 
 const Notice = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ if (error) return <div>에러가 발생했습니다</div>;
 if (!Noticedatas) return null;
 
   return (
-    <div>
+    <div id="noticeAll">
       <h3>공지사항</h3>
       <Table>
         <thead>
@@ -71,7 +72,9 @@ if (!Noticedatas) return null;
         </tbody>
       </Table>
       {/* 관리자용 */}
+      <div className='noticeButton'>
       <input type="button" value="글쓰기" onClick={AddNoticePage} />
+      </div>
     </div>
   );
 };

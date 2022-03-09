@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
+
 @CrossOrigin("*")
 @RestController
 public class ComController {
@@ -33,7 +34,13 @@ public class ComController {
 	public int getcomListAll() {
 		return mapper.getcomListAll();
 	}
-
+	
+	//아이디에 해당하는 내용만 조회
+		@GetMapping("/mypage/com")
+		public List<ComDTO> getmycomList(@RequestParam("m_name") String m_name){
+			return mapper.getmycomList(m_name);  
+		}
+		
 	//전체내용조회
 	@GetMapping("/com/listAll")
 	public List<ComDTO> getcomListdata(){

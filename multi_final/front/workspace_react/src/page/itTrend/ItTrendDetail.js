@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams,useNavigate, useLocation } from 'react-router-dom';
-import trendData from './itTrendData.json';
+import './itTrendDetail.scss'
 import axios from 'axios';
 
 const ItTrendDetail = () => {
@@ -35,16 +35,16 @@ const ItTrendDetail = () => {
         return (
             <div>
                 오류가 발생했습니다. 관리자에게 문의해주세요.
-                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+                <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} > </button>
             </div>
         );
     }
     if(!trendDetail) {
         return (
             <div>
-                본문 요약 보기를 지원하지 않는 기사입니다.
-                <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
-                <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+                오류가 발생했습니다. 관리자에게 문의해주세요.
+                <button className='detailButton' value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}> </button>
+                <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} > </button>
             </div>
         );
     }
@@ -54,7 +54,7 @@ const ItTrendDetail = () => {
             <div>
                 <h3>{trendDetail.title}</h3>
                 <div><img src={trendDetail.urlToImage} alt="" width={500}></img></div>
-                본문 요약 보기를 지원하지 않는 기사입니다. 기사 내용의 일부만 보여집니다. <br/>
+                본문 요약 보기를 지원하지 않는 기사입니다.<br/>
                 {/* <div>{trendDetail.description}</div> */}
                 {trendDetail.content}
                 <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
@@ -64,13 +64,26 @@ const ItTrendDetail = () => {
     }
 
     return(
-        <div>
-            <h3>{trendDetail.title}</h3>
-            <div><img src={trendDetail.urlToImage} alt="" width={500}></img></div>
-            {/* <div>{trendDetail.description}</div> <br/> */}
-            <div>{trendDetail.summary}</div>
-            <input type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
-            <input type="button" value="목록으로" onClick={BackToItTrendMain} />
+        <div id="itTrendDetailAll" className='detailMain'>
+            <p>{trendDetail.title}</p>
+            <div>
+                <img src={trendDetail.urlToImage} alt="" />
+            </div>
+            <div className='trendContent'>
+                {trendDetail.summary.split('\\n').map((line) => {
+                    return (
+                        <div>
+                            {line}<br/>
+                        </div>
+                    );
+                })}
+                {/* {trendDetail.summary} */}
+            </div>
+            <div >
+            <button className='detailButton' value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}>
+                원문보기</button>
+            <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} >목록으로</button>
+            </div>
         </div>    
     ); 
 };
