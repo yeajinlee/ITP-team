@@ -2,8 +2,10 @@ import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 
+import axios from 'axios';
+import './groupBoardDetail.scss'
+import MainCarousel from '../../components/main/MainCarousel';
 
 const GroupBoardDetail = () => {
   const { no } = useParams();
@@ -57,37 +59,29 @@ if (error) return <div>에러가 발생했습니다</div>;
 if (!Groupdatas) return null;
 
   return (
-    <div>
+    <div id='groupDetailAll'>
       
-      <h3>모임찾기</h3>
-     <div>
+      <MainCarousel />
+      <p className='groupDetailTop'>모임찾기</p>
+     <div id='detailContentPost'>
       {Groupdatas.map((Groupdata,index) => (
       <Table>
-        
         <tbody>
-          <tr key={index}>
-            <th>제목</th> <td>{Groupdata.g_title}</td>
-          </tr>
-          <tr>
-            <th>작성자</th> <td>{Groupdata.g_name}</td>
-          </tr>
-          <tr>
-            <th>카테고리</th> <td>{Groupdata.g_tag}</td>
-          </tr>
-          
-          <tr>
-            <td colSpan={2}>{Groupdata.g_content}</td>
-          </tr>
+          <div key={index} className='detailTitle'>
+            <p>{Groupdata.g_title}</p>
+            <p>{Groupdata.g_name} | {Groupdata.g_tag}</p>
+            </div>
+          <div className='detailContent'>{Groupdata.g_content}</div>
         </tbody>
-        
       </Table>
       ))}
      </div>
-      <input type="button" value="목록으로" onClick={BackToGroupBoard} />
-      <input type="button" value="수정하기" onClick={()=>Update(no)} />
-      <input type="button" value="삭제하기" onClick={()=>Delete(no)} />
-      <input type="button" value="신청하기"/>
-    
+     <div id='detailButton'>
+      <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
+      <button className='groupDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>
+      <button className='groupDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제하기 </button>
+      <button className='groupDetailButton' value="신청하기"> 신청하기 </button>
+      </div>
     </div>
   
   );
