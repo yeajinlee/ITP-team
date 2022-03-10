@@ -1,0 +1,33 @@
+#replyAll {
+  margin-top: 128px;
+  #replyRegi {
+    display: flex;
+    input {
+      width: 864px;
+      height: 50px;
+    }
+    button {
+      margin-left: 16px;
+      width: 128px;
+      height: 50px;
+      border: 1px solid #3b9d9d;
+      background-color: #3b9d9d;
+      color: white;
+      border-radius: 5px;
+      outline: 0;
+    }
+  }
+  #replyBottom {
+    margin-top: 20px;
+    button {
+      float: right;
+      margin-right: 16px;
+      width: 96px;
+      border: 1px solid #3b9d9d;
+      background-color: #3b9d9d;
+      color: white;
+      border-radius: 5px;
+      outline: 0;
+    }
+  }
+}

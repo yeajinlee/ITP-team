@@ -32,10 +32,6 @@ const MainTopNavberNonLogin = () => {
                     ㅣ
                     <Link to='/communication' className='itCommuNav'>소통공간</Link>
                     </div>
-                <div className='searchMain'>
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" />&nbsp;
-                        <button class="btn btn-outline-light" type="submit">Search</button>
-                </div>
             </nav>
         </div>
                         
