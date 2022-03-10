@@ -48,6 +48,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.finalp.config.ApiKey;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.sun.xml.bind.api.impl.NameConverter.Standard;
@@ -56,6 +57,11 @@ import com.sun.xml.bind.api.impl.NameConverter.Standard;
 
 @RestController
 public class ItTrendController {
+	private final ApiKey API_KEY;
+	public ItTrendController(ApiKey apiKey) {
+		this.API_KEY = apiKey;
+	}
+	
 	Object topObject = new Object();
 	Map<String, Object> trendDetail = new HashMap<String, Object>();
 	Map articlesMap = new HashMap();
@@ -99,7 +105,7 @@ public class ItTrendController {
 					.queryParam("pageSize", 3)
 					.queryParam("page", 1)
 //					.queryParam("q", "it")
-					.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
+					.queryParam("apiKey", API_KEY.getNewsApiKey())
 					.encode(Charset.forName("utf-8"))
 					.encode()
 					.build()
@@ -128,7 +134,7 @@ public class ItTrendController {
 				.queryParam("pageSize", 13)
 				.queryParam("page", 1)
 //				.queryParam("q", "it")
-				.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
+				.queryParam("apiKey", API_KEY.getNewsApiKey())
 				.encode(Charset.forName("utf-8"))
 				.encode()
 				.build()
@@ -157,7 +163,7 @@ public class ItTrendController {
 					.queryParam("q", oriTitle)
 					.queryParam("pageSize", 1)
 					.queryParam("page", 1)
-					.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
+					.queryParam("apiKey", API_KEY.getNewsApiKey())
 					.encode(Charset.forName("utf-8"))
 					.encode()
 					.build()
@@ -237,8 +243,8 @@ public class ItTrendController {
 		URL url = new URL("https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize");
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("POST");
-		conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID", );
-		conn.setRequestProperty("X-NCP-APIGW-API-KEY", );
+		conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID", API_KEY.getNaverId());
+		conn.setRequestProperty("X-NCP-APIGW-API-KEY", API_KEY.getNaverSecret());
 		conn.setRequestProperty("Content-Type", "application/json; utf-8");
 		conn.setDoOutput(true);
 		jsonInputString = "{\r\n" + 
