@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface NoticeMapper {
-	@Select("select * from itp_notice")
+	@Select("select * from itp_notice order by n_no desc")
 	public List<NoticeDTO> getnoticeListAll();
 	
 	@Select("SELECT * FROM itp_notice where n_no=#{n_no}")

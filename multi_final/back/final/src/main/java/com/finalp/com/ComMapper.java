@@ -21,7 +21,7 @@ public interface ComMapper {
 	List<ComDTO> getcomList(@Param("page") String page);
 	
 
-	@Select("select * from itp_com")
+	@Select("select * from itp_com order by c_no desc")
 	List<ComDTO> getcomListdata();
 	
 	
