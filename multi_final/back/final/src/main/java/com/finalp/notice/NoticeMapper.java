@@ -1,6 +1,6 @@
 package com.finalp.notice;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -23,7 +23,7 @@ public interface NoticeMapper {
 	int insertNotice(
 			@Param("n_title") String n_title,
 			@Param("n_content") String n_content,
-			@Param("n_date") LocalDateTime n_date
+			@Param("n_date") LocalDate n_date
 			
 			);
 	
@@ -32,7 +32,7 @@ public interface NoticeMapper {
 			@Param("n_no") int n_no,
 			@Param("n_title") String n_title,
 			@Param("n_content") String n_content,
-			@Param("n_date") LocalDateTime n_date
+			@Param("n_date") LocalDate n_date
 		);
 	
 	@Delete("DELETE FROM itp_notice WHERE n_no = #{n_no}")
