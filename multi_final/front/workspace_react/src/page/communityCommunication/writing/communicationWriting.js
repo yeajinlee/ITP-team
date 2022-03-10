@@ -56,7 +56,7 @@ const CommunicationWriting = () => {
         console.log(res.data.c_title)
         console.log(res.data.c_content)
        
-        document.location.href=`/communityGroup`;//성공시 목록으로 돌아가기
+        document.location.href=`/communication`;//성공시 목록으로 돌아가기
       })
       .catch()
     }

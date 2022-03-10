@@ -146,6 +146,9 @@ if (!Comdatas) return null;
                                     </Link>
                                 </td>
                                 <td>
+                                    {currentItems.c_name}
+                                </td>
+                                <td>
                                     {currentItems.c_date}
                                 </td>
                             </tr>

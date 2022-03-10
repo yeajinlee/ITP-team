@@ -11,6 +11,7 @@ const GroupBoardChange= () => {
 
    const {no}=useParams();
    const [g_title,setg_title] =useState('')
+   console.log(g_title);
    const[g_content,setg_content]=useState('')
  
    const handlen_title=(e)=>{

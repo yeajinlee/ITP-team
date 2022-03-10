@@ -1,9 +1,12 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { useNavigate,useParams} from 'react-router-dom';
 import axios from 'axios';
 
 const ChangeNotice = () => {
   const navigate = useNavigate();
+  const[Noticedatas,setNoticedata]=useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const BackToNotice = () => {
       navigate("/notice");
@@ -40,19 +43,50 @@ const ChangeNotice = () => {
      )
      
    }
+
+   useEffect(()=>{
+    const fetchNotice=async()=>{
+        try {
+            //error 와 notice 를 초기화
+            setError(null);
+            setNoticedata(null);
+            // loading 상태를 true
+            setLoading(true);    
+            const response=await axios.get(`http://localhost:8085/group/${no}`);
+            console.log(response.data);
+            setNoticedata(response.data);
+            
+
+        }catch(e){
+            setError(e);
+        }
+        setLoading(false);
+        
+      
+    
+};
+fetchNotice();
+
+},[no]);
+
+if (loading) return <div>로딩중..</div>;
+if (error) return <div>에러가 발생했습니다</div>;
+if (!Noticedatas) return null;
   
   return (
     <div>
+      {Noticedatas.map((Noticedata) => (
       <form>
       <h3>공지사항수정</h3>
       제목
-      <input onChange={(e)=>handlen_title(e)} type="text" id="n_title" name="n_title" placeholder={n_title} value={n_title}/>
+      <input onChange={(e)=>handlen_title(e)} type="text" id="n_title" name="n_title" placeholder={Noticedata.n_title} value={n_title}/>
       <br/>
       내용<textarea onChange={(e)=>handlen_content(e)} type="text" id="n_content" name="n_content" value={n_content}></textarea>
       <br/>
       <input type="button" value="취소" onClick={BackToNotice}/>
       <button type="submit" value="등록" onClick={()=>submit()}>등록</button>
       </form>
+      ))}
     </div>
   );
 };

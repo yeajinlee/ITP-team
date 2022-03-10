@@ -22,8 +22,8 @@ const CommunityDetail = () => {
   }
   function Delete(no){
        
-    axios.delete(`http://localhost:8085/deleteGroup/${no}`)
-         .then(navigate('/communityGroup')).catch(err=>console.log(err))
+    axios.delete(`http://localhost:8085/deleteCom/${no}`)
+         .then(navigate('/communication')).catch(err=>console.log(err))
       }
   
     

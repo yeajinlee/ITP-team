@@ -19,6 +19,7 @@ const GroupBoardDetail = () => {
   
   function Update(no){
    navigate(`/changeGroup/${no}`)
+  
   }
   function Delete(no){
        
@@ -30,7 +31,7 @@ const GroupBoardDetail = () => {
   
 
   useEffect(()=>{
-      const fetchNotice=async()=>{
+      const fetchGroup=async()=>{
           try {
               //error 와 notice 를 초기화
               setError(null);
@@ -47,7 +48,7 @@ const GroupBoardDetail = () => {
         
       
   };
-  fetchNotice();
+  fetchGroup();
   
 },[no]);
 
