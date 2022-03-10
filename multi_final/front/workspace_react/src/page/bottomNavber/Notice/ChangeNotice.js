@@ -13,16 +13,25 @@ const ChangeNotice = () => {
   };
 
    const {no}=useParams();
+  
    const [n_title,setn_title] =useState('')
    const[n_content,setn_content]=useState('')
- 
+
    const handlen_title=(e)=>{
      setn_title(e.target.value)
    }
    const handlen_content=(e)=>{
      setn_content(e.target.value)
    }
-   const n_date =new Date().toISOString()
+  
+   var today = new Date();
+
+   var year = today.getFullYear();
+   var month = ('0' + (today.getMonth() + 1)).slice(-2);
+   var day = ('0' + today.getDate()).slice(-2);
+   
+   const n_date= year + '-' + month  + '-' + day;
+
 
    
    const submit=()=>{
@@ -52,10 +61,10 @@ const ChangeNotice = () => {
             setNoticedata(null);
             // loading 상태를 true
             setLoading(true);    
-            const response=await axios.get(`http://localhost:8085/group/${no}`);
+            const response=await axios.get(`http://localhost:8085/notice/${no}`);
             console.log(response.data);
             setNoticedata(response.data);
-            
+           
 
         }catch(e){
             setError(e);
@@ -75,18 +84,18 @@ if (!Noticedatas) return null;
   
   return (
     <div>
-      {Noticedatas.map((Noticedata) => (
+ 
       <form>
       <h3>공지사항수정</h3>
       제목
-      <input onChange={(e)=>handlen_title(e)} type="text" id="n_title" name="n_title" placeholder={Noticedata.n_title} value={n_title}/>
+      <input onChange={(e)=>handlen_title(e)} type="text" id="n_title" name="n_title" placeholder={Noticedatas.n_title} value={n_title}/>
       <br/>
       내용<textarea onChange={(e)=>handlen_content(e)} type="text" id="n_content" name="n_content" value={n_content}></textarea>
       <br/>
       <input type="button" value="취소" onClick={BackToNotice}/>
       <button type="submit" value="등록" onClick={()=>submit()}>등록</button>
       </form>
-      ))}
+
     </div>
   );
 };
