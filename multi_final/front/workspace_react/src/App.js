@@ -33,9 +33,9 @@ import GroupWriting from "./page/communityGroup/writing/gWritingMain";
 import CommunicationMain from "./page/communityCommunication/communicationMain";
 import CommunicationWriting from "./page/communityCommunication/writing/cWritingMain"
 import GroupBoardDetail from "./page/communityGroup/GroupBoardDetail";
-import GroupBoardChange from "./page/communityGroup/GroupBoardChange";
+import GroupBoardChange from "./page/communityGroup/writing/GroupBoardChange";
 import CommunityDetail from "./page/communityCommunication/CommunityDetail"
-import CommunityChange from "./page/communityCommunication/CommunityChange"
+import CommunityChange from "./page/communityCommunication/writing/CommunityChange"
 
 const App = () => {
   

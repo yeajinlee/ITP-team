@@ -3,6 +3,7 @@ import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import './communityDetail.scss'
 import CommunityReply from './CommunityReply'
 
 const CommunityDetail = () => {
@@ -57,37 +58,28 @@ if (error) return <div>에러가 발생했습니다</div>;
 if (!Comdatas) return null;
 
   return (
-    <div>
-      
-      <h3>소통공간</h3>
-     <div>
+    <div id='communityDetailAll'>
+      <p className='communityDetailTop'>소통공간</p>
+     <div id='detailContentPost'>
       {Comdatas.map((Comdata,index) => (
       <Table>
-        
         <tbody>
-          <tr key={index}>
-            <th>제목</th> <td>{Comdata.c_title}</td>
-          </tr>
-          <tr>
-            <th>작성자</th> <td>{Comdata.c_name}</td>
-          </tr>
-          <tr>
-            <th>카테고리</th> <td>{Comdata.c_tag}</td>
-          </tr>
-          
-          <tr>
-            <td colSpan={2}>{Comdata.c_content}</td>
-          </tr>
+          <div key={index} className='detailTitle'>
+            <p className='communityTitle'>{Comdata.c_title}</p>
+            <p>{Comdata.c_name} | {Comdata.c_tag}</p>
+            </div>
+          <div className='detailContent'>{Comdata.c_content}</div>
         </tbody>
-        
       </Table>
       ))}
      </div>
-      <input type="button" value="목록으로" onClick={BackToComBoard} />
-      <input type="button" value="수정하기" onClick={()=>Update(no)} />
-      <input type="button" value="삭제하기" onClick={()=>Delete(no)} />
-      
-        <CommunityReply/>
+     <div id='detailButton'>
+      <button className='communityDetailButton' value="목록으로" onClick={BackToComBoard} > 목록으로 </button>
+      <button className='communityDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>
+      <button className='communityDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제하기 </button>
+        
+      </div>
+      <CommunityReply/>
     </div>
   
   );

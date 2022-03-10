@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './GroupWritingMain.scss';
+import './GroupWriting.scss';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -67,39 +67,25 @@ const GroupWriting = () => {
    
     return (
       
-      <div id='writingAll'>
-        <div id='titleAndSubject'>
-          <form>
-            <div className='writingTitle'>
-          <p>제목:</p>
-          <input onChange={(e)=>handleg_title(e)} type="text" id="g_title" name="g_title" value={g_title}/>
-          </div>
-          <p>소제목:</p>
-          <input onChange={(e)=>handleg_subtitle(e)} type="text" id="g_subtitle" name="g_subtitle" value={g_subtitle}/>
-          <select className='writingSubject' value={g_tag} onChange={(e)=>handleg_tag(e)}>
-            <option>주제</option>
-            <option value="스터디" >스터디  </option>
-            <option value="프로젝트">프로젝트  </option>
-            <option value="기타">기타  </option>
-          </select>
-          <div className='content'>
-            <textarea onChange={(e)=>handleg_content(e)} type="text" id="g_content" name="g_content" value={g_content} >
-            </textarea>
-            <input
-            onChange={(e)=>handleg_content(e)}
-            class="form-control"
-             />  
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-            type="text"
-            placeholder=".form-control-sm"
-            name="g_content"
-            value={g_content}/>
+      <div id='groupWritingAll'>
+        <Form className='writingForm'>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Control type="text" onChange={(e)=>handleg_title(e)} placeholder="글 제목을 입력해주세요" />
+          </Form.Group>
+          <Form.Group id='writingSub' controlId="exampleForm.ControlTextarea1">
+            <Form.Control className='writingSubTitle' onChange={(e)=>handleg_subtitle(e)} type="text" placeholder='소제목 입력' />
+            <Form.Select className='writingSelect' onChange={(e)=>handleg_tag(e)} aria-label="Default select example">
+              <option>주제</option>
+              <option value="스터디" >스터디</option>
+              <option value="프로젝트">프로젝트</option>
+              <option value="기타">기타</option>
+            </Form.Select>
+            <Form.Group className='writingFile'controlId="formFile">
+              <Form.Control  type="file" />
             </Form.Group>
-            </div>
-            </form>
-        </div>
-     
+          </Form.Group>
+            <Form.Control as='textarea' onChange={(e)=>handleg_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
+        </Form>
         <div id='button'>
           <Link to='/communityGroup'>
             <Button className='cancel me-2'>
