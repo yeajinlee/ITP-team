@@ -1,6 +1,6 @@
 package com.finalp.notice;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class NoticeController {
      int insertNotice(
 			@RequestParam(value="n_title",required=false) String n_title,
 			@RequestParam(value="n_content") String n_content,
-			@RequestParam(value="n_date",required=false)  @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime n_date
+			@RequestParam(value="n_date",required=false) @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate n_date
 			) {
 		
 		return mapper.insertNotice(n_title,n_content,n_date);
@@ -50,7 +50,7 @@ public class NoticeController {
 	public int updateNotice(@PathVariable("n_no") int n_no,
 			@RequestParam(value="n_title",required=false) String n_title,
 			@RequestParam("n_content") String n_content,
-			@RequestParam(value="n_date",required=false) @DateTimeFormat(iso = ISO.DATE_TIME) LocalDateTime n_date
+			@RequestParam(value="n_date",required=false) @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate n_date
 	
 			) { 
 		return mapper.updateNotice(n_no,n_title,n_content,n_date);
