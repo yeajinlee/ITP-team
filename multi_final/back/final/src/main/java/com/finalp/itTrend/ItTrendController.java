@@ -1,10 +1,12 @@
 package com.finalp.itTrend;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -20,10 +22,11 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpUtils;
+
 
 import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
+import org.hibernate.service.spi.InjectService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -45,20 +48,26 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.finalp.config.ApiKey;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.sun.xml.bind.api.impl.NameConverter.Standard;
 
 
+
 @RestController
 public class ItTrendController {
-	LocalDate now = LocalDate.now();
-	LocalDate twodaysago = now.minusDays(2);
-	LocalDate weekago = now.minusDays(7);
+	private final ApiKey API_KEY;
+	public ItTrendController(ApiKey apiKey) {
+		this.API_KEY = apiKey;
+	}
+	
 	Object topObject = new Object();
 	Map<String, Object> trendDetail = new HashMap<String, Object>();
 	Map articlesMap = new HashMap();
 	String content = null;
+	String summary = null;
+	String jsonInputString = null;
 	
 	//트렌드메인 api 두 번 호출해야하는 부분 수정 예정
 //	@GetMapping("/itTrend")
@@ -95,7 +104,8 @@ public class ItTrendController {
 					.queryParam("category", "technology")
 					.queryParam("pageSize", 3)
 					.queryParam("page", 1)
-					.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
+//					.queryParam("q", "it")
+					.queryParam("apiKey", API_KEY.getNewsApiKey())
 					.encode(Charset.forName("utf-8"))
 					.encode()
 					.build()
@@ -123,7 +133,8 @@ public class ItTrendController {
 				.queryParam("category", "technology")
 				.queryParam("pageSize", 13)
 				.queryParam("page", 1)
-				.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
+//				.queryParam("q", "it")
+				.queryParam("apiKey", API_KEY.getNewsApiKey())
 				.encode(Charset.forName("utf-8"))
 				.encode()
 				.build()
@@ -141,7 +152,7 @@ public class ItTrendController {
 	public Map<String, Object> getTrendDetail(@PathVariable("title") String urlTitle) {
 		
 		
-		String oriTitle = urlTitle.replaceAll("-", " ");
+		String oriTitle = urlTitle.replace("-", " ");
 		System.out.println(oriTitle);
 		try {
 			URI uri = UriComponentsBuilder
@@ -152,7 +163,7 @@ public class ItTrendController {
 					.queryParam("q", oriTitle)
 					.queryParam("pageSize", 1)
 					.queryParam("page", 1)
-					.queryParam("apiKey", "334118d2023245d0833e4be5c2581862")
+					.queryParam("apiKey", API_KEY.getNewsApiKey())
 					.encode(Charset.forName("utf-8"))
 					.encode()
 					.build()
@@ -174,11 +185,13 @@ public class ItTrendController {
 			
 			String url = articlesMap.get("url").toString();
 			getContent(url);
+			getSummary(content);
 			
 			//Map에 데이터 추가
 			trendDetail.put("title", articlesMap.get("title"));
 			trendDetail.put("urlToImage", articlesMap.get("urlToImage"));
 			trendDetail.put("content", content);
+			trendDetail.put("summary", summary);
 			trendDetail.put("description", articlesMap.get("description"));
 			trendDetail.put("url", url);
 			 
@@ -204,9 +217,14 @@ public class ItTrendController {
 			if (url.contains("coinreaders")) articleElements = article.select("#textinput");
 			if (url.contains("etoday.co.kr")) articleElements = article.select(".view_contents");
 			if (url.contains("dispatch.co.kr")) articleElements = article.select("article");
-			if (url.contains("news.nate.com")) articleElements = article.select("#articleContetns");
+			if (url.contains("news.nate.com")) articleElements = article.select("#realArtcContents");
 			if (url.contains("news.samsung.com")) articleElements = article.select(".text_cont");
+			if (url.contains("autopostkorea.com")) articleElements = article.select("[itemprop=text] p");
+			if (url.contains("hankyung.com")) articleElements = article.select("#articletxt");
+
 			content = articleElements.text();
+			content = trimContent(content);
+			
 			if (url.contains("youtube.com") || url.contains("biz.chosun.com") || articleElements.hasText() == false) {
 				content = "본문보기가 제공되지 않는 기사입니다.";
 			}
@@ -215,20 +233,92 @@ public class ItTrendController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 	}
 	
 	//요약 api
-//	public void getSummary(String content) {
-//		JsonObject param = new JsonObject();
-//		try {
-//			URL url = new URL("https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize");
-//			HttpURLConnection conn = (HttpURLConnection) url.openConnection();		
-//		} catch (MalformedURLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
+	public void getSummary(String content) throws Exception {
+		StringBuilder response = new StringBuilder();
+		URL url = new URL("https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize");
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID", API_KEY.getNaverId());
+		conn.setRequestProperty("X-NCP-APIGW-API-KEY", API_KEY.getNaverSecret());
+		conn.setRequestProperty("Content-Type", "application/json; utf-8");
+		conn.setDoOutput(true);
+		jsonInputString = "{\r\n" + 
+				"  \"document\": {\r\n" + 
+				"    \"content\": \" " + content + " \"\r\n " +
+				"  },\r\n" + 
+				"  \"option\": {\r\n" + 
+				"    \"language\": \"ko\",\r\n" + 
+				"    \"model\": \"news\",\r\n" + 
+				"    \"tone\": 0,\r\n" + 
+				"    \"summaryCount\": 3\r\n" + 
+				"  }\r\n" + 
+				"}";
+		
+		try {
+			OutputStream os = conn.getOutputStream();
+			byte[] input = jsonInputString.getBytes("utf-8");
+			os.write(input, 0, input.length);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+
+			String responseLine = null;
+			while ((responseLine = br.readLine()) != null) {
+				response.append(responseLine.trim());
+			}
+			
+			System.out.println("response" + response.toString());
+
+			os.close();
+			summary = response.toString();
+			summary = trimSummary(summary);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+
+				summary = " ";
+				
+
+			
+		}
+		
+		
 	
+	}
+	
+	public String trimContent(String content) {
+		//요약 api 글자수제한에 맞게 줄임
+		if (content.length() > 2000) {
+			content = content.substring(0, 1950);
+		}
+		//기사 본문 내 " 제거
+		content = content.replace("\"", "'");
+		//기사 본문 내 [] 내용 제거
+		if (content.contains("[")) {
+			content = content.substring(content.indexOf("]")+1);
+			if(content.contains("[")) {
+				int index = content.indexOf("[");
+				content = content.substring(0, index);
+			}
+		}
+		if (content.contains("▶")) {
+			int index = content.indexOf("▶");
+			content = content.substring(0, index);
+		}
+		
+		System.out.println(content);
+		
+		return content;
+	}
+	
+	
+	public String trimSummary(String summary) {
+		summary = summary.replace("\"", "");
+		summary = summary.substring(9, summary.length()-1);
+		return summary;
+	}
 }

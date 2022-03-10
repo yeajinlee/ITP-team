@@ -12,13 +12,13 @@ import Notice from "./page/bottomNavber/Notice/Notice";
 import NoticeDetail from "./page/bottomNavber/Notice/NoticeDetail";
 import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
-import Faq from "./page/FAQ/FAQ";
+import Faq from "./page/bottomNavber/FAQ/FAQ";
 // IT 기술
 import ItTechnologyMain from './page/itTechnology/itTechnologyAll.js'; 
 import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
 // IT 트렌드
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
-import ItTrendDetail from "./page/itTrend/ITrendDetail.js";
+import ItTrendDetail from "./page/itTrend/ItTrendDetail.js";
 // My Page
 import MyPageMain from "./page/myPage/myPageMain";
 import MyPageComment from "./page/myPage/myPageBoard/myPageComment";
@@ -33,9 +33,9 @@ import GroupWriting from "./page/communityGroup/writing/gWritingMain";
 import CommunicationMain from "./page/communityCommunication/communicationMain";
 import CommunicationWriting from "./page/communityCommunication/writing/cWritingMain"
 import GroupBoardDetail from "./page/communityGroup/GroupBoardDetail";
-import GroupBoardChange from "./page/communityGroup/GroupBoardChange";
+import GroupBoardChange from "./page/communityGroup/writing/GroupBoardChange";
 import CommunityDetail from "./page/communityCommunication/CommunityDetail"
-import CommunityChange from "./page/communityCommunication/CommunityChange"
+import CommunityChange from "./page/communityCommunication/writing/CommunityChange"
 
 const App = () => {
   

@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
 import './communicationWriting.scss';
-
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Form, Button } from 'react-bootstrap';
 
 
 // eslint-disable-next-line
 const CommunicationWriting = () => {
+  const navigate = useNavigate();
+
+  const BackToCommunitcationBoard = () => {
+    navigate("/communication");
+};
      
     const [c_title,setc_title] =useState('')
-    
-
     const[c_content,setc_content]=useState('')
+    const[g_tag,setc_tag]=useState('')
     const c_name='User'
 
     var today = new Date();
@@ -34,7 +38,10 @@ const CommunicationWriting = () => {
       console.log(c_content);
     }
 
-
+    const handlec_tag=(e)=>{
+      setc_tag(e.target.value)
+      console.log(g_tag)
+    }
     const submit=()=>{
      console.log(c_title);
 
@@ -63,30 +70,35 @@ const CommunicationWriting = () => {
    
     return (
       
-      <div id='writingAll' className="writingMain">
-        <div className='titleAndSubject'>
-        <input onChange={(e)=>handlec_title(e)} type="text" id="c_title" name="c_title" value={c_title}/>
-
-      
-        </div>
-        <div className='content'>
-        <textarea onChange={(e)=>handlec_content(e)} type="text" id="c_content" name="c_content" value={c_content}></textarea>
-        
-        </div>
+ 
+      <div id='communityWritingAll'>
+        <p className='communityTitle'>소통공간</p>
+        <Form className='writingForm'>
+          <Form.Group id='writingTop' controlId="exampleForm.ControlInput1">
+            <Form.Select className='writingSelect' onChange={(e)=>handlec_tag(e)} aria-label="Default select example">
+              <option>주제</option>
+              <option value="자유" >자유</option>
+              <option value="질문">질문</option>
+              <option value="기타">기타</option>
+            </Form.Select>
+            <Form.Control type="text" onChange={(e)=>handlec_title(e)} placeholder="글 제목을 입력해주세요" />
+          </Form.Group>
+            <Form.Group id='writingSub' controlId="formFile">
+              <Form.Control type="file" />
+            </Form.Group>
+            <Form.Control as='textarea' onChange={(e)=>handlec_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
+        </Form>
         <div id='button'>
-          <Link to='/communityGroup'>
-            <button className='cancel me-2'>
+            <Button className='cancel me-2' onClick={BackToCommunitcationBoard}>
               취소
-            </button>
-          </Link>
-          <button
+            </Button>
+          <Button 
           type="submit"
           className="submit-button"
-          value="등록" 
           onClick={()=>submit()}
-         />
-            
-        
+          >
+            등록
+          </Button>
         </div>
       </div>
   );

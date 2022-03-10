@@ -40,8 +40,8 @@ const Article1 = () => {
     return (
       <div>
         {articles1.articles.map((a, index) => (
-          <div key={index} className='article1'>
-            <Link to={titleUrl(a.title)}>
+          <div key={index} id='article1'>
+            <Link to={titleUrl(a.title)} className="todayLink">
               <img src={a.urlToImage} alt="" width={300} height={200}></img>
               {a.title}<br/>
               {/* {a.description}<br/>
