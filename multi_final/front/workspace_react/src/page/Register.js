@@ -1,118 +1,196 @@
-import React from 'react';
-import { Formik } from "formik";
+import React, { useState } from 'react';
 import '../components/Register/Register.scss';
 import { Link, } from "react-router-dom";
+import axios from 'axios';
+
  
 function Register() {
-    const initialValues = {// 각 양식 필드의 초기 값을 설명하는 객체
-        // 각 키에 주어진 이름은 Formik에서 감시 할 입력 필드의 이름 값과 일치해야한다
-        nickname: "",
-        email: "",
-        pw: "",
-        pwCheck: "",
-    };
+   
+    //추가
+    const [m_name,setm_name]=useState("");
+    const [m_email,setm_email]=useState("");
+    const [m_passwd,setm_passwd]=useState("");
+    const[m_passwdcheck,setm_passwdcheck]=useState("");
+    const[checked,setchecked]=useState('false');
+    const m_role=1;
+    const [isName, setIsName] = useState(false);
+    const [isEmail, setIsEmail] = useState(false);
+    const [isPassword, setIsPassword] = useState(false);
+    const [isPasswordcheck, setIsPasswordcheck] = useState(false);
+    const [ischeckboxchecked,setIscheckboxchecked]=useState(false);
+    var today = new Date();
 
+    var year = today.getFullYear();
+    var month = ('0' + (today.getMonth() + 1)).slice(-2);
+    var day = ('0' + today.getDate()).slice(-2);
+    
+    const m_date= year + '-' + month  + '-' + day;
+
+
+    const checkname=(e)=>{
+        const nameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9]{2,15}$/; 
+        if(m_name===null||''){alert('닉네임이 입력되지않았습니다'); setIsName(false);}
+        else if(!nameRegex.test(e.target.value)){
+           alert("닉네임 입력방식이 잘못되었습니다");
+           setIsName(false);
+        }else setIsName(true);
+        
+    }
+    const checkemail=(e)=>{
+       // const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        const emailRegex=/^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+        if(m_email===''){alert("이메일이 입력되지않았습니다."); setIsEmail(false);}
+        else if(!emailRegex.test(e.target.value)){
+           alert("이메일 입력방식이 잘못되었습니다");
+           setIsEmail(false);
+        }else setIsEmail(true);
+        
+    }
+    const checkPassword = (e) => {
+        const pwdRegex=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,16}$/
+        //const pwdRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+        if(m_passwd===''){alert("비밀번호가 입력되지않았습니다."); setIsPassword(false); }
+        else if(!pwdRegex.test(e.target.value))
+           {alert("비밀번호입력방식이 잘못되었습니다");
+           setIsPassword(false); 
+        }else setIsPassword(true); 
+        
+    }
+    const checkpassword2=()=>{
+        if(m_passwdcheck===''){alert("비밀번호가 입력되지않았습니다."); setIsPasswordcheck(false);  }
+        else if(!(m_passwd===m_passwdcheck)){ setIsPasswordcheck(false); }
+        else setIsPasswordcheck(true); 
+        
+    }
+
+    const checkboxchecked= (e) =>{
+        if(checked==='false'){
+            alert('동의해주세요');
+            setIscheckboxchecked(false);
+        }else  setIscheckboxchecked(true);
+       
+    }
+
+    const handlechange = (e) => {
+        setchecked(!checked);
+      };
     // 데이터 폼 유효성 검사를 처리하는 함수를 받는다. 데이터 값 형식의 객체를 인수로 받아들이고 정의 된 규칙에 따라 객체의 각 속성의 유효성을 검사
-    const validate = (values) => {
-        // 값 객체의 각 키는 입력 필드의 이름과 일치해야한다
-        let errors = {};
+   
+    //닉네임 중복체크
+   function m_namecheck(m_name){
+   
+    axios.get(`http://localhost:8085/member/dupliname?m_name=${m_name}`)
+    .then(response => {    
+        console.log(response.data);
+        if(response.data.length>0)  { alert('중복입니다.'); setIsName(false);}
+        else { setIsName(true); alert('중복이 아닙니다..');}
+     })
+     .catch(error => {
+        console.log(error);
+     });
+        
+    }
 
-        const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        const pwRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-        const nicknameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9]{2,15}$/;
-        /* const pwCheckRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/; */
-
-        //닉네임 값이 없을 경우
-        if (!values.nickname) {
-            errors.nickname = "";
-            //정규식에 어긋나는 경우
-        } else if (!nicknameRegex.test(values.nickname)) {
-            errors.nickname = "";
+    //이메일 중복체크
+    function m_emailcheck(m_email){
+   
+        axios.get(`http://localhost:8085/member/dupliemail?m_email=${m_email}`)
+        .then(response => {    
+            console.log(response.data);
+            if(response.data.length>0) setIsEmail(false);
+            else setIsEmail(true);
+            console.log({m_namecheck})
+         })
+         .catch(error => {
+            console.log(error);
+         });
+            
         }
-        //이메일 값이 없을 경우
-        if (!values.email) {
-            errors.email = "";
-            //정규식에 어긋나는 경우
-        } else if (!emailRegex.test(values.email)) {
-            errors.email = "";
-        }
-        //비밀번호 값이 없을 경우
-        if (!values.pw) {
-            errors.pw = "";
-            //비밀번호 길이가 4글자보다 작을 경우
-        } else if (!pwRegex.test(values.pw)) {
-            errors.pw = "";
-        }
-        //비밀번호 값이 일치하지 않는 경우
-        if (values.pwCheck !== values.pw){
-            errors.pwCheck = "비밀번호가 서로 일치하지 않습니다.";
-        }
-
-        return errors;
-    };
 
     // submitForm : 폼 데이터의 제출을 처리한다
-    const submitForm = (values) => {
-        console.log(values);
+    const submitForm = () => {
+        if(isName===false||isEmail===false||isPassword===false||isPasswordcheck===false||ischeckboxchecked===false){
+            alert('입력이 올바르지 않은 항목이 있습니다. 확인해주세요')
+        console.log(m_name);
+        console.log(m_role);
+        console.log(m_date);
+        console.log(m_passwd);
+        console.log(m_passwdcheck);
+        console.log(checked);}
+     else if(isName===true&&isEmail===true&&isPassword===true&&isPasswordcheck===true&&ischeckboxchecked===true){
+        axios.post(`http://localhost:8085/addMember`,null,{
+            params:{
+              'm_name':m_name,
+              'm_email':m_email,
+              'm_passwd':m_passwd,
+              'm_date':m_date,
+              'm_role':m_role 
+             
+            }
+          })
+          .then(res=>{
+            console.log(res)
+            
+           
+            document.location.href=`/login`;//성공시 목록으로 돌아가기
+          })
+          .catch()
+        }
+      
     };
 
     return (
 
-        // initialValues : 각 양식 필드의 초기 값을 설명하는 객체
-        // validate : 데이터 폼 유효성 검사를 처리하는 함수를 받음
-        // onSubmit : 사용자가 제출 한 후 발생하는 작업을 처리
-        // 💡 값 객체의 각 키는 입력 필드의 이름과 일치해야합니다.
-        <Formik initialValues={initialValues} validate={validate} onSubmit={submitForm}>
-            {(formik) => { //💡 formik props
-                //💡 formik의 render API 속성들 입니다.
-                const { values, handleChange, handleSubmit, errors, touched, handleBlur, isValid, dirty } = formik;
-                return (
                     <div className="frame">
                         <div className="signIn">
                             <br />
                             <div className="title">회원가입</div>
                             <br />
                             {/* form */}
-                            <form onSubmit={handleSubmit} action="#" className="loginForm">
+                            <form  action="#" className="loginForm">
                                 
                             <div className="nicknameRegister">
-                                    <input type="nickname" name="nickname" id="nickname" value={values.nickname} onChange={handleChange} onBlur={handleBlur}
-                                        className={errors.nickname && touched.nickname ? "input-error" : null} placeholder="닉네임" />
+                                    <input type="text" name="m_name" id="m_name" value={m_name} onChange={(e)=>setm_name(e.target.value)} onBlur={checkname}
+                                         placeholder="닉네임" />
+                                         <input type="button" name="m_namecheck" id="m_namecheck" value="중복확인" onClick={()=>m_namecheck(m_name)}/>
                                         <p className='RegisterBottom'>한글, 영문, 숫자 포함 15자 이하</p>
+                                        {isName===false ? (<p className='errorcode'>닉네임을 다시입력해주세요</p>):(<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}
                                     {/* 닉네임 에러나 닉네임 터치했을 때 span 실행  span 사이에 추가하면 적용됨.*/}
-                                    {errors.nickname && touched.nickname && (<div className="error">{errors.nickname}</div>)}
+                            
+                                   
                                 </div>
                                 <div className="emailRegister">
-                                    <input type="email" name="email" id="email" value={values.email} onChange={handleChange} onBlur={handleBlur}
-                                        className={errors.email && touched.email ? "input-error" : null} placeholder="메일" />
+                                    <input type="text" name="m_email" id="m_email" value={m_email} onChange={(e)=>setm_email(e.target.value)} onBlur={checkemail}
+                                       placeholder="메일" />
                                     {/* 이메일 에러나 이메일 터치했을 때 span 실행  span 사이에 추가하면 적용됨.*/}
-                                    {errors.email && touched.email && (<span className="error"><br />{errors.email}</span>)}
+                                    <input type="button" name="m_emailcheck" id="m_emailcheck" value="중복확인" onClick={()=>m_emailcheck(m_email)}/>
+                                    {isEmail===false ? (<p className='errorcode'>이메일을 다시입력해주세요</p>):(<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}
                                 </div>
                                 <br />
                                 <div className="passwordRegister">
-                                    <input type="password" name="pw" id="pw" value={values.pw} onChange={handleChange} onBlur={handleBlur}
-                                        className={errors.pw && touched.pw ? "input-error" : null} placeholder="비밀번호" minlength="8" maxlength="16" />
+                                    <input type="password" name="m_passwd" id="m_passwd" value={m_passwd} onChange={(e)=>setm_passwd(e.target.value)} onBlur={checkPassword}
+                                     placeholder="비밀번호" minlength="8" maxlength="16" />
                                         <p className='RegisterBottom'>영문 대소문자, 숫자, 특수문자 포함 8자 이상</p>
                                     {/* 비밀번호 에러나 비밀번호 터치했을 때 span 실행 */}
-                                    {errors.pw && touched.pw && (<span className="error">{errors.pw}</span>)}
+                                    {isPassword===false ? (<p className='errorcode'>패스워드를 다시입력해주세요</p>):(<p className='okcode'>사용가능한 형식입니다</p>)}
                                 </div>
                                 <div className="passwordLoginCheck">
-                                    <input type="password" name="pwCheck" id="pwCheck" value={values.pwCheck} onChange={handleChange} onBlur={handleBlur}
-                                        className={errors.pwCheck && touched.pwCheck ? "input-error" : null} placeholder="비밀번호확인" minlength="8" maxlength="16" />
+                                    <input type="password" name="m_passwdcheck" id="m_passwdcheck" value={m_passwdcheck} onChange={(e)=>setm_passwdcheck(e.target.value)} onBlur={checkpassword2}
+                                       placeholder="비밀번호확인" minlength="8" maxlength="16" />
                                     {/* 비밀번호 에러나 비밀번호 터치했을 때 div 실행 */}
                                     <div className="pwCheckError">
-                                    {errors.pwCheck && touched.pwCheck && (<div>{errors.pwCheck}</div>)}
+                                    {isPasswordcheck===false ? (<p className='errorcode'>패스워드가 올바르지않습니다</p>):(<p className='okcode'>일치합니다</p>)}
                                     </div>
                                 </div>
                                 <br />
                                 <div class="mb-3" className='loginCheck'>
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange} onBlur={checkboxchecked} />
                                     <label class="form-check-label" for="exampleCheck1">회원 가입에 동의 하시나요?</label>
                                 </div>
                                 <div className="btn">
-                                    <Link to="/login">
-                                    <input type="submit" className={dirty && isValid ? "" : "disabled-btn"} value="회원가입" />
-                                    </Link>
+                            
+                                    <input type="submit" value="회원가입" onClick={submitForm}/>
+                                  
                                     <Link to="/myPageBoard">
                                         <div>마이페이지 테스트 이동용</div>
                                     </Link>
@@ -121,9 +199,7 @@ function Register() {
                         </div>
                     </div>
                 );
-            }}
-        </Formik>
-    );
-};
+    }        
+   
 
 export default Register;

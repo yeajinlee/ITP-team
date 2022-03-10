@@ -38,7 +38,7 @@ function MyPageCommunityBoard(props) {
 };
 fetchGroup();
 
- },[]);
+ },[m_name]);
 
  
  useEffect(()=>{
@@ -66,7 +66,7 @@ fetchGroup();
 };
 fetchCom();
 
- },[]);
+ },[m_name]);
 
  
  if (loading) return <div>로딩중..</div>;

@@ -5,8 +5,8 @@ import { Formik } from 'formik';
 import MainCarousel from '../components/main/MainCarousel';
 import '../components/login/login.scss'
 
-function login() {
- 
+function Login() {
+        
         const initialValues = {// 각 양식 필드의 초기 값을 설명하는 객체
         // 각 키에 주어진 이름은 Formik에서 감시 할 입력 필드의 이름 값과 일치해야한다
         email: "",
@@ -84,9 +84,9 @@ function login() {
                             <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
                         </div>
                         <div>
-                        <Link to="/MainOnLogin">
+                      
                             <button id='btn' type="submit" className={dirty && isValid ? "" : "disabled-btn"} >로그인</button>
-                            </Link>
+                            
                         </div> 
                         <div className="loginBottom">
                             <Link to="#passwordfind" class="link-dark" style={{ textDecoration: 'none' }}>비밀번호 재설정 </Link>ㅣ
@@ -101,4 +101,4 @@ function login() {
 };
 // }
 
-export default login;
+export default Login;

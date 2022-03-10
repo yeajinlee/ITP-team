@@ -37,7 +37,7 @@ const MyPageCommunityComment = () => {
 };
 fetchCom();
 
- },[]);
+ },[m_name]);
  if (loading) return <div>로딩중..</div>;
  if (error) return <div>에러가 발생했습니다</div>;
 if (!Repdatas) return null;
@@ -52,7 +52,7 @@ if (!Repdatas) return null;
                         <thead>
                             <tr>
                                 <th>번호</th>
-                                <th>작성 글 번호</th>
+                                <th>작성 글 제목</th>
                                 <th>작성 댓글</th>
                                 <th>작성일</th>
                             </tr>
@@ -63,7 +63,7 @@ if (!Repdatas) return null;
                                 <td>{Repdata.r_rno}</td>
                                 <td>
                                     <Link to={'/Communication/'+Repdata.r_no} style={{ textDecoration: 'none' }}>
-                                        {Repdata.r_no}
+                                        {Repdata.c_title}
                                     </Link>
                                 </td>
                                 <td>
