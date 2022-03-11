@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, } from 'react-router-dom';
 import { Formik } from 'formik';
-import MainCarousel from '../components/main/MainCarousel';
 import '../components/login/login.scss'
 
 function Login() {
@@ -25,18 +24,18 @@ function Login() {
 
         //이메일 값이 없을 경우
         if (!values.email) {
-            errors.email = "";
+            errors.email = "이메일을 입력해주세요";
             //정규식에 어긋나는 경우
         } else if (!emailRegex.test(values.email)) {
-            errors.email = "";
+            errors.email = "이메일 형식으로 입력해주세요";
         }
 
         //비밀번호 값이 없을 경우
         if (!values.pw) {
-            errors.pw = "";
-            //비밀번호 길이가 4글자보다 작을 경우
+            errors.pw = "비밀번호 값이 입력되지 않았습니다.";
+            //비밀번호 길이가 8글자보다 작을 경우
         } else if (!pwRegex.test(values.pw)) {
-            errors.pw = "";
+            errors.pw = "비밀번호 8자리 이상 입력해주세요";
         }
 
         return errors;
@@ -58,27 +57,20 @@ function Login() {
                 //💡 formik의 render API 속성들 입니다.
                 const { values, handleChange, handleSubmit, errors, touched, handleBlur, isValid, dirty } = formik;
                 return (
-                <div id='Login'>
-                    <MainCarousel />
-                    <br />
-                    <div className="title">로그인</div>
+                    <div id='LoginAll'>
                     <br />
                     {/* form */}
                     <form onSubmit={handleSubmit} action="#" className="loginForm">
-                        <div className="emailLogin">
-                            <input type="email" name="email" id="email" value={values.email}  onChange={handleChange} onBlur={handleBlur}
+                    <p className="loginTitle">로그인</p>
+                            <input type="email" id="emailLogin" name="email" value={values.email}  onChange={handleChange} onBlur={handleBlur}
                             className={errors.email && touched.email ? "input-error" : null} placeholder="메일" />
                             {/* 이메일 에러나 이메일 터치했을 때 span 실행 */}
                             {errors.email && touched.email && (<span className="error">{errors.email}</span>)}
-                        </div>
                         <br />
-                        <div className="passwordLogin">
-                            <input type="password" name="pw" id="pw" value={values.pw} onChange={handleChange} onBlur={handleBlur}
+                            <input type="password" id="passwordLogin" name="pw" value={values.pw} onChange={handleChange} onBlur={handleBlur}
                             className={errors.pw && touched.pw ? "input-error" : null} placeholder="비밀번호" minlength="8" maxlength="16" />
                             {/* 비밀번호 에러나 비밀번호 터치했을 때 span 실행 */}
                             {errors.pw && touched.pw && (<span className="error">{errors.pw}</span>)}
-                        </div>
-                        <br />
                         <div class="mb-3" className='loginCheck'>
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                             <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
