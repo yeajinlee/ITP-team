@@ -29,6 +29,7 @@ function Register() {
 
     const checkname=(e)=>{
         const nameRegex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9]{2,15}$/; 
+
         if(m_name===null||''){
              setIsName(false);
             }
@@ -40,6 +41,7 @@ function Register() {
     const checkemail=(e)=>{
        // const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         const emailRegex=/^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+
         if(m_email===''){
              setIsEmail(false);
             }
@@ -51,6 +53,7 @@ function Register() {
     const checkPassword = (e) => {
         const pwdRegex=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,16}$/
         //const pwdRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+
         if(m_passwd===''){
             setIsPassword(false); 
         }
@@ -74,6 +77,7 @@ function Register() {
 
     const checkboxchecked= (e) =>{
         if(checked==='false'){
+
             setIscheckboxchecked(false);
         }else  setIscheckboxchecked(true);
        

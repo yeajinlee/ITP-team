@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface techMapper {
 	
-	@Select("select * from tech")
+	@Select("select * from tech order by no desc")
 	public List<techDTO> gettechListAll();
 	
 

@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.finalp.com.ComDTO;
 
 
 
@@ -31,7 +30,7 @@ public interface GroupMapper {
 	List<GroupDTO> getmygroupList(@Param("m_name") String m_name);
 	
 	
-	@Select("select * from itp_group")
+	@Select("select * from itp_group order by g_no desc")
 	List<GroupDTO> getgroupListAlll();
 	
 	//메인화면에 보여질 최신순 3개
