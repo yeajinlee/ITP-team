@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ItTechnologyReact from './ItTechnologyReact';
 import ItTechnologySpring from './ItTechnologySpring';
+import ItTechnologyVue from './ItTechnologyVue';
 
 
 const ItTechnologyMain=()=>{
@@ -57,6 +58,7 @@ if (!techs) return null;
                     ))} */}
                     <ItTechnologyReact/>
                     <ItTechnologySpring/>
+                    <ItTechnologyVue/>
                 </ul>
                 </div>
             </div>

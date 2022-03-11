@@ -99,6 +99,40 @@ public class TechController {
 		
 			return springMap;
 		}
+		
+		@GetMapping("/itTech/vue")
+		public Map<String, Object> getVueArciles() {
+			Map<String, Object> vueMap = new HashMap<String, Object>();
+			ArrayList<Object> vueArray = new ArrayList<Object>();
+			try {
+				Document vueDoc = Jsoup.connect("https://news.vuejs.org/archive").get();
+				Element vueEl;
+				
+				for(int i = 0; i <= 2; i++) {
+					vueEl = vueDoc.getElementsByClass("issue-title").get(i);
+					String title = vueEl.text();
+					vueEl = vueDoc.getElementsByAttributeValueStarting("href", "/issues/").get(i);
+					String titleLink = vueEl.attr("href");
+//					titleLink = titleLink.substring(0, titleLink.indexOf("\""));
+					title = title.replace(",", " ");
+					System.out.println(title);
+					System.out.println(titleLink);
+					//리액트로 보낼 데이터
+					Map<String, String> titleMap = new HashMap<String, String>();
+					titleMap.put("title", title);
+					titleMap.put("titleLink", titleLink);
+					vueArray.add(i, titleMap);
+					System.out.println(vueArray);
+					vueMap.put("articles", vueArray);
+				}
+			
+				System.out.println(vueMap);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			return vueMap;
+		}
 	}
 
 
