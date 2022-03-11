@@ -38,36 +38,66 @@ public class TechController {
 		
 		@GetMapping("/itTech/react")
 		public Map<String, Object> getReactArticle() {
-			Map<String, Object> articlesMap = new HashMap<String, Object>();
-			ArrayList<Object> articlesArray = new ArrayList<Object>();
-			Map<String, String> titleMap = new HashMap<String, String>();
+			Map<String, Object> reactMap = new HashMap<String, Object>();
+			ArrayList<Object> reactArray = new ArrayList<Object>();
+			
 //			Document doc = Jsoup.connect("https://ko.reactjs.org/blog/all.html").get();
 			try {
 				Document reactDoc = Jsoup.connect("https://ko.reactjs.org/blog/all.html").get();
-				Element titleE;
+				Element reactEl;
 				
 				for(int i = 0; i <= 2; i++) {
-					titleE = reactDoc.select("body h2").get(i);
-					String title = titleE.text();
-					String titleLink = titleE.html().replaceAll("<a class=\"css-m6cbzp\" href=\"", "");
+					reactEl = reactDoc.select("body h2").get(i);
+					String title = reactEl.text();
+					String titleLink = reactEl.html().replaceAll("<a class=\"css-m6cbzp\" href=\"", "");
 					titleLink = titleLink.substring(0, titleLink.indexOf("\""));
 					System.out.println(title);
 					//리액트로 보낼 데이터
+					Map<String, String> titleMap = new HashMap<String, String>();
 					titleMap.put("title", title);
 					titleMap.put("titleLink", titleLink);
-					articlesArray.add(titleMap);
-					articlesMap.put("articles", articlesArray);
+					reactArray.add(i, titleMap);
+					System.out.println(reactArray);
+					reactMap.put("articles", reactArray);
 				}
 			
-				System.out.println(articlesMap);
+				System.out.println(reactMap);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			return reactMap;
+		}
+		
+		@GetMapping("/itTech/spring")
+		public Map<String, Object> getSpringArticle() {
+			Map<String, Object> springMap = new HashMap<String, Object>();
+			ArrayList<Object> springArray = new ArrayList<Object>();
+			try {
+				Document springDoc = Jsoup.connect("https://spring.io/blog").get();
+				Element springEl;
+				
+				for(int i = 0; i <= 2; i++) {
+					springEl = springDoc.select("body h2").get(i);
+					String title = springEl.text();
+					String titleLink = springEl.html().replaceAll("<a href=\"", "");
+					titleLink = titleLink.substring(0, titleLink.indexOf("\""));
+					title = title.replace(",", " ");
+					System.out.println(title);
+					//리액트로 보낼 데이터
+					Map<String, String> titleMap = new HashMap<String, String>();
+					titleMap.put("title", title);
+					titleMap.put("titleLink", titleLink);
+					springArray.add(i, titleMap);
+					System.out.println(springArray);
+					springMap.put("articles", springArray);
+				}
 			
-			
-			
-			
-			return articlesMap;
+				System.out.println(springMap);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			return springMap;
 		}
 	}
 
