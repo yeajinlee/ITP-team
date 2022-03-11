@@ -72,9 +72,7 @@ if (!Noticedatas) return null;
         </tbody>
       </Table>
       {/* 관리자용 */}
-      <div className='noticeButton'>
-      <input type="button" value="글쓰기" onClick={AddNoticePage} />
-      </div>
+      <button className='noticeButton' value="글쓰기" onClick={AddNoticePage} > 글쓰기</button>
     </div>
   );
 };

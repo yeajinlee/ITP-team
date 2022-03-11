@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import { useNavigate,useParams} from 'react-router-dom';
 import axios from 'axios';
+import { Button, Form } from 'react-bootstrap';
+
 
 const ChangeNotice = () => {
   const navigate = useNavigate();
@@ -42,17 +44,27 @@ const ChangeNotice = () => {
    }
   
   return (
-    <div>
-      <form>
-      <h3>공지사항수정</h3>
-      제목
-      <input onChange={(e)=>handlen_title(e)} type="text" id="n_title" name="n_title" placeholder={n_title} value={n_title}/>
-      <br/>
-      내용<textarea onChange={(e)=>handlen_content(e)} type="text" id="n_content" name="n_content" value={n_content}></textarea>
-      <br/>
-      <input type="button" value="취소" onClick={BackToNotice}/>
-      <button type="submit" value="등록" onClick={()=>submit()}>등록</button>
-      </form>
+    /* 옵션 기능만 빼면 소통공간 게시글 작성과 같기에 css를 넣지 않음. */
+    <div id='communityWritingAll'>
+      <p className='communityTitle'>공지사항 수정</p>
+      <Form className='writingForm'>
+        <Form.Group id='writingTop' controlId="exampleForm.ControlInput1">
+          <Form.Control type="text" onChange={(e)=>handlen_title(e)} placeholder="글 제목을 입력해주세요" />
+        </Form.Group>
+          <Form.Control as='textarea' onChange={(e)=>handlen_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
+      </Form>
+      <div id='button'>
+          <Button className='cancel me-2' onClick={BackToNotice}>
+            취소
+          </Button>
+        <Button 
+        type="submit"
+        className="submit-button"
+        onClick={()=>submit()}
+        >
+          등록
+        </Button>
+      </div>
     </div>
   );
 };

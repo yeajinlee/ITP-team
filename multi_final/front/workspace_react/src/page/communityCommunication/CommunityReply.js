@@ -123,23 +123,19 @@ if (!Repdatas) return null;
         {Repdatas.map((Repdata,index) => (
           <Table>
             <tbody>
-              <tr key={index}>
-                <td>
-                  {Repdata.r_name}
-                </td>
-                <td>
-                  {Repdata.r_content}
-                </td>
-                <td>
-                  {Repdata.r_date}
-                </td>
-                  <button value="삭제하기" onClick={()=>Delete(Repdata.r_rno)} >
-                    삭제하기
+              <div key={index} className='replyContent'>
+
+                  <p>{Repdata.r_name}</p>
+                  <p>{Repdata.r_content} | {Repdata.r_date}</p>
+                  <div>
+                  <button value="삭제" onClick={()=>Delete(Repdata.r_rno)} >
+                    삭제
                   </button>
-                  <button value="수정하기" onClick={()=>Update(Repdata.r_rno)} >
-                    수정하기
+                  <button value="수정" onClick={()=>Update(Repdata.r_rno)} >
+                    수정
                   </button>
-              </tr>
+                  </div>
+                </div>
             </tbody>
           </Table>
         ))}
