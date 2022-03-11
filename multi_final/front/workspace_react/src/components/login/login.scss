@@ -1,17 +1,38 @@
-#Login {
-  .title {
-    justify-content: center;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#LoginAll {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
+  height: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .loginTitle {
     text-align: center;
     font-weight: bold;
     font-size: 20px;
   }
-  .emailLogin {
+  #emailLogin {
+    width: 192px;
+    height: 30px;
+    border: 2px solid #3b9d9d;
     justify-content: center;
-    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
   }
-  .passwordLogin {
+  #passwordLogin {
+    border: 2px solid #3b9d9d;
+    width: 192px;
+    height: 30px;
     justify-content: center;
-    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
   }
   #btn {
     background-color: #3b9d9d;
@@ -21,6 +42,8 @@
     border: 0;
     width: 150px;
     height: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   .loginCheck {
     text-align: center;

@@ -1,24 +1,32 @@
-// 회원가입 상단
-div.title {
+* {
+  margin: 0;
+  padding: 0;
+}
+#registerAll {
   justify-content: center;
+  display: flex;
+  align-items: center;
   text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-// form 전체 적용
-form {
-  text-align: center;
-}
-
-// input 밑에 작은 글씨
-div p.RegisterBottom {
-  font-size: 5px;
-}
-
-// input 내부 글씨
-input::placeholder {
-  font-size: 13px;
+  width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
+  height: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  #registerForm {
+    .title {
+      // 회원가입 상단
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    // input 내부 글씨
+    input::placeholder {
+      font-size: 13px;
+    }
+    .inputHint {
+      // input 밑에 작은 글씨
+      font-size: 13px;
+    }
+  }
 }
 
 // 닉네임
@@ -30,4 +38,16 @@ input::placeholder {
 // 비밀번호 확인
 div.passwordLoginCheck div.pwCheckError {
   font-size: 10px;
+}
+
+.errorcode {
+  font-size: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.okcode {
+  font-size: 10px;
+  color: blue;
+  font-weight: bold;
 }
