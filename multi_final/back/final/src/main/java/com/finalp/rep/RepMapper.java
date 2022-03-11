@@ -18,9 +18,11 @@ public interface RepMapper {
 	int getrepListAll();
 	
 	//댓글보이게
-	@Select("select * from itp_reply where r_no=#{r_no}")
+	@Select("select * from itp_reply where r_no=#{r_no} order by r_rno desc")
 	public List<RepDTO> getrepdetailList(@Param("r_no") int r_no);
 	
+	@Select("select r.*,c.c_title,c.c_no from itp_reply r inner join itp_com c on r.r_no=c.c_no and r_name=#{m_name}")
+	List<RepDTO> getmyrepList(@Param("m_name") String m_name);
 	//수정
 		@Update("UPDATE itp_reply SET r_content= #{r_content} WHERE r_rno= #{r_rno}")
 		int updateRep(

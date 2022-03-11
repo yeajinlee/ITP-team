@@ -19,7 +19,14 @@ const AddNotice = () => {
    const handlen_content=(e)=>{
      setn_content(e.target.value)
    }
-   const n_date =new Date().toISOString()
+   var today = new Date();
+
+   var year = today.getFullYear();
+   var month = ('0' + (today.getMonth() + 1)).slice(-2);
+   var day = ('0' + today.getDate()).slice(-2);
+   
+   const n_date= year + '-' + month  + '-' + day;
+
    const submit=()=>{
      console.log(n_title)
      console.log(n_content)
