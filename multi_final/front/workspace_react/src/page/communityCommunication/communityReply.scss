@@ -5,6 +5,8 @@
     input {
       width: 864px;
       height: 50px;
+      border: 1px solid #3b9d9d;
+      border-radius: 5px;
     }
     button {
       margin-left: 16px;
@@ -19,10 +21,13 @@
   }
   #replyBottom {
     margin-top: 20px;
+    .replyContent {
+      display: flex;
+    }
     button {
       float: right;
       margin-right: 16px;
-      width: 96px;
+      width: 48px;
       border: 1px solid #3b9d9d;
       background-color: #3b9d9d;
       color: white;

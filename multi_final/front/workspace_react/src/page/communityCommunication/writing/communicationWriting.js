@@ -83,9 +83,6 @@ const CommunicationWriting = () => {
             </Form.Select>
             <Form.Control type="text" onChange={(e)=>handlec_title(e)} placeholder="글 제목을 입력해주세요" />
           </Form.Group>
-            <Form.Group id='writingSub' controlId="formFile">
-              <Form.Control type="file" />
-            </Form.Group>
             <Form.Control as='textarea' onChange={(e)=>handlec_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
         </Form>
         <div id='button'>
