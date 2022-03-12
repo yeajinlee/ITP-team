@@ -81,7 +81,6 @@ if (!Groupdatas) return null;
       <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
       <button className='groupDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>
       <button className='groupDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제하기 </button>
-      <button className='groupDetailButton' value="신청하기"> 신청하기 </button>
       </div>
     </div>
   

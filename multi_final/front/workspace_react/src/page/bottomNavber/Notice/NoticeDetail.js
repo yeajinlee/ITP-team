@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import './noticeDetail.scss'
 
 const NoticeDetail = () => {
   const { no } = useParams();
@@ -54,36 +54,30 @@ if (error) return <div>에러가 발생했습니다</div>;
 if (!Noticedatas) return null;
 
   return (
-    <div>
-      
-      <h3>공지사항</h3>
-     <div>
+    <div id='noticeDetailAll'>
+      <p className='noticeDetailTop'>공지사항</p>
+     <div id='detailNoticePost'>
       {Noticedatas.map((Noticedata,index) => (
       <Table>
-        
         <tbody>
-          <tr key={index}>
-            <th>제목</th> <td>{Noticedata.n_title}</td>
-          </tr>
-          <tr>
-            <th>작성자</th> <td>관리자</td>
-          </tr>
-          <tr>
-            <th>작성일</th> <td>{Noticedata.n_date}</td>
-          </tr>
-          <tr>
-            <td colSpan={2}>{Noticedata.n_content}</td>
-          </tr>
+          <div key={index} id='detailTitle'>
+            <p className='noticeTitle'>
+           {Noticedata.n_title}
+            </p>
+            <p>{Noticedata.n_date} </p>
+            </div>
+          <div className='noticeContent'>{Noticedata.n_content}</div>
         </tbody>
         
       </Table>
       ))}
      </div>
-      <input type="button" value="목록으로" onClick={BackToNotice} />
-      <input type="button" value="수정하기" onClick={()=>Update(no)} />
-      <input type="button" value="삭제하기" onClick={()=>Delete(no)} />
+      <button value="목록으로" onClick={BackToNotice}>목록으로</button>
+      <button value="수정하기" onClick={()=>Update(no)}>수정하기</button>
+      <button value="삭제하기" onClick={()=>Delete(no)}>삭제하기</button>
     
     </div>
+    
   
   );
 };

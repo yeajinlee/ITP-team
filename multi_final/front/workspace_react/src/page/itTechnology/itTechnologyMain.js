@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './itTechnologyMain.scss'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import ItTechnologyReact from './ItTechnologyReact';
+import ItTechnologySpring from './ItTechnologySpring';
+import ItTechnologyVue from './ItTechnologyVue';
 
 
 const ItTechnologyMain=()=>{
@@ -40,7 +43,7 @@ if (!techs) return null;
             <p className='itTechPageTitle'>IT 기술</p>
             <div>
                 <ul className="skill_list">
-                    {techs.map((tech)=>(
+                    {/* {techs.map((tech)=>(
                         <li key={tech.no}>
                             <Link to={"/itTech/" + tech.no} className="itTechLink">
                                 <span className='itTechSpan'>
@@ -52,7 +55,10 @@ if (!techs) return null;
                                 </span>
                             </Link>
                         </li>
-                    ))}
+                    ))} */}
+                    <ItTechnologyReact/>
+                    <ItTechnologySpring/>
+                    <ItTechnologyVue/>
                 </ul>
                 </div>
             </div>

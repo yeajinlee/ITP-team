@@ -65,7 +65,9 @@ if (!Comdatas) return null;
       <Table>
         <tbody>
           <div key={index} className='detailTitle'>
-            <p className='communityTitle'>{Comdata.c_title}</p>
+            <p className='communityTitle'>
+              {Comdata.c_title}
+              </p>
             <p>{Comdata.c_name} | {Comdata.c_tag}</p>
             </div>
           <div className='detailContent'>{Comdata.c_content}</div>

@@ -2,6 +2,7 @@
   "dependencies": {
     "ckeditor5": "^32.0.0",
     "include-media": "^1.4.10",
-    "open-color": "^1.9.1"
+    "open-color": "^1.9.1",
+    "react-hook-form": "^7.27.1"
   }
 }

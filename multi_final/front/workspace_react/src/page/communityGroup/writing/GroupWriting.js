@@ -80,9 +80,6 @@ const GroupWriting = () => {
               <option value="프로젝트">프로젝트</option>
               <option value="기타">기타</option>
             </Form.Select>
-            <Form.Group className='writingFile'controlId="formFile">
-              <Form.Control  type="file" />
-            </Form.Group>
           </Form.Group>
             <Form.Control as='textarea' onChange={(e)=>handleg_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
         </Form>
