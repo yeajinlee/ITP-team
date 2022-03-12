@@ -13,8 +13,7 @@ const CommunityReply = () => {
   const[Repdatas,setRepdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  
+    
   
   function Delete(num){
        

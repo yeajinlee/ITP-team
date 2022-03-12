@@ -1,82 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, } from 'react-router-dom';
-import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
 import MainCarousel from '../components/main/MainCarousel';
 import '../components/login/login.scss'
+import axios from 'axios';
 
 function Login() {
-        
-        const initialValues = {// 각 양식 필드의 초기 값을 설명하는 객체
-        // 각 키에 주어진 이름은 Formik에서 감시 할 입력 필드의 이름 값과 일치해야한다
-        email: "",
-        pw: "",
-    };
+    let [m_email, setmemail] = useState('');
+    let [loginPassword, setLoginPassword] = useState('');
+ //   const [loginpasswordtemp, setloginpasswordtemp]=useState('');
+   
+    let sessionStorage = window.sessionStorage;
+      
 
-
-
-    // 데이터 폼 유효성 검사를 처리하는 함수를 받는다. 데이터 값 형식의 객체를 인수로 받아들이고 정의 된 규칙에 따라 객체의 각 속성의 유효성을 검사
-    const validate = (values) => {
-        // 값 객체의 각 키는 입력 필드의 이름과 일치해야한다
-        let errors = {};
-
-        const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        const pwRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-
-        //이메일 값이 없을 경우
-        if (!values.email) {
-            errors.email = "";
-            //정규식에 어긋나는 경우
-        } else if (!emailRegex.test(values.email)) {
-            errors.email = "";
-        }
-
-        //비밀번호 값이 없을 경우
-        if (!values.pw) {
-            errors.pw = "";
-            //비밀번호 길이가 4글자보다 작을 경우
-        } else if (!pwRegex.test(values.pw)) {
-            errors.pw = "";
-        }
-
-        return errors;
-    };
-
-    // submitForm : 폼 데이터의 제출을 처리한다
-    const submitForm = (values) => {
-        console.log(values);
-    };
-
+    const submit=(m_email)=>{
+        axios.get(`http://localhost:8085/member/dupliemail?m_email=${m_email}`)
+        .then(response => {    
+            console.log(response.data);
+           // console.log(response.data[0].m_passwd);
+           // setloginpasswordtemp(response.data[0].m_passwd);
+                     
+            const loginm_name=response.data[0].m_name;
+            
+            if(loginPassword===(response.data[0].m_passwd)){
+                sessionStorage.setItem("loginemail", m_email);
+                sessionStorage.setItem("loginPassword", loginPassword);//비밀번호
+                sessionStorage.setItem("m_name",loginm_name); //닉네임
+                document.location.href = '/'
+                 }
+                 else alert('비밀번호가 올바르지 않습니다');   
+         })
+         .catch(error => {
+            console.log(error);
+         });
+      
+         
+    }
+   
     return (
 
-        // initialValues : 각 양식 필드의 초기 값을 설명하는 객체
-        // validate : 데이터 폼 유효성 검사를 처리하는 함수를 받음
-        // onSubmit : 사용자가 제출 한 후 발생하는 작업을 처리
-        // 💡 값 객체의 각 키는 입력 필드의 이름과 일치해야합니다.
-        <Formik initialValues={initialValues} validate={validate} onSubmit={submitForm}>
-            {(formik) => { //💡 formik props
-                //💡 formik의 render API 속성들 입니다.
-                const { values, handleChange, handleSubmit, errors, touched, handleBlur, isValid, dirty } = formik;
-                return (
-                <div id='Login'>
+        
+                  <div id='Login'>
                     <MainCarousel />
                     <br />
                     <div className="title">로그인</div>
                     <br />
                     {/* form */}
-                    <form onSubmit={handleSubmit} action="#" className="loginForm">
+                    <form  className="loginForm">
                         <div className="emailLogin">
-                            <input type="email" name="email" id="email" value={values.email}  onChange={handleChange} onBlur={handleBlur}
-                            className={errors.email && touched.email ? "input-error" : null} placeholder="메일" />
+                            <input type="m_email" name="email" id="email" onChange={ (e)=>{
+                    setmemail(e.target.value)}} placeholder="메일" />
                             {/* 이메일 에러나 이메일 터치했을 때 span 실행 */}
-                            {errors.email && touched.email && (<span className="error">{errors.email}</span>)}
+                            
                         </div>
                         <br />
                         <div className="passwordLogin">
-                            <input type="password" name="pw" id="pw" value={values.pw} onChange={handleChange} onBlur={handleBlur}
-                            className={errors.pw && touched.pw ? "input-error" : null} placeholder="비밀번호" minlength="8" maxlength="16" />
+                            <input type="password" name="pw" id="pw" 
+                        placeholder="비밀번호" minlength="8" maxlength="16" onChange={ (e)=>{
+                            setLoginPassword(e.target.value)}}/>
                             {/* 비밀번호 에러나 비밀번호 터치했을 때 span 실행 */}
-                            {errors.pw && touched.pw && (<span className="error">{errors.pw}</span>)}
+                          
                         </div>
                         <br />
                         <div class="mb-3" className='loginCheck'>
@@ -85,7 +68,7 @@ function Login() {
                         </div>
                         <div>
                       
-                            <button id='btn' type="submit" className={dirty && isValid ? "" : "disabled-btn"} >로그인</button>
+                            <button id='btn' type="submit" onClick={()=>submit(m_email)}  >로그인</button>
                             
                         </div> 
                         <div className="loginBottom">
@@ -95,10 +78,7 @@ function Login() {
                     </form>
                 </div>
                 );
-            }}
-        </Formik>
-    );
-};
-// }
+       
+ }
 
 export default Login;

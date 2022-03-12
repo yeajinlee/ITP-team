@@ -64,6 +64,8 @@ const ChangeNotice = () => {
             const response=await axios.get(`http://localhost:8085/notice/${no}`);
             console.log(response.data);
             setNoticedata(response.data);
+            setn_title(response.data[0].n_title)
+            setn_content(response.data[0].n_content)
            
 
         }catch(e){
@@ -88,7 +90,7 @@ if (!Noticedatas) return null;
       <form>
       <h3>공지사항수정</h3>
       제목
-      <input onChange={(e)=>handlen_title(e)} type="text" id="n_title" name="n_title" placeholder={Noticedatas.n_title} value={n_title}/>
+      <input onChange={(e)=>handlen_title(e)} type="text" id="n_title" name="n_title" placeholder={n_title} value={n_title}/>
       <br/>
       내용<textarea onChange={(e)=>handlen_content(e)} type="text" id="n_content" name="n_content" value={n_content}></textarea>
       <br/>
