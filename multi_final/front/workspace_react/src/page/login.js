@@ -65,12 +65,12 @@ function Login() {
                             <input type="email" id="emailLogin" name="email" value={values.email}  onChange={handleChange} onBlur={handleBlur}
                             className={errors.email && touched.email ? "input-error" : null} placeholder="메일" />
                             {/* 이메일 에러나 이메일 터치했을 때 span 실행 */}
-                            {errors.email && touched.email && (<span className="error">{errors.email}</span>)}
+                            {errors.email && touched.email && (<p className="error">{errors.email}</p>)}
                         <br />
                             <input type="password" id="passwordLogin" name="pw" value={values.pw} onChange={handleChange} onBlur={handleBlur}
                             className={errors.pw && touched.pw ? "input-error" : null} placeholder="비밀번호" minlength="8" maxlength="16" />
                             {/* 비밀번호 에러나 비밀번호 터치했을 때 span 실행 */}
-                            {errors.pw && touched.pw && (<span className="error">{errors.pw}</span>)}
+                            {errors.pw && touched.pw && (<p className="error">{errors.pw}</p>)}
                         <div class="mb-3" className='loginCheck'>
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                             <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
@@ -80,9 +80,9 @@ function Login() {
                             <button id='btn' type="submit" className={dirty && isValid ? "" : "disabled-btn"} >로그인</button>
                             
                         </div> 
-                        <div className="loginBottom">
-                            <Link to="#passwordfind" class="link-dark" style={{ textDecoration: 'none' }}>비밀번호 재설정 </Link>ㅣ
-                            <Link to="/Register" class="link-dark" style={{ textDecoration: 'none' }}> 메일 주소로 회원가입 </Link>
+                        <div>
+                            <Link to="#passwordfind" className='loginBottom' >비밀번호 재설정 </Link>ㅣ
+                            <Link to="/Register" className='loginBottom'> 메일 주소로 회원가입 </Link>
                         </div>
                     </form>
                 </div>
