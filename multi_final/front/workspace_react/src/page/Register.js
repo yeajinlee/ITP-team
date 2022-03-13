@@ -155,38 +155,39 @@ function Register() {
             <div id="registerAll">
                 {/* form */}
                 <form  action="#" id="registerForm">
+                    <div id='registerInput'>
                 <p className="title">회원가입</p>
                 {/* 닉네임 입력 */}
-                    <input type="text" name="m_name" id="m_name" value={m_name} onChange={(e)=>setm_name(e.target.value)} onBlur={checkname}
+                    <input type="text" name="m_name" value={m_name} onChange={(e)=>setm_name(e.target.value)} onBlur={checkname}
                     placeholder="닉네임" />
-                    <button name="m_namecheck" id="m_namecheck" onClick={()=>m_namecheck(m_name)}>중복확인</button>
+                    <button name="m_namecheck" className='duplicateCheck' onClick={()=>m_namecheck(m_name)}>중복확인</button>
                     <p className='inputHint'>한글, 영문, 숫자 포함 15자 이하</p>
                     {isName===false ? (<p className='errorcode'>닉네임을 다시입력해주세요</p>)  :
                     (<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}
                 {/* 이메일 입력 */}
-                    <input type="text" name="m_email" id="m_email" value={m_email} onChange={(e)=>setm_email(e.target.value)} onBlur={checkemail}
+                    <input type="text" name="m_email" value={m_email} onChange={(e)=>setm_email(e.target.value)} onBlur={checkemail}
                     placeholder="메일" />
-                    <button name="m_emailcheck" id="m_emailcheck" onClick={()=>m_emailcheck(m_email)}>중복확인</button>
+                    <button name="m_emailcheck" className='duplicateCheck' onClick={()=>m_emailcheck(m_email)}>중복확인</button>
                     {isEmail===false ? (<p className='errorcode'>이메일을 다시입력해주세요</p>)  :
                     (<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}
                 {/* 비밀번호 입력 */}
-                    <input type="password" name="m_passwd" id="m_passwd" value={m_passwd} onChange={(e)=>setm_passwd(e.target.value)} onBlur={checkPassword}
+                    <input type="password" name="m_passwd" value={m_passwd} onChange={(e)=>setm_passwd(e.target.value)} onBlur={checkPassword}
                     placeholder="비밀번호" minlength="8" maxlength="16" />
                     <p className='inputHint'>영문 대소문자, 숫자, 특수문자 포함 8자 이상</p>        
                     {isPassword===false ? (<p className='errorcode'>패스워드를 다시입력해주세요</p>)  :
                     (<p className='okcode'>사용가능한 형식입니다</p>)}
                 {/* 비밀번호 확인 */}
-                    <input type="password" name="m_passwdcheck" id="m_passwdcheck" value={m_passwdcheck} onChange={(e)=>setm_passwdcheck(e.target.value)} onBlur={checkpassword2}
+                    <input type="password" name="m_passwdcheck" value={m_passwdcheck} onChange={(e)=>setm_passwdcheck(e.target.value)} onBlur={checkpassword2}
                     placeholder="비밀번호확인" minlength="8" maxlength="16" />
                     {isPasswordcheck===false ? (<p className='errorcode'>패스워드가 올바르지않습니다</p>)  :
                     (<p className='okcode'>일치합니다</p>)}
-                <div className='loginCheck'>
+                </div>
+                <div id='registerCheck'>
                     <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange} onBlur={checkboxchecked} />
                     <label class="form-check-label" for="exampleCheck1">회원 가입에 동의 하시나요?</label>
-                </div>
-                <div className="btn">
-                    <input type="submit" value="회원가입" onClick={submitForm}/>                        
+                
                     </div>
+                    <button type="submit" className='signUpButton' value="회원가입" onClick={submitForm}>회원가입</button>
                     <Link to="/myPageBoard">
                         <div>마이페이지 테스트 이동용</div>
                     </Link>
