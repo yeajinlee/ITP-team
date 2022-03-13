@@ -1,16 +1,12 @@
-import React,{useState,useEffect} from 'react';
-import { Card, Button} from 'react-bootstrap';
-/* import { Link } from 'react-router-dom'; */
-import './groupBoard.scss'
-//import groupBoard from './GroupBoradData.json'
-import axios from 'axios'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import '../communityCommunication/communicationBoard.scss';
+const CommunicationBoard = () => {
 
-
-
-const GroupBorad = () => {
   const page=1;
-  const[Groupdatas,setGroupdata]=useState([]);
+  const[Comdatas,setComdata]=useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const[title,settitle]=useState('');
@@ -22,32 +18,28 @@ const GroupBorad = () => {
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
 
- 
-const handlesearch=()=>{
-  setsearch(title);
- 
- 
-}
-
-const handleClickpage=(e)=>{
-  setcurrentpage(Number(e.target.id))
-}
-
-
-
-console.log(Groupdatas.length);
 
   const pagenums=[];
-  for(let i=1;i<=Math.ceil((Groupdatas.length)/itemsPerPage);i++){
+  for(let i=1;i<=Math.ceil((Comdatas.length)/itemsPerPage);i++){
     pagenums.push(i);
   }
   console.log(pagenums);
 
   const indexOfLastItem=currentpage*itemsPerPage; //마지막 갯수
   const indexOfFirstItem=indexOfLastItem-itemsPerPage;
-  const currentItems=Groupdatas.slice(indexOfFirstItem,indexOfLastItem);
+  const currentItems=Comdatas.slice(indexOfFirstItem,indexOfLastItem);
 
   console.log(currentItems);
+
+  const handlesearch=()=>{
+    setsearch(title);
+   
+   
+  }
+  
+  const handleClickpage=(e)=>{
+    setcurrentpage(Number(e.target.id))
+  }
 
   const renderPagenum=pagenums.map((number)=>{
     if(number<maxpageNumberLimit+1&&number>minpageNumberLimit){
@@ -69,7 +61,7 @@ console.log(Groupdatas.length);
 
 
   useEffect(()=>{
-    const fetchGroup=async()=>{
+    const fetchCom=async()=>{
       try {
      
           setError(null);
@@ -77,8 +69,8 @@ console.log(Groupdatas.length);
           // loading 상태를 true
           setLoading(true); 
           
-          const response=await axios.get(`http://localhost:8085/group/listAll`,null);
-          setGroupdata(response.data);
+          const response=await axios.get(`http://localhost:8085/com/listAll`,null);
+          setComdata(response.data);
           
         }catch(e){
           setError(e);
@@ -87,7 +79,7 @@ console.log(Groupdatas.length);
     
   
 };
-fetchGroup();
+fetchCom();
 
  },[page]);
 
@@ -122,41 +114,45 @@ fetchGroup();
 
  if (loading) return <div>로딩중..</div>;
  if (error) return <div>에러가 발생했습니다</div>;
-if (!Groupdatas) return null;
+if (!Comdatas) return null;
     return (
         <div>
-          <br />
-          
-          <div id='firstLine' className='boardFirstLine'>
-            
-         { currentItems.filter((Groupdatas)=>{
-          if(search===""){
-         return Groupdatas
-         }else if(Groupdatas.g_title.includes(search)){
-         return Groupdatas
-         }
-         }).map((currentItems) =>
-          <Card style={{ width: '18rem' }} >
-            <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
-             <Card.Body key={currentItems.g_no}>
-              <Card.Img variant='top' src={currentItems.g_img} />
-              <Card.Title className='title'>{currentItems.g_title}</Card.Title>
-              <Card.Text className='cardText'> {currentItems.g_subtitle}</Card.Text>
-              <br />
-              <Card.Body className='bodyLink'>
-                <Card.Link className='link' href="#">{currentItems.g_name}</Card.Link>
-                <Card.Link className='link' href="#">{currentItems.g_tag}</Card.Link>
-              </Card.Body>
-            </Card.Body>
-            </Link>
-           </Card>
-         )}
-        
-          
-      
-          <br /><br /><br /><br />
-          </div>
-          <br /><br /><br />
+            <div id='mainBoard' className='communicationBoard'>
+            <Link to='/communicationWriting'><Button className='cWritingButton'>글쓰기</Button></Link>
+                <br />
+                <p>소통 공간</p>
+                <Table>
+                    <thead>
+                        <tr>
+                          <th>번호</th>
+                          <th>제목</th>
+                          <th>작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         { currentItems.filter((val)=>{
+                   if(search===""){
+                 return val
+                }else if(val.c_title.includes(search)){
+                    return val
+                        }
+                     }).map((currentItems,index) => (
+                            <tr key={index}>
+                                <td>{currentItems.c_no}</td>
+                                <td>
+                                    <Link to={'/Communication/'+currentItems.c_no} style={{ textDecoration: 'none' }}>
+                                        {currentItems.c_title}
+                                    </Link>
+                                </td>
+                                <td>
+                                    {currentItems.c_date}
+                                </td>
+                            </tr>
+                            ))}
+                    </tbody>
+                </Table>
+            </div>
+          <div id='communicationButton' >
           <ul className='pagenumbers'>
             <li>
               <button onClick={handleprevbtn}
@@ -174,10 +170,9 @@ if (!Groupdatas) return null;
               </button>
             </li>
             </ul>
-          <>
- 
-         
-    <input 
+           
+          </div>
+          <input 
       type="text"
       onChange={(e)=>settitle(e.target.value)} 
       id="title"
@@ -186,12 +181,8 @@ if (!Groupdatas) return null;
     />
   
   <button type="button" onClick={handlesearch}>검색</button>
-  <Link to='/groupWriting'><Button className='writingButton'>글쓰기</Button></Link>
-  </>
-     
-<br /><br />
         </div>
     );
 };
 
-export default GroupBorad;
+export default CommunicationBoard;

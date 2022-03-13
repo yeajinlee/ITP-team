@@ -1,8 +1,7 @@
 import React from 'react';
 import './css/MainCarousel.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import banner2 from '../image/banner2.jpg';
-import banner3 from '../image/banner3.jpg';
+
 import { Carousel } from 'react-bootstrap';
 
 const MainCarousel = () => {
@@ -13,9 +12,9 @@ const MainCarousel = () => {
           margin: '0 auto',
           alignContent: 'center',
           display: 'block',
-          width: 1024,
+          width: 1440,
           paddingTop: 30,
-          paddingLeft: 116
+          paddingBottom: 20
         }}
           id='cardImage'
           className='carousel'>
@@ -23,7 +22,7 @@ const MainCarousel = () => {
   <Carousel.Item>
     <img
     className="d-flex"
-      src={banner2}
+      src='./assets/banner_test1.png'
       alt="First slide"
     />
   </Carousel.Item>
@@ -31,14 +30,14 @@ const MainCarousel = () => {
     <img
     
     className="d-flex"
-      src={banner3}
+      src='./assets/banner_test2.png'
       alt="Second slide"
     />
   </Carousel.Item>
   <Carousel.Item>
     <img
     className="d-flex"
-      src={banner2}
+      src='./assets/banner_test3.png'
       alt="Third slide"
     />
   </Carousel.Item>

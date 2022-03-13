@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from "formik";
 import '../components/Register/Register.scss';
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
  
 function Register() {
     const initialValues = {// 각 양식 필드의 초기 값을 설명하는 객체
@@ -84,7 +84,7 @@ function Register() {
                                 </div>
                                 <div className="emailRegister">
                                     <input type="email" name="email" id="email" value={values.email} onChange={handleChange} onBlur={handleBlur}
-                                        className={errors.email && touched.email ? "input-error" : null} placeholder="메일" />
+                                        className={errors.email && touched.email ? "input-error" : null} placeholder="이메일" />
                                     {/* 이메일 에러나 이메일 터치했을 때 span 실행  span 사이에 추가하면 적용됨.*/}
                                     {errors.email && touched.email && (<span className="error"><br />{errors.email}</span>)}
                                 </div>
@@ -113,7 +113,7 @@ function Register() {
                                     <Link to="/login">
                                     <input type="submit" className={dirty && isValid ? "" : "disabled-btn"} value="회원가입" />
                                     </Link>
-                                    <Link to="/myPageCommunityBoard">
+                                    <Link to="/myPageMain">
                                         <div>마이페이지 테스트 이동용</div>
                                     </Link>
                                 </div>
