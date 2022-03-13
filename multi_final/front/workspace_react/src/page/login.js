@@ -87,9 +87,9 @@ function Login() {
                             <button id='btn' type="submit" onClick={()=>submit(m_email)}  >로그인</button>
                             
                         </div> 
-                        <div className="loginBottom">
-                            <Link to="#passwordfind" class="link-dark" style={{ textDecoration: 'none' }}>비밀번호 재설정 </Link>ㅣ
-                            <Link to="/Register" class="link-dark" style={{ textDecoration: 'none' }}> 메일 주소로 회원가입 </Link>
+                        <div>
+                            <Link to="#passwordfind" className='loginBottom' >비밀번호 재설정 </Link>ㅣ
+                            <Link to="/Register" className='loginBottom'> 메일 주소로 회원가입 </Link>
                         </div>
                     </form>
                 </div>
