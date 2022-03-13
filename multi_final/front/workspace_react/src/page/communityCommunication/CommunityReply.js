@@ -13,8 +13,7 @@ const CommunityReply = () => {
   const[Repdatas,setRepdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  
+  const [isLogin,setIslogin]=useState();
   
   function Delete(num){
        
@@ -24,10 +23,10 @@ const CommunityReply = () => {
       }
   
 
-     
-      const[r_content,setr_content]=useState('')
-      const r_name ='aab';
-      console.log(r_name);
+     // const [r_name,setr_name]=useState(''); //댓글쓴 이름
+      const[r_content,setr_content]=useState('');
+      const logir_name=sessionStorage.getItem('m_name'); //로그인했을때 닉네임
+
       
       const handler_content=(e)=>{
         setr_content(e.target.value)
@@ -40,7 +39,7 @@ const CommunityReply = () => {
       
       const r_date= year + '-' + month  + '-' + day;
 
-      console.log(r_content,r_name,r_date);
+      console.log(r_content,r_date);
 
       function Update(num){
      
@@ -66,7 +65,7 @@ const CommunityReply = () => {
           params:{
             'r_no':no,
             'r_content':r_content,
-            'r_name':r_name,
+            'r_name':logir_name,
             'r_date':r_date
            
           }
@@ -78,11 +77,20 @@ const CommunityReply = () => {
           console.log(res.data.n_title)
           console.log(res.data.n_content)
          
-          document.location.href=`/communication`;//성공시 목록으로 돌아가기
+          document.location.href=`/Communication/${no}`;//성공시 목록으로 돌아가기
         })
         .catch()
       }
   
+      useEffect(()=>{
+        if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
+          setIslogin(false);
+        }else if(sessionStorage.getItem('m_name')==='manager'){
+          setIslogin(true);
+        
+        }
+        else{setIslogin(true);}
+      },[isLogin]);
 
   useEffect(()=>{
       const fetchCom=async()=>{
@@ -95,6 +103,8 @@ const CommunityReply = () => {
               const response=await axios.get(`http://localhost:8085/rep/${no}`);
               console.log(response.data);
               setRepdata(response.data);
+              //setr_name(response.data[0].r_name);
+            
           }catch(e){
               setError(e);
           }
@@ -107,6 +117,7 @@ const CommunityReply = () => {
 },[no]);
 
 
+console.log(logir_name);
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
 if (!Repdatas) return null;
@@ -114,10 +125,16 @@ if (!Repdatas) return null;
   return (
       <div id='replyAll'>
         <div id='replyRegi'>
+        {(isLogin)?
+        <>
         <input type="text" onChange={(e)=>handler_content(e)}id="r_content" name="r_content" value={r_content} />
         <button value="등록하기" onClick={()=>submit()}>
           등록하기
         </button>
+        </>
+        :
+        <></>
+        }
         </div>
         <div id='replyBottom'>
         {Repdatas.map((Repdata,index) => (
@@ -125,8 +142,10 @@ if (!Repdatas) return null;
             <tbody>
               <div key={index} className='replyContent'>
 
-                  <p>{Repdata.r_name}</p>
-                  <p>{Repdata.r_content} | {Repdata.r_date}</p>
+                  <p>{Repdata.r_content}</p>
+                  <p>{Repdata.r_name} | {Repdata.r_date}</p>
+                  {
+            ((sessionStorage.getItem('m_name'))===Repdata.r_name||(localStorage.getItem('m_name'))===Repdata.r_name) ?
                   <div>
                   <button value="삭제" onClick={()=>Delete(Repdata.r_rno)} >
                     삭제
@@ -135,6 +154,9 @@ if (!Repdatas) return null;
                     수정
                   </button>
                   </div>
+                  :
+                  <></>
+                }
                 </div>
             </tbody>
           </Table>

@@ -16,7 +16,8 @@ const GroupWriting = () => {
     const[g_content,setg_content]=useState('')
     const[g_tag,setg_tag]=useState('')
     const g_img='https://blog.kakaocdn.net/dn/cZsyTw/btq0u5VBWge/F7xmauYA6r8nnbXSz2vJhK/img.png'
-    const g_name='User'
+    const g_name=sessionStorage.getItem('m_name');
+
 
     const handleg_title=(e)=>{
       setg_title(e.target.value)

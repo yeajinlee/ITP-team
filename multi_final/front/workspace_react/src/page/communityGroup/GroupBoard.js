@@ -20,7 +20,7 @@ const GroupBorad = () => {
   const pageNumberLimit=5;
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
-
+  const [isLogin,setIslogin]=useState();
  
 const handlesearch=()=>{
   setsearch(title);
@@ -66,6 +66,15 @@ console.log(Groupdatas.length);
     }
   });
 
+  useEffect(()=>{
+    if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
+      setIslogin(false);
+    }else if(sessionStorage.getItem('m_name')==='manager'){
+      setIslogin(true);
+    
+    }
+    else{setIslogin(true);}
+  },[isLogin]);
 
   useEffect(()=>{
     const fetchGroup=async()=>{
@@ -125,9 +134,12 @@ if (!Groupdatas) return null;
     return (
         <div id='GroupBoardMain'>
           <div>
+          {(isLogin)?
           <Link to='/groupWriting' >
             <Button  className='writingButton'>글쓰기</Button>
-          </Link>
+          </Link>:
+          <></>
+          }
           </div>
           <div className='boardFirstLine'>
             {currentItems.filter((Groupdatas)=>{

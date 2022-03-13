@@ -37,8 +37,10 @@ import GroupBoardChange from "./page/communityGroup/writing/GroupBoardChange";
 import CommunityDetail from "./page/communityCommunication/CommunityDetail"
 import CommunityChange from "./page/communityCommunication/writing/CommunityChange"
 
+
 const App = () => {
   
+
   return (
 
 // if문으로 참, 거짓 판단 후 출력하는 것도 고민해볼 것.

@@ -37,15 +37,22 @@ public class MemberController {
 		return mapper.insertMember(m_name,m_email,m_passwd,m_date,m_role);
 	}
 	
-	//아이디에 해당하는 내용만 조회
+	//닉네임에 해당하는 내용만 조회
 			@GetMapping("/member/dupliname")
 			public List<MemberDTO> Duplimname(@RequestParam("m_name") String m_name){
 				return mapper.Duplimname(m_name);  
 			}
 			
-			//아이디에 해당하는 내용만 조회
+			//이메일에 해당하는 내용만 조회
 			@GetMapping("/member/dupliemail")
 			public List<MemberDTO> Duplimemail(@RequestParam("m_email") String m_email){
 				return mapper.Duplimemail(m_email);  
 			}
+			
+			@RequestMapping(value="/member/login",method=RequestMethod.POST)
+			public List<MemberDTO> Loginmember(@RequestParam("m_email") String m_email){
+				return mapper.Loginmember(m_email);  
+			}
+			
+			
 }

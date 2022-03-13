@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../components/Register/Register.scss';
 import { Link, } from "react-router-dom";
 import axios from 'axios';
-
+import CryptoJS from 'crypto-js';
  
 function Register() {
    
@@ -11,7 +11,7 @@ function Register() {
     const [m_email,setm_email]=useState("");
     const [m_passwd,setm_passwd]=useState("");
     const[m_passwdcheck,setm_passwdcheck]=useState("");
-    const[checked,setchecked]=useState('false');
+    const[checked,setchecked]=useState(false);
     const m_role=1;
     const [isName, setIsName] = useState(false);
     const [isEmail, setIsEmail] = useState(false);
@@ -90,12 +90,12 @@ function Register() {
    
     //닉네임 중복체크
    function m_namecheck(m_name){
-   
+     
     axios.get(`http://localhost:8085/member/dupliname?m_name=${m_name}`)
     .then(response => {    
         console.log(response.data);
-        if(response.data.length>0)  { alert('중복입니다.'); setIsName(false);}
-        else { setIsName(true); alert('중복이 아닙니다..');}
+        if(response.data.length>0)  {setIsName(false); alert('중복입니다.'); }
+        else { setIsName(true); alert('중복이 아닙니다.');}
      })
      .catch(error => {
         console.log(error);
@@ -105,12 +105,12 @@ function Register() {
 
     //이메일 중복체크
     function m_emailcheck(m_email){
-   
+      
         axios.get(`http://localhost:8085/member/dupliemail?m_email=${m_email}`)
         .then(response => {    
             console.log(response.data);
-            if(response.data.length>0) setIsEmail(false);
-            else setIsEmail(true);
+            if(response.data.length>0) {setIsEmail(false); alert('중복입니다.'); }
+            else {setIsEmail(true); alert('중복이 아닙니다.');} 
             console.log({m_namecheck})
          })
          .catch(error => {
@@ -130,11 +130,12 @@ function Register() {
         console.log(m_passwdcheck);
         console.log(checked);}
      else if(isName===true&&isEmail===true&&isPassword===true&&isPasswordcheck===true&&ischeckboxchecked===true){
+        const m_passwdcrypto = CryptoJS.AES.encrypt(m_passwd, 'itp123').toString();
         axios.post(`http://localhost:8085/addMember`,null,{
             params:{
               'm_name':m_name,
               'm_email':m_email,
-              'm_passwd':m_passwd,
+              'm_passwd':m_passwdcrypto,
               'm_date':m_date,
               'm_role':m_role 
              
@@ -142,9 +143,7 @@ function Register() {
           })
           .then(res=>{
             console.log(res)
-            
-           
-            document.location.href=`/login`;//성공시 목록으로 돌아가기
+            document.location.href='/login';//성공시 로그인으로 돌아가기
           })
           .catch()
         }
@@ -160,14 +159,14 @@ function Register() {
                 {/* 닉네임 입력 */}
                     <input type="text" name="m_name" value={m_name} onChange={(e)=>setm_name(e.target.value)} onBlur={checkname}
                     placeholder="닉네임" />
-                    <button name="m_namecheck" className='duplicateCheck' onClick={()=>m_namecheck(m_name)}>중복확인</button>
+                    <input type="button" name="m_namecheck" id="m_namecheck" value="중복확인" onClick={()=>m_namecheck(m_name)}/>
                     <p className='inputHint'>한글, 영문, 숫자 포함 15자 이하</p>
                     {isName===false ? (<p className='errorcode'>닉네임을 다시입력해주세요</p>)  :
                     (<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}
                 {/* 이메일 입력 */}
                     <input type="text" name="m_email" value={m_email} onChange={(e)=>setm_email(e.target.value)} onBlur={checkemail}
                     placeholder="메일" />
-                    <button name="m_emailcheck" className='duplicateCheck' onClick={()=>m_emailcheck(m_email)}>중복확인</button>
+                   <input type="button" name="m_emailcheck" id="m_emailcheck" value="중복확인" onClick={()=>m_emailcheck(m_email)}/>
                     {isEmail===false ? (<p className='errorcode'>이메일을 다시입력해주세요</p>)  :
                     (<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}
                 {/* 비밀번호 입력 */}
@@ -185,9 +184,8 @@ function Register() {
                 <div id='registerCheck'>
                     <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange} onBlur={checkboxchecked} />
                     <label class="form-check-label" for="exampleCheck1">회원 가입에 동의 하시나요?</label>
-                
-                    </div>
-                    <button type="submit" className='signUpButton' value="회원가입" onClick={submitForm}>회원가입</button>
+                </div>
+                    <input type="submit" value="회원가입" className='signUpButton' onClick={submitForm}/>   
                     <Link to="/myPageBoard">
                         <div>마이페이지 테스트 이동용</div>
                     </Link>

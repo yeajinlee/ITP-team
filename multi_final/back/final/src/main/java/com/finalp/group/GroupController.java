@@ -84,10 +84,12 @@ public class GroupController {
 		@PutMapping("/updateGroup/{g_no}")
 		public int updateGroup(@PathVariable("g_no") int g_no,
 				@RequestParam(value="g_title",required=false) String g_title,
-				@RequestParam("g_content") String g_content
+				@RequestParam(value="g_subtitle",required=false) String g_subtitle,
+				@RequestParam("g_content") String g_content,
+				@RequestParam(value="g_tag",required=false) String g_tag
 		
 				) { 
-			return mapper.updateGroup(g_no,g_title,g_content);
+			return mapper.updateGroup(g_no,g_title,g_subtitle,g_content,g_tag);
 		
 		}
 		

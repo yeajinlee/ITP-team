@@ -17,7 +17,7 @@ const CommunicationBoard = () => {
   const pageNumberLimit=5;
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
-
+  const [isLogin,setIslogin]=useState();
 
   const pagenums=[];
   for(let i=1;i<=Math.ceil((Comdatas.length)/itemsPerPage);i++){
@@ -58,9 +58,18 @@ const CommunicationBoard = () => {
       return null;
     }
   });
-
+  useEffect(()=>{
+    if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
+      setIslogin(false);
+    }else if(sessionStorage.getItem('m_name')==='manager'){
+      setIslogin(true);
+    
+    }
+    else{setIslogin(true);}
+  },[isLogin]);
 
   useEffect(()=>{
+    
     const fetchCom=async()=>{
       try {
      
@@ -118,7 +127,10 @@ if (!Comdatas) return null;
     return (
         <div>
             <div id='mainBoard' className='communicationBoard'>
+              {(isLogin)?
             <Link to='/communicationWriting'><Button className='cWritingButton'>글쓰기</Button></Link>
+            :<></>
+            }
                 <br />
                 <p>소통 공간</p>
                 <Table>

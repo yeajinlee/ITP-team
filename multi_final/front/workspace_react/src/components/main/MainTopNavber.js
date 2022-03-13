@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/MainTopNavberNonLogin.scss';
 import { Link } from 'react-router-dom';
 import MainCarousel from './MainCarousel';
+
 /* 
 import MainCarousel from './MainCarousel'; */
 
@@ -13,6 +14,27 @@ import MainCarousel from './MainCarousel'; */
     import로 테이블에 있는 값을 다 가져와도 됨. */
 
 const MainTopNavberNonLogin = () => {
+    
+    const[ismanager,setismanager]=useState();
+    const [isLogin,setIslogin]=useState();
+    const m_name=sessionStorage.getItem('m_name');
+    const Logout=()=>{
+        localStorage.clear();
+        sessionStorage.clear();
+        setIslogin(false);
+      console.log(setIslogin);
+      alert('로그아웃');
+    }
+    useEffect(()=>{
+      if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
+        setIslogin(false); setismanager(false);
+      }else if(sessionStorage.getItem('m_name')==='manager'){
+        setIslogin(true);
+        setismanager(true);
+      }
+      else{setIslogin(true);}
+    },[isLogin]);
+
 
     return (
         <div>
@@ -20,7 +42,8 @@ const MainTopNavberNonLogin = () => {
                 <Link to="/">
                     <img src='./assets/ItpLogo_2.png' width='10%' alt='Logo'/>
                 </Link>
-                <div id='topLoginAndRegister'>
+                {(!isLogin)?
+               <div id='topLoginAndRegister'>
                     <Link to="/login" className='Login'>
                         로그인 
                     </Link>
@@ -28,6 +51,20 @@ const MainTopNavberNonLogin = () => {
                         회원가입
                     </Link>
                 </div>
+                :
+                <>
+                  <div id='topLoginAndRegister'>
+                <Link to="/" class="link-dark" style={{ textDecoration: 'none'}} onClick={Logout}>
+                    로그아웃
+                </Link>
+                    {(!ismanager)?
+                <Link to={`/myPageBoard/${m_name}`} class="link-dark" style={{ textDecoration: 'none'}}>
+                    마이페이지 &nbsp;&nbsp;
+                </Link>:<></>
+                    }
+            </div>
+            </>
+            }
                 <nav id='topNav'>
                     <div id='navbarMain'>
                         <Link to='/itTrend' className='itTrendNav'>
