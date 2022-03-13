@@ -16,7 +16,7 @@ const CommunityDetail = () => {
   const[Comdatas,setComdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const[c_name,setc_name]=useState('');
   
   function Update(no){
    navigate(`/changeCom/${no}`)
@@ -41,6 +41,7 @@ const CommunityDetail = () => {
               const response=await axios.get(`http://localhost:8085/com/${no}`);
               console.log(response.data);
               setComdata(response.data);
+              setc_name(response.data[0].c_name);
           }catch(e){
               setError(e);
           }
@@ -75,12 +76,20 @@ if (!Comdatas) return null;
       </Table>
       ))}
      </div>
+     {
+        ((sessionStorage.getItem('m_name'))===c_name||(localStorage.getItem('m_name'))=== c_name) ?
+        
      <div id='detailButton'>
       <button className='communityDetailButton' value="목록으로" onClick={BackToComBoard} > 목록으로 </button>
       <button className='communityDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>
       <button className='communityDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제하기 </button>
-        
-      </div>
+     </div>
+     :
+     <div id='detailButton'>
+     <button className='communityDetailButton' value="목록으로" onClick={BackToComBoard} > 목록으로 </button>
+     
+    </div>
+      }
       <CommunityReply/>
     </div>
   

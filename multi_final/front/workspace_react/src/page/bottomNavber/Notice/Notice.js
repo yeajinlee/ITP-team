@@ -16,6 +16,8 @@ const Notice = () => {
   const [error, setError] = useState(null);
 
 
+
+
   useEffect(()=>{
       const fetchNotice=async()=>{
           try {
@@ -36,6 +38,7 @@ const Notice = () => {
   fetchNotice();
   
 },[]);
+
 
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
@@ -72,7 +75,13 @@ if (!Noticedatas) return null;
         </tbody>
       </Table>
       {/* 관리자용 */}
-      <button className='noticeButton' value="글쓰기" onClick={AddNoticePage} > 글쓰기</button>
+      <>
+      {
+        ((sessionStorage.getItem('m_name'))==='manager'||(localStorage.getItem('m_name'))==='manager') ?
+       <button className='noticeButton' value="글쓰기" onClick={AddNoticePage}> 글쓰기</button>
+        :<></>
+        }
+      </>     
     </div>
   );
 };

@@ -16,7 +16,7 @@ const CommunicationWriting = () => {
     const [c_title,setc_title] =useState('')
     const[c_content,setc_content]=useState('')
     const[g_tag,setc_tag]=useState('')
-    const c_name='User'
+    const c_name=sessionStorage.getItem('m_name');
 
     var today = new Date();
 

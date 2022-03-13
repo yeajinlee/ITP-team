@@ -15,21 +15,24 @@ import MainCarousel from './MainCarousel'; */
 
 const MainTopNavberNonLogin = () => {
     
+    const[ismanager,setismanager]=useState();
     const [isLogin,setIslogin]=useState();
     const m_name=sessionStorage.getItem('m_name');
     const Logout=()=>{
-       
+        localStorage.clear();
         sessionStorage.clear();
         setIslogin(false);
       console.log(setIslogin);
       alert('로그아웃');
     }
     useEffect(()=>{
-      if(sessionStorage.getItem('m_name')===null){
-        setIslogin(false);
-      }else{
+      if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
+        setIslogin(false); setismanager(false);
+      }else if(sessionStorage.getItem('m_name')==='manager'){
         setIslogin(true);
+        setismanager(true);
       }
+      else{setIslogin(true);}
     },[isLogin]);
 
 
@@ -51,13 +54,14 @@ const MainTopNavberNonLogin = () => {
                 :
                 <>
                   <div id='topLoginAndRegister'>
-                <Link to="/iTTech" class="link-dark" style={{ textDecoration: 'none'}} onClick={Logout}>
+                <Link to="/" class="link-dark" style={{ textDecoration: 'none'}} onClick={Logout}>
                     로그아웃
                 </Link>
-                
+                    {(!ismanager)?
                 <Link to={`/myPageBoard/${m_name}`} class="link-dark" style={{ textDecoration: 'none'}}>
                     마이페이지 &nbsp;&nbsp;
-                </Link>
+                </Link>:<></>
+                    }
             </div>
             </>
             }

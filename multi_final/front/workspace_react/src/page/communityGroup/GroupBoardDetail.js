@@ -17,7 +17,7 @@ const GroupBoardDetail = () => {
   const[Groupdatas,setGroupdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [g_name,setg_name]=useState('');
   
   function Update(no){
    navigate(`/changeGroup/${no}`)
@@ -28,8 +28,7 @@ const GroupBoardDetail = () => {
     axios.delete(`http://localhost:8085/deleteGroup/${no}`)
          .then(navigate('/communityGroup')).catch(err=>console.log(err))
       }
-  
-    
+
   
 
   useEffect(()=>{
@@ -43,6 +42,8 @@ const GroupBoardDetail = () => {
               const response=await axios.get(`http://localhost:8085/group/${no}`);
               console.log(response.data);
               setGroupdata(response.data);
+             setg_name(response.data[0].g_name);
+           
           }catch(e){
               setError(e);
           }
@@ -78,9 +79,17 @@ if (!Groupdatas) return null;
       ))}
      </div>
      <div id='detailButton'>
-      <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
+  
+     {
+        ((sessionStorage.getItem('m_name'))===g_name||(localStorage.getItem('m_name'))=== g_name) ?
+        <>
+        <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
       <button className='groupDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>
       <button className='groupDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제하기 </button>
+      </>
+      :
+      <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
+     }
       </div>
     </div>
   
