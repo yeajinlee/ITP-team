@@ -57,11 +57,13 @@ public interface GroupMapper {
 			);
 	
 	//수정
-	@Update("UPDATE itp_group SET g_title = #{g_title}, g_content= #{g_content} WHERE g_no= #{g_no}")
+	@Update("UPDATE itp_group SET g_title = #{g_title}, g_subtitle=#{g_subtitle}, g_content= #{g_content},g_tag=#{g_tag} WHERE g_no= #{g_no}")
 	int updateGroup(
 			@Param("g_no") int g_no,
 			@Param("g_title") String g_title,
-			@Param("g_content") String g_content
+			@Param("g_subtitle") String g_subtitle,
+			@Param("g_content") String g_content,
+			@Param("g_tag") String g_tag
 		);
 	
 	@Delete("DELETE FROM itp_group WHERE g_no = #{g_no}")
