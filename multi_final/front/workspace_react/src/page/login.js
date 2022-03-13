@@ -12,7 +12,8 @@ function Login() {
     const [loginPassword, setLoginPassword] = useState('');
 
     const[checked,setchecked]=useState(false);
-   
+    const [isemailnull,setisemailnull]=useState(true);
+    const[isPasswordnull,setispasswordnull]=useState(true);
     let sessionStorage = window.sessionStorage;
     const localStorage=window.localStorage;
     console.log(checked)
@@ -20,9 +21,14 @@ function Login() {
         setchecked(!checked);
       };
 
-    const submit=(m_email)=>{
-   
-        axios.post(`http://localhost:8085/member/login`,null,{
+    const submitfail=()=>{
+        alert('입력되지 않은 값이 있습니다.');
+        document.location.href = '/login'
+    }
+    console.log(isemailnull,isPasswordnull);
+    const submit=()=>{
+ 
+            axios.post(`http://localhost:8085/member/login`,null,{
             params:{
             'm_email':m_email
             }
@@ -59,7 +65,7 @@ function Login() {
                  else{
                   
                      alert('아이디나 비밀번호가 올바르지 않습니다');  
-                     document.location.href = '/login'
+                     document.location.href = '/login';
                    
                  }
          })
@@ -67,8 +73,9 @@ function Login() {
             console.log(error);
             alert('존재하지 않는 이메일입니다');  
          });
-      
-         
+        
+        
+        
     }
    
     return (
@@ -80,10 +87,10 @@ function Login() {
                     <div className="title">로그인</div>
                     <br />
                     {/* form */}
-                    <form  className="loginForm">
+                    <form className="loginForm">
                         <div className="emailLogin">
                             <input type="m_email" name="email" id="email" onChange={ (e)=>{
-                    setmemail(e.target.value)}} placeholder="메일" />
+                    setmemail(e.target.value);if(e.target.value!=='')setisemailnull(false);}} placeholder="메일" />
                            
                             
                         </div>
@@ -91,7 +98,7 @@ function Login() {
                         <div className="passwordLogin">
                             <input type="password" name="pw" id="pw" 
                         placeholder="비밀번호" minlength="8" maxlength="16" onChange={ (e)=>{
-                            setLoginPassword(e.target.value)}}/>
+                            setLoginPassword(e.target.value); if(e.target.value!=='')setispasswordnull(false);}}/>
                            
                           
                         </div>
@@ -100,11 +107,13 @@ function Login() {
                             <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange}/>
                             <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
                         </div>
+                        {(isemailnull||isPasswordnull)?
                         <div>
-                      
-                            <button id='btn' type="submit" onClick={()=>submit(m_email)}  >로그인</button>
-                            
-                        </div> 
+                           
+                         <button id='btn' type="submit" onClick={()=>submitfail()} >로그인</button>
+                                           
+                        </div> :<div>   <button id='btn' type="submit" onClick={()=>submit()} >로그인</button></div>
+                         }
                         <div>
                             <Link to="#passwordfind" className='loginBottom' >비밀번호 재설정 </Link>ㅣ
                             <Link to="/Register" className='loginBottom'> 메일 주소로 회원가입 </Link>
