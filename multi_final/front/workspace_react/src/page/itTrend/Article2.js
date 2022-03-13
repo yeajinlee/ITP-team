@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import trendData from './itTrendData.json';
 import axios from 'axios';
-import stringReplaceAll from 'string-replace-all';
 
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\一-龥\s]/g;
 const titleUrl = (title) => {
@@ -40,12 +39,15 @@ const Article2 = () => {
     }
     articles2.articles.splice(0, 2);
     return (
-      <div>
+      <div id="article2">
         {articles2.articles.map((a, index) => (
-          <div key={index} className="article2">
-            <Link to={titleUrl(a.title)}>
-              <img src={a.urlToImage} alt="" width={300} height={200}></img>
-              {a.title}<br/>
+          <div key={index} className="article2A">
+            <Link to={titleUrl(a.title)} className="articleLink">
+              
+              <img src={a.urlToImage} alt=""></img>
+              <div>
+              {a.title}
+              </div>
             </Link>
           </div>
         ))}

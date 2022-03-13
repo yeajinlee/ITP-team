@@ -1,31 +1,66 @@
-div.nickname {
-  font-weight: bold;
-  font-size: 20px;
-}
-div.password {
-  font-weight: bold;
-  font-size: 20px;
-}
-div.passwordChange {
-}
-
-div div.buttonGroup {
+//------------------------------정보 수정 전체------------------------------
+#modifyForm {
   justify-content: center;
   text-align: center;
-}
+  background-color: white;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+  height: 500px;
+  margin-top: 50px;
+  border-radius: 20px;
+  .modifyLabel {
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+  }
+  .modifyText {
+    display: flex;
+    margin-left: 10px;
+  }
+  //------------------------------닉네임 부분------------------------------
 
-div button.withdraw {
-  background-color: #008080;
-  border-radius: 8px;
-  outline: 0px;
-  padding: 10px 24px;
-  margin-right: 50px;
-  color: white;
-}
-div button.completion {
-  background-color: #008080;
-  border-radius: 8px;
-  outline: 0px;
-  padding: 10px 24px;
-  color: white;
+  #modifynicknameForm {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    .nicknameInput {
+      width: 300px;
+    }
+  }
+
+  //------------------------------비밀번호 부분------------------------------
+  #modifyPassword {
+    margin-left: 30px;
+    .modifyNewPasswordForm {
+      display: flex;
+    }
+    .passwordInput {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+    .modifyCheckPasswordForm {
+      margin-bottom: 100px;
+    }
+  }
+  //------------------------------버튼 부분------------------------------
+  #buttonGroup {
+    justify-content: center;
+    text-align: center;
+    .withdraw {
+      background-color: #008080;
+      border-radius: 8px;
+      outline: 0px;
+      padding: 10px 24px;
+      margin-right: 50px;
+      color: white;
+    }
+    .completion {
+      background-color: #008080;
+      border-radius: 8px;
+      outline: 0px;
+      padding: 10px 24px;
+      color: white;
+    }
+  }
 }

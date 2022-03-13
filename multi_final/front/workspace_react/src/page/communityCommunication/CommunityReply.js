@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import './communityReply.scss';
 
 const CommunityReply = () => {
   const { no,num } = useParams();
@@ -78,7 +78,7 @@ const CommunityReply = () => {
           console.log(res.data.n_title)
           console.log(res.data.n_content)
          
-          document.location.href=`/notice`;//성공시 목록으로 돌아가기
+          document.location.href=`/communication`;//성공시 목록으로 돌아가기
         })
         .catch()
       }
@@ -112,33 +112,35 @@ if (error) return <div>에러가 발생했습니다</div>;
 if (!Repdatas) return null;
 
   return (
-    <div>
-      
+      <div id='replyAll'>
+        <div id='replyRegi'>
+        <input type="text" onChange={(e)=>handler_content(e)}id="r_content" name="r_content" value={r_content} />
+        <button value="등록하기" onClick={()=>submit()}>
+          등록하기
+        </button>
+        </div>
+        <div id='replyBottom'>
+        {Repdatas.map((Repdata,index) => (
+          <Table>
+            <tbody>
+              <div key={index} className='replyContent'>
 
-     <div>
-     <input type="text"  onChange={(e)=>handler_content(e)}id="r_content" name="r_content" value={r_content} /><input type="button" value="등록하기" onClick={()=>submit()}/>
-      {Repdatas.map((Repdata,index) => (
-      <Table>
-        
-        <tbody>
-          <tr key={index}>
-            
-             <td>{Repdata.r_content}</td> <td>{Repdata.r_name}</td> <td>{Repdata.r_date}</td>
-            <td>  <input type="button" value="수정하기" onClick={()=>Update(Repdata.r_rno)} /></td>
-            <td>  <input type="button" value="삭제하기" onClick={()=>Delete(Repdata.r_rno)} /></td>
-          </tr>
-        
-        </tbody>
-        
-      </Table>
-      ))}
-     </div>
-      
-    
-      
-    
+                  <p>{Repdata.r_name}</p>
+                  <p>{Repdata.r_content} | {Repdata.r_date}</p>
+                  <div>
+                  <button value="삭제" onClick={()=>Delete(Repdata.r_rno)} >
+                    삭제
+                  </button>
+                  <button value="수정" onClick={()=>Update(Repdata.r_rno)} >
+                    수정
+                  </button>
+                  </div>
+                </div>
+            </tbody>
+          </Table>
+        ))}
+      </div>
     </div>
-  
   );
 };
 

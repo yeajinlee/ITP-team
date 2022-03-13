@@ -1,21 +1,47 @@
 import React, {useState,useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, useParams } from 'react-router-dom';
-//import { Formik } from 'formik';
-//import MainCarousel from '../components/main/MainCarousel';
+import { Link, } from 'react-router-dom';
+import { Formik } from 'formik';
 import '../components/login/login.scss'
 import axios from 'axios';
 
 function Login() {
+        
+    const setLoginData = (e) => {
+        const {email, m_email} = e.target;
+        this.setState({ [email]: m_email});
 
-    
-    
-    
+    };
+
+    const signin = () => {
+        const { m_email, m_passwd} = this.state;
+        if (m_email && m_passwd) {
+            fetch(`http://localhost:8085/member/get?m_email=${m_email}`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    m_email: m_email,
+                    m_passwd: m_passwd,
+                }),
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.TOKEN) {
+                    localStorage.setItem('token', `${res.TOKEN}`);
+                    localStorage.setItem('user_email', `${res.user_email}`);
+                    this.props.history.push('/');
+                } else {
+                    alert('이메일과 비밀번호를 확인해 주세요');
+                }
+            })
+            .catch((err) => console.log(err));
+        } else {
+            alert('이메일과 비밀번호를 입력해 주세요');
+        }  
+        document.location.href = '/MainOnLogin'
+    }
     
 
 /////////////////////////////////////////////
-
-    //http://localhost:8085/member/get?m_email=${m_email}
     // const {m_email}=useParams();
     // //const {m_passwd}=useParams();
     // const [inputEmail, setinputEmail] = useState('')
