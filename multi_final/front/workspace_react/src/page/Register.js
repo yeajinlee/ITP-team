@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../components/Register/Register.scss';
 import { Link, } from "react-router-dom";
 import axios from 'axios';
-
+import CryptoJS from 'crypto-js';
  
 function Register() {
    
@@ -95,7 +95,7 @@ function Register() {
     .then(response => {    
         console.log(response.data);
         if(response.data.length>0)  { alert('중복입니다.'); setIsName(false);}
-        else { setIsName(true); alert('중복이 아닙니다..');}
+        else { setIsName(true); alert('중복이 아닙니다.');}
      })
      .catch(error => {
         console.log(error);
@@ -109,8 +109,8 @@ function Register() {
         axios.get(`http://localhost:8085/member/dupliemail?m_email=${m_email}`)
         .then(response => {    
             console.log(response.data);
-            if(response.data.length>0) setIsEmail(false);
-            else setIsEmail(true);
+            if(response.data.length>0) {setIsEmail(false);alert('중복입니다.'); }
+            else {setIsEmail(true); alert('중복이 아닙니다.');} 
             console.log({m_namecheck})
          })
          .catch(error => {
@@ -130,11 +130,12 @@ function Register() {
         console.log(m_passwdcheck);
         console.log(checked);}
      else if(isName===true&&isEmail===true&&isPassword===true&&isPasswordcheck===true&&ischeckboxchecked===true){
+        const m_passwdcrypto = CryptoJS.AES.encrypt(m_passwd, 'itp123').toString();
         axios.post(`http://localhost:8085/addMember`,null,{
             params:{
               'm_name':m_name,
               'm_email':m_email,
-              'm_passwd':m_passwd,
+              'm_passwd':m_passwdcrypto,
               'm_date':m_date,
               'm_role':m_role 
              
@@ -144,7 +145,7 @@ function Register() {
             console.log(res)
             
            
-            document.location.href=`/login`;//성공시 목록으로 돌아가기
+            document.location.href='/login';//성공시 목록으로 돌아가기
           })
           .catch()
         }

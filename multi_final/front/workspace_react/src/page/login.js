@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom';
 import MainCarousel from '../components/main/MainCarousel';
 import '../components/login/login.scss'
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
+
 
 function Login() {
     let [m_email, setmemail] = useState('');
     let [loginPassword, setLoginPassword] = useState('');
- //   const [loginpasswordtemp, setloginpasswordtemp]=useState('');
+
    
     let sessionStorage = window.sessionStorage;
-      
-
+    
     const submit=(m_email)=>{
+        
         axios.get(`http://localhost:8085/member/dupliemail?m_email=${m_email}`)
         .then(response => {    
             console.log(response.data);
@@ -21,14 +23,28 @@ function Login() {
            // setloginpasswordtemp(response.data[0].m_passwd);
                      
             const loginm_name=response.data[0].m_name;
-            
-            if(loginPassword===(response.data[0].m_passwd)){
+            //db에 있는 걸 암호화를 풀고 입력한 값과 비교
+            //response값을 decrypto하고나서 loginpassword와 비교
+            const loginpassworddb= (response.data[0].m_passwd); //db내용옮기기
+            var bytes  = CryptoJS.AES.decrypt(loginpassworddb, 'itp123');
+            var decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+
+            console.log('원래값풀기'+decryptedData );
+            console.log(loginPassword);
+
+                if(decryptedData ===loginPassword){
                 sessionStorage.setItem("loginemail", m_email);
-                sessionStorage.setItem("loginPassword", loginPassword);//비밀번호
+                sessionStorage.setItem("loginPassword", response.data[0].m_passwd);//비밀번호
                 sessionStorage.setItem("m_name",loginm_name); //닉네임
+                
                 document.location.href = '/'
                  }
-                 else alert('비밀번호가 올바르지 않습니다');   
+                 else {
+                    console.log('원래값풀기'+decryptedData );
+                    console.log(loginPassword);
+                     alert('비밀번호가 올바르지 않습니다');   
+                   
+                 }
          })
          .catch(error => {
             console.log(error);

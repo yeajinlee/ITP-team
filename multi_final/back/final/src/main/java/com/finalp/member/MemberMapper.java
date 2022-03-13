@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface MemberMapper {
 
-	@Insert("INSERT INTO itp_member(m_name,m_email,m_passwd,m_date,m_role) values(#{m_name},#{m_email},SHA1(SHA1(#{m_passwd})),#{m_date},#{m_role})")
+	@Insert("INSERT INTO itp_member(m_name,m_email,m_passwd,m_date,m_role) values(#{m_name},#{m_email},#{m_passwd},#{m_date},#{m_role})")
 	int insertMember(
 			@Param("m_name") String m_name,
 			@Param("m_email") String m_email,
