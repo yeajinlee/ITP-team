@@ -57,8 +57,7 @@ function Login() {
                     document.location.href='/'
                  }
                  else{
-                    console.log('원래값풀기'+decryptedData );
-                    console.log(loginPassword);
+                  
                      alert('아이디나 비밀번호가 올바르지 않습니다');  
                      document.location.href = '/login'
                    
@@ -66,6 +65,7 @@ function Login() {
          })
          .catch(error => {
             console.log(error);
+            alert('존재하지 않는 이메일입니다');  
          });
       
          
