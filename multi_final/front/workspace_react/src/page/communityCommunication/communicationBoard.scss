@@ -2,80 +2,91 @@
   margin: 0;
   padding: 0;
 }
-#mainBoard {
-  p {
-    font-size: 25px;
-    float: left;
-  }
-  .cWritingButton {
-    background-color: #3b9d9d;
-    color: white;
-    border-radius: 10px;
-    outline: 0;
-    border: 0;
-    float: right;
-    width: 100px;
-  }
-}
-div.communicationBoard {
+#communityAll {
   justify-content: center;
   text-align: center;
-  width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+  width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
   margin: 0 auto;
   overflow: hidden;
-}
-#communitySearch {
-  justify-content: center;
-  text-align: center;
-  margin-top: 100px;
-  display: flex;
-  .searchInput {
-    position: relative;
-    width: 192px;
-    height: 40px;
-    border: 2px solid #99d9d9;
-    justify-content: center;
-    border-radius: 5px;
-    margin-bottom: 20px;
+  #mainBoard {
+    p {
+      font-size: 25px;
+      float: left;
+    }
+    .cWritingButton {
+      //글쓰기 버튼
+      background-color: #3b9d9d;
+      color: white;
+      border-radius: 10px;
+      outline: 0;
+      border: 0;
+      float: right;
+      width: 100px;
+    }
   }
-  .searchButton {
-    position: absolute;
-    color: gray;
-    border-radius: 5px;
-    outline: 0;
-    width: 80px;
-    height: 25px;
-    margin-left: 75px;
-    margin-top: 7px;
-  }
-}
-#communityPageButton {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 50px;
-  li {
-    padding: 10px;
-    border: 1px solid #3b9d9d;
-    margin-right: 10px;
-    cursor: pointer;
-  }
-  li.active {
-    background-color: #3b9d9d;
-    color: white;
-  }
-  li button {
-    background-color: transparent;
-    border: none;
+  .communityTitle {
+    //제목
+    text-decoration: none;
     color: black;
-    cursor: pointer;
+    font-weight: bold;
   }
-  li button:hover {
-    color: #3b9d9d;
+  #communitySearch {
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+    display: flex;
+    .searchInput {
+      //검색창
+      position: relative;
+      width: 192px;
+      height: 40px;
+      border: 2px solid #99d9d9;
+      justify-content: center;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .searchButton {
+      //돋보기 부분
+      position: absolute;
+      color: gray;
+      border-radius: 5px;
+      outline: 0;
+      width: 80px;
+      height: 25px;
+      margin-left: 75px;
+      margin-top: 7px;
+    }
   }
-  li button:focus {
-    outline: none;
+  #communityPageButton {
+    // 페이지 부분
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    li {
+      padding: 10px;
+      border: 1px solid #3b9d9d;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    li.active {
+      // 페이지 눌렀을 때
+      background-color: #3b9d9d;
+      color: white;
+    }
+    li button {
+      background-color: transparent;
+      border: none;
+      color: black;
+      cursor: pointer;
+    }
+    li button:hover {
+      color: #3b9d9d;
+    }
+    li button:focus {
+      outline: none;
+    }
   }
 }

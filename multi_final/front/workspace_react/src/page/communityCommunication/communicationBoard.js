@@ -127,49 +127,50 @@ fetchCom();
  if (error) return <div>에러가 발생했습니다</div>;
 if (!Comdatas) return null;
     return (
-        <div>
-            <div id='mainBoard' className='communicationBoard'>
-              {(isLogin)?
+        <div id='communityAll'>
+          <div id='mainBoard'>
+            {(isLogin)?
             <Link to='/communicationWriting'><Button className='cWritingButton'>글쓰기</Button></Link>
             :<></>
             }
-                <br />
-                <p>소통 공간</p>
-                <Table>
-                    <thead>
-                        <tr>
-                          <th>번호</th>
-                          <th>제목</th>
-                          <th>작성자</th>
-                          <th>작성일</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                         { currentItems.filter((val)=>{
-                   if(search===""){
-                 return val
-                }else if(val.c_title.includes(search)){
-                    return val
-                        }
-                     }).map((currentItems,index) => (
-                            <tr key={index}>
-                                <td>{currentItems.c_no}</td>
-                                <td>
-                                    <Link to={'/Communication/'+currentItems.c_no} style={{ textDecoration: 'none' }}>
-                                        {currentItems.c_title}
-                                    </Link>
-                                </td>
-                                <td>
-                                    {currentItems.c_name}
-                                </td>
-                                <td>
-                                    {currentItems.c_date}
-                                </td>
-                            </tr>
-                            ))}
-                    </tbody>
-                </Table>
-            </div>
+            <br />
+            <p>소통 공간</p>
+            <Table>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>작성자</th>
+                  <th>작성일</th>
+                  </tr>
+                </thead>
+              <tbody>
+                {currentItems.filter((val)=>{
+                  if(search===""){
+                     return val
+                    }
+                    else if(val.c_title.includes(search)){
+                      return val
+                    }
+                  }).map((currentItems,index) => (
+                    <tr key={index}>
+                      <td>{currentItems.c_no}</td>
+                      <td>
+                        <Link to={'/Communication/'+currentItems.c_no} className='communityTitle' style={{ textDecoration: 'none' }}>
+                          {currentItems.c_title}
+                        </Link>
+                      </td>
+                      <td>
+                        {currentItems.c_name}
+                      </td>
+                      <td>
+                          {currentItems.c_date}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          </div>
           <div id='communitySearch'>
             <input 
               type="text"

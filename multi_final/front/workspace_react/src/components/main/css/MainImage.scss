@@ -33,7 +33,7 @@
     }
   }
 
-  // -----------------------------------------------소통공간---------------------------------------------
+  // -----------------------------------------------모임찾기---------------------------------------------
   #groupLine {
     text-align: center;
     display: flex;
@@ -81,6 +81,11 @@
       width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
       margin: 0 auto;
       overflow: hidden;
+    }
+    .communityBoardTitle {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
     }
   }
 }
