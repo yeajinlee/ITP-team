@@ -121,7 +121,7 @@ function Register() {
 
     // submitForm : 폼 데이터의 제출을 처리한다
     const submitForm = () => {
-        if(isName===false||isEmail===false||isPassword===false||isPasswordcheck===false||ischeckboxchecked===false){
+        if(isName===false||isEmail===false||isPassword===false||isPasswordcheck===false||ischeckboxchecked===false||ischeckboxchecked===false){
             alert('입력이 올바르지 않은 항목이 있습니다. 확인해주세요')
         console.log(m_name);
         console.log(m_role);
@@ -129,7 +129,7 @@ function Register() {
         console.log(m_passwd);
         console.log(m_passwdcheck);
         console.log(checked);}
-     else if(isName===true&&isEmail===true&&isPassword===true&&isPasswordcheck===true&&ischeckboxchecked===true){
+     else if(isName===true&&isEmail===true&&isPassword===true&&isPasswordcheck===true&&ischeckboxchecked===true&&ischeckboxchecked===true){
         const m_passwdcrypto = CryptoJS.AES.encrypt(m_passwd, 'itp123').toString();
         axios.post(`http://localhost:8085/addMember`,null,{
             params:{
