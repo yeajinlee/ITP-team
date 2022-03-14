@@ -24,23 +24,28 @@ p.itTechPageTitle {
     display: flex;
     margin-top: 40px;
     margin-bottom: 40px;
-    // border: 1px solid blue;
+    border: 1px solid blue;
   }
   .boardTitle {
+    width: 870px;
     font-size: 20px;
     font-weight: bold;
     margin-left: 20px;
-    margin-bottom: 25px;
     cursor: pointer;
     white-space: nowrap; // 아래줄 내려가는 것 막기
     overflow: hidden; // 영역 감추기
     text-overflow: ellipsis; // ...로 만들기
+    border: 1px solid green;
+  }
+  .boardDate{
+    float: right;
+    border: 1px solid orange;
   }
   .titleList {
-    max-width: 850px;
+    width: 850px;
     margin: auto 0;
-    padding-top: 5px;
+    padding-top: 10px;
     list-style: none;
-    // border: 1px solid red;
+    border: 1px solid red;
   }
 }

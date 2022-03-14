@@ -27,7 +27,7 @@ const ItTechnologyVue = () => {
     return (
         <div>
             <span className="itTechSpan">
-                <img width="220px" height="150px" src="https://v3.ko.vuejs.org/logo.png" alt="img" />
+                <img width="220px" height="150px" src="./assets/vueLogo.png" alt="img" />
                 <div className='titleList'>
                     {techVue.articles.map((a, index) => (
                         <div key={index}>
