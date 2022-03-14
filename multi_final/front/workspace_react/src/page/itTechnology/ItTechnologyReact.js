@@ -1,7 +1,6 @@
 import React, { useState , useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './itTechnologyMain.scss'
-import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -9,7 +8,6 @@ const ItTechnologyReact = () => {
     const [techReact, setTechReact] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
     useEffect(() => {
         const fetchData = async() => {
             setLoading(true);

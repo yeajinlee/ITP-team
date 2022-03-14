@@ -61,7 +61,7 @@ if (!Noticedatas) return null;
               <tr key={index}>
                 <td>{Noticedata.n_no}</td>
                 <td>
-                  <Link to={"/notice/" + Noticedata.n_no} style={{ textDecoration: 'none' }}>
+                  <Link to={"/notice/" + Noticedata.n_no} style={{ textDecoration: 'none', color: 'black' }}>
                     {Noticedata.n_title}
                   </Link>
                 </td>
