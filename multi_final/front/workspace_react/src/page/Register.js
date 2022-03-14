@@ -184,7 +184,7 @@ function Register() {
                 <div id='registerCheck'>
                     <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange} onBlur={checkboxchecked} />
                     <label class="form-check-label" for="exampleCheck1">회원 가입에 동의 하시나요?</label>
-                </div>
+                </div> 
                     <input type="submit" value="회원가입" className='signUpButton' onClick={submitForm}/>   
                     <Link to="/myPageBoard">
                         <div>마이페이지 테스트 이동용</div>

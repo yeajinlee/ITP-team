@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import MainCarousel from '../components/main/MainCarousel';
 import '../components/login/login.scss'
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
