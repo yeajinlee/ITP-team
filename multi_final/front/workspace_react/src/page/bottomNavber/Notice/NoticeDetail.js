@@ -72,10 +72,20 @@ if (!Noticedatas) return null;
       </Table>
       ))}
      </div>
+
+     {
+        ((sessionStorage.getItem('m_name'))==='manager'||(localStorage.getItem('m_name'))==='manager') ?
+        <>
       <button value="목록으로" onClick={BackToNotice}>목록으로</button>
       <button value="수정하기" onClick={()=>Update(no)}>수정하기</button>
       <button value="삭제하기" onClick={()=>Delete(no)}>삭제하기</button>
-    
+      </>
+    :
+    <>
+    <button value="목록으로" onClick={BackToNotice}>목록으로</button>
+   
+    </>   
+    }
     </div>
     
   

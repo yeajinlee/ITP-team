@@ -1,134 +1,127 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link, } from 'react-router-dom';
-import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
+import MainCarousel from '../components/main/MainCarousel';
 import '../components/login/login.scss'
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
+
 
 function Login() {
-        
-    const setLoginData = (e) => {
-        const {email, m_email} = e.target;
-        this.setState({ [email]: m_email});
+    const [m_email, setmemail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
 
-    };
+    const[checked,setchecked]=useState(false);
+    const [isemailnull,setisemailnull]=useState(true);
+    const[isPasswordnull,setispasswordnull]=useState(true);
+    let sessionStorage = window.sessionStorage;
+    const localStorage=window.localStorage;
+    console.log(checked)
+    const handlechange = (e) => {
+        setchecked(!checked);
+      };
 
-    const signin = () => {
-        const { m_email, m_passwd} = this.state;
-        if (m_email && m_passwd) {
-            fetch(`http://localhost:8085/member/get?m_email=${m_email}`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    m_email: m_email,
-                    m_passwd: m_passwd,
-                }),
-            })
-            .then((res) => res.json())
-            .then((res) => {
-                if (res.TOKEN) {
-                    localStorage.setItem('token', `${res.TOKEN}`);
-                    localStorage.setItem('user_email', `${res.user_email}`);
-                    this.props.history.push('/');
-                } else {
-                    alert('이메일과 비밀번호를 확인해 주세요');
-                }
-            })
-            .catch((err) => console.log(err));
-        } else {
-            alert('이메일과 비밀번호를 입력해 주세요');
-        }  
-        document.location.href = '/MainOnLogin'
+    const submitfail=()=>{
+        alert('입력되지 않은 값이 있습니다.');
+        document.location.href = '/login'
     }
-    
+    console.log(isemailnull,isPasswordnull);
+    const submit=()=>{
+ 
+            axios.post(`http://localhost:8085/member/login`,null,{
+            params:{
+            'm_email':m_email
+            }
+        })
+        .then(response => {    
+            console.log(response.data);
+            
+            const m_role=response.data[0].m_role;     
+            const loginm_name=response.data[0].m_name;
+            //db에 있는 패스워드 암호화 풀고 입력한 값과 비교
+            //response값을 decrypto하고나서 loginpassword와 비교
+            const loginpassworddb= (response.data[0].m_passwd); //db내용옮기기
+            const loginpassworddbdecrypt  = CryptoJS.AES.decrypt(loginpassworddb, 'itp123');
+            var decryptedData = loginpassworddbdecrypt.toString(CryptoJS.enc.Utf8);
+           
+            console.log('원래값풀기'+decryptedData );
+            console.log(loginPassword);
+         
+              if((decryptedData ===loginPassword)&&(checked===false)){
+                sessionStorage.setItem("loginemail", m_email);
+                sessionStorage.setItem("loginPassword", response.data[0].m_passwd);//비밀번호
+                sessionStorage.setItem("m_name",loginm_name); //닉네임
+                sessionStorage.setItem("m_role",m_role);
+                
+                document.location.href = '/'
+                 } 
+                else if((decryptedData ===loginPassword)&&(checked===true)){
+                    localStorage.setItem("loginemail", m_email);
+                    localStorage.setItem("loginPassword", response.data[0].m_passwd);//비밀번호
+                    localStorage.setItem("m_name", loginm_name); //닉네임
+                    localStorage.setItem("m_role", m_role);
+                    document.location.href='/'
+                 }
+                 else{
+                  
+                     alert('아이디나 비밀번호가 올바르지 않습니다');  
+                     document.location.href = '/login';
+                   
+                 }
+         })
+         .catch(error => {
+            console.log(error);
+            alert('존재하지 않는 이메일입니다');  
+         });
+        
+        
+        
+    }
+   
+    return (
 
-/////////////////////////////////////////////
-    // const {m_email}=useParams();
-    // //const {m_passwd}=useParams();
-    // const [inputEmail, setinputEmail] = useState('')
-    // const [inputPasswd, setinputPasswd] = useState('')
- 
-    // const handleinputEmail = (e) => {
-    //     setinputEmail(e.target.value)
-    // }
- 
-    // const handleinputPasswd = (e) => {
-    //     setinputPasswd(e.target.value)
-    // }
- 
-    // const onClickLogin = () => {
-    //     console.log('click login')
-    //     console.log('ID : ', inputEmail)
-    //     console.log('PW : ', inputPasswd)
-    //     axios.post(`http://localhost:8085/member/get`, null, {
-    //         params: {
-    //         'm_email': inputEmail,
-    //         //'m_passwd': inputPasswd
-    //         }
-    //     })
-    //     .then(res => {
-    //         console.log(res)
-    //         console.log('res.data.m_email :: ', res.data.m_email)
-    //         console.log('res.data.msg :: ', res.data.msg)
-    //         if(res.data.m_email === undefined){
-    //             // id 일치하지 않는 경우 userId = undefined, msg = '입력하신 id 가 일치하지 않습니다.'
-    //             console.log('======================',res.data.msg)
-    //             alert('입력하신 id 가 일치하지 않습니다.')
-    //         } else if(res.data.m_email === null){
-    //             // id는 있지만, pw 는 다른 경우 userId = null , msg = undefined
-    //             console.log('======================','입력하신 비밀번호 가 일치하지 않습니다.')
-    //             alert('입력하신 비밀번호 가 일치하지 않습니다.')
-    //         } else if(res.data.m_email === inputEmail) {
-    //             // id, pw 모두 일치 userId = userId1, msg = undefined
-    //             console.log('======================','로그인 성공')
-    //             sessionStorage.setItem('m_email', inputEmail)
-    //         }
-    //         // 작업 완료 되면 페이지 이동(새로고침)
-    //         document.location.href = '/MainOnLogin'
-    //     })
-    //     .catch()
-    // }
- 
-    //  useEffect(() => {
-    //      axios.get(`http://localhost:8085/member/get/${m_email}`)
-    //      .then(res => console.log(res))
-    //      .catch()
-    //  },[])
-    /////////////////////////////////////////////
-
-                return (
-                <div id='Login'>
+        
+                  <div id='Login'>
+                    <MainCarousel />
                     <br />
                     <div className="title">로그인</div>
                     <br />
                     {/* form */}
-                    <form action="/member/get" method="post"  className="loginForm">
+                    <form className="loginForm">
                         <div className="emailLogin">
-                            <input type="email" name="m_email" id="m_email" onChange={setLoginData} 
-                            className="email" placeholder="이메일" />           
+                            <input type="m_email" name="email" id="email" onChange={ (e)=>{
+                    setmemail(e.target.value);if(e.target.value!=='')setisemailnull(false);}} placeholder="메일" />
+                           
+                            
                         </div>
                         <br />
                         <div className="passwordLogin">
-                            <input type="password" name="m_passwd" id="m_passwd" onChange={setLoginData} 
-                            className="passwd" placeholder="비밀번호" minlength="8" maxlength="16" />                  
+                            <input type="password" name="pw" id="pw" 
+                        placeholder="비밀번호" minlength="8" maxlength="16" onChange={ (e)=>{
+                            setLoginPassword(e.target.value); if(e.target.value!=='')setispasswordnull(false);}}/>
+                           
+                          
                         </div>
                         <br />
                         <div class="mb-3" className='loginCheck'>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange}/>
                             <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
                         </div>
+                        {(isemailnull||isPasswordnull)?
                         <div>
-                        
-                            <button id='btn' type="submit" className="LoginBtn" onClick={signin} >로그인</button>
-                    
-                        </div> 
-                        <div className="loginBottom">
-                            <Link to="#passwordfind" class="link-dark" style={{ textDecoration: 'none' }}>비밀번호 재설정 </Link>ㅣ
-                            <Link to="/Register" class="link-dark" style={{ textDecoration: 'none' }}> 메일 주소로 회원가입 </Link>
+                           
+                         <button id='btn' type="submit" onClick={()=>submitfail()} >로그인</button>
+                                           
+                        </div> :<div>   <button id='btn' type="submit" onClick={()=>submit()} >로그인</button></div>
+                         }
+                        <div>
+                            <Link to="#passwordfind" className='loginBottom' >비밀번호 재설정 </Link>ㅣ
+                            <Link to="/Register" className='loginBottom'> 메일 주소로 회원가입 </Link>
                         </div>
                     </form>
                 </div>
                 );
-
-};
+       
+ }
 
 export default Login;
