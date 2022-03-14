@@ -142,11 +142,11 @@ if (!Groupdatas) return null;
           }
           </div>
           <div className='boardFirstLine'>
-            {currentItems.filter((Groupdatas)=>{
+            {currentItems.filter((val)=>{
               if(search===""){
-                return Groupdatas
-              }else if(Groupdatas.g_title.includes(search)){
-                return Groupdatas
+                return val
+              }else if(val.g_title.includes(search)){
+                return val
               }
             }).map((currentItems) =>
             <Card id='groupCard' className='groupCardCss' style={{ width: '18rem' }}>
