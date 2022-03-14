@@ -27,12 +27,14 @@ const ItTechnologySpring = () => {
     return (
         <div>
             <span className="itTechSpan">
-                <img width="200px" height="200px" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpFPRd%2FbtqCYFM6mA1%2FhC9HgrhsJwI38qEdCRqUG0%2Fimg.png" alt="img" />
-                {techSpring.articles.map((a, index) => (
-                    <div key={index}>
-                        <p className="boardTitle" onClick={() => window.open(`https://spring.io${a.titleLink}`, "_blank")}>{a.title}</p>
-                    </div>
-                ))}
+                <img width="220px" height="150px" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpFPRd%2FbtqCYFM6mA1%2FhC9HgrhsJwI38qEdCRqUG0%2Fimg.png" alt="img" />
+                <div className='titleList'>
+                    {techSpring.articles.map((a, index) => (
+                        <div key={index}>
+                            <p className="boardTitle" onClick={() => window.open(`https://spring.io${a.titleLink}`, "_blank")}>{a.title}</p>
+                        </div>
+                    ))}
+                </div>
             </span>
         </div>
     );

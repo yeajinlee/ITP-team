@@ -14,11 +14,13 @@ const ItTechnologyMain=()=>{
             <div id='itTechMain'>
             <p className='itTechPageTitle'>IT 기술</p>
             <div>
-                <ul className="skill_list">
+                <div className="skill_list">
                     <ItTechnologyReact/>
+                    <hr/>
                     <ItTechnologySpring/>
+                    <hr/>
                     <ItTechnologyVue/>
-                </ul>
+                </div>
                 </div>
             </div>
 

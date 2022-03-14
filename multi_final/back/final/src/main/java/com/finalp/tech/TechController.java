@@ -51,11 +51,15 @@ public class TechController {
 					String title = reactEl.text();
 					String titleLink = reactEl.html().replaceAll("<a class=\"css-m6cbzp\" href=\"", "");
 					titleLink = titleLink.substring(0, titleLink.indexOf("\""));
+					String date = titleLink.substring(6, 16).replace("/", "-");
+					System.out.println(date);
 					System.out.println(title);
+					System.out.println(titleLink);
 					//리액트로 보낼 데이터
 					Map<String, String> titleMap = new HashMap<String, String>();
 					titleMap.put("title", title);
 					titleMap.put("titleLink", titleLink);
+					titleMap.put("date", date);
 					reactArray.add(i, titleMap);
 					System.out.println(reactArray);
 					reactMap.put("articles", reactArray);
