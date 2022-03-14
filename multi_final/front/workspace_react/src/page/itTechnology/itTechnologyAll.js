@@ -1,6 +1,6 @@
 import React from 'react';/* 
 import MainCarousel from '../../components/main/MainCarousel'; */
-import ItTechnologyMain from './ItTechnologyMain';
+import ItTechnologyMain from './itTechnologyMain';
 
 
 const itTechnologyAll = () => {
