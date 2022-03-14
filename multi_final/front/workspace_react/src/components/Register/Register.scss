@@ -8,23 +8,64 @@
   align-items: center;
   text-align: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-  height: 600px;
+  height: 1000px;
   margin: 0 auto;
   overflow: hidden;
   #registerForm {
-    .title {
-      // 회원가입 상단
-      font-size: 25px;
-      font-weight: bold;
+    #registerInput {
+      .title {
+        // 회원가입 상단
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      // input 내부 글씨
+      input::placeholder {
+        font-size: 15px;
+      }
+      .inputHint {
+        // input 밑에 작은 글씨
+        font-size: 13px;
+        color: gray;
+      }
+      input {
+        border: 2px solid #99d9d9;
+        width: 256px;
+        height: 50px;
+        justify-content: center;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .duplicateCheck {
+        background-color: #61c4c4;
+        border-radius: 10px;
+        color: white;
+        outline: 0;
+        border: 0;
+        width: 80px;
+        height: 40px;
+        margin-left: 10px;
+      }
+    }
+    #registerCheck {
+      text-align: center;
+      color: gray;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      input {
+        margin-right: 20px;
+      }
+    }
+    .signUpButton {
+      background-color: #61c4c4;
+      border-radius: 10px;
+      color: white;
+      outline: 0;
+      border: 0;
+      width: 256px;
+      height: 40px;
+      margin-top: 20px;
       margin-bottom: 20px;
-    }
-    // input 내부 글씨
-    input::placeholder {
-      font-size: 13px;
-    }
-    .inputHint {
-      // input 밑에 작은 글씨
-      font-size: 13px;
     }
   }
 }
@@ -36,18 +77,15 @@
 // 비밀번호
 
 // 비밀번호 확인
-div.passwordLoginCheck div.pwCheckError {
-  font-size: 10px;
-}
 
 .errorcode {
-  font-size: 10px;
+  font-size: 12px;
   color: red;
   font-weight: bold;
 }
 
-.okcode{
-  font-size: 10px;
+.okcode {
+  font-size: 12px;
   color: blue;
   font-weight: bold;
 }
