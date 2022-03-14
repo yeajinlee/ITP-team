@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 import './groupBoardDetail.scss'
-import MainCarousel from '../../components/main/MainCarousel';
 
 const GroupBoardDetail = () => {
   const { no } = useParams();
@@ -63,7 +62,6 @@ if (!Groupdatas) return null;
   return (
     <div id='groupDetailAll'>
       
-      <MainCarousel />
       <p className='groupDetailTop'>모임찾기</p>
      <div id='detailContentPost'>
       {Groupdatas.map((Groupdata,index) => (

@@ -79,49 +79,38 @@ function Login() {
     }
    
     return (
-
-        
-                  <div id='Login'>
-                    <MainCarousel />
+        <div id='LoginAll'>
+            <p className="loginTitle">로그인</p>
+            <div id='LoginAll'>
+                {/* form */}
+                <form className="loginForm">
+                    <input type="m_email" name="email" id="inputLogin" onChange={ (e)=>{
+                        setmemail(e.target.value);if(e.target.value!=='')setisemailnull(false);}} placeholder="메일" />
                     <br />
-                    <div className="title">로그인</div>
+                    <input type="password" name="pw" id="inputLogin" 
+                    placeholder="비밀번호" minlength="8" maxlength="16" onChange={ (e)=>{
+                        setLoginPassword(e.target.value); if(e.target.value!=='')setispasswordnull(false);}}/>                         
                     <br />
-                    {/* form */}
-                    <form className="loginForm">
-                        <div className="emailLogin">
-                            <input type="m_email" name="email" id="email" onChange={ (e)=>{
-                    setmemail(e.target.value);if(e.target.value!=='')setisemailnull(false);}} placeholder="메일" />
-                           
-                            
-                        </div>
-                        <br />
-                        <div className="passwordLogin">
-                            <input type="password" name="pw" id="pw" 
-                        placeholder="비밀번호" minlength="8" maxlength="16" onChange={ (e)=>{
-                            setLoginPassword(e.target.value); if(e.target.value!=='')setispasswordnull(false);}}/>
-                           
-                          
-                        </div>
-                        <br />
-                        <div class="mb-3" className='loginCheck'>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange}/>
-                            <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
-                        </div>
-                        {(isemailnull||isPasswordnull)?
-                        <div>
-                           
-                         <button id='btn' type="submit" onClick={()=>submitfail()} >로그인</button>
-                                           
-                        </div> :<div>   <button id='btn' type="submit" onClick={()=>submit()} >로그인</button></div>
-                         }
-                        <div>
-                            <Link to="#passwordfind" className='loginBottom' >비밀번호 재설정 </Link>ㅣ
-                            <Link to="/Register" className='loginBottom'> 메일 주소로 회원가입 </Link>
-                        </div>
-                    </form>
-                </div>
-                );
-       
+                    <div class="mb-3" className='loginCheck'>
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange}/>
+                        <label class="form-check-label" for="exampleCheck1">로그인 상태 유지</label>
+                    </div>
+                    {(isemailnull||isPasswordnull)?
+                    <div>
+                        <button id='btn' type="submit" onClick={()=>submitfail()} >로그인</button>     
+                    </div> 
+                    :
+                    <div>
+                        <button id='btn' type="submit" onClick={()=>submit()} >로그인</button></div>
+                    }
+                    <div>
+                        <Link to="#passwordfind" className='loginBottom' >비밀번호 찾기 </Link>ㅣ
+                        <Link to="/Register" className='loginBottom'> 메일 주소로 회원가입 </Link>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
  }
 
 export default Login;
