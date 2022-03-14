@@ -104,7 +104,7 @@ const Mainimage = () => {
           <Card className='groupCardSize'>
             <Link
               to={'/communityGroup/' + Groupdata.g_no}
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: 'none',color:'black'}}
             >
               <Card.Body key={Groupdata.g_no}>
                 <Card.Img variant="top" src={Groupdata.g_img} id='cardImg'  style={{height:'120px'}}/>
@@ -132,7 +132,7 @@ const Mainimage = () => {
         <Table className="boardTable">
           <thead>
             <tr>
-              <th>번호</th>
+           
               <th>제목</th>
               <th>작성자</th>
               <th>작성일</th>
@@ -141,11 +141,11 @@ const Mainimage = () => {
           <tbody>
             {Comdatas.map((Comdata) => (
               <tr key={Comdata.c_no}>
-                <td>{Comdata.c_no}</td>
+             
                 <td>
                   <Link
                     to={'/Communication/' + Comdata.c_no}
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: 'none',color: 'black'}}
                   >
                     {Comdata.c_title}
                   </Link>

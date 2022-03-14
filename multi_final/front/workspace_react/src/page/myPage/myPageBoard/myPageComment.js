@@ -10,8 +10,34 @@ const MyPageCommunityComment = () => {
     const[Repdatas,setRepdata]=useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    const[Groupdatas,setGroupdata]=useState([]);
     
+  useEffect(()=>{
+    const fetchGroup=async()=>{
+      try {
+     
+          setError(null);
+          
+          // loading 상태를 true
+          setLoading(true); 
+          
+          const response=await axios.get(`http://localhost:8085/mypage/group/?m_name=${m_name}`,null,{
+            params:{
+                'm_name':m_name,
+              }
+          });
+          setGroupdata(response.data);
+          
+        }catch(e){
+          setError(e);
+      }
+      setLoading(false);
+    
+  
+};
+fetchGroup();
+
+ },[m_name]);
   useEffect(()=>{
     const fetchCom=async()=>{
       try {
@@ -21,7 +47,7 @@ const MyPageCommunityComment = () => {
           // loading 상태를 true
           setLoading(true); 
           
-          const response=await axios.get(`http://localhost:8085/mypage/rep?m_name=${m_name}`,null,{
+          const response=await axios.get(`http://localhost:8085/mypage/group/rep?m_name=${m_name}`,null,{
             params:{
                 'm_name':m_name,
               }
@@ -47,6 +73,33 @@ if (!Repdatas) return null;
             <Sidebar /> 
             <div id='board'>
             <Tabs className='myPageTabs'>
+            <Tab eventKey="group" title="모임찾기">
+                    <Table className='myPageTable'>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>작성 글 제목</th>
+                                <th>작성 댓글</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Groupdatas.map((Groupdata) => (
+                            <tr key={Groupdata.g_no}>
+                                <td>{Groupdata.g_no}</td>
+                                <td>
+                                    <Link to={'/communityGroup/'+Groupdata.g_no} style={{ textDecoration: 'none' }}>
+                                        {Groupdata.g_title}
+                                    </Link>
+                                </td>
+                                <td>
+                                    {Groupdata.g_tag}
+                                </td>
+                            </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </Tab>
                 <Tab eventKey="communication" title="소통공간">
                     <Table className='myPageTable'>
                         <thead>

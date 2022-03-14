@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import GroupReply from './GroupReply';
 import axios from 'axios';
 import './groupBoardDetail.scss'
@@ -62,7 +62,7 @@ if (!Groupdatas) return null;
   return (
     <div id='groupDetailAll'>
       
-      <p className='groupDetailTop'>모임찾기</p>
+      <p className='groupDetailTop'> &gt; <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
      <div id='detailContentPost'>
       {Groupdatas.map((Groupdata,index) => (
       <Table>

@@ -60,6 +60,11 @@ public class GroupRepController {
 	public int deleteGroupRep(@PathVariable("rg_rno") int rg_rno) {
 		return mapper.deleteGroupRep(rg_rno);
 	}
-
+	
+	//아이디에 해당하는 내용만 조회
+			@GetMapping("/mypage/group/rep")
+			public List<GroupRepDTO> getmygrouprepList(@RequestParam("m_name") String m_name){
+				return mapper.getmygrouprepList(m_name);  
+			}
 	
 }

@@ -10,6 +10,21 @@
   height: 1440px;
   background-color: #f4f4f4;
 
+  #g_no {
+    width: 250px;
+    padding-left: 60px;
+  }
+  #g_no1 {
+    width: 250px;
+    padding-left: 65px;
+  }
+  #g_title {
+    width: 500px;
+  }
+ 
+  #g_tag {
+    width: 300px;
+  }
   #board {
     //작성 글과 댓글에만 해당
     background-color: white;
@@ -28,7 +43,7 @@
       margin-left: 20px;
     }
     .myPageTable {
-      width: 1040px;
+      width: 1000px;
       margin-left: 20px;
     }
   }

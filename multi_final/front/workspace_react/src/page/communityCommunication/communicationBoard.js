@@ -134,7 +134,7 @@ if (!Comdatas) return null;
             :<></>
             }
                 <br />
-                <p>소통 공간</p>
+                <p> &gt; <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
                 <Table>
                     <thead>
                         <tr>
@@ -155,7 +155,7 @@ if (!Comdatas) return null;
                             <tr key={index}>
                                 <td>{currentItems.c_no}</td>
                                 <td>
-                                    <Link to={'/Communication/'+currentItems.c_no} style={{ textDecoration: 'none' }}>
+                                    <Link to={'/Communication/'+currentItems.c_no} style={{ textDecoration: 'none',color: 'black' }}>
                                         {currentItems.c_title}
                                     </Link>
                                 </td>

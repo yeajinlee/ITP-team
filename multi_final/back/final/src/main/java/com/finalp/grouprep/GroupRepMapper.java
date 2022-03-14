@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.finalp.rep.RepDTO;
+
 @Mapper
 public interface GroupRepMapper {
 	@Select("select count(*) from itp_replygroup")
@@ -37,4 +39,7 @@ public interface GroupRepMapper {
 					@Param("rg_date") LocalDate rg_date
 					
 					);
+			
+			@Select("select r.*,g.g_title,g.g_no from itp_replygroup r inner join itp_group g on r.rg_no=g.g_no and rg_name=#{m_name}")
+			List<GroupRepDTO> getmygrouprepList(@Param("m_name") String m_name);
 }

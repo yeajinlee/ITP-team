@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './communityDetail.scss'
 import CommunityReply from './CommunityReply'
@@ -12,7 +12,8 @@ const CommunityDetail = () => {
   const BackToComBoard = () => {
     navigate('/communication');
   };
- 
+
+
   const[Comdatas,setComdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -60,7 +61,7 @@ if (!Comdatas) return null;
 
   return (
     <div id='communityDetailAll'>
-      <p className='communityDetailTop'>소통공간</p>
+      <p className='communityDetailTop'> &gt; <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
      <div id='detailContentPost'>
       {Comdatas.map((Comdata,index) => (
       <Table>
@@ -68,8 +69,8 @@ if (!Comdatas) return null;
           <div key={index} className='detailTitle'>
             <p className='communityTitle'>
               {Comdata.c_title}
-              </p>
-            <p>{Comdata.c_name} | {Comdata.c_tag}</p>
+             <span id='communitynamedate'> 
+            {Comdata.c_name} | {Comdata.c_date}</span></p>
             </div>
           <div className='detailContent'>{Comdata.c_content}</div>
         </tbody>

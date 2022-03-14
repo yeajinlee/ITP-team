@@ -82,21 +82,21 @@ if (!Comdatas) return null;
                     <Table className='myPageTable'>
                         <thead>
                             <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>카테고리</th>
+                                <th id="g_no">번호</th>
+                                <th id="g_title">제목</th>
+                                <th id="g_tag">카테고리</th>
                             </tr>
                         </thead>
                         <tbody>
                             {Groupdatas.map((Groupdata) => (
                             <tr key={Groupdata.g_no}>
-                                <td>{Groupdata.g_no}</td>
-                                <td>
-                                    <Link to={'/communityGroup/'+Groupdata.g_no} style={{ textDecoration: 'none' }}>
+                                <td id="g_no1">{Groupdata.g_no}</td>
+                                <td id="g_title1">
+                                    <Link to={'/communityGroup/'+Groupdata.g_no} style={{ textDecoration: 'none',color:'black'}}>
                                         {Groupdata.g_title}
                                     </Link>
                                 </td>
-                                <td>
+                                <td id="g_tag1">
                                     {Groupdata.g_tag}
                                 </td>
                             </tr>
