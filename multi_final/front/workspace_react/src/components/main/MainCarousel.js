@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './css/MainCarousel.scss';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Carousel } from 'react-bootstrap';
-import axios from 'axios';
 
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\一-龥\s]/g;
 const titleUrl = (title) => {
@@ -27,22 +24,20 @@ const MainCarousel = () => {
         className="carousel"
       >
         <Carousel fade>
-          
-            <Carousel.Item>
-              
-    <img
-    className="d-flex"
-      src='./assets/banner_test2.png'
-      alt="Second slide"
-    />
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-    className="d-flex"
-      src='./assets/banner_test3.png'
-      alt="Third slide"
-    />
-            </Carousel.Item>
+          <Carousel.Item>
+            <img
+            className="d-flex"
+            src='./assets/banner_test2.png'
+            alt="Second slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+            className="d-flex"
+            src='./assets/banner_test3.png'
+            alt="Third slide"
+            />
+          </Carousel.Item>
         </Carousel>
       </div>
     );

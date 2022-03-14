@@ -29,6 +29,7 @@
       white-space: nowrap; // 아래줄 내려가는 것 막기
       margin-top: 30px;
       font-size: 15px;
+      font-weight: bold;
     }
   }
 
@@ -42,9 +43,9 @@
     overflow: hidden;
     .title {
       font-size: 18px;
-      text-align: left;
       margin-top: 30px;
       color: black;
+      font-weight: bold;
     }
     .groupCardSize {
       width: 18rem;
@@ -55,6 +56,7 @@
       text-align: center;
     }
     .cardText {
+      text-align: center;
       overflow: hidden; // 영역 감추기
       text-overflow: ellipsis; // ...로 만들기
       white-space: nowrap; // 아래줄 내려가는 것 막기
@@ -70,6 +72,9 @@
 
   #mainBoard {
     padding-bottom: 40px;
+    p {
+      margin-top: 30px;
+    }
     .boardTable {
       justify-content: center;
       text-align: center;

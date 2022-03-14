@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/MainTopNavberNonLogin.scss';
+import './css/MainTopNavber.scss';
 import { Link } from 'react-router-dom';
 import MainCarousel from './MainCarousel';
 
@@ -36,14 +36,16 @@ const MainTopNavberNonLogin = () => {
     },[isLogin]);
 
 
+
+
     return (
         <div>
             <div id='mainTopNavber'>
                 <Link to="/">
-                    <img src='./assets/ItpLogo_2.png' width='10%' alt='Logo'/>
+                    <img src='./assets/ItpLogo_2.png' className='logoImg' alt='Logo'/>
                 </Link>
                 {(!isLogin)?
-               <div id='topLoginAndRegister'>
+                <div id='topLoginAndRegister'>
                     <Link to="/login" className='Login'>
                         로그인 
                     </Link>
@@ -52,19 +54,17 @@ const MainTopNavberNonLogin = () => {
                     </Link>
                 </div>
                 :
-                <>
-                  <div id='topLoginAndRegister'>
-                <Link to="/" class="link-dark" style={{ textDecoration: 'none'}} onClick={Logout}>
+                <div id='topLoginAndRegister'>
+                <Link to="/" className='logout' style={{ textDecoration: 'none'}} onClick={Logout}>
                     로그아웃
                 </Link>
                     {(!ismanager)?
-                <Link to={`/myPageBoard/${m_name}`} class="link-dark" style={{ textDecoration: 'none'}}>
+                <Link to={`/myPageBoard/${m_name}`} className='myPage' style={{ textDecoration: 'none'}}>
                     마이페이지 &nbsp;&nbsp;
                 </Link>:<></>
                     }
-            </div>
-            </>
-            }
+                </div>
+                }
                 <nav id='topNav'>
                     <div id='navbarMain'>
                         <Link to='/itTrend' className='itTrendNav'>
