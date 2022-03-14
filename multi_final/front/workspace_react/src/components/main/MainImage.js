@@ -117,7 +117,7 @@ const Mainimage = () => {
               style={{ textDecoration: 'none' }}
             >
               <Card.Body key={Groupdata.g_no}>
-                <Card.Img variant="top" src={Groupdata.g_img} />
+                <Card.Img variant="top" src={Groupdata.g_img} style={{height:'120px'}}/>
                 <Card.Title className="title">{Groupdata.g_title}</Card.Title>
                 <Card.Text className="cardText">
                   {Groupdata.g_subtitle}

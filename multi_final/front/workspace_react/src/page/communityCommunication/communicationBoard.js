@@ -13,7 +13,7 @@ const CommunicationBoard = () => {
   const[search,setsearch]=useState('');
 
   const[currentpage,setcurrentpage]=useState(1);
-  const itemsPerPage=6;
+  const itemsPerPage=10;
   const pageNumberLimit=5;
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);

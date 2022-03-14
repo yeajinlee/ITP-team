@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import GroupReply from './GroupReply';
 import axios from 'axios';
 import './groupBoardDetail.scss'
 
@@ -89,6 +89,7 @@ if (!Groupdatas) return null;
       <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
      }
       </div>
+      <GroupReply/>
     </div>
   
   );

@@ -21,12 +21,6 @@ const GroupBorad = () => {
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
   const [isLogin,setIslogin]=useState();
- 
-const handlesearch=()=>{
-  setsearch(title);
- 
- 
-}
 
 const handleClickpage=(e)=>{
   setcurrentpage(Number(e.target.id))
@@ -127,6 +121,16 @@ fetchGroup();
     pageDecrementBtn=<li onClick={handleprevbtn}>&hellip;</li>
   }
 
+  const handlesearch=()=>{
+    setsearch(title);
+    // const searchvalue=title;
+    // console.log(searchvalue);
+    
+    // targetdata=Groupdatas.filter((data)=>{
+    //   return data.title.search(searchvalue);
+    // });
+    
+  }
 
  if (loading) return <div>로딩중..</div>;
  if (error) return <div>에러가 발생했습니다</div>;
@@ -152,7 +156,7 @@ if (!Groupdatas) return null;
             <Card id='groupCard' className='groupCardCss' style={{ width: '18rem' }}>
               <Card.Body key={currentItems.g_no}>
                 <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
-                  <Card.Img variant='top' src={currentItems.g_img} />
+                  <Card.Img variant='top' src={currentItems.g_img} style={{height:'120px'}} />
                   <Card.Title className='title'>{currentItems.g_title}</Card.Title>
                   <Card.Text className='cardText'> {currentItems.g_subtitle}</Card.Text>
                 </Link>
