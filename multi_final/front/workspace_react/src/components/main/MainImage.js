@@ -145,7 +145,8 @@ const Mainimage = () => {
                 <td>
                   <Link
                     to={'/Communication/' + Comdata.c_no}
-                    style={{ textDecoration: 'none',color: 'black'}}
+                    className='communityBoardTitle'
+                    style={{ textDecoration: 'none',color: 'black' }}
                   >
                     {Comdata.c_title}
                   </Link>
