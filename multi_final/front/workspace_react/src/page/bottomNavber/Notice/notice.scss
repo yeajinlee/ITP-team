@@ -9,8 +9,13 @@
   margin: 0 auto;
   overflow: hidden;
   margin-top: 30px;
-
+  .noticeTitle {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
   .noticeButton {
+    //공지사항 글쓰기 버튼
     margin-top: 50px;
     margin-bottom: 100px;
     margin-right: 20px;
