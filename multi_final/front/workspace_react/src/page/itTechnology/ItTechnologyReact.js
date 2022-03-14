@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './itTechnologyMain.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -9,6 +9,7 @@ const ItTechnologyReact = () => {
     const [techReact, setTechReact] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchData = async() => {
             setLoading(true);
@@ -28,17 +29,15 @@ const ItTechnologyReact = () => {
     if(!techReact) return null;
     return (
         <div>
-            {/* <Link to={'React/'+techReact.title} className="itTechLink"> */}
-                <span className="itTechSpan">
-                    <img width="200px" height="200px" src="https://t1.daumcdn.net/cfile/tistory/24457C4F58663DD011" alt="img" />
-                    {techReact.articles.map((a, index) => (
-                        <div key={index}>
-                            <p className="boardTitle" onClick={() => window.open(`https://ko.reactjs.org${a.titleLink}`, "_blank")}>{a.title}</p>
-                        </div>
-                    ))}
-                </span>
-                {/* <button onClick={() => window.open(`https://ko.reactjs.org${techReact.titleLink}`, "_blank")}>원문보기</button> */}
-            {/* </Link> */}
+            <span className="itTechSpan">
+                <img width="200px" height="200px" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" alt="img" />
+                {techReact.articles.map((a, index) => (
+                    <div key={index}>
+                        <p className="boardTitle" onClick={() => window.open(`https://ko.reactjs.org${a.titleLink}`, "_blank")}>{a.title}</p>
+                    </div>
+                ))}
+            </span>
+            {/* <button onClick={() => navigate('/itTech/forum/1')}>포럼</button> */}
         </div>
     );
 };
