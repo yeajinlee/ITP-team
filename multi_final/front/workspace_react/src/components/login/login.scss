@@ -5,11 +5,10 @@
 
 #LoginAll {
   justify-content: center;
-  display: flex;
   align-items: center;
   text-align: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-  height: 600px;
+  height: 1000px;
   margin: 0 auto;
   overflow: hidden;
 
@@ -18,18 +17,10 @@
     font-weight: bold;
     font-size: 20px;
   }
-  #emailLogin {
+  #inputLogin {
     width: 256px;
     height: 50px;
     border: 2px solid #99d9d9;
-    justify-content: center;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  #passwordLogin {
-    border: 2px solid #99d9d9;
-    width: 256px;
-    height: 50px;
     justify-content: center;
     border-radius: 5px;
     margin-bottom: 20px;

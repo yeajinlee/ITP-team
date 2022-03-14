@@ -1,27 +1,26 @@
 package com.finalp.tech;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class techDTO {
-	private int no;//번호
-	private String title;//제목
-	private String subtitle;//부제목
-	private String content;//내용
-	private String img;//이미지
-	
-	public techDTO() {
-		// TODO Auto-generated constructor stub
-	}
-	public techDTO(int no, String title, String subtitle,String content,String img) {
-		this.no=no;
-		this.title=title;
-		this.subtitle=subtitle;
-		this.content=content;
-		this.img=img;
-	}
+	private int t_no;//번호
+	private int t_tag;//카테고리
+	private String t_name;//작성자
+	private String t_content;//내용
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate t_date;//작성일
+
 }
