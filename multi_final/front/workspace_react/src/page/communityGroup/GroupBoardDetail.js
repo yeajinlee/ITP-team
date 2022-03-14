@@ -67,8 +67,8 @@ if (!Groupdatas) return null;
       {Groupdatas.map((Groupdata,index) => (
       <Table>
         <tbody>
-          <div key={index} className='detailTitle'>
-            <p>{Groupdata.g_title}</p>
+          <div key={index} className='detailBody'>
+            <p className='contentTitle'>{Groupdata.g_title}</p>
             <p>{Groupdata.g_name} | {Groupdata.g_tag}</p>
             </div>
           <div className='detailContent'>{Groupdata.g_content}</div>
