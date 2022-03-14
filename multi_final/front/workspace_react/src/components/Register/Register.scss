@@ -21,7 +21,7 @@
       }
       // input 내부 글씨
       input::placeholder {
-        font-size: 15px;
+        font-size: 13px;
       }
       .inputHint {
         // input 밑에 작은 글씨
@@ -30,11 +30,10 @@
       }
       input {
         border: 2px solid #99d9d9;
-        width: 256px;
+        width: 336px;
         height: 50px;
         justify-content: center;
         border-radius: 5px;
-        margin-bottom: 20px;
         position: relative;
       }
       .duplicateCheck {
@@ -48,6 +47,18 @@
         height: 40px;
         margin-left: 10px;
         margin-top: 5px;
+      }
+      .errorcode {
+        font-size: 12px;
+        color: red;
+        font-weight: bold;
+        margin-bottom: 40px;
+      }
+
+      .okcode {
+        font-size: 12px;
+        color: blue;
+        font-weight: bold;
       }
     }
     #registerCheck {
@@ -80,15 +91,3 @@
 // 비밀번호
 
 // 비밀번호 확인
-
-.errorcode {
-  font-size: 12px;
-  color: red;
-  font-weight: bold;
-}
-
-.okcode {
-  font-size: 12px;
-  color: blue;
-  font-weight: bold;
-}

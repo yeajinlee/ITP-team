@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 $text-Color: green;
 $color-background: white;
@@ -7,7 +7,7 @@ $color-background: white;
   padding: 0;
 }
 #mainTopNavber {
-  font-family: 'Jua', sans-serif;
+  // font-family: 'Jua', sans-serif;
   justify-content: center;
   align-items: 'center';
   color: white;
@@ -15,21 +15,40 @@ $color-background: white;
   overflow: hidden;
   margin-top: 10px;
   background-color: #ffffff;
+  .logoImg {
+    //로고
+    width: 128px;
+  }
   #topLoginAndRegister {
+    //상단 로그인, 회원가입 | 로그아웃, 마이페이지 글씨
     float: right;
     font-size: 20px;
     margin-right: 30px;
     .Login {
+      //로그인
       text-decoration: none;
       color: black;
       margin-right: 20px;
     }
     .Register {
+      //회원가입
+      text-decoration: none;
+      color: black;
+    }
+    .logout {
+      //로그아웃
+      text-decoration: none;
+      color: black;
+      margin-right: 20px;
+    }
+    .myPage {
+      //마이페이지
       text-decoration: none;
       color: black;
     }
   }
   #topNav {
+    //네비바
     background-color: #008080;
     justify-content: center;
     text-align: center;
@@ -43,21 +62,25 @@ $color-background: white;
       margin-left: 20px;
       display: flex;
       .itTrendNav {
+        // IT 뉴스 글씨
         text-decoration: none;
         color: white;
         margin-right: 320px;
       }
       .itTechNav {
+        // IT 기술 글씨
         text-decoration: none;
         color: white;
         margin-right: 320px;
       }
       .itGroupNav {
+        // 모임찾기
         text-decoration: none;
         color: white;
         margin-right: 10px;
       }
       .itCommuNav {
+        // 소통공간
         text-decoration: none;
         color: white;
         margin-left: 10px;

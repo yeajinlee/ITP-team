@@ -127,8 +127,8 @@ const Mainimage = () => {
       </div>
       
       {/* ----------------------------------------- 소통공간 --------------------------------*/}
-      <p className="communityHome">소통 공간</p>
       <div id="mainBoard">
+      <p>소통 공간</p>
         <Table className="boardTable">
           <thead>
             <tr>
