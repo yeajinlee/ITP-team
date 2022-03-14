@@ -60,7 +60,7 @@ if (!Comdatas) return null;
 
   return (
     <div id='communityDetailAll'>
-      <p className='communityDetailTop'>소통공간</p>
+      <p className='communityDetailTop'> &gt; 소통공간  </p>
      <div id='detailContentPost'>
       {Comdatas.map((Comdata,index) => (
       <Table>
@@ -68,8 +68,9 @@ if (!Comdatas) return null;
           <div key={index} className='detailTitle'>
             <p className='communityTitle'>
               {Comdata.c_title}
-              </p>
-            <p>{Comdata.c_name} | {Comdata.c_tag}</p>
+              <span className='communitynamedate'>{Comdata.c_name} | {Comdata.c_tag}</span>
+            </p>
+            
             </div>
           <div className='detailContent'>{Comdata.c_content}</div>
         </tbody>

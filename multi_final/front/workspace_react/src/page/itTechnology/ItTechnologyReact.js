@@ -32,7 +32,6 @@ const ItTechnologyReact = () => {
                 <div className='titleList'>
                     {techReact.articles.map((a, index) => (
                         <div key={index}>
-                            
                                 <p>
                                     <span className="boardTitle" onClick={() => window.open(`https://ko.reactjs.org${a.titleLink}`, "_blank")}>{a.title} </span>
                                     <span className='boardDate'>{a.date}</span>

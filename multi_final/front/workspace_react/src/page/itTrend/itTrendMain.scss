@@ -30,6 +30,7 @@
     justify-content: center;
     border-bottom: 2px solid #f1f1f1;
     margin-bottom: 50px;
+    border: 1px solid red;
   }
 
   #article1 {
@@ -38,8 +39,9 @@
     height: 300px;
     margin-left: 50px;
     margin-right: 50px;
-    margin-top: 30px;
+    // margin-top: 30px;
     margin-bottom: 50px;
+    background-color: aliceblue;
     .todayLink {
       text-decoration: none;
       color: black;

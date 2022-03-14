@@ -31,7 +31,10 @@ const ItTechnologySpring = () => {
                 <div className='titleList'>
                     {techSpring.articles.map((a, index) => (
                         <div key={index}>
-                            <p className="boardTitle" onClick={() => window.open(`https://spring.io${a.titleLink}`, "_blank")}>{a.title}</p>
+                             <p>
+                                    <span className="boardTitle" onClick={() => window.open(`https://ko.reactjs.org${a.titleLink}`, "_blank")}>{a.title} </span>
+                                    <span className='boardDate'>{a.date}</span>
+                            </p>
                         </div>
                     ))}
                 </div>

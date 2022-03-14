@@ -84,6 +84,10 @@ public class TechController {
 					springEl = springDoc.select("body h2").get(i);
 					String title = springEl.text();
 					String titleLink = springEl.html().replaceAll("<a href=\"", "");
+					
+					String date = titleLink.substring(6, 16).replace("/", "-");
+					System.out.println(date);
+					
 					titleLink = titleLink.substring(0, titleLink.indexOf("\""));
 					title = title.replace(",", " ");
 					System.out.println(title);
@@ -91,6 +95,7 @@ public class TechController {
 					Map<String, String> titleMap = new HashMap<String, String>();
 					titleMap.put("title", title);
 					titleMap.put("titleLink", titleLink);
+					titleMap.put("date", date);
 					springArray.add(i, titleMap);
 					System.out.println(springArray);
 					springMap.put("articles", springArray);
