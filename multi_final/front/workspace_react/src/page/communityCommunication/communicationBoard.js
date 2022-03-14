@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { BsSearch } from "react-icons/bs";
 import '../communityCommunication/communicationBoard.scss';
+
 const CommunicationBoard = () => {
 
   const page=1;
@@ -175,7 +177,7 @@ if (!Comdatas) return null;
               className="searchInput"
               value={title}
             />
-            <button className='searchButton' type="button" onClick={handlesearch} >검색</button>
+            <BsSearch className='searchButton' type="button" onClick={handlesearch}/>
           </div>
           <div>
             <ul id='communityPageButton'>

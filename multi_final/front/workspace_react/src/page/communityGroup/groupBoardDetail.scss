@@ -18,10 +18,14 @@
   #detailContentPost {
     //게시글 내용
     height: 700px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #3b9d9d;
     margin-bottom: 30px;
-    .detailTitle {
-      border-bottom: 1px solid gray;
+    .detailBody {
+      border-bottom: 1px solid #3b9d9d;
+    }
+    .contentTitle {
+      font-weight: bold;
+      font-size: 20px;
     }
     .detailContent {
       margin-top: 50px;

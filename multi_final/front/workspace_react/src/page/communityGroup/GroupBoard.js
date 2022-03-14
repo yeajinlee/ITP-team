@@ -1,11 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import { Card, Button} from 'react-bootstrap';
 import './groupBoard.scss'
-//import groupBoard from './GroupBoradData.json'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-
-
+import { BsSearch } from "react-icons/bs";
 
 const GroupBorad = () => {
   const page=1;
@@ -136,7 +134,8 @@ fetchGroup();
  if (error) return <div>에러가 발생했습니다</div>;
 if (!Groupdatas) return null;
     return (
-        <div id='GroupBoardMain'>
+        <div id='groupBoardAll'>
+          <p className='groupTitle'>모임찾기</p>
           <div>
           {(isLogin)?
           <Link to='/groupWriting' >
@@ -145,7 +144,8 @@ if (!Groupdatas) return null;
           <></>
           }
           </div>
-          <div className='boardFirstLine'>
+          
+          <div id='boardLine'>
             {currentItems.filter((val)=>{
               if(search===""){
                 return val
@@ -153,7 +153,7 @@ if (!Groupdatas) return null;
                 return val
               }
             }).map((currentItems) =>
-            <Card id='groupCard' className='groupCardCss' style={{ width: '18rem' }}>
+            <Card  className='groupCardCss'>
               <Card.Body key={currentItems.g_no}>
                 <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>
                   <Card.Img variant='top' src={currentItems.g_img} style={{height:'120px'}} />
@@ -175,7 +175,7 @@ if (!Groupdatas) return null;
               className="searchInput"
               value={title}
             />
-            <button className='searchButton' type="button" onClick={handlesearch} >검색</button>
+            <BsSearch className='searchButton' type="button" onClick={handlesearch}/>
           </div>
           <div>
             <ul id='pageButton'>

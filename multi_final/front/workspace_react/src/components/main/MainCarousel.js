@@ -19,7 +19,7 @@ const MainCarousel = () => {
           margin: '0 auto',
           alignContent: 'center',
           display: 'block',
-          width: 1440,
+          width: 1024,
           paddingTop: 30,
           paddingBottom: 20,
         }}
