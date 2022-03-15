@@ -39,9 +39,8 @@ public interface GroupMapper {
 	
 	//제목으로 검색
 	@Select(
-			"select * from itp_group orders where g_title LIKE '%${g_title}%' and g_no between (select count(*) from itp_group)-(6*#{page}-1) "
-			+ "and (select count(*) from itp_group)-(6*(#{page}-1))")
-	List<GroupDTO> getGroupListSearch(@Param("page") String page, @Param("g_title") String g_title);
+			"select * from itp_group orders where g_title LIKE '%${search}%' ")
+	List<GroupDTO> getGroupListSearch(@Param("search") String search);
 	
 	//글쓰기  제목 소제목 카테고리 파일 내용 작성자
 

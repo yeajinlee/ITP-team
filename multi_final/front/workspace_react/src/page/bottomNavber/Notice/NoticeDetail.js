@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './noticeDetail.scss'
+import { BsChevronRight } from 'react-icons/bs';
 
 const NoticeDetail = () => {
   const { no } = useParams();
@@ -54,23 +55,24 @@ if (error) return <div>에러가 발생했습니다</div>;
 if (!Noticedatas) return null;
 
   return (
-    <div id="noticeDetailAll">
-      <p className="noticeDetailTop">공지사항</p>
-      <div id="detailNoticePost">
-        {Noticedatas.map((Noticedata, index) => (
-          <Table>
-            <tbody>
-              <div key={index} id="detailTitle">
-                <p className="noticeTitle">
-                  {Noticedata.n_title}
-                  <span className="noticeDate">{Noticedata.n_date} </span>
-                </p>
-              </div>
-              <div className="noticeContent">{Noticedata.n_content}</div>
-            </tbody>
-          </Table>
-        ))}
-      </div>
+    <div id='noticeDetailAll'>
+      <p className='noticeDetailTop'> <BsChevronRight/>공지사항</p>
+     <div id='detailNoticePost'>
+      {Noticedatas.map((Noticedata,index) => (
+      <Table>
+        <tbody>
+          <div key={index} id='detailTitle'>
+            <p className='noticeTitle'>
+           {Noticedata.n_title}    <span id='noticedate'> 
+            {Noticedata.n_date}</span>
+            </p>
+            </div>
+          <div className='noticeContent'>{Noticedata.n_content}</div>
+        </tbody>
+        
+      </Table>
+      ))}
+     </div>
 
       {sessionStorage.getItem('m_name') === 'manager' ||
       localStorage.getItem('m_name') === 'manager' ? (

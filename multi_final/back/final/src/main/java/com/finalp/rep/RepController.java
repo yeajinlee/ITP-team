@@ -42,6 +42,7 @@ public class RepController {
 		return mapper.getmyrepList(m_name);  
 	}
 	
+		
 	
 	//입력
 	

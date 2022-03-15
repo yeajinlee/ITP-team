@@ -12,7 +12,7 @@ $color-background: white;
   align-items: 'center';
   color: white;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
   margin-top: 10px;
   background-color: #ffffff;
   .logoImg {
@@ -86,6 +86,11 @@ $color-background: white;
         margin-left: 10px;
         margin-right: 30px;
       }
+     #basic-nav-dropdown{
+        color: white;
+        text-decoration: none;
+      }
+       
     }
   }
 }
