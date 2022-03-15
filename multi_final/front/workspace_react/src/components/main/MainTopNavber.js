@@ -72,18 +72,13 @@ const MainTopNavberNonLogin = () => {
                         <Link to='/itTrend' className='itTrendNav' id='nav_menu'>
                             IT 뉴스</Link>
                         <Link to='/iTTech' className='itTechNav' id='nav_menu'>IT 기술</Link>
-                        <NavDropdown
-                          title="커뮤니티"
-                        id="basic-nav-dropdown"
-                          alignRight
-                        className="dropdown" zindex={1}
-                            >
+                        <NavDropdown title="커뮤니티" id="basic-nav-dropdown" alignRight className="dropdown" zindex={1}>
                             <NavDropdown.Item href="/communityGroup">
-                           모임찾기
-                          </NavDropdown.Item>
-                         <NavDropdown.Divider />
+                                모임찾기
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
                             <NavDropdown.Item href="/communication">
-                         소통공간
+                                소통공간
                            </NavDropdown.Item>
                            </NavDropdown>
                         {/* <Link to='#' className='itGroupNav' id='nav_menu'>커뮤니티</Link>

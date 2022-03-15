@@ -246,7 +246,7 @@ public class ItTrendController {
 				response.append(responseLine.trim());
 			}
 			
-			System.out.println("response" + response.toString());
+			
 
 			os.close();
 			summary = response.toString();
@@ -285,7 +285,7 @@ public class ItTrendController {
 			content = content.substring(0, index);
 		}
 		
-		System.out.println(content);
+		
 		
 		return content;
 	}
