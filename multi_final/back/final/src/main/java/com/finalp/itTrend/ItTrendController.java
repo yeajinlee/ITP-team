@@ -128,7 +128,6 @@ public class ItTrendController {
 		
 		
 		String oriTitle = urlTitle.replace("-", " ");
-		System.out.println(oriTitle);
 		try {
 			URI uri = UriComponentsBuilder
 					.fromUriString("https://newsapi.org/")
@@ -272,6 +271,7 @@ public class ItTrendController {
 		}
 		//기사 본문 내 " 제거
 		content = content.replace("\"", "'");
+		content = content.replace("\\", "'");
 		//기사 본문 내 [] 내용 제거
 		if (content.contains("[")) {
 			content = content.substring(content.indexOf("]")+1);
