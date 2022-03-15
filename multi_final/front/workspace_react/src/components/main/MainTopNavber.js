@@ -89,11 +89,11 @@ const hideDropdown = e => {
                         className="dropdown" zindex={1}
                             >
                             <NavDropdown.Item href="/communityGroup">
-                           모임찾기
-                          </NavDropdown.Item>
-                         <NavDropdown.Divider />
+                                모임찾기
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
                             <NavDropdown.Item href="/communication">
-                         소통공간
+                                소통공간
                            </NavDropdown.Item>
                            </NavDropdown> 
                     </div>
