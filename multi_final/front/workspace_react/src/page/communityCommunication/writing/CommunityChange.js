@@ -72,17 +72,12 @@ fetchCom();
 if (!Comdatas) return null;
   
   return (
-      
- 
     <div id='communityWritingAll'>
       <p className='communityTitle'>소통공간</p>
       <Form className='writingForm'>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Control type="text" onChange={(e)=>handlec_title(e)} value={c_title} placeholder="글 제목을 입력해주세요" />
         </Form.Group>
-          <Form.Group className='writingFile'controlId="formFile">
-            <Form.Control  type="file" />
-          </Form.Group>
           <Form.Control as='textarea' onChange={(e)=>handlec_content(e)} value={c_content} className='writingText' type="text" placeholder="내용을 입력해주세요" />
       </Form>
       <div id='button'>
