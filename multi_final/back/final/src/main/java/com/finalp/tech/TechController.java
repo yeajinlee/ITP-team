@@ -127,8 +127,7 @@ public class TechController {
 					postMonth = getMonthNum(postMonth);
 					String postDate = fullDate.split(" ")[2];
 					title = title.replace(",", " ");
-					System.out.println(title);
-					System.out.println(titleLink);
+					
 					postDate = postDate.replace(",", "");
 					if (postMonth.length() == 1) {
 						postMonth = "0" + postMonth;
@@ -136,7 +135,7 @@ public class TechController {
 					if (postDate.length() == 1) {
 						postDate = "0" + postDate;
 					}
-					System.out.println(postYear + "-" + postMonth + "-" + postDate);
+					
 					String date = postYear + "-" + postMonth + "-" + postDate;
 					//리액트로 보낼 데이터
 					Map<String, String> titleMap = new HashMap<String, String>();
@@ -144,7 +143,7 @@ public class TechController {
 					titleMap.put("titleLink", titleLink);
 					titleMap.put("date", date);
 					vueArray.add(i, titleMap);
-					System.out.println(vueArray);
+					
 					vueMap.put("articles", vueArray);
 				}
 			

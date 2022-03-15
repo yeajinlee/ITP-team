@@ -38,9 +38,9 @@ const GroupWriting = () => {
     const handleg_tag=(e)=>{
       setg_tag(e.target.value)
       if(e.target.value==='프로젝트'){
-      setg_img('https://cdn.discordapp.com/attachments/946306018705563671/952793352326246440/6.png') }
+      setg_img('https://cdn.discordapp.com/attachments/946306018705563671/953159160688680980/002d941d11a3f521.png') }
       else if(e.target.value==='스터디'){
-       setg_img('https://cdn.discordapp.com/attachments/946306018705563671/952798819454713876/5.png')
+       setg_img('https://cdn.discordapp.com/attachments/946306018705563671/953159083479941141/2_.png')
       }
       console.log(g_tag)
     }

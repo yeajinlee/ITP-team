@@ -131,6 +131,7 @@ function Register() {
         console.log(checked);}
      else if(isName===true&&isEmail===true&&isPassword===true&&isPasswordcheck===true&&ischeckboxchecked===true&&ischeckboxchecked===true){
         const m_passwdcrypto = CryptoJS.AES.encrypt(m_passwd, 'itp123').toString();
+        alert('저희 ITP 회원이 되어주셔서 감사합니다!')
         axios.post(`http://localhost:8085/addMember`,null,{
             params:{
               'm_name':m_name,
@@ -143,7 +144,7 @@ function Register() {
           })
           .then(res=>{
             console.log(res)
-            document.location.href='/login';//성공시 로그인으로 돌아가기
+            window.location='/login';//성공시 로그인으로 돌아가기
           })
           .catch()
         }
@@ -184,10 +185,7 @@ function Register() {
                         <input type="checkbox" class="form-check-input" id="exampleCheck1"   checked={checked} onChange={handlechange} onBlur={checkboxchecked} />
                         <label class="form-check-label" for="exampleCheck1">회원 가입에 동의 하시나요?</label>
                     </div> 
-                    <input type="submit" value="회원가입" className='signUpButton' onClick={submitForm}/>   
-                    <Link to="/myPageBoard">
-                        <div>마이페이지 테스트 이동용</div>
-                    </Link>
+                    <input type="submit" value="회원가입" className='signUpButton' onClick={submitForm}/>
                 </form>
             </div>
         );

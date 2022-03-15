@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './noticeDetail.scss'
-import { BsChevronRight } from 'react-icons/bs';
+import { BsChevronRight } from "react-icons/bs";
+
 
 const NoticeDetail = () => {
   const { no } = useParams();

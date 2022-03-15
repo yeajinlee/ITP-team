@@ -29,7 +29,7 @@ const ItTrendDetail = () => {
         fetchData();
     },[]);
     if(loading) {
-        return <div>트렌드 기사 내용을 불러오는 중</div>
+        return <div id="itTrendDetailAll">트렌드 기사 내용을 불러오는 중</div>
     }
     if (error) {
         return (
@@ -63,28 +63,42 @@ const ItTrendDetail = () => {
         );
     }
 
-    return(
-        <div id="itTrendDetailAll" className='detailMain'>
-            <p>{trendDetail.title}</p>
-            <div>
-                <img src={trendDetail.urlToImage} alt="" />
-            </div>
-            <div className='trendContent'>
-                {trendDetail.summary.split('\\n').map((line) => {
-                    return (
-                        <div>
-                            {line}<br/>
-                        </div>
-                    );
-                })}
-                {/* {trendDetail.summary} */}
-            </div>
-            <div >
-            <button className='detailButton' value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}>
-                원문보기</button>
-            <button className='detailButton' value="목록으로" onClick={BackToItTrendMain} >목록으로</button>
-            </div>
-        </div>    
+    return (
+      <div id="itTrendDetailAll" className="detailMain">
+        <p className='titleandimg'>
+          <p>{trendDetail.title}</p>
+          <hr />
+          <img src={trendDetail.urlToImage} alt="" />
+        </p>
+        <div className="trendContent">
+          <ol>
+            {trendDetail.summary.split('\\n').map((line) => {
+              return (
+                <li>
+                  {line}
+                  <br />
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+        <div>
+          <button
+            className="detailButton"
+            value="원문보기"
+            onClick={() => window.open(`${trendDetail.url}`, '_blank')}
+          >
+            원문보기
+          </button>
+          <button
+            className="detailButton"
+            value="목록으로"
+            onClick={BackToItTrendMain}
+          >
+            목록으로
+          </button>
+        </div>
+      </div>
     ); 
 };
 

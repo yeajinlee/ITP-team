@@ -8,10 +8,10 @@ import { BsChevronRight } from 'react-icons/bs';
 
 
 const ItTechnologyMain=()=>{
-    return (
+    return (   
         
             <div id='itTechMain'>
-            <p className='itTechPageTitle'> <BsChevronRight/> IT 기술</p>
+            <div className='itTechPageTitle'> <BsChevronRight/> IT 기술</div>
             <div>
                 <div className="skill_list">
                     <ItTechnologyReact/>
