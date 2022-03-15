@@ -46,7 +46,7 @@ if (!Noticedatas) return null;
 
   return (
     <div id="noticeAll">
-      <p>공지사항</p>
+      <p>&gt;<Link to='/notice' style={{textDecoration:'none',color:'black'}}>공지사항</Link></p>
       <Table>
         <thead>
           <tr>

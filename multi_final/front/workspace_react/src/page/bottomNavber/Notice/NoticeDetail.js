@@ -1,10 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './noticeDetail.scss'
-import { BsChevronRight } from 'react-icons/bs';
+
 
 const NoticeDetail = () => {
   const { no } = useParams();
@@ -56,7 +56,7 @@ if (!Noticedatas) return null;
 
   return (
     <div id='noticeDetailAll'>
-      <p className='noticeDetailTop'> <BsChevronRight/>공지사항</p>
+      <p className='noticeDetailTop'> &gt;<Link to='/notice' style={{textDecoration:'none',color:'black'}}>공지사항</Link></p>
      <div id='detailNoticePost'>
       {Noticedatas.map((Noticedata,index) => (
       <Table>
