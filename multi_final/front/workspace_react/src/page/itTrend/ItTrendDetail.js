@@ -1,8 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useParams,useNavigate, useLocation } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import './itTrendDetail.scss'
 import axios from 'axios';
+
 
 const ItTrendDetail = () => {
     const { title } = useParams();
@@ -51,15 +52,31 @@ const ItTrendDetail = () => {
 
     if(trendDetail.summary === " ") {
         return (
-            <div id="itTrendDetailAll">
-                <h3>{trendDetail.title}</h3>
-                <div><img src={trendDetail.urlToImage} alt="" width={500}></img></div>
-                본문 요약 보기를 지원하지 않는 기사입니다.<br/>
-                {/* <div>{trendDetail.description}</div> */}
-                {trendDetail.content}
-                <input className='detailButton' type="button" value="원문보기" onClick={() => window.open(`${trendDetail.url}`, "_blank")}/>
-                <input className='detailButton' type="button" value="목록으로" onClick={BackToItTrendMain} />
+          <div id="itTrendDetailAll">
+
+            <p className="titleandimg">
+              <p>{trendDetail.title}</p>
+              <hr />
+              <img src={trendDetail.urlToImage} alt="" />
+            </p>
+
+            <div className="trendContent">
+                본문 요약 보기를 지원하지 않는 기사입니다. {trendDetail.content}
             </div>
+            
+            <input
+              className="detailButton"
+              type="button"
+              value="원문보기"
+              onClick={() => window.open(`${trendDetail.url}`, '_blank')}
+            />
+            <input
+              className="detailButton"
+              type="button"
+              value="목록으로"
+              onClick={BackToItTrendMain}
+            />
+          </div>
         );
     }
 
@@ -88,14 +105,14 @@ const ItTrendDetail = () => {
             value="원문보기"
             onClick={() => window.open(`${trendDetail.url}`, '_blank')}
           >
-            원문보기
+            뉴스원문
           </button>
           <button
             className="detailButton"
             value="목록으로"
             onClick={BackToItTrendMain}
           >
-            목록으로
+            목록
           </button>
         </div>
       </div>

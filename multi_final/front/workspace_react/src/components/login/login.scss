@@ -8,7 +8,7 @@
   align-items: center;
   text-align: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-  height: 1000px;
+  height: 550px;
   margin: 0 auto;
   overflow: hidden;
 
@@ -16,6 +16,7 @@
     text-align: center;
     font-weight: bold;
     font-size: 20px;
+    margin-top: 100px;
   }
   #inputLogin {
     width: 256px;

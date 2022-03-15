@@ -1,5 +1,4 @@
-import React from 'react';/* 
-import MainCarousel from '../../components/main/MainCarousel'; */
+import React from 'react';
 import ItTechnologyMain from './ItTechnologyMain';
 
 

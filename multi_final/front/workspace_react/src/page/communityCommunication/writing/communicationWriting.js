@@ -3,6 +3,7 @@ import './communicationWriting.scss';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
+import { BsChevronRight} from "react-icons/bs";
 
 
 // eslint-disable-next-line
@@ -69,7 +70,7 @@ const CommunicationWriting = () => {
       
  
       <div id='communityWritingAll'>
-        <p className='communityTitle'>소통공간</p>
+        <p className='communityTitle'><BsChevronRight/> 소통공간</p>
         <Form className='writingForm'>
           <Form.Group id='writingTop' controlId="exampleForm.ControlInput1">
            

@@ -6,12 +6,17 @@
   justify-content: center;
   text-align: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-  margin: 0 auto;
+  margin: 50px auto;
   overflow: hidden;
+  #communicationTitle {
+    margin-bottom: 50px;
+  }
   #mainBoard {
     p {
       font-size: 25px;
       float: left;
+      width: 1000px;
+      text-align: left;
     }
     .cWritingButton {
       //글쓰기 버튼
@@ -22,12 +27,16 @@
       border: 0;
       float: right;
       width: 100px;
+      margin-bottom: 20px;
     }
   }
   .communityTitle {
     //제목
     text-decoration: none;
     color: black;
+    //font-weight: bold;
+  }
+  .communityTitle:hover {
     font-weight: bold;
   }
   #communitySearch {

@@ -41,9 +41,7 @@ const ItTechnologyReact = () => {
                         </div>
                     ))}
                 </div>
-                
             </span>
-            {/* <button onClick={() => navigate('/itTech/forum/1')}>포럼</button> */}
         </div>
     );
 };

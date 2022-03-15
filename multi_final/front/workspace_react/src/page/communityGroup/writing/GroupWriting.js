@@ -3,6 +3,7 @@ import './GroupWriting.scss';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { BsChevronRight} from "react-icons/bs";
 
 
 // eslint-disable-next-line
@@ -78,6 +79,7 @@ const GroupWriting = () => {
     return (
       
       <div id='groupWritingAll'>
+         <p className='groupTitle'><BsChevronRight/> 모임찾기</p>
         <Form className='writingForm'>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Control type="text" onChange={(e)=>handleg_title(e)} placeholder="글 제목을 입력해주세요" />

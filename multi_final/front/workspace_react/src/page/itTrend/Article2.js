@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import trendData from './itTrendData.json';
 import axios from 'axios';
 
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\一-龥\s]/g;
@@ -43,10 +42,8 @@ const Article2 = () => {
         {articles2.articles.map((a, index) => (
           <div key={index} className="article2A">
             <Link to={titleUrl(a.title)} className="articleLink">
-              
               <img src={a.urlToImage} alt=""></img>
               <div className='articleTitle'>{a.title}</div>
-              
             </Link>
           </div>
         ))}
