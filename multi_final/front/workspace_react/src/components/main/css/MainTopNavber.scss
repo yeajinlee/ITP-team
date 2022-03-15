@@ -76,21 +76,63 @@ $color-background: white;
       .itGroupNav {
         // 모임찾기
         text-decoration: none;
-        color: white;
+        color: black;
         margin-right: 10px;
+        font-size: 10px;
       }
       .itCommuNav {
         // 소통공간
         text-decoration: none;
-        color: white;
-        margin-left: 10px;
-        margin-right: 30px;
+        color: black;
+       //margin-left: 10px;
+       // margin-right: 30px;
+        font-size: 10px;
       }
-     #basic-nav-dropdown{
+      #basic-nav-dropdown {
         color: white;
         text-decoration: none;
       }
-       
+      .dropbtn {
+        border: none;
+        padding: 0px;
+        font-size: 15px;
+        color: white;
+        border-color: none;
+        background-color: #008080 ;
+        
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content{
+        display: none;
+        position:relative;
+        z-index: 100;
+        color: black;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        min-width: 150px;
+        }
+
+      .dropdown-content Link {
+        text-decoration: none;
+        display: block;
+        padding: 0px;
+     
+      }
+
+      .dropdown-content Link :hover {
+        background: #ff1111;
+        color: red;
+        
+      }
+      .dropdown:hover .dropbtn {
+        background: #008000;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+        z-index: 100;
+      }
     }
   }
 }
