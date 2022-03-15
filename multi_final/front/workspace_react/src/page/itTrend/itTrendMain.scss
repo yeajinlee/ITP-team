@@ -5,7 +5,7 @@
 #trendAll {
   justify-content: center;
   text-align: center;
-  width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+  width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
   margin: 0 auto;
   overflow: hidden;
   .time {
@@ -40,7 +40,7 @@
 
     #article1 {
       display: inline-flex;
-      
+
       width: 300px;
       height: 320px;
       margin-left: 30px;
@@ -49,7 +49,7 @@
       margin-bottom: 20px;
       .todayLink {
         display: flex;
-        
+
         text-decoration: none;
         color: black;
       }
@@ -80,16 +80,15 @@
       display: flex;
       flex-wrap: wrap;
       white-space: normal;
-      
+
       .article2A {
         flex-shrink: 0;
         flex: 1 1 30%;
         width: 100px;
         margin-bottom: 80px;
-        
+
         margin-right: 10px;
         margin-left: 10px;
-        
       }
       img {
         width: 300px;
@@ -103,7 +102,6 @@
         margin: 0 auto;
         margin-top: 20px;
         width: 300px;
-        
       }
     }
   }

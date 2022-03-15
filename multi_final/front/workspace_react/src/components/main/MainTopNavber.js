@@ -79,7 +79,8 @@ const hideDropdown = e => {
                     <div id='navbarMain'>
                         <Link to='/itTrend' className='itTrendNav' id='nav_menu'>
                             IT 뉴스</Link>
-                        <Link to='/iTTech' className='itTechNav' id='nav_menu'>IT 기술</Link>
+                        <Link to='/iTTech' className='itTechNav' id='nav_menu'>
+                            IT 기술</Link>
                         <NavDropdown
                         title="커뮤니티"   /* id="collasible-nav-dropdown" */ 
                         show={show}

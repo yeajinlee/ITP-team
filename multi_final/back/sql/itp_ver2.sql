@@ -71,7 +71,7 @@ insert into itp_com values(7,'nnn','소통공간글7','소통공간내용1',defa
 insert into itp_com values(8,'pan','소통공간글8','소통공간내용1',default);
 
 
--------------------------------------------------- 댓글
+-------------------------------------------------- 소통공간 댓글
 create table itp_reply(
 r_rno int primary key auto_increment,
 r_no int not null,
@@ -80,11 +80,26 @@ r_name varchar(200) not null,
 r_date datetime default now(),
 foreign key(r_rno) references itp_com(c_no) on DELETE CASCADE);
 
+-------------------------------------------------- 모임찾기
+
 insert into itp_reply values(1,1,'1번글댓글','aaa',default);
 insert into itp_reply values(2,2,'1번댓글2','bbb',default);
 insert into itp_reply values(3,1,'1번댓글2','bbb',default);
 insert into itp_reply values(4,5,'1번댓글2','ccc',default);
 insert into itp_reply values(5,6,'1번댓글2','eee',default);
+
+create table itp_replygroup(
+rg_rno int primary key auto_increment,
+rg_no int not null,
+rg_content varchar(3000) not null,
+rg_name varchar(200) not null,
+rg_date date default(current_date),
+foreign key(rg_rno) references itp_group(g_no) on DELETE CASCADE);
+
+
+insert into itp_replygroup values(1,1,'1번글댓글','aaa',default);
+insert into itp_replygroup values(2,2,'2번댓글2','bbb',default);
+insert into itp_replygroup values(3,7,'댓굴추가','ccc',default);
 
 -- 커밋
 commit;
