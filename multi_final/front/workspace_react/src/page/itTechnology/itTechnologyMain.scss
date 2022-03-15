@@ -8,11 +8,12 @@ p.itTechPageTitle {
 }
 #itTechMain {
   justify-content: center;
-  text-align: center;
-  width: 1080px; // 2560(QHD), 1920(FHD), 1680, 1440
+  width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
   margin: 0 auto;
   overflow: hidden;
-  ul {
+  margin-bottom: 100px;
+  // border: 1px solid blue;
+  .skill_list {
     list-style: none;
     margin-top: 100px;
   }
@@ -20,19 +21,33 @@ p.itTechPageTitle {
     text-decoration: none;
     color: black;
   }
-  li {
-    margin-bottom: 80px;
-  }
   .itTechSpan {
     display: flex;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    
   }
   .boardTitle {
-    font-size: 20px;
+    display: inline-block;
+    max-width: 600px;
+    font-size: 17px;
     font-weight: bold;
     margin-left: 20px;
+    cursor: pointer;
+    white-space: nowrap; // 아래줄 내려가는 것 막기
+    overflow: hidden; // 영역 감추기
+    text-overflow: ellipsis; // ...로 만들기
+    // border: 1px solid green;
   }
-  .boardContent {
-    font-size: 14px;
-    margin-top: 20px;
+  .boardDate{
+    float: right;
+    // border: 1px solid orange;
+  }
+  .titleList {
+    width: 790px;
+    margin: auto 0;
+    padding-top: 10px;
+    list-style: none;
+    // border: 1px solid red;
   }
 }

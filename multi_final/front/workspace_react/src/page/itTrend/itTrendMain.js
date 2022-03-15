@@ -14,7 +14,7 @@ const itTrendMain = () => {
     return (
         <div id="trendAll">
             <div className='time'>
-                <p>{year}.{month}.{date} 최신 뉴스</p>       
+                <p>{year}.{month}.{date} IT 뉴스</p>       
             </div>
             <div className='todayTrend'>
                 <Article1/>           
