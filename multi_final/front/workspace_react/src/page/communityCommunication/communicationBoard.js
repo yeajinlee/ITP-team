@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { BsSearch } from "react-icons/bs";
+import { BsChevronRight, BsSearch } from "react-icons/bs";
 import '../communityCommunication/communicationBoard.scss';
 
 const CommunicationBoard = () => {
@@ -134,7 +134,7 @@ if (!Comdatas) return null;
             :<></>
             }
             <br />
-            <p> &gt; <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
+            <p>  <BsChevronRight/> <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
             <Table>
               <thead>
                 <tr>

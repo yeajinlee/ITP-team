@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import GroupReply from './GroupReply';
 import axios from 'axios';
 import './groupBoardDetail.scss'
+import { BsChevronRight } from 'react-icons/bs';
 
 const GroupBoardDetail = () => {
   const { no } = useParams();
@@ -62,14 +63,15 @@ if (!Groupdatas) return null;
   return (
     <div id='groupDetailAll'>
       
-      <p className='groupDetailTop'> &gt; <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
+      <p className='groupDetailTop'> <BsChevronRight/> <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
      <div id='detailContentPost'>
       {Groupdatas.map((Groupdata,index) => (
       <Table>
         <tbody>
           <div key={index} className='detailBody'>
-            <p className='contentTitle'>{Groupdata.g_title}</p>
-            <p>{Groupdata.g_name} | {Groupdata.g_tag}</p>
+            <p className='contentTitle'>{Groupdata.g_title}
+            <span id='groupnamedate'> 
+            {Groupdata.g_name} | {Groupdata.g_tag}</span></p>
             </div>
           <div className='detailContent'>{Groupdata.g_content}</div>
         </tbody>
@@ -79,7 +81,7 @@ if (!Groupdatas) return null;
      <div id='detailButton'>
   
      {
-        ((sessionStorage.getItem('m_name'))===g_name||(localStorage.getItem('m_name'))=== g_name) ?
+        ((sessionStorage.getItem('m_name'))===g_name||(localStorage.getItem('m_name'))=== g_name||(sessionStorage.getItem('m_name'))==='manager'||(localStorage.getItem('m_name'))==='manager') ?
         <>
         <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
       <button className='groupDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>

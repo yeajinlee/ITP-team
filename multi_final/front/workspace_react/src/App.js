@@ -74,7 +74,7 @@ const App = () => {
       {/* My Page */}
       <Route path="/myPageBoard/:m_name" element={<MyPageMain />} />
       <Route path="/myPageComment/:m_name" element={<MyPageComment />} />
-      <Route path="/myPageInformationModify" element={<MyPageInformationModify />} />
+      <Route path="/myPageInformationModify/:m_name" element={<MyPageInformationModify />} />
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
       <Route path="/groupWriting" element={<GroupWriting />} />

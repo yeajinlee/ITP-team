@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.finalp.rep.RepDTO;
 
 @Mapper
 public interface GroupRepMapper {
@@ -31,7 +30,7 @@ public interface GroupRepMapper {
 			@Delete("DELETE FROM itp_replygroup WHERE rg_rno = #{rg_rno}")
 			int deleteGroupRep(@Param("rg_rno") int rg_rno);
 			
-			@Insert("INSERT INTO itp_reply (rg_no,rg_content,rg_name,rg_date) values(#{rg_no},#{rg_content},#{rg_name},#{rg_date})")
+			@Insert("INSERT INTO itp_replygroup (rg_no,rg_content,rg_name,rg_date) values(#{rg_no},#{rg_content},#{rg_name},#{rg_date})")
 			int insertGroupRep(
 					@Param("rg_no") int rg_no,
 					@Param("rg_content") String rg_content,

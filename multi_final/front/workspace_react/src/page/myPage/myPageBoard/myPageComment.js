@@ -21,7 +21,7 @@ const MyPageCommunityComment = () => {
           // loading 상태를 true
           setLoading(true); 
           
-          const response=await axios.get(`http://localhost:8085/mypage/group/?m_name=${m_name}`,null,{
+          const response=await axios.get(`http://localhost:8085/mypage/group/rep?m_name=${m_name}`,null,{
             params:{
                 'm_name':m_name,
               }
@@ -47,7 +47,7 @@ fetchGroup();
           // loading 상태를 true
           setLoading(true); 
           
-          const response=await axios.get(`http://localhost:8085/mypage/group/rep?m_name=${m_name}`,null,{
+          const response=await axios.get(`http://localhost:8085/mypage/rep?m_name=${m_name}`,null,{
             params:{
                 'm_name':m_name,
               }
@@ -85,15 +85,15 @@ if (!Repdatas) return null;
                         </thead>
                         <tbody>
                             {Groupdatas.map((Groupdata) => (
-                            <tr key={Groupdata.g_no}>
-                                <td>{Groupdata.g_no}</td>
+                            <tr key={Groupdata.rg_rno}>
+                                <td>{Groupdata.rg_rno}</td>
                                 <td>
-                                    <Link to={'/communityGroup/'+Groupdata.g_no} style={{ textDecoration: 'none' }}>
+                                    <Link to={'/communityGroup/'+Groupdata.rg_no} style={{ textDecoration: 'none',color:'black' }}>
                                         {Groupdata.g_title}
                                     </Link>
                                 </td>
                                 <td>
-                                    {Groupdata.g_tag}
+                                    {Groupdata.rg_content}
                                 </td>
                             </tr>
                             ))}
@@ -115,7 +115,7 @@ if (!Repdatas) return null;
                             <tr key={Repdata.r_rno}>
                                 <td>{Repdata.r_rno}</td>
                                 <td>
-                                    <Link to={'/Communication/'+Repdata.r_no} style={{ textDecoration: 'none' }}>
+                                    <Link to={'/Communication/'+Repdata.r_no} style={{ textDecoration: 'none' ,color:'black'}}>
                                         {Repdata.c_title}
                                     </Link>
                                 </td>

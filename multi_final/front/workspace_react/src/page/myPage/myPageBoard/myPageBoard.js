@@ -78,7 +78,7 @@ if (!Comdatas) return null;
             <Sidebar /> 
             <div id='board'>
             <Tabs className='myPageTabs'>
-                <Tab eventKey="group" title="모임찾기">
+                <Tab eventKey="group" title="모임찾기" >
                     <Table className='myPageTable'>
                         <thead>
                             <tr>
@@ -118,7 +118,7 @@ if (!Comdatas) return null;
                             <tr key={Comdata.c_no}>
                                 <td>{Comdata.c_no}</td>
                                 <td>
-                                    <Link to={'/Communication/'+Comdata.c_no} style={{ textDecoration: 'none' }}>
+                                    <Link to={'/Communication/'+Comdata.c_no} style={{ textDecoration: 'none',color:'black'}}>
                                         {Comdata.c_title}
                                     </Link>
                                 </td>

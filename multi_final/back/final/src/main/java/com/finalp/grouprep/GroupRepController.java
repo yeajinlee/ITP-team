@@ -37,7 +37,7 @@ public class GroupRepController {
 	//입력
 	
 	@RequestMapping(value="/addGroupRep/{rg_no}",method=RequestMethod.POST)
-    int insertRep(@PathVariable("rg_no") int rg_no,
+    int insertGroupRep(@PathVariable("rg_no") int rg_no,
 			@RequestParam(value="rg_content",required=false) String rg_content,
 			@RequestParam(value="rg_name",required=false) String rg_name,
 			@RequestParam(value="rg_date",required=false) @DateTimeFormat(pattern="yyyy-MM-dd")  LocalDate rg_date

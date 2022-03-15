@@ -12,7 +12,7 @@ const MainNevber = () => {
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="bottomNavber">
                         <div class="navbar-nav">
-                            <Link to='/Notice' class="nav-link active link-light" style={{ textDecoration: 'none'}} aria-current="page">공지사항</Link>
+                            <Link to='/notice' class="nav-link active link-light" style={{ textDecoration: 'none'}} aria-current="page">공지사항</Link>
                             <Link to='/faq' class="nav-link link-light" style={{ textDecoration: 'none'}}>자주 묻는 질문</Link>
                         </div>
                     </div>

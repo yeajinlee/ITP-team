@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 //import groupBoard from '../../page/communityGroup/GroupBoradData.json';
 import axios from 'axios';
+import { BsChevronRight } from 'react-icons/bs';
 
 const Mainimage = () => {
   const [Groupdatas, setGroupdata] = useState([]);
@@ -71,7 +72,7 @@ const Mainimage = () => {
   return (
     <div id="imageMain">
       <div id="itTrend">
-        <p>IT 기술 최신 동향</p>
+        <p>  <BsChevronRight/> <Link to='/iTTech' style={{textDecoration:'none',color:'black'}}>IT 기술</Link></p>
         {/* IT 기술 */}
         <div id='itCard'>
           <Card className='itCardSize' onClick={() => window.open(`https://ko.reactjs.org${techData.reactArticles[0].titleLink}`, "_blank")} >
@@ -98,7 +99,7 @@ const Mainimage = () => {
       {/* -----------------------------------------게시글 --------------------------------*/}
       <br />
       
-      <p>모임찾기</p>
+      <p>  <BsChevronRight/> <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
       <div id="groupLine">
         {Groupdatas.map((Groupdata) => (
           <Card className='groupCardSize'>
@@ -128,11 +129,10 @@ const Mainimage = () => {
       
       {/* ----------------------------------------- 소통공간 --------------------------------*/}
       <div id="mainBoard">
-      <p>소통 공간</p>
+      <p> <BsChevronRight/> <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
         <Table className="boardTable">
           <thead>
             <tr>
-           
               <th>제목</th>
               <th>작성자</th>
               <th>작성일</th>

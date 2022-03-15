@@ -3,7 +3,7 @@ import { Card, Button} from 'react-bootstrap';
 import './groupBoard.scss'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { BsSearch } from "react-icons/bs";
+import { BsSearch,BsChevronRight } from "react-icons/bs";
 
 const GroupBorad = () => {
   const page=1;
@@ -135,7 +135,9 @@ fetchGroup();
 if (!Groupdatas) return null;
     return (
         <div id='groupBoardAll'>
-          <p className='groupTitle'>&gt; <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
+          <p className='groupTitle'>
+          <BsChevronRight/>
+          <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
           <div>
           {(isLogin)?
           <Link to='/groupWriting' >

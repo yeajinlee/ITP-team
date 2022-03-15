@@ -15,8 +15,7 @@ import MainCarousel from './MainCarousel'; */
     import로 테이블에 있는 값을 다 가져와도 됨. */
 
 const MainTopNavberNonLogin = () => {
-    const [isHovering, setIsHovering] = useState(0);
-   
+       
     const[ismanager,setismanager]=useState();
     const [isLogin,setIslogin]=useState();
     const m_name=sessionStorage.getItem('m_name');
