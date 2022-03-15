@@ -23,7 +23,7 @@
     #detailTitle {
       //하단 밑줄
       border-bottom: 1px solid #3b9d9d;
-      display: flex;
+      // display: flex;
       .noticeTitle {
         //제목
         font-size: 20px;
@@ -34,6 +34,9 @@
       margin-top: 50px;
       margin-left: 40px;
       font-weight: lighter;
+    }
+    .noticeDate {
+      float: right;
     }
   }
 

@@ -31,7 +31,10 @@ const ItTechnologyVue = () => {
                 <div className='titleList'>
                     {techVue.articles.map((a, index) => (
                         <div key={index}>
-                            <p className="boardTitle" onClick={() => window.open(`https://news.vuejs.org/${a.titleLink}`, "_blank")}>{a.title}</p>
+                            <p >
+                                <span className="boardTitle" onClick={() => window.open(`https://news.vuejs.org/${a.titleLink}`, "_blank")}>{a.title}</span>
+                                <span className='boardDate'>{a.date}</span>
+                            </p>
                         </div>
                     ))}
                 </div>

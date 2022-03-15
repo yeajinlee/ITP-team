@@ -54,41 +54,45 @@ if (error) return <div>에러가 발생했습니다</div>;
 if (!Noticedatas) return null;
 
   return (
-    <div id='noticeDetailAll'>
-      <p className='noticeDetailTop'>공지사항</p>
-     <div id='detailNoticePost'>
-      {Noticedatas.map((Noticedata,index) => (
-      <Table>
-        <tbody>
-          <div key={index} id='detailTitle'>
-            <p className='noticeTitle'>
-           {Noticedata.n_title}
-            </p>
-            <p>{Noticedata.n_date} </p>
-            </div>
-          <div className='noticeContent'>{Noticedata.n_content}</div>
-        </tbody>
-        
-      </Table>
-      ))}
-     </div>
+    <div id="noticeDetailAll">
+      <p className="noticeDetailTop">공지사항</p>
+      <div id="detailNoticePost">
+        {Noticedatas.map((Noticedata, index) => (
+          <Table>
+            <tbody>
+              <div key={index} id="detailTitle">
+                <p className="noticeTitle">
+                  {Noticedata.n_title}
+                  <span className="noticeDate">{Noticedata.n_date} </span>
+                </p>
+              </div>
+              <div className="noticeContent">{Noticedata.n_content}</div>
+            </tbody>
+          </Table>
+        ))}
+      </div>
 
-     {
-        ((sessionStorage.getItem('m_name'))==='manager'||(localStorage.getItem('m_name'))==='manager') ?
+      {sessionStorage.getItem('m_name') === 'manager' ||
+      localStorage.getItem('m_name') === 'manager' ? (
         <>
-      <button value="목록으로" onClick={BackToNotice}>목록으로</button>
-      <button value="수정하기" onClick={()=>Update(no)}>수정하기</button>
-      <button value="삭제하기" onClick={()=>Delete(no)}>삭제하기</button>
-      </>
-    :
-    <>
-    <button value="목록으로" onClick={BackToNotice}>목록으로</button>
-   
-    </>   
-    }
+          <button value="목록으로" onClick={BackToNotice}>
+            목록으로
+          </button>
+          <button value="수정하기" onClick={() => Update(no)}>
+            수정하기
+          </button>
+          <button value="삭제하기" onClick={() => Delete(no)}>
+            삭제하기
+          </button>
+        </>
+      ) : (
+        <>
+          <button value="목록으로" onClick={BackToNotice}>
+            목록으로
+          </button>
+        </>
+      )}
     </div>
-    
-  
   );
 };
 
