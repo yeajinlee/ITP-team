@@ -27,12 +27,18 @@ const ItTechnologyVue = () => {
     return (
         <div>
             <span className="itTechSpan">
-                <img width="200px" height="200px" src="https://v3.ko.vuejs.org/logo.png" alt="img" />
-                {techVue.articles.map((a, index) => (
-                    <div key={index}>
-                        <p className="boardTitle" onClick={() => window.open(`https://news.vuejs.org/${a.titleLink}`, "_blank")}>{a.title}</p>
-                    </div>
-                ))}
+                <img width="220px" height="150px" src="./assets/vueLogo.png" alt="img" />
+                <div className='titleList'>
+                    {techVue.articles.map((a, index) => (
+                        <div key={index}>
+                            <p >
+                                <span className="boardTitle" onClick={() => window.open(`https://news.vuejs.org/${a.titleLink}`, "_blank")}>{a.title}</span>
+                                <span className='boardDate'>{a.date}</span>
+                            </p>
+                        </div>
+                    ))}
+                </div>
+                
             </span>
         </div>
     );

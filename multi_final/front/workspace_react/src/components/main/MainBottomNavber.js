@@ -15,7 +15,8 @@ const MainNevber = () => {
                         <p>
                           <p id='link1'> 
                             <Link to='/Notice' class="nav-link active link-light" style={{ textDecoration: 'none'}} >공지사항</Link> &nbsp;&nbsp;
-                            <Link to='/faq' class="nav-link link-light" style={{ textDecoration: 'none'}}>자주 묻는 질문</Link></p>
+                            <Link to='/faq' class="nav-link link-light" style={{ textDecoration: 'none'}}>자주 묻는 질문</Link>
+                          </p>
                         </p>
                             <p id='link2'>
                             <Link to='/Useterm' class="nav-link active link-light" style={{ textDecoration: 'none'}} >이용약관</Link>

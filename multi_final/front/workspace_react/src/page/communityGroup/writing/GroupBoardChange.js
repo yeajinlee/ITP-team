@@ -3,7 +3,6 @@ import { useNavigate,useParams} from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './GroupBoardChange.scss'
-import MainCarousel from '../../../components/main/MainCarousel';
 
 
 const GroupBoardChange= () => {
@@ -93,7 +92,6 @@ if (!Groupdatas) return null;
   
   return (
     <div>
-      <MainCarousel /> 
       <div id='groupModifyAll'>   
        <Form className='modifyForm'>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -107,9 +105,6 @@ if (!Groupdatas) return null;
               <option value="프로젝트">프로젝트</option>
               <option value="기타">기타</option>
             </Form.Select>
-            <Form.Group className='modifyFile'controlId="formFile">
-              <Form.Control  type="file" />
-            </Form.Group>
           </Form.Group>
           <Form.Control as='textarea' onChange={(e)=>handlen_content(e)} className='modifyText' type="text" placeholder="내용을 입력해주세요" value={g_content} />
         </Form>

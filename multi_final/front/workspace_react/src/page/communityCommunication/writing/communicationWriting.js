@@ -38,10 +38,7 @@ const CommunicationWriting = () => {
       console.log(c_content);
     }
 
-    const handlec_tag=(e)=>{
-      setc_tag(e.target.value)
-      console.log(g_tag)
-    }
+   
     const submit=()=>{
      console.log(c_title);
 
@@ -75,12 +72,7 @@ const CommunicationWriting = () => {
         <p className='communityTitle'>소통공간</p>
         <Form className='writingForm'>
           <Form.Group id='writingTop' controlId="exampleForm.ControlInput1">
-            <Form.Select className='writingSelect' onChange={(e)=>handlec_tag(e)} aria-label="Default select example">
-              <option>주제</option>
-              <option value="자유" >자유</option>
-              <option value="질문">질문</option>
-              <option value="기타">기타</option>
-            </Form.Select>
+           
             <Form.Control type="text" onChange={(e)=>handlec_title(e)} placeholder="글 제목을 입력해주세요" />
           </Form.Group>
             <Form.Control as='textarea' onChange={(e)=>handlec_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />

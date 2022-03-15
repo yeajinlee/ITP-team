@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/MainTopNavber.scss';
 import { Link } from 'react-router-dom';
 import MainCarousel from './MainCarousel';
+import { NavDropdown } from 'react-bootstrap';
 
 /* 
 import MainCarousel from './MainCarousel'; */
@@ -14,7 +15,7 @@ import MainCarousel from './MainCarousel'; */
     import로 테이블에 있는 값을 다 가져와도 됨. */
 
 const MainTopNavberNonLogin = () => {
-    
+       
     const[ismanager,setismanager]=useState();
     const [isLogin,setIslogin]=useState();
     const m_name=sessionStorage.getItem('m_name');
@@ -39,6 +40,7 @@ const MainTopNavberNonLogin = () => {
 
 
     return (
+      
         <div>
             <div id='mainTopNavber'>
                 <Link to="/">
@@ -67,16 +69,32 @@ const MainTopNavberNonLogin = () => {
                 }
                 <nav id='topNav'>
                     <div id='navbarMain'>
-                        <Link to='/itTrend' className='itTrendNav'>
+                        <Link to='/itTrend' className='itTrendNav' id='nav_menu'>
                             IT 뉴스</Link>
-                        <Link to='/iTTech' className='itTechNav'>IT 기술</Link>
+                        <Link to='/iTTech' className='itTechNav' id='nav_menu'>IT 기술</Link>
+                        <NavDropdown
+                          title="커뮤니티"
+                        id="basic-nav-dropdown"
+                          alignRight
+                        className="dropdown" zindex={1}
+                            >
+                            <NavDropdown.Item href="/communityGroup">
+                           모임찾기
+                          </NavDropdown.Item>
+                         <NavDropdown.Divider />
+                            <NavDropdown.Item href="/communication">
+                         소통공간
+                           </NavDropdown.Item>
+                           </NavDropdown>
+                        {/* <Link to='#' className='itGroupNav' id='nav_menu'>커뮤니티</Link>
                         <Link to='/communityGroup' className='itGroupNav'>모임찾기</Link>
                         ㅣ
-                        <Link to='/communication' className='itCommuNav'>소통공간</Link>
+                        <Link to='/communication' className='itCommuNav'>소통공간</Link> */}
+                       
                     </div>
                 </nav>
             </div>
-            <MainCarousel /> 
+            <MainCarousel/> 
         </div>    
                         );
                     };
