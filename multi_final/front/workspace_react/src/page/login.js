@@ -84,7 +84,7 @@ function Login() {
                 {/* form */}
                 <form className="loginForm">
                     <input type="m_email" name="email" id="inputLogin" onChange={ (e)=>{
-                        setmemail(e.target.value);if(e.target.value!=='')setisemailnull(false);}} placeholder="메일" />
+                        setmemail(e.target.value);if(e.target.value!=='')setisemailnull(false);}} placeholder="이메일" />
                     <br />
                     <input type="password" name="pw" id="inputLogin" 
                     placeholder="비밀번호" minlength="8" maxlength="16" onChange={ (e)=>{
