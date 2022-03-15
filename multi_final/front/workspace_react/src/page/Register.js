@@ -144,7 +144,7 @@ function Register() {
           })
           .then(res=>{
             console.log(res)
-            document.location.href='/login';//성공시 로그인으로 돌아가기
+            window.location='/login';//성공시 로그인으로 돌아가기
           })
           .catch()
         }

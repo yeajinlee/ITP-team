@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import GroupReply from './GroupReply';
 import axios from 'axios';
 import './groupBoardDetail.scss'
-import { BsChevronRight } from 'react-icons/bs';
+import {IoChevronForwardOutline } from 'react-icons/io5';
 
 const GroupBoardDetail = () => {
   const { no } = useParams();
@@ -63,7 +63,7 @@ if (!Groupdatas) return null;
   return (
     <div id='groupDetailAll'>
       
-      <p className='groupDetailTop'> <BsChevronRight/> <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
+      <p className='groupDetailTop'> <IoChevronForwardOutline/> <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
      <div id='detailContentPost'>
       {Groupdatas.map((Groupdata,index) => (
       <Table>

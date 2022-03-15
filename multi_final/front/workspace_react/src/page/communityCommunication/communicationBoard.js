@@ -134,7 +134,7 @@ if (!Comdatas) return null;
             :<></>
             }
             <br />
-            <p>  <BsChevronRight/> <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
+            <p>  <Link to='/communication' style={{textDecoration:'none',color:'black'}}>&gt; 소통공간</Link></p>
             <Table>
               <thead>
                 <tr>
