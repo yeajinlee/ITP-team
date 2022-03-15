@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './GroupWriting.scss';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ const GroupWriting = () => {
     const [g_subtitle,setg_subtitle] =useState('')
     const[g_content,setg_content]=useState('')
     const[g_tag,setg_tag]=useState('')
-    const g_img='https://blog.kakaocdn.net/dn/cZsyTw/btq0u5VBWge/F7xmauYA6r8nnbXSz2vJhK/img.png'
+    const [g_img,setg_img]=useState('')
     const g_name=sessionStorage.getItem('m_name');
 
 
@@ -36,8 +36,17 @@ const GroupWriting = () => {
 
     const handleg_tag=(e)=>{
       setg_tag(e.target.value)
+      if(e.target.value==='프로젝트'){
+      setg_img('https://cdn.discordapp.com/attachments/946306018705563671/952793352326246440/6.png') }
+      else if(e.target.value==='스터디'){
+       setg_img('https://cdn.discordapp.com/attachments/946306018705563671/952798819454713876/5.png')
+      }
       console.log(g_tag)
     }
+                    
+    
+
+
 
     const submit=()=>{
      console.log(g_title);
@@ -65,7 +74,7 @@ const GroupWriting = () => {
       })
       .catch()
     }
-   
+  
     return (
       
       <div id='groupWritingAll'>
@@ -79,7 +88,7 @@ const GroupWriting = () => {
               <option>주제</option>
               <option value="스터디" >스터디</option>
               <option value="프로젝트">프로젝트</option>
-              <option value="기타">기타</option>
+            
             </Form.Select>
           </Form.Group>
             <Form.Control as='textarea' onChange={(e)=>handleg_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './noticeDetail.scss'
+import { BsChevronRight } from 'react-icons/bs';
 
 const NoticeDetail = () => {
   const { no } = useParams();
@@ -55,16 +56,16 @@ if (!Noticedatas) return null;
 
   return (
     <div id='noticeDetailAll'>
-      <p className='noticeDetailTop'>공지사항</p>
+      <p className='noticeDetailTop'> <BsChevronRight/>공지사항</p>
      <div id='detailNoticePost'>
       {Noticedatas.map((Noticedata,index) => (
       <Table>
         <tbody>
           <div key={index} id='detailTitle'>
             <p className='noticeTitle'>
-           {Noticedata.n_title}
+           {Noticedata.n_title}    <span id='noticedate'> 
+            {Noticedata.n_date}</span>
             </p>
-            <p>{Noticedata.n_date} </p>
             </div>
           <div className='noticeContent'>{Noticedata.n_content}</div>
         </tbody>

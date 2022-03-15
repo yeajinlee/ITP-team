@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { BsSearch } from "react-icons/bs";
+import { BsChevronRight, BsSearch } from "react-icons/bs";
 import '../communityCommunication/communicationBoard.scss';
 
 const CommunicationBoard = () => {
@@ -15,7 +15,7 @@ const CommunicationBoard = () => {
   const[search,setsearch]=useState('');
 
   const[currentpage,setcurrentpage]=useState(1);
-  const itemsPerPage=6;
+  const itemsPerPage=10;
   const pageNumberLimit=5;
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
@@ -134,7 +134,7 @@ if (!Comdatas) return null;
             :<></>
             }
             <br />
-            <p>소통 공간</p>
+            <p>  <BsChevronRight/> <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
             <Table>
               <thead>
                 <tr>
@@ -156,7 +156,7 @@ if (!Comdatas) return null;
                     <tr key={index}>
                       <td>{currentItems.c_no}</td>
                       <td>
-                        <Link to={'/Communication/'+currentItems.c_no} className='communityTitle' style={{ textDecoration: 'none' }}>
+                        <Link to={'/Communication/'+currentItems.c_no} className='communityTitle' style={{ textDecoration: 'none',color: 'black' }}>
                           {currentItems.c_title}
                         </Link>
                       </td>

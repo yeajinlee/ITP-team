@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
+import { BsChevronRight } from 'react-icons/bs';
 
 
 const AddNotice = () => {
@@ -52,7 +53,7 @@ const AddNotice = () => {
   return (
       /* 옵션 기능만 빼면 소통공간 게시글 작성과 같기에 css를 넣지 않음. */
       <div id='communityWritingAll'>
-        <p className='communityTitle'>공지사항</p>
+        <p className='communityTitle'> <BsChevronRight/>공지사항</p>
         <Form className='writingForm'>
           <Form.Group id='writingTop' controlId="exampleForm.ControlInput1">
             <Form.Control type="text" onChange={(e)=>handlen_title(e)} placeholder="글 제목을 입력해주세요" />

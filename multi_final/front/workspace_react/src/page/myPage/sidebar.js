@@ -5,16 +5,17 @@ import SidebarItem from "./pageSide";
 
 function Sidebar() {
   const { m_name } = useParams();
+  const myname=sessionStorage.getItem('m_name');
   const myWrite = [
     { name: "작성 글", path: `/myPageBoard/${m_name}` },
     { name: "댓글", path: `/myPageComment/${m_name}` },
   ];
   const menus = [
-    { name: "정보 수정", path: "/myPageInformationModify"}
+    { name: "정보 수정", path: `/myPageInformationModify/${m_name}`}
   ];
   return (
   <div id='sideBar'>
-    내가 쓴 글
+   {myname} 님의 정보
     <div className="Menu">
       {myWrite.map((menu, index) => {
         return (

@@ -77,8 +77,8 @@ public class GroupController {
 		
 	//검색 제목으로
 		@GetMapping("/group/list/searchbytitle")
-		public List<GroupDTO> getGroupListSearch(@RequestParam("page") String page, @RequestParam(value="g_title",required=false) String g_title){
-			return mapper.getGroupListSearch(page,g_title); 
+		public List<GroupDTO> getGroupListSearch(@RequestParam(value="search",required=false) String search){
+			return mapper.getGroupListSearch(search); 
 		}
 		
 		@PutMapping("/updateGroup/{g_no}")
