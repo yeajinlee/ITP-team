@@ -79,7 +79,8 @@ const hideDropdown = e => {
                     <div id='navbarMain'>
                         <Link to='/itTrend' className='itTrendNav' id='nav_menu'>
                             IT 뉴스</Link>
-                        <Link to='/iTTech' className='itTechNav' id='nav_menu'>IT 기술</Link>
+                        <Link to='/iTTech' className='itTechNav' id='nav_menu'>
+                            IT 기술</Link>
                         <NavDropdown
                         title="커뮤니티"   /* id="collasible-nav-dropdown" */ 
                         show={show}
@@ -89,11 +90,11 @@ const hideDropdown = e => {
                         className="dropdown" zindex={1}
                             >
                             <NavDropdown.Item href="/communityGroup">
-                           모임찾기
-                          </NavDropdown.Item>
-                         <NavDropdown.Divider />
+                                모임찾기
+                            </NavDropdown.Item>
+                            <NavDropdown.Divider />
                             <NavDropdown.Item href="/communication">
-                         소통공간
+                                소통공간
                            </NavDropdown.Item>
                            </NavDropdown> 
                     </div>

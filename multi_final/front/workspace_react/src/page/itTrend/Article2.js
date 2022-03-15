@@ -45,9 +45,8 @@ const Article2 = () => {
             <Link to={titleUrl(a.title)} className="articleLink">
               
               <img src={a.urlToImage} alt=""></img>
-              <div>
-              {a.title}
-              </div>
+              <div className='articleTitle'>{a.title}</div>
+              
             </Link>
           </div>
         ))}

@@ -9,13 +9,14 @@
   overflow: hidden;
   margin-bottom: 100px;
   // border: 1px solid blue;
-  p.itTechPageTitle {
+  .itTechPageTitle {
     font-size: 25px;
-    float: left;
+    // float: left;
+    margin-top: 50px;
   }
   .skill_list {
     list-style: none;
-    margin-top: 100px;
+    margin-top: 40px;
   }
   .itTechLink {
     text-decoration: none;
@@ -24,12 +25,12 @@
   .itTechSpan {
     display: flex;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   .boardTitle {
     display: inline-block;
     max-width: 600px;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: bold;
     margin-left: 20px;
     cursor: pointer;

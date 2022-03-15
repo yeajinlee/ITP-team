@@ -38,14 +38,14 @@ const Article1 = () => {
         return <div>오류가 발생했습니다. 관리자에게 문의해주세요.</div>;
     }
     return (
-      <div>
+      <div className='latestArticles'>
         {articles1.articles.map((a, index) => (
           <div key={index} id='article1'>
             <Link to={titleUrl(a.title)} className="todayLink">
+              <div>
               <img src={a.urlToImage} alt="" width={300} height={200}></img>
-              {a.title}<br/>
-              {/* {a.description}<br/>
-              {a.publishedAt} */}
+              <div className='articleTitle'>{a.title}<br/></div>
+              </div>
             </Link>
           </div>
         ))}
