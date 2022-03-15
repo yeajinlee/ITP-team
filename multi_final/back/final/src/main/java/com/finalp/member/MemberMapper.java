@@ -32,4 +32,6 @@ public interface MemberMapper {
 	
 	@Select("select * from itp_member where m_email=#{m_email}")
 	List<MemberDTO> Loginmember(@Param("m_email") String m_email);
+	
+
 }

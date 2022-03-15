@@ -7,15 +7,15 @@
   justify-content: center;
   text-align: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-  margin: 0 auto;
+  margin: 50px auto;
   overflow: hidden;
   margin-bottom: 40px;
   .groupTitle {
     // 상단 '모임찾기' 텍스트
     text-align: left;
     font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 60px;
+    //font-weight: bold;
+    margin-bottom: 50px;
   }
   .writingButton {
     //로그인 후 글쓰기 버튼
@@ -31,28 +31,29 @@
   }
   #boardLine {
     // 게시글
-    display: grid;
-    grid-template-columns: 340px 340px 340px;
-    grid-template-rows: 350px 350px;
-    justify-content: space-evenly;
-    width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-    margin: 0 auto;
-    overflow: hidden;
-    .groupCardCss {
-      outline: 0;
-      margin-bottom: 20px;
-      width: 18rem;
-      height: 18rem;
-    }
+     display: grid;
+     grid-template-columns: 300px 300px 300px;
+     grid-template-rows: 350px 350px;
+     justify-content: center;
+     width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
+     grid-column-gap: 60px;
+     margin-right: auto 0;
+     overflow: visible;
+     .groupCardCss {
+       outline: 0;
+       margin-bottom: 20px;
+       //width: 18rem;
+       height: 18rem;
+     }
     .title {
       margin-top: 20px;
-      text-align: left;
+      text-align: center;
       font-size: 18px;
       font-weight: bold;
       color: black;
     }
     .cardText {
-      text-align: left;
+      text-align: center;
       color: black;
       overflow: hidden; // 영역 감추기
       text-overflow: ellipsis; // ...로 만들기

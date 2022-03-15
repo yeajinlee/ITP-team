@@ -136,8 +136,7 @@ if (!Groupdatas) return null;
     return (
         <div id='groupBoardAll'>
           <p className='groupTitle'>
-          <BsChevronRight/>
-          <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
+          <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}><BsChevronRight/> 모임찾기</Link></p>
           <div>
           {(isLogin)?
           <Link to='/groupWriting' >

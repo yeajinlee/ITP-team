@@ -10,10 +10,14 @@
   overflow: hidden;
   p {
     margin-top: 70px;
+    margin-bottom: 50px;
   }
   .noticeTitle {
     text-decoration: none;
     color: black;
+    //font-weight: bold;
+  }
+  .noticeTitle:hover {
     font-weight: bold;
   }
   .noticeButton {

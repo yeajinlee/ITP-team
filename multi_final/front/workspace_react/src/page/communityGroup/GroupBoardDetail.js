@@ -83,12 +83,12 @@ if (!Groupdatas) return null;
      {
         ((sessionStorage.getItem('m_name'))===g_name||(localStorage.getItem('m_name'))=== g_name||(sessionStorage.getItem('m_name'))==='manager'||(localStorage.getItem('m_name'))==='manager') ?
         <>
-        <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
-      <button className='groupDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>
-      <button className='groupDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제하기 </button>
+        <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록 </button>
+      <button className='groupDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정 </button>
+      <button className='groupDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제 </button>
       </>
       :
-      <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록으로 </button>
+      <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록 </button>
      }
       </div>
       <GroupReply/>

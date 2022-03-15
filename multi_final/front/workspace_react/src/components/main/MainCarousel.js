@@ -27,14 +27,16 @@ const MainCarousel = () => {
           <Carousel.Item>
             <img
             className="d-flex"
-            src='./assets/banner_test2.png'
+            src='./assets/banner1_7.png'
             alt="Second slide"
+            width={1024}
+            height={300}
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
             className="d-flex"
-            src='./assets/banner_test3.png'
+            src='./assets/banner1_6.png'
             alt="Third slide"
             />
           </Carousel.Item>

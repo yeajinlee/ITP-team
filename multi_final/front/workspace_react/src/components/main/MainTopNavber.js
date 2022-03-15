@@ -69,7 +69,7 @@ const hideDropdown = e => {
                 </Link>
                     {(!ismanager)?
                 <Link to={`/myPageBoard/${m_name}`} className='myPage' style={{ textDecoration: 'none'}}>
-                    마이페이지 &nbsp;&nbsp;
+                    마이페이지
                 </Link>:<></>
                     }
                 </div>
