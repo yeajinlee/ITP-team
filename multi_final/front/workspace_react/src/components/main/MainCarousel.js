@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { Carousel } from 'react-bootstrap';
 
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\一-龥\s]/g;
@@ -27,7 +26,7 @@ const MainCarousel = () => {
           <Carousel.Item>
             <img
             className="d-flex"
-            src='./assets/itp_banner.png'
+            src='./assets/banner1_7.png'
             alt="Second slide"
             width={1024}
             height={300}
@@ -36,7 +35,7 @@ const MainCarousel = () => {
           <Carousel.Item>
             <img
             className="d-flex"
-            src='./assets/banner_test3.png'
+            src='./assets/banner1_6.png'
             alt="Third slide"
             />
           </Carousel.Item>

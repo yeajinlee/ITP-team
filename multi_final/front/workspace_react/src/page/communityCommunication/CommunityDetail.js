@@ -82,13 +82,13 @@ if (!Comdatas) return null;
         ((sessionStorage.getItem('m_name'))===c_name||(localStorage.getItem('m_name'))=== c_name|| (sessionStorage.getItem('m_name'))==='manager'||(localStorage.getItem('m_name'))==='manager')?
         
      <div id='detailButton'>
-      <button className='communityDetailButton' value="목록으로" onClick={BackToComBoard} > 목록으로 </button>
-      <button className='communityDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정하기 </button>
-      <button className='communityDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제하기 </button>
+      <button className='communityDetailButton' value="목록으로" onClick={BackToComBoard} > 목록 </button>
+      <button className='communityDetailButton' value="수정하기" onClick={()=>Update(no)} > 수정 </button>
+      <button className='communityDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제 </button>
      </div>
      :
      <div id='detailButton'>
-     <button className='communityDetailButton' value="목록으로" onClick={BackToComBoard} > 목록으로 </button>
+     <button className='communityDetailButton' value="목록으로" onClick={BackToComBoard} > 목록 </button>
      
     </div>
       }

@@ -105,7 +105,7 @@ const ItTrendDetail = () => {
             value="원문보기"
             onClick={() => window.open(`${trendDetail.url}`, '_blank')}
           >
-            뉴스 원문
+            뉴스원문
           </button>
           <button
             className="detailButton"

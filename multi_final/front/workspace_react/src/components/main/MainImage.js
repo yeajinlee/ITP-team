@@ -72,7 +72,7 @@ const Mainimage = () => {
   return (
     <div id="imageMain">
       <div id="itTrend">
-        <p>  <BsChevronRight/> <Link to='/iTTech' style={{textDecoration:'none',color:'black'}}>IT 기술</Link></p>
+        <p>  <Link to='/iTTech' style={{textDecoration:'none',color:'black'}}>IT 기술</Link>  <BsChevronRight/> </p>
         {/* IT 기술 */}
         <div id='itCard'>
           <Card className='itCardSize' onClick={() => window.open(`https://ko.reactjs.org${techData.reactArticles[0].titleLink}`, "_blank")} >
@@ -99,7 +99,7 @@ const Mainimage = () => {
       {/* -----------------------------------------게시글 --------------------------------*/}
       <br />
       
-      <p>  <BsChevronRight/> <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
+      <p> <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기 </Link> <BsChevronRight/> </p>
       <div id="groupLine">
         {Groupdatas.map((Groupdata) => (
           <Card className='groupCardSize'>
@@ -129,7 +129,7 @@ const Mainimage = () => {
       
       {/* ----------------------------------------- 소통공간 --------------------------------*/}
       <div id="mainBoard">
-      <p> <BsChevronRight/> <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
+      <p> <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간 </Link> <BsChevronRight/> </p>
         <Table className="boardTable">
           <thead>
             <tr>

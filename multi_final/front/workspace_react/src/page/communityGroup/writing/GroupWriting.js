@@ -3,6 +3,7 @@ import './GroupWriting.scss';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { BsChevronRight} from "react-icons/bs";
 
 
 // eslint-disable-next-line
@@ -37,9 +38,9 @@ const GroupWriting = () => {
     const handleg_tag=(e)=>{
       setg_tag(e.target.value)
       if(e.target.value==='프로젝트'){
-      setg_img('https://cdn.discordapp.com/attachments/946306018705563671/952793352326246440/6.png') }
+      setg_img('https://cdn.discordapp.com/attachments/946306018705563671/953159160688680980/002d941d11a3f521.png') }
       else if(e.target.value==='스터디'){
-       setg_img('https://cdn.discordapp.com/attachments/946306018705563671/952798819454713876/5.png')
+       setg_img('https://cdn.discordapp.com/attachments/946306018705563671/953159083479941141/2_.png')
       }
       console.log(g_tag)
     }
@@ -78,6 +79,7 @@ const GroupWriting = () => {
     return (
       
       <div id='groupWritingAll'>
+         <p className='groupTitle'><BsChevronRight/> 모임찾기</p>
         <Form className='writingForm'>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Control type="text" onChange={(e)=>handleg_title(e)} placeholder="글 제목을 입력해주세요" />

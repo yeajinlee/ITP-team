@@ -3,14 +3,19 @@
   padding: 0;
 }
 #groupWritingAll {
+  //'모임찾기' 글씨
+  .groupTitle{
+    float: left;
+    font-size: 25px;
+  }
   .writingForm {
     //Form 공간 부여
-    margin-top: 50px;
+    margin-top: 100px;
   }
   // Form 전체
   justify-content: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-  margin: 0 auto;
+  margin: 50px auto;
   overflow: hidden;
   text-align: center;
   #writingSub {

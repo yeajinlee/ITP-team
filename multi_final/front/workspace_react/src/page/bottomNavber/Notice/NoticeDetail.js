@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './noticeDetail.scss'
-import { BsChevronRight } from 'react-icons/bs';
+import { BsChevronRight } from "react-icons/bs";
+
 
 const NoticeDetail = () => {
   const { no } = useParams();
@@ -56,7 +57,7 @@ if (!Noticedatas) return null;
 
   return (
     <div id='noticeDetailAll'>
-      <p className='noticeDetailTop'> <BsChevronRight/>공지사항</p>
+      <p className='noticeDetailTop'> <BsChevronRight/> 공지사항</p>
      <div id='detailNoticePost'>
       {Noticedatas.map((Noticedata,index) => (
       <Table>
@@ -77,20 +78,20 @@ if (!Noticedatas) return null;
       {sessionStorage.getItem('m_name') === 'manager' ||
       localStorage.getItem('m_name') === 'manager' ? (
         <>
-          <button value="목록으로" onClick={BackToNotice}>
-            목록으로
+          <button value="삭제하기" onClick={() => Delete(no)}>
+            삭제
           </button>
           <button value="수정하기" onClick={() => Update(no)}>
-            수정하기
+            수정
           </button>
-          <button value="삭제하기" onClick={() => Delete(no)}>
-            삭제하기
+          <button value="목록으로" onClick={BackToNotice}>
+            목록
           </button>
         </>
       ) : (
         <>
           <button value="목록으로" onClick={BackToNotice}>
-            목록으로
+            목록
           </button>
         </>
       )}

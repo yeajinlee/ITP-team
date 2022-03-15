@@ -96,7 +96,7 @@ const infolaw = () => {
   <p>성명 : 멀티캠퍼스</p>
   <p>소속 : 멀티캠퍼스</p>
   <p>전화번호 : OO-OOO-OOOO</p>
-  <p>이메일 :cafe@cafe.co.kr</p>
+  <p>이메일 :itpmanager@naver.com</p>
   
   <p>o 개인정보보호책임자</p>
   <p>성명 : 멀티캠퍼스
@@ -104,7 +104,7 @@ const infolaw = () => {
   </p>
   <p>소속 : 멀티캠퍼스</p>
   <p>전화번호 : OO-OOO-OOOO</p>
-  <p>이메일 :cafe@cafe.co.kr</p>
+  <p>이메일 :itpmanager@naver.com</p>
   
   <p>o 귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보보호책임자 혹은 담당부서로 신고하실 수 있습니다.</p>
   <p>o 회사는 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.</p>

@@ -129,12 +129,11 @@ if (!Comdatas) return null;
     return (
         <div id='communityAll'>
           <div id='mainBoard'>
+            <p id='communicationTitle'> <Link to='/communication' style={{textDecoration:'none',color:'black'}}><BsChevronRight/> 소통공간</Link></p>
             {(isLogin)?
             <Link to='/communicationWriting'><Button className='cWritingButton'>글쓰기</Button></Link>
             :<></>
             }
-            <br />
-            <p>  <BsChevronRight/> <Link to='/communication' style={{textDecoration:'none',color:'black'}}>소통공간</Link></p>
             <Table>
               <thead>
                 <tr>

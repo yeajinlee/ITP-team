@@ -3,16 +3,16 @@ import { Card, Button} from 'react-bootstrap';
 import './groupBoard.scss'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { BsSearch,BsChevronRight } from "react-icons/bs";
+import { BsChevronRight, BsSearch } from "react-icons/bs";
 
 const GroupBorad = () => {
   const page=1;
-  const[Groupdatas,setGroupdata]=useState([]);
+  const[Groupdatas,setGroupdata]=useState([]); //전체데이터
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const[title,settitle]=useState('');
   const[search,setsearch]=useState('');
-
+  
   const[currentpage,setcurrentpage]=useState(1);
   const itemsPerPage=6;
   const pageNumberLimit=5;
@@ -36,8 +36,9 @@ console.log(Groupdatas.length);
 
   const indexOfLastItem=currentpage*itemsPerPage; //마지막 갯수
   const indexOfFirstItem=indexOfLastItem-itemsPerPage;
-  const currentItems=Groupdatas.slice(indexOfFirstItem,indexOfLastItem);
 
+  const currentItems=Groupdatas.slice(indexOfFirstItem,indexOfLastItem);
+  
   console.log(currentItems);
 
   const renderPagenum=pagenums.map((number)=>{
@@ -120,15 +121,17 @@ fetchGroup();
   }
 
   const handlesearch=()=>{
-    setsearch(title);
+    setsearch(title); //title이 입력한내용
+   
     // const searchvalue=title;
     // console.log(searchvalue);
     
     // targetdata=Groupdatas.filter((data)=>{
     //   return data.title.search(searchvalue);
     // });
-    
-  }
+
+}
+
 
  if (loading) return <div>로딩중..</div>;
  if (error) return <div>에러가 발생했습니다</div>;
@@ -136,8 +139,7 @@ if (!Groupdatas) return null;
     return (
         <div id='groupBoardAll'>
           <p className='groupTitle'>
-          <BsChevronRight/>
-          <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}>모임찾기</Link></p>
+          <Link to='/communityGroup' style={{textDecoration:'none',color:'black'}}><BsChevronRight/> 모임찾기</Link></p>
           <div>
           {(isLogin)?
           <Link to='/groupWriting' >
