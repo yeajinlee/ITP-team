@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./notice.scss"
+import { BsChevronRight } from 'react-icons/bs';
 
 const Notice = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ if (!Noticedatas) return null;
 
   return (
     <div id="noticeAll">
-      <p>&gt;<Link to='/notice' style={{textDecoration:'none',color:'black'}}>공지사항</Link></p>
+      <p>공지사항 <BsChevronRight/> </p>
       <Table>
         <thead>
           <tr>
