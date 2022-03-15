@@ -2,10 +2,6 @@
   margin: 0;
   padding: 0;
 }
-p.itTechPageTitle {
-  font-size: 25px;
-  float: left;
-}
 #itTechMain {
   justify-content: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
@@ -13,9 +9,14 @@ p.itTechPageTitle {
   overflow: hidden;
   margin-bottom: 100px;
   // border: 1px solid blue;
+  .itTechPageTitle {
+    font-size: 25px;
+    // float: left;
+    margin-top: 50px;
+  }
   .skill_list {
     list-style: none;
-    margin-top: 100px;
+    margin-top: 40px;
   }
   .itTechLink {
     text-decoration: none;
@@ -24,13 +25,12 @@ p.itTechPageTitle {
   .itTechSpan {
     display: flex;
     margin-top: 40px;
-    margin-bottom: 20px;
-    
+    margin-bottom: 25px;
   }
   .boardTitle {
     display: inline-block;
     max-width: 600px;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: bold;
     margin-left: 20px;
     cursor: pointer;
@@ -39,7 +39,7 @@ p.itTechPageTitle {
     text-overflow: ellipsis; // ...로 만들기
     // border: 1px solid green;
   }
-  .boardDate{
+  .boardDate {
     float: right;
     // border: 1px solid orange;
   }

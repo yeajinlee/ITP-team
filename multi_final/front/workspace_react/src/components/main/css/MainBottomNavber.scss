@@ -5,5 +5,38 @@ $text-Color: white;
 
 div.bottomNavber {
   background-color: #5c5e5e;
-  color: $text-Color;
+  color: $text-Color; 
+  margin-top: 100px;
+}
+#link1 {
+  width: 500px;
+  height: 5px;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  font-size: 13pt;
+  font-weight: bold;
+}
+#link2 {
+  width: 500px;
+  height: 5px;
+  display: flex;
+  justify-content: center;
+}
+#bottomContent {
+  padding-bottom: 20px;
+  width: 500px;
+}
+#bottomContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  width: 700px;
+  text-align: center;
+  padding-left: 100px;
+}
+#bottomExpand{
+  display: flex;
+  justify-content: center; 
 }

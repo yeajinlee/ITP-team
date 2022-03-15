@@ -10,7 +10,7 @@ const ItTechnologyMain=()=>{
     return (
         
             <div id='itTechMain'>
-            <p className='itTechPageTitle'>IT 기술</p>
+            <div className='itTechPageTitle'>IT 기술</div>
             <div>
                 <div className="skill_list">
                     <ItTechnologyReact/>

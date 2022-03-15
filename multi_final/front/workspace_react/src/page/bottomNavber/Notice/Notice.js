@@ -46,7 +46,7 @@ if (!Noticedatas) return null;
 
   return (
     <div id="noticeAll">
-      <h3>공지사항</h3>
+      <p>공지사항</p>
       <Table>
         <thead>
           <tr>

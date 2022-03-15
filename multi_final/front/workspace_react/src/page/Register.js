@@ -164,7 +164,7 @@ function Register() {
                         (<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}
                         {/* 이메일 입력 */}
                         <input type="text" name="m_email" value={m_email} onChange={(e)=>setm_email(e.target.value)} onBlur={checkemail}
-                        placeholder="메일" />
+                        placeholder="이메일" />
                        <input type="button" name="m_emailcheck" id="m_emailcheck" className='duplicateCheck' value="중복확인" onClick={()=>m_emailcheck(m_email)}/>
                         {isEmail===false ? (<p className='errorcode'>이메일을 다시입력해주세요</p>)  :
                         (<p className='okcode'>사용가능한 형식입니다 중복확인을 진행해주세요</p>)}

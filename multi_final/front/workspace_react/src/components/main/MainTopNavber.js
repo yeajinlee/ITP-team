@@ -18,6 +18,13 @@ const MainTopNavberNonLogin = () => {
        
     const[ismanager,setismanager]=useState();
     const [isLogin,setIslogin]=useState();
+    const [show, setShow] = useState(false);
+const showDropdown = (e)=>{
+    setShow(!show);
+}
+const hideDropdown = e => {
+    setShow(false);
+}
     const m_name=sessionStorage.getItem('m_name');
     const Logout=()=>{
         localStorage.clear();
@@ -41,8 +48,8 @@ const MainTopNavberNonLogin = () => {
 
     return (
       
-        <div>
-            <div id='mainTopNavber'>
+        <div id='mainTopNavber'>
+            <div id='mainTopLogoAndLogin'>
                 <Link to="/">
                     <img src='./assets/ItpLogo_2.png' className='logoImg' alt='Logo'/>
                 </Link>
@@ -67,12 +74,20 @@ const MainTopNavberNonLogin = () => {
                     }
                 </div>
                 }
+            </div>
                 <nav id='topNav'>
                     <div id='navbarMain'>
                         <Link to='/itTrend' className='itTrendNav' id='nav_menu'>
                             IT 뉴스</Link>
                         <Link to='/iTTech' className='itTechNav' id='nav_menu'>IT 기술</Link>
-                        <NavDropdown title="커뮤니티" id="basic-nav-dropdown" alignRight className="dropdown" zindex={1}>
+                        <NavDropdown
+                        title="커뮤니티"   /* id="collasible-nav-dropdown" */ 
+                        show={show}
+                        onMouseEnter={showDropdown} 
+                        onMouseLeave={hideDropdown}
+                        id="communityDropdown"
+                        className="dropdown" zindex={1}
+                            >
                             <NavDropdown.Item href="/communityGroup">
                                 모임찾기
                             </NavDropdown.Item>
@@ -80,15 +95,9 @@ const MainTopNavberNonLogin = () => {
                             <NavDropdown.Item href="/communication">
                                 소통공간
                            </NavDropdown.Item>
-                           </NavDropdown>
-                        {/* <Link to='#' className='itGroupNav' id='nav_menu'>커뮤니티</Link>
-                        <Link to='/communityGroup' className='itGroupNav'>모임찾기</Link>
-                        ㅣ
-                        <Link to='/communication' className='itCommuNav'>소통공간</Link> */}
-                       
+                           </NavDropdown> 
                     </div>
                 </nav>
-            </div>
             <MainCarousel/> 
         </div>    
                         );
