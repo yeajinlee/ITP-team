@@ -26,7 +26,7 @@ const MainCarousel = () => {
           <Carousel.Item>
             <img
             className="d-flex"
-            src='./assets/coding2.jpg'
+            src='./assets/coding.jpg'
             height='300px'
             width='1024px'
             alt="Second slide"

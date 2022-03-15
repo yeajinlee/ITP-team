@@ -12,7 +12,7 @@ const GroupBorad = () => {
   const [error, setError] = useState(null);
   const[title,settitle]=useState('');
   const[search,setsearch]=useState('');
-
+  
   const[currentpage,setcurrentpage]=useState(1);
   const itemsPerPage=6;
   const pageNumberLimit=5;
@@ -121,7 +121,8 @@ fetchGroup();
   }
 
   const handlesearch=()=>{
-    setsearch(title);
+    setsearch(title); //title이 입력한내용
+   
     // const searchvalue=title;
     // console.log(searchvalue);
     
@@ -129,7 +130,7 @@ fetchGroup();
     //   return data.title.search(searchvalue);
     // });
 
-};
+}
 
 
  if (loading) return <div>로딩중..</div>;
