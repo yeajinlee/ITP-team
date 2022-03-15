@@ -15,8 +15,7 @@ import AddNotice from "./page/bottomNavber/Notice/AddNotice";
 import ChangeNotice from "./page/bottomNavber/Notice/ChangeNotice";
 import Faq from "./page/bottomNavber/FAQ/FAQ";
 // IT 기술
-import ItTechnologyMain from './page/itTechnology/itTechnologyAll.js'; 
-import ItTechnologyDetail from './page/itTechnology/ItTechnologyDetail.js';
+import ItTechnologyMain from './page/itTechnology/ItTechnologyAll.js'; 
 import ItTechnologyForum from "./page/itTechnology/ItTechnologyForum";
 // IT 트렌드
 import ItTrendMain from'./page/itTrend/itTrendMain.js';
@@ -66,7 +65,6 @@ const App = () => {
       <Route path="/Infolaw" element={<Infolaw/>} />
       {/* IT 기술 */}
       <Route path="/itTech" element={<ItTechnologyMain/>} />
-      <Route path="/itTech/:no" element={<ItTechnologyDetail/>} />
       <Route path="/itTech/forum/:tag" element={<ItTechnologyForum/>} />
       {/* IT 트렌드 */}
       <Route path="/itTrend" element={<ItTrendMain/>} />

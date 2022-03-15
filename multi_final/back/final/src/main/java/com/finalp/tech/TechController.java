@@ -65,7 +65,7 @@ public class TechController {
 					reactMap.put("articles", reactArray);
 				}
 			
-				System.out.println(reactMap);
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -147,7 +147,7 @@ public class TechController {
 					vueMap.put("articles", vueArray);
 				}
 			
-				System.out.println(vueMap);
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
