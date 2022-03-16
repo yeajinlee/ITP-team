@@ -27,7 +27,6 @@
     float: right;
     width: 100px;
     margin-bottom: 40px;
-   
   }
   #boardLine {
     // 게시글
@@ -55,6 +54,9 @@
       font-size: 18px;
       font-weight: bold;
       color: black;
+      overflow: hidden; // 영역 감추기
+      text-overflow: ellipsis; // ...로 만들기
+      white-space: nowrap; // 아래줄 내려가는 것 막기
     }
     .cardText {
       text-align: center;

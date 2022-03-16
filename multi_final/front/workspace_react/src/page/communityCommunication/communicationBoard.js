@@ -20,24 +20,41 @@ const CommunicationBoard = () => {
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
   const [isLogin,setIslogin]=useState();
-
+  const [filterDatas,setFilterData]=useState(Comdatas);
+  
   const pagenums=[];
-  for(let i=1;i<=Math.ceil((Comdatas.length)/itemsPerPage);i++){
+  for(let i=1;i<=Math.ceil((filterDatas.length)/itemsPerPage);i++){
     pagenums.push(i);
   }
   console.log(pagenums);
 
   const indexOfLastItem=currentpage*itemsPerPage; //마지막 갯수
   const indexOfFirstItem=indexOfLastItem-itemsPerPage;
-  const currentItems=Comdatas.slice(indexOfFirstItem,indexOfLastItem);
+  const currentItems=filterDatas.slice(indexOfFirstItem,indexOfLastItem);
 
   console.log(currentItems);
 
   const handlesearch=()=>{
     setsearch(title);
+
+      console.log(search);
+      const newFilter=Comdatas.filter((val)=>{
+        return val.c_title.includes(search);
+      
+      });
+    
+      if(search!==' '){
+      setFilterData(newFilter);
+     
+      }else{
+        setFilterData(Comdatas);
+      
+      }
+      console.log(filterDatas);
+    
+    }
    
-   
-  }
+  
   
   const handleClickpage=(e)=>{
     setcurrentpage(Number(e.target.id))
@@ -82,6 +99,7 @@ const CommunicationBoard = () => {
           
           const response=await axios.get(`http://localhost:8085/com/listAll`,null);
           setComdata(response.data);
+          setFilterData(response.data);
           
         }catch(e){
           setError(e);
@@ -144,14 +162,7 @@ if (!Comdatas) return null;
                   </tr>
                 </thead>
               <tbody>
-                {currentItems.filter((val)=>{
-                  if(search===""){
-                     return val
-                    }
-                    else if(val.c_title.includes(search)){
-                      return val
-                    }
-                  }).map((currentItems,index) => (
+                {currentItems.map((currentItems,index) => (
                     <tr key={index}>
                       <td>{currentItems.c_no}</td>
                       <td>
