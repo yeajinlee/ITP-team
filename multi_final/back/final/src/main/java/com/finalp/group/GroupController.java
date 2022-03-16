@@ -50,18 +50,18 @@ public class GroupController {
 	public List<GroupDTO> getmygroupList(@RequestParam("m_name") String m_name){
 		return mapper.getmygroupList(m_name);  
 	}
-	//최신순 조회
+	    //최신순 조회
 		@GetMapping("/group/recent")
 		public List<GroupDTO> getgroupListmain(){
 			return mapper.getgroupListmain();
 		}
-	//페이징 조회
+	    //페이징 조회
 		@GetMapping("/group/list")
 		public List<GroupDTO> getgroupList(@RequestParam("page") String page){
 			return mapper.getgroupList(page);  
 		}
 		
-			//추가
+		//추가
 		@RequestMapping(value="/addgroup",method=RequestMethod.POST)
 	     int insertGroup(
 	    		 @RequestParam(value="g_name",required=false) String g_name,
@@ -75,12 +75,13 @@ public class GroupController {
 			return mapper.insertGroup(g_name,g_title,g_subtitle,g_content,g_img,g_tag);
 		}
 		
-	//검색 제목으로
+	    //검색 제목으로
 		@GetMapping("/group/list/searchbytitle")
 		public List<GroupDTO> getGroupListSearch(@RequestParam(value="search",required=false) String search){
 			return mapper.getGroupListSearch(search); 
 		}
 		
+		//모임찾기 글수정
 		@PutMapping("/updateGroup/{g_no}")
 		public int updateGroup(@PathVariable("g_no") int g_no,
 				@RequestParam(value="g_title",required=false) String g_title,
@@ -93,7 +94,7 @@ public class GroupController {
 		
 		}
 		
-
+        //모임찾기 글삭제
 		@DeleteMapping("/deleteGroup/{g_no}")
 		public int deleteGroup(@PathVariable("g_no") int g_no) {
 			return mapper.deleteGroup(g_no);
