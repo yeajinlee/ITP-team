@@ -45,6 +45,10 @@
        //width: 18rem;
        height: 18rem;
      }
+     .groupCardCss:hover {
+      box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.2);
+      transform: scale(1.01);
+     }
     .title {
       margin-top: 20px;
       text-align: center;

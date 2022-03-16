@@ -9,7 +9,7 @@
   }
   p {
     padding-top: 15px;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
     font-size: 25px;
     text-align: left;
   }
@@ -28,6 +28,12 @@
     .itCardSize {
       width: 18rem;
       height: 18rem;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .itCardSize:hover {
+      box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.2);
+      transform: scale(1.01);
     }
     .title {
       overflow: hidden; // 영역 감추기
@@ -41,7 +47,7 @@
 
   // -----------------------------------------------모임찾기---------------------------------------------
   #groupLine {
-    margin-bottom: 70px;
+    margin-bottom: 55px;
     text-align: center;
     display: flex;
     justify-content: space-evenly;
@@ -57,6 +63,12 @@
     .groupCardSize {
       width: 18rem;
       height: 18rem;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .groupCardSize:hover {
+      box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.2);
+      transform: scale(1.01);
     }
     .bodyLink {
       justify-content: center;
