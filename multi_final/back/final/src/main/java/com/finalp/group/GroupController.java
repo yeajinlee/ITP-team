@@ -80,7 +80,7 @@ public class GroupController {
 		public List<GroupDTO> getGroupListSearch(@RequestParam(value="search",required=false) String search){
 			return mapper.getGroupListSearch(search); 
 		}
-		
+		//수정
 		@PutMapping("/updateGroup/{g_no}")
 		public int updateGroup(@PathVariable("g_no") int g_no,
 				@RequestParam(value="g_title",required=false) String g_title,

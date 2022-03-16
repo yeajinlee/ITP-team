@@ -19,17 +19,35 @@ const GroupBorad = () => {
   const[maxpageNumberLimit,setmaxpageNumberLimit]=useState(5);
   const[minpageNumberLimit,setminpageNumberLimit]=useState(0);
   const [isLogin,setIslogin]=useState();
-
+  const [filterDatas,setFilterData]=useState(Groupdatas);
 const handleClickpage=(e)=>{
   setcurrentpage(Number(e.target.id))
 }
 
+const handlesearch=()=>{
+  setsearch(title); //title이 입력한내용
+  console.log(search);
+  const newFilter=Groupdatas.filter((val)=>{
+    return val.g_title.includes(search);
+  
+  });
+
+  if(search!==' '){
+  setFilterData(newFilter);
+ 
+  }else{
+    setFilterData(Groupdatas);
+  
+  }
+  console.log(filterDatas);
+
+}
 
 
 console.log(Groupdatas.length);
 
   const pagenums=[];
-  for(let i=1;i<=Math.ceil((Groupdatas.length)/itemsPerPage);i++){
+  for(let i=1;i<=Math.ceil((filterDatas.length)/itemsPerPage);i++){
     pagenums.push(i);
   }
   console.log(pagenums);
@@ -37,7 +55,7 @@ console.log(Groupdatas.length);
   const indexOfLastItem=currentpage*itemsPerPage; //마지막 갯수
   const indexOfFirstItem=indexOfLastItem-itemsPerPage;
 
-  const currentItems=Groupdatas.slice(indexOfFirstItem,indexOfLastItem);
+  const currentItems=filterDatas.slice(indexOfFirstItem,indexOfLastItem);
   
   console.log(currentItems);
 
@@ -80,6 +98,7 @@ console.log(Groupdatas.length);
           
           const response=await axios.get(`http://localhost:8085/group/listAll`,null);
           setGroupdata(response.data);
+          setFilterData(response.data)
           
         }catch(e){
           setError(e);
@@ -120,18 +139,7 @@ fetchGroup();
     pageDecrementBtn=<li onClick={handleprevbtn}>&hellip;</li>
   }
 
-  const handlesearch=()=>{
-    setsearch(title); //title이 입력한내용
-   
-    // const searchvalue=title;
-    // console.log(searchvalue);
-    
-    // targetdata=Groupdatas.filter((data)=>{
-    //   return data.title.search(searchvalue);
-    // });
-
-}
-
+ 
 
  if (loading) return <div>로딩중..</div>;
  if (error) return <div>에러가 발생했습니다</div>;
@@ -150,13 +158,7 @@ if (!Groupdatas) return null;
           </div>
           
           <div id='boardLine'>
-            {currentItems.filter((val)=>{
-              if(search===""){
-                return val
-              }else if(val.g_title.includes(search)){
-                return val
-              }
-            }).map((currentItems) =>
+            {currentItems.map((currentItems) =>
             <Card  className='groupCardCss'>
               <Card.Body key={currentItems.g_no}>
                 <Link to={"/communityGroup/"+ currentItems.g_no} style={{ textDecoration: 'none' }}>

@@ -52,19 +52,19 @@ function Login() {
                 sessionStorage.setItem("m_name",loginm_name); //닉네임
                 sessionStorage.setItem("m_role",m_role);
                 
-                document.location.href = '/'
+                window.location.href = '/'
                  } 
                 else if((decryptedData ===loginPassword)&&(checked===true)){
                     localStorage.setItem("loginemail", m_email);
                     localStorage.setItem("loginPassword", response.data[0].m_passwd);//비밀번호
                     localStorage.setItem("m_name", loginm_name); //닉네임
                     localStorage.setItem("m_role", m_role);
-                    document.location.href='/'
+                    window.location.href='/'
                  }
                  else{
                   
                      alert('아이디나 비밀번호가 올바르지 않습니다');  
-                     document.location.href = '/login';
+                     window.location.href = '/login';
                    
                  }
          })
