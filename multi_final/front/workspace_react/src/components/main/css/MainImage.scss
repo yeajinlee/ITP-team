@@ -4,7 +4,7 @@
 }
 // -----------------------------------------------IT 기술---------------------------------------------
 #imageMain {
-  #itTrend{
+  #itTrend {
     margin-top: 50px;
   }
   p {
@@ -59,6 +59,9 @@
       margin-top: 30px;
       color: black;
       font-weight: bold;
+      overflow: hidden; // 영역 감추기
+      text-overflow: ellipsis; // ...로 만들기
+      white-space: nowrap; // 아래줄 내려가는 것 막기
     }
     .groupCardSize {
       width: 18rem;
