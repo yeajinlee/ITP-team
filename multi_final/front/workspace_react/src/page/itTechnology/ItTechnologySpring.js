@@ -1,7 +1,6 @@
 import React, { useState , useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './itTechnologyMain.scss'
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const ItTechnologySpring = () => {
@@ -32,8 +31,8 @@ const ItTechnologySpring = () => {
                     {techSpring.articles.map((a, index) => (
                         <div key={index}>
                              <p>
-                                    <span className="boardTitle" onClick={() => window.open(`https://ko.reactjs.org${a.titleLink}`, "_blank")}>{a.title} </span>
-                                    <span className='boardDate'>{a.date}</span>
+                                <span className="boardTitle" onClick={() => window.open(`https://ko.reactjs.org${a.titleLink}`, "_blank")}>{a.title} </span>
+                                <span className='boardDate'>{a.date}</span>
                             </p>
                         </div>
                     ))}

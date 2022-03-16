@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import trendData from './itTrendData.json';
 import axios from 'axios';
 
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\一-龥\s]/g;
@@ -43,8 +42,8 @@ const Article1 = () => {
           <div key={index} id='article1'>
             <Link to={titleUrl(a.title)} className="todayLink">
               <div>
-              <img src={a.urlToImage} alt="" width={300} height={200}></img>
-              <div className='articleTitle'>{a.title}<br/></div>
+                <img src={a.urlToImage} alt=""></img>
+                <div className='articleTitle'>{a.title}<br/></div>
               </div>
             </Link>
           </div>
