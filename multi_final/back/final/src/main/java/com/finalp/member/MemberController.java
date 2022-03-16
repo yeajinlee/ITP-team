@@ -66,7 +66,7 @@ public class MemberController {
 	}
 	
 	//회원 탈퇴
-	@DeleteMapping(value="/member/{m_name}")
+	@DeleteMapping(value="/member/delete/{m_name}")
 	public int deleteMember(@PathVariable("m_name") String m_name) {
 		return mapper.deleteMember(m_name);
 	}
