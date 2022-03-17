@@ -4,6 +4,7 @@ import './css/MainTopNavber.scss';
 import { Link } from 'react-router-dom';
 import MainCarousel from './MainCarousel';
 import { NavDropdown } from 'react-bootstrap';
+import logo from '../image/ItpLogo_2.png';
 
 /* 
 import MainCarousel from './MainCarousel'; */
@@ -51,7 +52,7 @@ const hideDropdown = e => {
         <div id='mainTopNavber'>
             <div id='mainTopLogoAndLogin'>
                 <Link to="/">
-                    <img src='./assets/ItpLogo_2.png' className='logoImg' alt='Logo'/>
+                    <img src={logo} className='logoImg' alt='Logo'/>
                 </Link>
                 {(!isLogin)?
                 <div id='topLoginAndRegister'>
