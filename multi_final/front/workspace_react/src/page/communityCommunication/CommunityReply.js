@@ -9,7 +9,7 @@ const CommunityReply = () => {
   const { no,num } = useParams();
   const navigate = useNavigate();
   
- 
+  const [issession,setissession]=useState();
   const[Repdatas,setRepdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,14 +18,14 @@ const CommunityReply = () => {
   function Delete(num){
        
     axios.delete(`http://localhost:8085/deleteRep/${num}`)
-         .then(navigate('/communication/'+no)).catch(err=>console.log(err))
+         .then(window.location='/communication/'+no).catch(err=>console.log(err))
 
       }
   
 
-     // const [r_name,setr_name]=useState(''); //댓글쓴 이름
+      const [rg_name,setrg_name]=useState(''); //댓글쓴 이름
       const[r_content,setr_content]=useState('');
-      const logir_name=sessionStorage.getItem('m_name'); //로그인했을때 닉네임
+
 
       
       const handler_content=(e)=>{
@@ -44,7 +44,7 @@ const CommunityReply = () => {
       function Update(num){
      
         console.log(r_content)
-        
+        if(r_content!==''){
        
         axios.put(`http://localhost:8085/updateRep/${num}`,null,{
           params:{
@@ -54,18 +54,19 @@ const CommunityReply = () => {
         })
         .then(
           
-          navigate('/communication/')//성공시 목록으로 돌아가기
+          window.location='/communication/'+no//성공시 목록으로 돌아가기
         )
-      
+        }else{alert('입력되지않았습니다');}
       }
 
       const submit=()=>{
-      
+        
+        if(r_content!==''){
           axios.post(`http://localhost:8085/addRep/${no}`,null,{
           params:{
             'r_no':no,
             'r_content':r_content,
-            'r_name':logir_name,
+            'r_name':rg_name,
             'r_date':r_date
            
           }
@@ -77,10 +78,11 @@ const CommunityReply = () => {
           console.log(res.data.n_title)
           console.log(res.data.n_content)
          
-          document.location.href=`/Communication/${no}`;//성공시 목록으로 돌아가기
+          window.location='/communication/'+no;//성공시 목록으로 돌아가기
         })
         .catch()
-      }
+      }else{ alert('입력되지않았습니다');}
+    }
   
       useEffect(()=>{
         if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
@@ -92,6 +94,18 @@ const CommunityReply = () => {
         else{setIslogin(true);}
       },[isLogin]);
 
+
+      useEffect(()=>{
+        if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
+          setissession(true);setrg_name(localStorage.getItem('m_name'));
+        }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
+          setissession(false); setrg_name(sessionStorage.getItem('m_name'));
+         
+        }
+       
+      },[issession]);
+
+      console.log(rg_name);
   useEffect(()=>{
       const fetchCom=async()=>{
           try {
@@ -117,7 +131,7 @@ const CommunityReply = () => {
 },[no]);
 
 
-console.log(logir_name);
+
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
 if (!Repdatas) return null;

@@ -1,3 +1,4 @@
+
 // @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 $text-Color: green;
@@ -14,16 +15,13 @@ $color-background: white;
   color: white;
   margin: 0 auto;
   overflow: visible;
+  margin-top: 10px;
   background-color: #ffffff;
   #mainTopLogoAndLogin {
     justify-content: center;
+    width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
     margin: 0 auto;
     overflow: hidden;
-    background-color: #008080;
-    display: flex;
-    .logo {
-      width: calc(100% - 688px);
-    }
     .logoImg {
       //로고
       width: 120px;
@@ -31,8 +29,6 @@ $color-background: white;
     }
     #topLoginAndRegister {
       //상단 로그인, 회원가입 | 로그아웃, 마이페이지 글씨
-
-      width: calc(100% - 1440px);
       float: right;
       font-size: 18px;
       //margin-right: 30px;
@@ -41,23 +37,23 @@ $color-background: white;
       .Login {
         //로그인
         text-decoration: none;
-        color: white;
+        color: black;
         margin-right: 20px;
       }
       .Register {
         //회원가입
         text-decoration: none;
-        color: white;
+        color: black;
       }
       .logout {
         //로그아웃
         text-decoration: none;
-        color: white;
+        color: black;
       }
       .myPage {
         //마이페이지
         text-decoration: none;
-        color: white;
+        color: black;
         margin-left: 20px;
       }
     }
@@ -69,6 +65,7 @@ $color-background: white;
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-top: 10px;
     display: flex;
     font-size: 17px;
     #navbarMain {
@@ -135,3 +132,4 @@ $color-background: white;
     }
   }
 }
+

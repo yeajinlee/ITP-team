@@ -175,6 +175,12 @@ if (!Groupdatas) return null;
             )}
           </div>
           <div id='groupSearch'>
+          {/* <select className="searchfilter" >
+         <option value="1" >제목</option>
+          <option value="2">내용</option>
+          <option value="3">작성자</option>
+ 
+          </select> */}
             <input 
               type="text"
               onChange={(e)=>settitle(e.target.value)} 
