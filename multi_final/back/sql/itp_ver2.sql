@@ -129,4 +129,5 @@ drop table itp_notice;
 drop table itp_group;
 drop table itp_com;
 drop table itp_reply;
+drop table itp_replygroup
 -- !! 드롭 !! ---------------------
