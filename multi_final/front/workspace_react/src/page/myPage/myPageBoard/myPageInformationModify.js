@@ -89,7 +89,7 @@ const MyPageInformationModify = () => {
                 <Form>
                     <Form.Group id='modifynicknameForm' controlId="formBasicEmail">
                         <Form.Label className='modifyLabel'>닉네임</Form.Label>
-                        <Form.Control className='nicknameInput' type="input" placeholder={myname} />
+                        <Form.Control className='nicknameInput' type="input" placeholder={myname} disabled/>
                         <Form.Text className='modifyText'>
                             한글, 영문, 숫자 포함 15자 이하
                         </Form.Text>
@@ -97,7 +97,7 @@ const MyPageInformationModify = () => {
                     <div id='modifyPassword'>
                     <Form.Group  controlId="formBasicPassword">
                         <Form.Label className='modifyLabel'>비밀번호</Form.Label>
-                        <Form.Control className='passwordInput' type="password" value={decryptedData} />
+                        <Form.Control className='passwordInput' type="password" value={decryptedData} disabled/>
                     </Form.Group>
                     <Form.Group className='modifyNewPasswordForm' controlId="formBasicPassword">
                         <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호" onChange={changePasswd}/>
