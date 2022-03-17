@@ -50,9 +50,11 @@ const hideDropdown = e => {
       
         <div id='mainTopNavber'>
             <div id='mainTopLogoAndLogin'>
-                <Link to="/">
-                    <img src='./assets/ItpLogo_2.png' className='logoImg' alt='Logo'/>
-                </Link>
+                <div className='logo'>
+                    <Link to="/">
+                        <img src='./assets/logoImg.png' className='logoImg' alt='Logo'/>
+                    </Link>
+                </div>
                 {(!isLogin)?
                 <div id='topLoginAndRegister'>
                     <Link to="/login" className='Login'>
