@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import MainCarousel from './MainCarousel';
 import { NavDropdown } from 'react-bootstrap';
 import logo from '../image/ItpLogo_2.png';
-
 /* 
 import MainCarousel from './MainCarousel'; */
 

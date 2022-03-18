@@ -7,26 +7,29 @@ import axios from 'axios';
 
 const GroupReply = () => {
   const { no,num } = useParams();
-  const navigate = useNavigate();
+
   
  
   const[Repdatas,setRepdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isLogin,setIslogin]=useState();
-  
+  const [issession,setissession]=useState();
+
   function Delete(num){
        
     axios.delete(`http://localhost:8085/deleteGroupRep/${num}`)
-         .then(navigate('/communityGroup/'+no)).catch(err=>console.log(err))
+         .then(window.location='/communityGroup/'+no).catch(err=>console.log(err))
 
       }
   
 
-     // const [r_name,setr_name]=useState(''); //댓글쓴 이름
+     const [rg_name,setrg_name]=useState(''); //댓글쓴 이름
       const[rg_content,setrg_content]=useState('');
-      var logir_name=sessionStorage.getItem('m_name'); //로그인했을때 닉네임
-
+   
+    //   const rg_name=sessionStorage.getItem('m_name'); 
+    //   //로그인했을때 닉네임
+      
       const handler_content=(e)=>{
         setrg_content(e.target.value)
       }
@@ -43,7 +46,7 @@ const GroupReply = () => {
       function Update(num){
      
         console.log(rg_content)
-        
+        if(rg_content!==''){
        
         axios.put(`http://localhost:8085/updateGroupRep/${num}`,null,{
           params:{
@@ -53,18 +56,18 @@ const GroupReply = () => {
         })
         .then(
           
-          navigate('/communityGroup/')//성공시 목록으로 돌아가기
+          window.location='/communityGroup/'+no//성공시 목록으로 돌아가기
         )
-      
+        }else{alert('입력되지않았습니다');}
       }
 
       const submit=()=>{
-      
+        if(rg_content!==''){
           axios.post(`http://localhost:8085/addGroupRep/${no}`,null,{
           params:{
             'rg_no':no,
             'rg_content':rg_content,
-            'rg_name':logir_name,
+            'rg_name':rg_name,
             'rg_date':rg_date
            
           }
@@ -75,21 +78,36 @@ const GroupReply = () => {
           console.log(res)
           console.log(res.data.n_title)
           console.log(res.data.n_content)
+          console.log(res.data.rg_name)
          
-          document.location.href=`/communityGroup/${no}`;//성공시 목록으로 돌아가기
+          window.location='/communityGroup/'+no;//성공시 목록으로 돌아가기
         })
         .catch()
-      }
+      }else{ alert('입력되지않았습니다');}
+    }
   
       useEffect(()=>{
         if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
           setIslogin(false);
-        }else if(sessionStorage.getItem('m_name')==='manager'){
+        }else if(sessionStorage.getItem('m_name')==='manager' ||localStorage.getItem('m_name')==='manager'){
           setIslogin(true);
         
         }
         else{setIslogin(true);}
       },[isLogin]);
+
+      
+      useEffect(()=>{
+        if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
+          setissession(true);setrg_name(localStorage.getItem('m_name'));
+        }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
+          setissession(false); setrg_name(sessionStorage.getItem('m_name'));
+         
+        }
+       
+      },[issession]);
+
+      console.log(rg_name);
 
   useEffect(()=>{
       const fetchCom=async()=>{
@@ -116,7 +134,7 @@ const GroupReply = () => {
 },[no]);
 
 
-console.log(logir_name);
+
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
 if (!Repdatas) return null;
@@ -139,6 +157,7 @@ if (!Repdatas) return null;
         {Repdatas.map((Repdata,index) => (
           <Table>
             <tbody>
+           
               <div key={index} className='replyContent'>
 
                   <p>{Repdata.rg_content}</p>
@@ -157,6 +176,7 @@ if (!Repdatas) return null;
                   <></>
                 }
                 </div>
+            
             </tbody>
           </Table>
         ))}
