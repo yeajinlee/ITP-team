@@ -1,21 +1,35 @@
-import React from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink} from "react-router-dom";
 import SidebarItem from "./pageSide";
 
 
 function Sidebar() {
-  const { m_name } = useParams();
-  const myname=sessionStorage.getItem('m_name');
+  const [issession,setissession]=useState();
+  const [rg_name,setrg_name]=useState(''); //댓글쓴 이름
+
+
   const myWrite = [
-    { name: "작성 글", path: `/myPageBoard/${m_name}` },
-    { name: "댓글", path: `/myPageComment/${m_name}` },
+    { name: "작성 글", path: `/myPageBoard/${rg_name}` },
+    { name: "댓글", path: `/myPageComment/${rg_name}` },
+    { name: "모임찾기 신청현황", path:`/applymylist/${rg_name}` }
   ];
   const menus = [
-    { name: "정보 수정", path: `/myPageInformationModify/${m_name}`}
+    { name: "정보 수정", path: `/myPageInformationModify/${rg_name}`}
   ];
+
+      
+  useEffect(()=>{
+    if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
+      setissession(true);setrg_name(localStorage.getItem('m_name'));
+    }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
+      setissession(false); setrg_name(sessionStorage.getItem('m_name'));
+     
+    }
+   
+  },[issession]);
   return (
   <div id='sideBar'>
-   {myname} 님의 정보
+   {rg_name} 님의 정보
     <div className="Menu">
       {myWrite.map((menu, index) => {
         return (

@@ -9,7 +9,7 @@ const GroupReply = () => {
   const { no,num } = useParams();
 
   
- 
+  const[Grouprepdatas,setGrouprepdata]=useState(null);
   const[Repdatas,setRepdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -86,6 +86,30 @@ const GroupReply = () => {
       }else{ alert('입력되지않았습니다');}
     }
   
+    useEffect(()=>{
+      const fetchGroup=async()=>{
+          try {
+              //error 와 notice 를 초기화
+              setError(null);
+              setGrouprepdata(null);
+              // loading 상태를 true
+              setLoading(true);    
+              const response=await axios.get(`http://localhost:8085/group/repnum/${no}`);
+              console.log(response.data);
+              setGrouprepdata(response.data);
+           
+          }catch(e){
+              setError(e);
+          }
+          setLoading(false);
+        
+      
+  };
+  fetchGroup();
+  
+},[no]);
+
+
       useEffect(()=>{
         if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
           setIslogin(false);
@@ -141,6 +165,7 @@ if (!Repdatas) return null;
 
   return (
       <div id='replyAll'>
+        <p>댓글 {Grouprepdatas}</p>
         <div id='replyRegi'>
         {(isLogin)?
         <>

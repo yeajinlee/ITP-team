@@ -17,8 +17,8 @@ const GroupWriting = () => {
     const[g_content,setg_content]=useState('')
     const[g_tag,setg_tag]=useState('')
     const [g_img,setg_img]=useState('')
-    const g_name=sessionStorage.getItem('m_name');
-
+    const [g_name,setg_name]=useState('')
+    const [issession,setissession]=useState();
 
     const handleg_title=(e)=>{
       setg_title(e.target.value)
@@ -75,6 +75,16 @@ const GroupWriting = () => {
       })
       .catch()
     }
+
+    useEffect(()=>{
+      if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
+        setissession(true);setg_name(localStorage.getItem('m_name'));
+      }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
+        setissession(false); setg_name(sessionStorage.getItem('m_name'));
+       
+      }
+     
+    },[issession]);
   
     return (
       
