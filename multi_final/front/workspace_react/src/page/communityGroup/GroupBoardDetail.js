@@ -13,7 +13,9 @@ const GroupBoardDetail = () => {
   const BackToGroupBoard = () => {
     navigate('/communityGroup');
   };
- 
+  const gotoapply=()=>{
+   navigate(`/applygroup/${no}`)
+  }
   const[Groupdatas,setGroupdata]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -90,6 +92,16 @@ if (!Groupdatas) return null;
       :
       <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록 </button>
      }
+   
+     {
+       ((   (sessionStorage.getItem('m_name')) !==g_name || (localStorage.getItem('m_name')) !==g_name  ) &&( (sessionStorage.getItem('m_name'))!=='manager'||(localStorage.getItem('m_name'))!=='manager') ) ?
+       <>  
+       <button className='groupDetailButton' value="신청하기" onClick={gotoapply} > 신청하기 </button>
+       </> 
+       :
+       <></>   
+    }
+  
       </div>
       <GroupReply/>
     </div>

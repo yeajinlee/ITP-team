@@ -21,6 +21,10 @@ public interface RepMapper {
 	@Select("select * from itp_reply where r_no=#{r_no} order by r_rno desc")
 	public List<RepDTO> getrepdetailList(@Param("r_no") int r_no);
 	
+	//댓글개수
+	@Select("select count(*) from itp_reply where r_no=#{r_no}")
+	int getcomrepListAll(@Param("r_no") int r_no);
+	
 	@Select("select r.*,c.c_title,c.c_no from itp_reply r inner join itp_com c on r.r_no=c.c_no and r_name=#{m_name}")
 	List<RepDTO> getmyrepList(@Param("m_name") String m_name);
 	//수정

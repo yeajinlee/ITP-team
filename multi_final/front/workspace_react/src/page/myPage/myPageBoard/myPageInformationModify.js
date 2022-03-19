@@ -14,7 +14,7 @@ const MyPageInformationModify = () => {
     const navigate = useNavigate();
 
     const { m_name } = useParams();
-    const myname=sessionStorage.getItem('m_name');
+    //const myname=sessionStorage.getItem('m_name');
 
     const [m_passwd, setm_passwd]=useState(""); //변경할 비밀번호
     const [m_passwdd, setm_passwdd]=useState(""); //기존 비밀번호
@@ -89,7 +89,7 @@ const MyPageInformationModify = () => {
                 <Form>
                     <Form.Group id='modifynicknameForm' controlId="formBasicEmail">
                         <Form.Label className='modifyLabel'>닉네임</Form.Label>
-                        <Form.Control className='nicknameInput' type="input" placeholder={myname} disabled/>
+                        <Form.Control className='nicknameInput' type="input" placeholder={m_name} disabled/>
                         <Form.Text className='modifyText'>
                             한글, 영문, 숫자 포함 15자 이하
                         </Form.Text>
