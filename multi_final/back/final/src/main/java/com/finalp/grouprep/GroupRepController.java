@@ -34,6 +34,12 @@ public class GroupRepController {
 		return mapper.getgrouprepdetailList(rg_no);
 	}
 	
+	//댓글 개수 출력
+	@GetMapping("/group/repnum/{rg_no}")
+	public int getgrouprepListAll(@PathVariable("rg_no") int rg_no) {
+		return mapper.getgrouprepListAll(rg_no);
+	}
+	
 	//입력
 	
 	@RequestMapping(value="/addGroupRep/{rg_no}",method=RequestMethod.POST)

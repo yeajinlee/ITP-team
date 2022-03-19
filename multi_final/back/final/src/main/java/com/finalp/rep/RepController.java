@@ -41,8 +41,11 @@ public class RepController {
 	public List<RepDTO> getmyrepList(@RequestParam("m_name") String m_name){
 		return mapper.getmyrepList(m_name);  
 	}
-	
-		
+	//댓글갯수출력
+	@GetMapping("/com/repnum/{r_no}")
+	public int getcomrepListAll(@PathVariable("r_no") int r_no) {
+		return mapper.getcomrepListAll(r_no);
+	}
 	
 	//입력
 	

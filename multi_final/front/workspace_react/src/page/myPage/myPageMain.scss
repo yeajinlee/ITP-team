@@ -23,8 +23,9 @@
   }
  
   #g_tag {
-    width: 300px;
+    width: 120px;
   }
+ 
   #board {
     //작성 글과 댓글에만 해당
     background-color: white;
@@ -47,6 +48,25 @@
       margin-left: 20px;
     }
   }
+}
+#g_apply{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  
+}
+#apply{
+  display: flex;
+  justify-content: center;
+}
+#applybutton {
+  background-color: #3b9d9d;
+  color: white;
+  border-radius: 10px;
+  outline: 0;
+  border: 0;
+  float: right;
+  width: 80px;
 }
 
 #sideBar {
