@@ -30,24 +30,24 @@
   }
   #boardLine {
     // 게시글
-     display: grid;
-     grid-template-columns: 300px 300px 300px;
-     grid-template-rows: 350px 350px;
-     justify-content: center;
-     width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-     grid-column-gap: 60px;
-     margin-right: auto 0;
-     overflow: visible;
-     .groupCardCss {
-       outline: 0;
-       margin-bottom: 20px;
-       //width: 18rem;
-       height: 18rem;
-     }
-     .groupCardCss:hover {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 350px 350px;
+    justify-content: center;
+    width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
+    grid-column-gap: 60px;
+    margin-right: auto 0;
+    overflow: visible;
+    .groupCardCss {
+      outline: 0;
+      margin-bottom: 20px;
+      //width: 18rem;
+      height: 18rem;
+    }
+    .groupCardCss:hover {
       box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.2);
       transform: scale(1.01);
-     }
+    }
     .title {
       margin-top: 20px;
       text-align: center;
@@ -131,14 +131,12 @@
   }
 }
 
-
- .replyContent{
-   border-bottom: 1px solid #cdcdcd;
-   border-collapse: collapse;
-   width: 864px;
-   height: 40px;
-  
- }
+.replyContent {
+  border-bottom: 1px solid #cdcdcd;
+  border-collapse: collapse;
+  width: 864px;
+  height: 40px;
+}
 // height 픽스 조절, 입력 글자가 늘어날때는 잘려나가게. 보이는 것만 안보이게. (생략 기능) 자바스크립트 코드로 몇 글자 이상 넘어가면 생략되게
 /*
  div {
