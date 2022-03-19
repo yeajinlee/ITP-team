@@ -83,7 +83,7 @@ function Login() {
             <div id='LoginAll'>
                 {/* form */}
                 <form className="loginForm">
-                    <input type="m_email" name="email" id="inputLogin" onChange={ (e)=>{
+                    <input type="m_email" autocomplete="off"  name="email" id="inputLogin" onChange={ (e)=>{
                         setmemail(e.target.value);if(e.target.value!=='')setisemailnull(false);}} placeholder="이메일" />
                     <br />
                     <input type="password" name="pw" id="inputLogin" 
@@ -104,7 +104,7 @@ function Login() {
                     }
                     <div>
                         <Link to="#passwordfind" className='loginBottom' >비밀번호 찾기 </Link>ㅣ
-                        <Link to="/Register" className='loginBottom'> 메일 주소로 회원가입 </Link>
+                        <Link to="/Register" className='loginBottom'> 회원가입 </Link>
                     </div>
                 </form>
             </div>

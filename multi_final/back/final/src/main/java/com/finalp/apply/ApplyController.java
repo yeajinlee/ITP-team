@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +47,15 @@ public class ApplyController {
 	@GetMapping("/mypage/applylist")
 	public List<ApplyDTO> getmygroupapplyList(@RequestParam("m_name") String m_name){
 		return mapper.getmygroupapplyList(m_name);  
+	}
+	//수정
+	@PutMapping("/update/authcheck/{a_gno}")
+	public int updateauthcheck(@PathVariable("a_gno") int a_gno,
+			@RequestParam(value="a_auth",required=false) String a_auth
+			
+			) { 
+		return mapper.updateauthcheck(a_gno,a_auth);
+	
 	}
 
 }

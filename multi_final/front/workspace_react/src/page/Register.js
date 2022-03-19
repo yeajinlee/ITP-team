@@ -158,7 +158,7 @@ function Register() {
                     <div id='registerInput'>
                         <p className="title">회원가입</p>
                         {/* 닉네임 입력 */}
-                        <input type="text" name="m_name" value={m_name} onChange={(e)=>setm_name(e.target.value)} onBlur={checkname}
+                        <input type="text" name="m_name" autocomplete="off" value={m_name} onChange={(e)=>setm_name(e.target.value)} onBlur={checkname}
                         placeholder="닉네임 (한글, 영문, 숫자 포함 15자 이하)" />
                         <input type="button" name="m_namecheck" id="m_namecheck" className='duplicateCheck' value="중복확인" onClick={()=>m_namecheck(m_name)}/>
                         {isName===false ? (<p className='errorcode'>닉네임을 다시입력해주세요</p>)  :

@@ -21,7 +21,7 @@ function Sidebar() {
   useEffect(()=>{
     if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
       setissession(true);setrg_name(localStorage.getItem('m_name'));
-    }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
+    }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')===null){
       setissession(false); setrg_name(sessionStorage.getItem('m_name'));
      
     }

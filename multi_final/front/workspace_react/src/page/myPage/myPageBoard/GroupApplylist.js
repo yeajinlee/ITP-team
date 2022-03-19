@@ -12,7 +12,7 @@ function GroupApplylist(props) {
     const[Groupapplydatas,setGroupapplydata]=useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [authstatus,setauthstatus]=useState();
 
 
   useEffect(()=>{
@@ -31,7 +31,8 @@ function GroupApplylist(props) {
               }
           });
           setGroupapplydata(response.data);
-          console.log(response.data);
+         console.log(response.data);
+          
           
         }catch(e){
           setError(e);
@@ -60,6 +61,7 @@ if (!Groupapplydatas) return null;
                             <tr>
                                 <th id="g_title">글제목</th>
                                 <th id="a_content">신청내용</th>
+                                <th>승인여부</th>
                                 
                             </tr>
                         </thead>
@@ -73,6 +75,9 @@ if (!Groupapplydatas) return null;
                                 <td id="a_content1">
                                     {Groupapplydata.a_content}
                                 </td>
+                               <td>
+                             {Groupapplydata.a_auth}
+                               </td>
                             
                             </tr>
                             ))}
