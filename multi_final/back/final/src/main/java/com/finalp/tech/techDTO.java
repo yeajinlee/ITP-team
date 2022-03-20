@@ -17,7 +17,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class techDTO {
 	private int t_no;//번호
-	private int t_tag;//카테고리
+	private int t_parentno;
+	private String t_tag;//카테고리
 	private String t_name;//작성자
 	private String t_content;//내용
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

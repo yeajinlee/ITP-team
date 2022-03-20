@@ -25,6 +25,7 @@
     background-color: rgb(224, 224, 224);
     color: black;
   }
+ 
 
   .todayTrend {
     display: inline-flex;
@@ -48,6 +49,7 @@
       margin-bottom: 20px;
       font-size: 17px;
       line-height: 25px;
+
       .todayLink {
         display: flex;
 
@@ -61,6 +63,9 @@
         width: 300px;
         height: 200px;
       }
+    }
+    #article1:hover {
+      text-decoration: underline;
     }
   }
 
@@ -93,6 +98,9 @@
         flex: 1 1 30%;
         width: 100px;
         margin-bottom: 80px;
+      }
+      .article2A:hover {
+        text-decoration: underline;
       }
       img {
         width: 300px;

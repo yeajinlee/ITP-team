@@ -34,9 +34,13 @@ public class TechController {
 		@Autowired
 		private TechService service;
 		
+		@GetMapping("/itTech/forum")
+		public List<techDTO> getTechListAll() {
+			return mapper.getTechListAll();
+		}
 
 		@GetMapping("/itTech/forum/{tag}")
-		public List<techDTO> getTechList(@PathVariable("tag") int tag) {
+		public List<techDTO> getTechList(@PathVariable("tag") String tag) {
 			return mapper.getTechList(tag);
 		}
 		

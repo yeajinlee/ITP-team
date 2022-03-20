@@ -65,6 +65,7 @@ const App = () => {
       <Route path="/Infolaw" element={<Infolaw/>} />
       {/* IT 기술 */}
       <Route path="/itTech" element={<ItTechnologyMain/>} />
+      <Route path="/itTech/forum" element={<ItTechnologyForum/>} exact={true} />
       <Route path="/itTech/forum/:tag" element={<ItTechnologyForum/>} />
       {/* IT 트렌드 */}
       <Route path="/itTrend" element={<ItTrendMain/>} />

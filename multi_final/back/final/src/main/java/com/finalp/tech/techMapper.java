@@ -11,12 +11,14 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface techMapper {
 	
-	@Select("select * from tech order by no desc")
+	@Select("select * from itp_tech order by t_no desc")
 	public List<techDTO> getTechListAll();
 	
 
 	@Select("SELECT * FROM itp_tech where t_tag=#{tag}")
-	public List<techDTO> getTechList(@Param("tag") int tag);
+	public List<techDTO> getTechList(@Param("tag") String tag);
+	
+	
 
 	
 }
