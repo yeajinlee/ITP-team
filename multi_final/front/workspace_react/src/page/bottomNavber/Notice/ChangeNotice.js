@@ -36,6 +36,30 @@ const ChangeNotice = () => {
    
    const n_date= year + '-' + month  + '-' + day;
 
+   useEffect(()=>{
+    const fetchNotice=async()=>{
+        try {
+            //error 와 notice 를 초기화
+            setError(null);
+            setNoticedata(null);
+            // loading 상태를 true
+            setLoading(true);    
+            const response=await axios.get(`http://localhost:8085/notice/${no}`);
+            console.log(response.data);
+            setNoticedata(response.data);
+            setn_title(response.data[0].n_title);
+            setn_content(response.data[0].n_content);
+
+        }catch(e){
+            setError(e);
+        }
+        setLoading(false);
+      
+    
+};
+fetchNotice();
+
+},[no]);
 
    
    const submit=()=>{
@@ -94,9 +118,9 @@ if (!Noticedatas) return null;
     <p><BsChevronRight/>공지사항</p>
     <Form className='writingForm'>
       <Form.Group id='writingTop' controlId="exampleForm.ControlInput1">
-        <Form.Control type="text" onChange={(e)=>handlen_title(e)} placeholder="글 제목을 입력해주세요" />
+        <Form.Control type="text" onChange={(e)=>handlen_title(e)} value={n_title} placeholder="글 제목을 입력해주세요" />
       </Form.Group>
-        <Form.Control as='textarea' onChange={(e)=>handlen_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
+        <Form.Control as='textarea' onChange={(e)=>handlen_content(e)} className='writingText' type="text" value={n_content} placeholder="내용을 입력해주세요" />
     </Form>
     <div id='button'>
         <Button className='cancel me-2' onClick={BackToNotice}>

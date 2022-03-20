@@ -12,7 +12,9 @@ function MyPageCommunityBoard(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const[Comdatas,setComdata]=useState([]);
+ 
   
+
   useEffect(()=>{
     const fetchGroup=async()=>{
       try {
@@ -40,6 +42,7 @@ fetchGroup();
 
  },[m_name]);
 
+ console.log(m_name);
  
  useEffect(()=>{
     const fetchCom=async()=>{
@@ -85,6 +88,7 @@ if (!Comdatas) return null;
                                 <th id="g_no">번호</th>
                                 <th id="g_title">제목</th>
                                 <th id="g_tag">카테고리</th>
+                                <td id="g_apply">신청현황</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,6 +103,7 @@ if (!Comdatas) return null;
                                 <td id="g_tag1">
                                     {Groupdata.g_tag}
                                 </td>
+                                <td id="apply">  <Link to={'/applylist/'+Groupdata.g_no} style={{ textDecoration: 'none',color:'black'}}><input type="button" value="확인" id="applybutton" /></Link></td>
                             </tr>
                             ))}
                         </tbody>

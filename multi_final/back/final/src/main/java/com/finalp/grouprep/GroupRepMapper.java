@@ -13,9 +13,9 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface GroupRepMapper {
-	@Select("select count(*) from itp_replygroup")
-	int getrepListAll();
-	
+//	@Select("select count(*) from itp_replygroup where rg_no=#{rg_no}")
+//	int getgroupreAll(@Param("rg_no") int rg_no);
+//	
 	//댓글보이게
 	@Select("select * from itp_replygroup where rg_no=#{rg_no} order by rg_rno desc")
 	public List<GroupRepDTO> getgrouprepdetailList(@Param("rg_no") int rg_no);
@@ -41,4 +41,9 @@ public interface GroupRepMapper {
 			
 			@Select("select r.*,g.g_title,g.g_no from itp_replygroup r inner join itp_group g on r.rg_no=g.g_no and rg_name=#{m_name}")
 			List<GroupRepDTO> getmygrouprepList(@Param("m_name") String m_name);
+			
+			@Select("select count(*) from itp_replygroup where rg_no=#{rg_no}")
+			int getgrouprepListAll(@Param("rg_no") int rg_no);
+
+			
 }

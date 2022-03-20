@@ -33,6 +33,7 @@
   .writingText {
     // 내용
     height: 400px;
+    overflow: scroll;
   }
   #button {
     // 순차적으로 취소, 등록 버튼 부분

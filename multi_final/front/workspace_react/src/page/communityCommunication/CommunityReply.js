@@ -8,7 +8,7 @@ import './communityReply.scss';
 const CommunityReply = () => {
   const { no,num } = useParams();
   const navigate = useNavigate();
-  
+  const[Comrepdatas,setComrepdata]=useState(null);
   const [issession,setissession]=useState();
   const[Repdatas,setRepdata]=useState(null);
   const [loading, setLoading] = useState(false);
@@ -83,7 +83,30 @@ const CommunityReply = () => {
         .catch()
       }else{ alert('입력되지않았습니다');}
     }
+    useEffect(()=>{
+      const fetchGroup=async()=>{
+          try {
+              //error 와 notice 를 초기화
+              setError(null);
+              setComrepdata(null);
+              // loading 상태를 true
+              setLoading(true);    
+              const response=await axios.get(`http://localhost:8085/com/repnum/${no}`);
+              console.log(response.data);
+              setComrepdata(response.data);
+           
+          }catch(e){
+              setError(e);
+          }
+          setLoading(false);
+        
+      
+  };
+  fetchGroup();
   
+},[no]);
+
+
       useEffect(()=>{
         if(sessionStorage.getItem('m_name')===null &&localStorage.getItem('m_name')===null){
           setIslogin(false);
@@ -138,6 +161,7 @@ if (!Repdatas) return null;
 
   return (
       <div id='replyAll'>
+            <p>댓글 {Comrepdatas}</p>
         <div id='replyRegi'>
         {(isLogin)?
         <>

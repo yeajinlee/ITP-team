@@ -37,6 +37,9 @@ import GroupBoardDetail from "./page/communityGroup/GroupBoardDetail";
 import GroupBoardChange from "./page/communityGroup/writing/GroupBoardChange";
 import CommunityDetail from "./page/communityCommunication/CommunityDetail"
 import CommunityChange from "./page/communityCommunication/writing/CommunityChange"
+import GroupApplylist from "./page/myPage/myPageBoard/GroupApplylist";
+import GroupApply from "./page/communityGroup/GroupApply";
+import GroupApplycheck from "./page/myPage/myPageBoard/GroupApplycheck";
 
 
 const App = () => {
@@ -74,11 +77,14 @@ const App = () => {
       <Route path="/myPageBoard/:m_name" element={<MyPageMain />} />
       <Route path="/myPageComment/:m_name" element={<MyPageComment />} />
       <Route path="/myPageInformationModify/:m_name" element={<MyPageInformationModify />} />
+      <Route path="/applylist/:g_no" element={<GroupApplycheck/>} />
+      <Route path="/applymylist/:m_name" element={<GroupApplylist/>} />
       {/* 모임찾기 */}
       <Route path="/communityGroup" element={<GroupMain />} />
       <Route path="/groupWriting" element={<GroupWriting />} />
       <Route path="/communityGroup/:no" element={<GroupBoardDetail />} />
       <Route path="/changeGroup/:no" element={<GroupBoardChange/>} />
+      <Route path="/applygroup/:no" element={<GroupApply/>} />
       {/* 소통공간 */}
       <Route path="/communication" element={<CommunicationMain/>} />
       <Route path="/CommunicationWriting" element={<CommunicationWriting />} />

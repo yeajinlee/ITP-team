@@ -17,9 +17,9 @@ const GroupWriting = () => {
     const[g_content,setg_content]=useState('')
     const[g_tag,setg_tag]=useState('')
     const [g_img,setg_img]=useState('')
-    const g_name=sessionStorage.getItem('m_name');
-
-
+    const [g_name,setg_name]=useState('')
+    const [issession,setissession]=useState();
+    
     const handleg_title=(e)=>{
       setg_title(e.target.value)
       console.log(g_title);
@@ -75,6 +75,16 @@ const GroupWriting = () => {
       })
       .catch()
     }
+
+    useEffect(()=>{
+      if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
+        setissession(true);setg_name(localStorage.getItem('m_name'));
+      }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
+        setissession(false); setg_name(sessionStorage.getItem('m_name'));
+       
+      }
+      setg_content('1. 유형: 온라인/오프라인\n\r2. 장소/시간(온라인인 경우에는 어떻게 진행할지 써주세요 ex. 줌):\n\r3. 인원, 역할:\n\r4. 사용 기술:\n\r5. 기간:');
+    },[issession]);
   
     return (
       
@@ -93,7 +103,7 @@ const GroupWriting = () => {
             
             </Form.Select>
           </Form.Group>
-            <Form.Control as='textarea' onChange={(e)=>handleg_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
+            <Form.Control as='textarea' onChange={(e)=>handleg_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" value={g_content}/>
         </Form>
         <div id='button'>
           <Link to='/communityGroup'>
