@@ -84,6 +84,7 @@ const GroupWriting = () => {
        
       }
       setg_content('1. 유형: 온라인/오프라인\n\r2. 장소/시간(온라인인 경우에는 어떻게 진행할지 써주세요 ex. 줌):\n\r3. 인원, 역할:\n\r4. 사용 기술:\n\r5. 기간:');
+   
     },[issession]);
   
     return (
