@@ -17,6 +17,11 @@ create table itp_notice(
     n_content varchar(3000) not null,
     n_date datetime );
     
+insert into itp_notice values(1,"알려드립니다","공지사항입니다",now());
+insert into itp_notice values(2,"사이트 점검안내","2022년 3월 18일~19일 점검 예쩡입니다.",now());itp_member
+insert into itp_notice values(3,'개인정보취급방침 개정안내','개인정보취급방침이 개정되었습니다. 하단 메뉴를 통해 확인하세요',now());
+insert into itp_notice values(4,'IT뉴스 요약기능이 추가되었습니다','IT뉴스 요약기능이 추가되었습니다',now());
+
 insert into itp_notice values(1,"공지사항제목1","공지사항입니다",now());
 insert into itp_notice values(2,"공지사항제목2","공지드립니다",now());
     
