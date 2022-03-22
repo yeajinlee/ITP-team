@@ -161,7 +161,9 @@ const ItTechnologyForum = () => {
                         {/* <p>{techForum.t_parentno}</p> */}
                         <RepleContent>{techForum.t_content}</RepleContent>
                         <RepleNameAndDate>{techForum.t_name} | {techForum.t_date}
-                        {sessionStorage.getItem('m_name') === techForum.t_name || localStorage.getItem('m_name') === techForum.t_name ? (
+                        {sessionStorage.getItem('m_name') === techForum.t_name || localStorage.getItem('m_name') === techForum.t_name 
+                            || sessionStorage.getItem('m_name') === 'manager' || localStorage.getItem('m_name') === 'manager'
+                        ? (
                             <span>
                                 <button id="editBtn" onClick={() => editComment(techForum.t_content, techForum.t_no)}>
                                     수정
