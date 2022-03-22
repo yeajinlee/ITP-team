@@ -81,10 +81,12 @@ const ItTechnologyForum = () => {
 
     return (
       <div>
+        <h5>
         <Link to="/itTech/forum">전체</Link> |{' '}
         <Link to="/itTech/forum/React">React</Link> |{' '}
         <Link to="/itTech/forum/Spring">Spring</Link> |{' '}
         <Link to="/itTech/forum/Vue">Vue</Link>
+        </h5>
         <br />
         <ItTechnologyWrite />
         <br />
@@ -102,16 +104,23 @@ const ItTechnologyForum = () => {
                 ) : (
                     <div>
                         <p>{techForum.t_tag}</p>
-                        <p>{techForum.t_parentno}</p>
+                        {/* <p>{techForum.t_parentno}</p> */}
                         <p>{techForum.t_content}</p>
                         <p>{techForum.t_name} | {techForum.t_date}</p>
-                        <button id="editBtn" onClick={() => editComment(techForum.t_content, techForum.t_no)}>
-                            수정
-                        </button>
-                        <button id="delBtn" onClick={() => deleteComment(techForum.t_no)}>
-                            삭제
-                        </button>
-                        <button id="replyBtn">답글</button>
+                        {sessionStorage.getItem('m_name') === techForum.t_name || localStorage.getItem('m_name') === techForum.t_name ? (
+                            <span>
+                                <button id="editBtn" onClick={() => editComment(techForum.t_content, techForum.t_no)}>
+                                    수정
+                                </button>
+                                <button id="delBtn" onClick={() => deleteComment(techForum.t_no)}>
+                                    삭제
+                                </button>
+                            </span>
+                        ) : (
+                            null
+                        )}
+                        
+                        {/* <button id="replyBtn">답글</button> */}
                     </div>
                 )
             }
