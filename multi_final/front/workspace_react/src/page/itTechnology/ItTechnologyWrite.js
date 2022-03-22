@@ -12,7 +12,7 @@ button {
       float: right;
       margin-left: 8px;
       width: 128px;
-      height: 40px;
+      height: 60px;
       border: 1px solid #3b9d9d;
       background-color: #3b9d9d;
       color: white;
@@ -24,12 +24,21 @@ button {
 const WriteForm = styled(Form)`
 width: 1024px;
 display: flex;
-height: 40px;
+height: 60px;
+margin-bottom: 20px;
 .tagSelect{
-width: 128px;
-margin-right: 8px;
-
+    height: 30px;
+    width: 128px;
+    margin-right: 8px;
+    font-size: 13px;
 }
+#counter {
+    margin-top: 8px;
+    margin-right: 8px;
+    float: right;
+    color: grey;
+}
+
 `
 
 const ItTechnologyWrite = () => {
@@ -37,6 +46,7 @@ const ItTechnologyWrite = () => {
     const[t_name, sett_name] = useState(null);
     const[t_content, sett_content] = useState(null);
     const[error, setError] = useState(null);
+    const[contentCnt, setContentCnt] = useState(0);
 
     const checkLogin = () => {
         if (t_name === null) {
@@ -52,6 +62,7 @@ const ItTechnologyWrite = () => {
     const handleContent =(e) => {
         sett_content(e.target.value);
         console.log(e.target.value);
+        setContentCnt(e.target.value.length);
     }
 
     const addTechComment = () => {
@@ -87,13 +98,17 @@ const ItTechnologyWrite = () => {
     return (
         <Write>
             <WriteForm>
+                <span>
                 <Form.Select className='tagSelect' onChange={(e) => handleTag(e)}>
                     <option>선택</option>
                     <option value="React" >React</option>
                     <option value="Spring">Spring</option>
                     <option value="Vue">Vue</option>
                 </Form.Select>
-                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)}/>
+                <span id='counter'>{contentCnt}/300</span>
+                </span>
+                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)} maxLength={300}/>
+                
             <button type="submitBtn" onClick={() => addTechComment()}>
                 등록
             </button>

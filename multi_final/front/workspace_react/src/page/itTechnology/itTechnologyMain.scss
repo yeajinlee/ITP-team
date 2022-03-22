@@ -25,6 +25,14 @@
     margin-top: 40px;
     margin-bottom: 25px;
   }
+  .shortcut {
+    text-decoration: none;
+    margin-left: 50px;
+    color: black;
+    font-size: 12px;
+    // border: 1px solid red;
+    
+  }
   .boardTitle {
     display: inline-block;
     max-width: 600px;
@@ -35,6 +43,9 @@
     white-space: nowrap; // 아래줄 내려가는 것 막기
     overflow: hidden; // 영역 감추기
     text-overflow: ellipsis; // ...로 만들기
+  }
+  .boardTitle:hover {
+    color: grey;
   }
   .boardDate {
     float: right;
