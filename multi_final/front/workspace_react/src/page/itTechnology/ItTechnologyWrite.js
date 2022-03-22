@@ -2,10 +2,35 @@ import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
+import styled from 'styled-components';
 
-const addTechComment = () => {
-    
+const Write = styled.div`
+display: flex;
+justify-content: center;
+
+button {
+      float: right;
+      margin-left: 8px;
+      width: 128px;
+      height: 40px;
+      border: 1px solid #3b9d9d;
+      background-color: #3b9d9d;
+      color: white;
+      border-radius: 5px;
+      outline: 0;
+    }
+`
+
+const WriteForm = styled(Form)`
+width: 1024px;
+display: flex;
+height: 40px;
+.tagSelect{
+width: 128px;
+margin-right: 8px;
+
 }
+`
 
 const ItTechnologyWrite = () => {
     const[t_tag,sett_tag] = useState(null);
@@ -60,20 +85,20 @@ const ItTechnologyWrite = () => {
     }, [])
 
     return (
-        <div>
-            <Form className='writingForm'>
+        <Write>
+            <WriteForm>
                 <Form.Select className='tagSelect' onChange={(e) => handleTag(e)}>
                     <option>선택</option>
                     <option value="React" >React</option>
                     <option value="Spring">Spring</option>
                     <option value="Vue">Vue</option>
                 </Form.Select>
-                <Form.Control as='textarea' className='writingContent' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)}/>
-            </Form>
+                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)}/>
             <button type="submitBtn" onClick={() => addTechComment()}>
                 등록
             </button>
-        </div>
+            </WriteForm>
+        </Write>
     );
 };
 

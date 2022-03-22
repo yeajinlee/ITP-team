@@ -105,7 +105,21 @@ foreign key(rg_rno) references itp_group(g_no) on DELETE CASCADE);
 insert into itp_replygroup values(1,1,'1번글댓글','aaa',default);
 insert into itp_replygroup values(2,2,'2번댓글2','bbb',default);
 insert into itp_replygroup values(3,7,'댓굴추가','ccc',default);
-
+create table itp_tech( 
+    t_no int primary key auto_increment,
+    t_parentno int not null default 0,
+    t_tag varchar(100) not null,
+    t_name varchar(200) not null,
+    t_content varchar(1000) not null,
+    t_date date default (current_date)
+    );
+    
+insert into itp_tech values(1, default,  "React","Carrie","리액트", default);
+insert into itp_tech values(2, default, "Spring","Dennis","스프링", default);
+insert into itp_tech values(3, default, "Vue","Maple","뷰", default);
+insert into itp_tech values(4, default, "Vue","Maple","뷰2", default);
+insert into itp_tech values(5, default, "React","Ryan","리액트2", default);
+insert into itp_tech values(6, default, "Spring","Kale","스프링2", default);
 -- 커밋
 commit;
 
@@ -118,6 +132,7 @@ select * from itp_group;
 select * from itp_member;
 select * from itp_com;
 select * from itp_reply;
+
 
 select * from tech where no="1";    
 select count(*) from itp_group;
