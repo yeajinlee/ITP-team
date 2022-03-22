@@ -55,6 +55,9 @@ width: 512px;
 const RepleNameAndDate = styled.p`
 width: 512px;
 text-align: right;
+span{
+    margin-left: 10px;
+}
 `
 
 const ItTechnologyForum = () => {
@@ -157,7 +160,7 @@ const ItTechnologyForum = () => {
                         <RepleTag>{techForum.t_tag}</RepleTag>
                         {/* <p>{techForum.t_parentno}</p> */}
                         <RepleContent>{techForum.t_content}</RepleContent>
-                        <RepleNameAndDate>
+                        <RepleNameAndDate>{techForum.t_name} | {techForum.t_date}
                         {sessionStorage.getItem('m_name') === techForum.t_name || localStorage.getItem('m_name') === techForum.t_name ? (
                             <span>
                                 <button id="editBtn" onClick={() => editComment(techForum.t_content, techForum.t_no)}>
@@ -169,7 +172,7 @@ const ItTechnologyForum = () => {
                             </span>
                         ) : (
                             null
-                        )}{techForum.t_name} | {techForum.t_date}
+                        )}
                         </RepleNameAndDate>
                         
                         {/* <button id="replyBtn">답글</button> */}
