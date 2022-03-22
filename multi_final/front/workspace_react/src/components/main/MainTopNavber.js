@@ -4,7 +4,7 @@ import './css/MainTopNavber.scss';
 import { Link } from 'react-router-dom';
 import MainCarousel from './MainCarousel';
 import { NavDropdown } from 'react-bootstrap';
-import logo from '../image/ItpLogo_2.png';
+
 /* 
 import MainCarousel from './MainCarousel'; */
 
@@ -15,10 +15,9 @@ import MainCarousel from './MainCarousel'; */
     import로 테이블에 있는 값을 다 가져와도 됨. */
 
 const MainTopNavberNonLogin = () => {
-    const [issession,setissession]=useState(); 
+       
     const[ismanager,setismanager]=useState();
     const [isLogin,setIslogin]=useState();
-    const [rg_name,setrg_name]=useState('');
     const [show, setShow] = useState(false);
 const showDropdown = (e)=>{
     setShow(!show);
@@ -45,23 +44,14 @@ const hideDropdown = e => {
     },[isLogin]);
 
 
-   
-    useEffect(()=>{
-        if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
-          setissession(true);setrg_name(localStorage.getItem('m_name'));
-        }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
-          setissession(false); setrg_name(sessionStorage.getItem('m_name'));
-         
-        }
-       
-      },[issession]);
+
 
     return (
       
         <div id='mainTopNavber'>
-            <div id='mainTopLogoAndLogin'>
+            {/* <div id='mainTopLogoAndLogin'>
                 <Link to="/">
-                    <img src={logo} className='logoImg' alt='Logo'/>
+                    <img src='./assets/ItpLogo_2.png' className='logoImg' alt='Logo'/>
                 </Link>
                 {(!isLogin)?
                 <div id='topLoginAndRegister'>
@@ -78,14 +68,18 @@ const hideDropdown = e => {
                     로그아웃
                 </Link>
                     {(!ismanager)?
-                <Link to={`/myPageBoard/${rg_name}`} className='myPage' style={{ textDecoration: 'none'}}>
+                <Link to={`/myPageBoard/${m_name}`} className='myPage' style={{ textDecoration: 'none'}}>
                     마이페이지
                 </Link>:<></>
                     }
                 </div>
                 }
-            </div>
+            </div> */}
                 <nav id='topNav'>
+                    <span id='spanimg'>
+                <Link to="/">
+                    <img src='./assets/logo4.png' className='logoImg' alt='Logo'  width="90" height="85"/>
+                </Link></span>
                     <div id='navbarMain'>
                         <Link to='/itTrend' className='itTrendNav' id='nav_menu'>
                             IT 뉴스</Link>
@@ -108,6 +102,27 @@ const hideDropdown = e => {
                            </NavDropdown.Item>
                            </NavDropdown> 
                     </div>
+                    {(!isLogin)?
+                <div id='topLoginAndRegister'>
+                    <Link to="/login" className='Login'>
+                        로그인 
+                    </Link>
+                    <Link to="/Register" className='Register'>
+                        회원가입
+                    </Link>
+                </div>
+                :
+                <div id='topLoginAndRegister'>
+                <Link to="/" className='logout' style={{ textDecoration: 'none'}} onClick={Logout}>
+                    로그아웃
+                </Link>
+                    {(!ismanager)?
+                <Link to={`/myPageBoard/${m_name}`} className='myPage' style={{ textDecoration: 'none'}}>
+                    마이페이지
+                </Link>:<></>
+                    }
+                </div>
+                }
                 </nav>
             <MainCarousel/> 
         </div>    
