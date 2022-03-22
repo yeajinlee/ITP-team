@@ -94,7 +94,8 @@ if (!Groupdatas) return null;
      }
    
      {
-       ((   (sessionStorage.getItem('m_name')) !==g_name || (localStorage.getItem('m_name')) !==g_name  ) &&( (sessionStorage.getItem('m_name'))!=='manager'||(localStorage.getItem('m_name'))!=='manager') ) ?
+       (  ((sessionStorage.getItem('m_name')) !==g_name || (localStorage.getItem('m_name')) !==g_name) 
+       && ((sessionStorage.getItem('m_name')) !=='manager'|| (localStorage.getItem('m_name'))!=='manager') ) ?
        <>  
        <button className='groupDetailButton' value="신청하기" onClick={gotoapply} > 신청하기 </button>
        </> 
