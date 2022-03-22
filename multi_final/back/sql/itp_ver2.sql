@@ -17,6 +17,11 @@ create table itp_notice(
     n_content varchar(3000) not null,
     n_date datetime );
     
+insert into itp_notice values(1,"알려드립니다","공지사항입니다",now());
+insert into itp_notice values(2,"사이트 점검안내","2022년 3월 18일~19일 점검 예쩡입니다.",now());itp_member
+insert into itp_notice values(3,'개인정보취급방침 개정안내','개인정보취급방침이 개정되었습니다. 하단 메뉴를 통해 확인하세요',now());
+insert into itp_notice values(4,'IT뉴스 요약기능이 추가되었습니다','IT뉴스 요약기능이 추가되었습니다',now());
+
 insert into itp_notice values(1,"공지사항제목1","공지사항입니다",now());
 insert into itp_notice values(2,"공지사항제목2","공지드립니다",now());
     
@@ -100,7 +105,21 @@ foreign key(rg_rno) references itp_group(g_no) on DELETE CASCADE);
 insert into itp_replygroup values(1,1,'1번글댓글','aaa',default);
 insert into itp_replygroup values(2,2,'2번댓글2','bbb',default);
 insert into itp_replygroup values(3,7,'댓굴추가','ccc',default);
-
+create table itp_tech( 
+    t_no int primary key auto_increment,
+    t_parentno int not null default 0,
+    t_tag varchar(100) not null,
+    t_name varchar(200) not null,
+    t_content varchar(1000) not null,
+    t_date date default (current_date)
+    );
+    
+insert into itp_tech values(1, default,  "React","Carrie","리액트", default);
+insert into itp_tech values(2, default, "Spring","Dennis","스프링", default);
+insert into itp_tech values(3, default, "Vue","Maple","뷰", default);
+insert into itp_tech values(4, default, "Vue","Maple","뷰2", default);
+insert into itp_tech values(5, default, "React","Ryan","리액트2", default);
+insert into itp_tech values(6, default, "Spring","Kale","스프링2", default);
 -- 커밋
 commit;
 
@@ -113,6 +132,7 @@ select * from itp_group;
 select * from itp_member;
 select * from itp_com;
 select * from itp_reply;
+
 
 select * from tech where no="1";    
 select count(*) from itp_group;

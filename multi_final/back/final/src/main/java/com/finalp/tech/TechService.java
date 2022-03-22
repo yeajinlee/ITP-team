@@ -21,17 +21,22 @@ public class TechService {
 		Map<String, Object> reactMap = new HashMap<String, Object>();
 		ArrayList<Object> reactArray = new ArrayList<Object>();
 		
-//		Document doc = Jsoup.connect("https://ko.reactjs.org/blog/all.html").get();
 		try {
 			Document reactDoc = Jsoup.connect("https://ko.reactjs.org/blog/all.html").get();
 			Element reactEl;
 			
 			for(int i = 0; i <= 2; i++) {
 				reactEl = reactDoc.select("body h2").get(i);
+				System.out.println("getReactArticle reactEl => " + reactEl);
 				String title = reactEl.text();
 				String titleLink = reactEl.html().replaceAll("<a class=\"css-m6cbzp\" href=\"", "");
 				titleLink = titleLink.substring(0, titleLink.indexOf("\""));
 				String date = titleLink.substring(6, 16).replace("/", "-");
+				
+				System.out.println("getReactArticle title => " + title);
+				System.out.println("getReactArticle title => " + titleLink);
+				System.out.println("getReactArticle title => " + date);
+				
 				//리액트로 보낼 데이터
 				Map<String, String> titleMap = new HashMap<String, String>();
 				titleMap.put("title", title);

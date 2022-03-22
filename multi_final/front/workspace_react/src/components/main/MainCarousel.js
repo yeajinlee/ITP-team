@@ -17,7 +17,7 @@ const MainCarousel = () => {
           alignContent: 'center',
           display: 'block',
           width: 1024,
-        
+          //marginTop: 10,    
           paddingBottom: 20,
         }}
         id="cardImage"
