@@ -71,7 +71,7 @@ font-weight: bold;
 width: 128px;
 `
 const ReplyContent = styled.p`
-width: 512px;
+width: 850px;
 `
 
 const ReplyNameAndDate = styled.p`
