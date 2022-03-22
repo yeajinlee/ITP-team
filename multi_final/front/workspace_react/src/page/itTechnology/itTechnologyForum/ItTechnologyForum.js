@@ -16,43 +16,65 @@ margin-right: 10px;
 margin-left: 10px;
 `
 
-const Reple = styled.div`
-justify-content: center;
+const Reply = styled.div`
+  justify-content: center;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
   margin: 0 auto;
   overflow: hidden;
+  
   input {
-      width: 864px;
-      border-radius: 5px;
-      border: 1px solid black;
-      height: 40px;
-      margin-right: 16px;
+    width: 900px;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 60px;
+    margin-right: 16px;
   }
 
-  button {
-      margin-right: 8px;
-      width: 40px;
-      border: 1px solid #3b9d9d;
-      background-color: #3b9d9d;
-      color: white;
-      border-radius: 5px;
-      outline: 0;
-    }
+  #editBtn, #delBtn {
+    margin-right: 8px;
+    width: 45px;
+    border: 1px solid #3b9d9d;
+    background-color: #3b9d9d;
+    color: white;
+    border-radius: 5px;
+    outline: 0;
+  }
+  #editRight {
+    width: 122px;
+  }
+  #editBtns {
+      margin-bottom: 8px;
+  }
+  
 
-`
+  #doneBtn, #cancelBtn {
+    margin-right: 8px;
+    height: 26px;
+    width: 45px;
+    border: 1px solid #3b9d9d;
+    background-color: #3b9d9d;
+    color: white;
+    border-radius: 5px;
+    outline: 0;
+    
+  }
+  #counter {
+    color: grey;
+  }
+`;
 const Content = styled.div`
 display: flex;
 
 `
-const RepleTag = styled.p`
+const ReplyTag = styled.p`
 font-weight: bold;
 width: 128px;
 `
-const RepleContent = styled.p`
+const ReplyContent = styled.p`
 width: 512px;
 `
 
-const RepleNameAndDate = styled.p`
+const ReplyNameAndDate = styled.p`
 width: 512px;
 text-align: right;
 span{
@@ -69,10 +91,18 @@ const ItTechnologyForum = () => {
     const [editClicked, setEditClicked] = useState(false);
     const [content, setContent] = useState(null);
     let [editNo, setEditNo] = useState('');
+    const[contentCnt, setContentCnt] = useState(null);
+
 
     const handleContent = (e) => {
         setContent(e.target.value);
         console.log(content);
+        setContentCnt(e.target.value.length);
+    }
+
+    const editCancel = (e) => {
+        setEditClicked(false);
+        setContentCnt(null);
     }
 
     useEffect(() => {
@@ -145,22 +175,27 @@ const ItTechnologyForum = () => {
         <ItTechnologyWrite />
         <br />
         {techForum.map((techForum, t_no) => (
-            <Reple key={t_no}>
+            <Reply key={t_no}>
                 {editClicked && techForum.t_no === editNo ? (
                     <Content>
-                        <RepleTag>{techForum.t_tag}</RepleTag>
-                        <input type="text" defaultValue={techForum.t_content} onChange={(e) => handleContent(e)}></input>
-                        <button id="doneBtn" onClick={() => doneEdit(techForum.t_no)}>
-                            수정
-                        </button>
-                        <button id='cancelBtn' onClick={() => setEditClicked(false)}>취소</button>
+                        <ReplyTag>{techForum.t_tag}</ReplyTag>
+                            <input type="text" defaultValue={techForum.t_content} onChange={(e) => handleContent(e)}></input>
+                                <p id="editRight">
+                                <div id='editBtns'>
+                                        <button id="doneBtn" onClick={() => doneEdit(techForum.t_no)}>
+                                        수정
+                                        </button>
+                                        <button id='cancelBtn' onClick={() => editCancel()}>취소</button>
+                                </div>
+                                    <span id='counter'>{contentCnt}/300</span>
+                                    </p>
                     </Content>
                 ) : (
                     <Content>
-                        <RepleTag>{techForum.t_tag}</RepleTag>
+                        <ReplyTag>{techForum.t_tag}</ReplyTag>
                         {/* <p>{techForum.t_parentno}</p> */}
-                        <RepleContent>{techForum.t_content}</RepleContent>
-                        <RepleNameAndDate>{techForum.t_name} | {techForum.t_date}
+                        <ReplyContent>{techForum.t_content}</ReplyContent>
+                        <ReplyNameAndDate>{techForum.t_name} | {techForum.t_date}
                         {sessionStorage.getItem('m_name') === techForum.t_name || localStorage.getItem('m_name') === techForum.t_name 
                             || sessionStorage.getItem('m_name') === 'manager' || localStorage.getItem('m_name') === 'manager'
                         ? (
@@ -175,7 +210,7 @@ const ItTechnologyForum = () => {
                         ) : (
                             null
                         )}
-                        </RepleNameAndDate>
+                        </ReplyNameAndDate>
                         
                         {/* <button id="replyBtn">답글</button> */}
                     </Content>
@@ -184,7 +219,7 @@ const ItTechnologyForum = () => {
 
 
             <hr />
-          </Reple>
+          </Reply>
         ))}
       </div>
     );

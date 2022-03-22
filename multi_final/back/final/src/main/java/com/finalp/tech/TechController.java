@@ -47,6 +47,12 @@ public class TechController {
 			return mapper.getTechList(tag);
 		}
 		
+		@GetMapping("/mypage/forum")
+		public List<techDTO> getMyForum(@RequestParam("m_name") String m_name) {
+			return mapper.getMyForum(m_name);
+		}
+		
+		
 		@RequestMapping("/itTech/forum/addTech")
 		public int addTech(@RequestParam(value="t_tag") String t_tag,
 										@RequestParam(value="t_name") String t_name,

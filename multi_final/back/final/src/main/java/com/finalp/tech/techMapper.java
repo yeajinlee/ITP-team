@@ -21,6 +21,9 @@ public interface techMapper {
 	@Select("SELECT * FROM itp_tech where t_tag=#{tag} order by t_no desc")
 	public List<techDTO> getTechList(@Param("tag") String tag);
 	
+	@Select("select * from itp_tech where t_name = #{m_name}")
+	public List<techDTO> getMyForum(@Param("m_name") String m_name);
+	
 	@Insert("insert into itp_tech(t_tag, t_name, t_content) values(#{t_tag}, #{t_name}, #{t_content})")
 	public int insertTech(@Param("t_tag") String t_tag,
 									@Param("t_name") String t_name,
