@@ -90,19 +90,12 @@ if (!Groupdatas) return null;
       <button className='groupDetailButton' value="삭제하기" onClick={()=>Delete(no)} > 삭제 </button>
       </>
       :
+      <>
       <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록 </button>
+      <button className='groupDetailButton' value="신청" onClick={gotoapply} > 신청 </button>
+      </>
      }
-   
-     {
-       (  ((sessionStorage.getItem('m_name')) !==g_name || (localStorage.getItem('m_name')) !==g_name) 
-       && ((sessionStorage.getItem('m_name')) !=='manager'|| (localStorage.getItem('m_name'))!=='manager') ) ?
-       <>  
-       <button className='groupDetailButton' value="신청하기" onClick={gotoapply} > 신청하기 </button>
-       </> 
-       :
-       <></>   
-    }
-  
+        
       </div>
       <GroupReply/>
     </div>
