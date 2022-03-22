@@ -2,6 +2,7 @@ import React, { useState , useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './itTechnologyMain.scss'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ItTechnologySpring = () => {
     const [techSpring, setTechSpring] = useState(null);
@@ -26,7 +27,10 @@ const ItTechnologySpring = () => {
     return (
         <div>
             <span className="itTechSpan">
-                <img width="220px" height="150px" src="./assets/springLogo.png" alt="img" />
+                <Link to={'/itTech/forum/Spring'} style={{ textDecoration: 'none'}}>
+                    <img width="220px" height="150px" src="./assets/springLogo.png" alt="img" />
+                    <br/><span className='shortcut'>☝ Spring 포럼 바로가기</span>
+                </Link>
                 <div className='titleList'>
                     {techSpring.articles.map((a, index) => (
                         <div key={index}>

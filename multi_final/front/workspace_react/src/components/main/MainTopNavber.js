@@ -122,9 +122,9 @@ const hideDropdown = e => {
               className="dropdown"
               zindex={1}
             >
-              <NavDropdown.Item href="/itTech">기술 업데이트</NavDropdown.Item>
+              <NavDropdown.Item href="/itTech">업데이트</NavDropdown.Item>
               <NavDropdown.Item href="/itTech/forum">
-                기술 포럼
+                포럼
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown

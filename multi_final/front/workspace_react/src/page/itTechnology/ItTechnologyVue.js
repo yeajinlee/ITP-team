@@ -2,6 +2,8 @@ import React, { useState , useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './itTechnologyMain.scss'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const ItTechnologyVue = () => {
     const [techVue, setTechVue] = useState(null);
@@ -26,7 +28,10 @@ const ItTechnologyVue = () => {
     return (
         <div>
             <span className="itTechSpan">
-                <img width="220px" height="150px" src="./assets/vueLogo.png" alt="img" />
+                <Link to={'/itTech/forum/Vue'} style={{ textDecoration: 'none'}}>
+                    <img width="220px" height="150px" src="./assets/vueLogo.png" alt="img" />
+                    <br/><span className='shortcut'>☝ Vue 포럼 바로가기</span>
+                </Link>
                 <div className='titleList'>
                     {techVue.articles.map((a, index) => (
                         <div key={index}>
