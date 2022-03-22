@@ -51,13 +51,13 @@ const ItTechnologyForum = () => {
         console.log(editNo);
     }
 
-    const doneEdit = () => {
+    const doneEdit = (no) => {
         console.log(no);
         if (content === null) {
             alert("내용을 입력하세요.");
         } else {
             axios.put(`http://localhost:8085/itTech/forum/updateTech/${no}`, null,{params: {'content': content}})
-            // .then(document.location.href='/itTech/forum')
+            .then(document.location.href='/itTech/forum')
             .catch(error => {
                 console.log(error);
             })
@@ -94,7 +94,7 @@ const ItTechnologyForum = () => {
                     <div>
                         <p>{techForum.t_tag}</p>
                         <textarea type="text" defaultValue={techForum.t_content} onChange={(e) => handleContent(e)}></textarea>
-                        <button id="doneBtn" onClick={() => doneEdit()}>
+                        <button id="doneBtn" onClick={() => doneEdit(techForum.t_no)}>
                             수정
                         </button>
                         <button id='cancelBtn' onClick={() => setEditClicked(false)}>취소</button>
