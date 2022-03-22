@@ -31,7 +31,7 @@ public class ItTrendService {
 	private final ApiKey API_KEY;
 	public ItTrendService(ApiKey apiKey) {
 		this.API_KEY = apiKey;
-	}
+	} 
 	
 
 	Object topObject = new Object();
@@ -122,10 +122,12 @@ public class ItTrendService {
 			//ArrayList안에 Map으로 데이터가 들어있는 구조
 			articlesMap = (Map) articles.get(0);
 			
-			String url = articlesMap.get("url").toString();
-			getContent(url);
-			getSummary(content);
 			
+			String url = articlesMap.get("url").toString();
+			//해당 기사의 url로 본문 파싱
+			getContent(url);
+			//본문으로 요약
+			getSummary(content);
 			//Map에 데이터 추가
 			trendDetail.put("title", articlesMap.get("title"));
 			trendDetail.put("urlToImage", articlesMap.get("urlToImage"));
@@ -168,6 +170,7 @@ public class ItTrendService {
 				content = "원문보기를 눌러 기사를 확인하세요.";
 			}
 			
+			System.out.println("getContent content => " + content);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -216,6 +219,8 @@ public class ItTrendService {
 			summary = response.toString();
 			summary = trimSummary(summary);
 			
+			System.out.println("getSummary summary => " + summary);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -228,10 +233,7 @@ public class ItTrendService {
 	}
 	
 	public String trimContent(String content) {
-		//요약 api 글자수제한에 맞게 줄임
-		if (content.length() > 2000) {
-			content = content.substring(0, 1950);
-		}
+		
 		//기사 본문 내 " 제거
 		content = content.replace("\"", "'");
 		content = content.replace("\\", "'");
@@ -246,6 +248,10 @@ public class ItTrendService {
 		if (content.contains("▶")) {
 			int index = content.indexOf("▶");
 			content = content.substring(0, index);
+		}
+		//요약 api 글자수제한에 맞게 줄임
+		if (content.length() > 2000) {
+			content = content.substring(0, 1950);
 		}
 		
 		return content;
