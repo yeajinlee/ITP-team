@@ -193,7 +193,7 @@ const ItTechnologyForum = () => {
                                         </button>
                                         <button id='cancelBtn' onClick={() => editCancel()}>취소</button>
                                     </div>
-                                    <span style={{color:'grey'}}>&nbsp; {contentCnt}/300</span>
+                                    <span style={{color:'grey'}}>&nbsp; {contentCnt}/900</span>
                                 </div>
                     </Content>
                 ) : (

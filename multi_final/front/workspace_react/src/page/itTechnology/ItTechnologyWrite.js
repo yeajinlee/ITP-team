@@ -115,7 +115,7 @@ const ItTechnologyWrite = () => {
                 등록
             </button>
             </WriteForm>
-            <div id='counter'>{contentCnt}/300</div>
+            <div id='counter'>{contentCnt}/900</div>
             </div>
         </Write>
         
