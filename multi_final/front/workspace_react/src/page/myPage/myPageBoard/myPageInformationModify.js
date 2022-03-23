@@ -69,12 +69,16 @@ const MyPageInformationModify = () => {
      //복호화
      const decrypted=CryptoJS.AES.decrypt(m_passwdd, 'itp123');
      var decryptedData = decrypted.toString(CryptoJS.enc.Utf8);
-
+     console.log(decryptedData)
+     console.log(m_passwd)
      //회원정보 수정 버튼
      const submit=()=>{
          if(isPassword===false||isPasswordcheck===false){
             alert('입력이 올바르지 않은 항목이 있습니다. 확인해주세요')
-         } else if(isPassword===true&&isPasswordcheck===true){
+         } else if(m_passwd===decryptedData) {
+            setIsPassword(false); alert('기존 비밀번호와 같습니다')
+         }
+          else if(isPassword===true&&isPasswordcheck===true){
         console.log(m_passwd)
          //암호화
         const encrypted=CryptoJS.AES.encrypt(m_passwd, 'itp123').toString();
@@ -116,27 +120,27 @@ const MyPageInformationModify = () => {
                         <Form.Label className='modifyLabel'>닉네임</Form.Label>
                         <Form.Control className='nicknameInput' type="input" placeholder={m_name} disabled/>
                         <Form.Text className='modifyText'>
-                            한글, 영문, 숫자 포함 15자 이하
                         </Form.Text>
                     </Form.Group>
                     <div id='modifyPassword'>
                     <Form.Group  controlId="formBasicPassword">
                         <Form.Label className='modifyLabel'>비밀번호</Form.Label>
-                        <Form.Control className='passwordInput' type="password" value={decryptedData} disabled/>
+                        <Form.Control className='passwordInput' type="password" value={decryptedData} disabled/>  
                     </Form.Group>
                     <Form.Group className='modifyNewPasswordForm' controlId="formBasicPassword">
-                        <Form.Control className='passwordInput_1' type="password" placeholder="새 비밀번호" minlength="8" maxlength="16" onChange={changePasswd} onBlur={checkPassword}/>
-                        {isPassword===false ? (<p className='errorcode'>패스워드를 다시입력해주세요</p>)  :
-                        (<p className='okcode'>사용가능한 형식입니다</p>)}
+                        <Form.Control className='passwordInput_1' type="password" placeholder="새 비밀번호" minlength="8" maxlength="16" onChange={changePasswd} onBlur={checkPassword}/>            
                     </Form.Group>  
                     <Form.Text className='modifyText'>
-                            영문 대소문자, 숫자, 특수문자 포함 8자리 이상 16자리 이하
+                            {isPassword===false ? (<p className='errorcode'>패스워드를 다시입력해주세요 (영문 대소문자, 숫자, 특수문자 포함 8자리 이상 16자리 이하)</p>)  :
+                        (<p className='okcode'>사용가능한 형식입니다</p>)}
                         </Form.Text>               
                     <Form.Group className='modifyCheckPasswordForm' controlId="formBasicPassword">
-                        <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호 확인" minlength="8" maxlength="16" onChange={(e)=>setm_passwdchecked(e.target.value)} onBlur={checkPassword2}/>
-                        {isPasswordcheck===false ? (<p className='errorcode'>패스워드가 올바르지않습니다</p>)  :
-                        (<p className='okcode'>일치합니다</p>)}
+                        <Form.Control className='passwordInput_2' type="password" placeholder="새 비밀번호 확인" minlength="8" maxlength="16" onChange={(e)=>setm_passwdchecked(e.target.value)} onBlur={checkPassword2}/>
                     </Form.Group>
+                    <Form.Text className='modifyText'>
+                    {isPasswordcheck===false ? (<p className='errorcode'>패스워드가 올바르지않습니다</p>)  :
+                        (<p className='okcode'>일치합니다</p>)}
+                        </Form.Text>
                     </div>
                 </Form>
                 <div id='buttonGroup'>
