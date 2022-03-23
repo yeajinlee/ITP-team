@@ -6,7 +6,7 @@
   margin: 0 auto;
   overflow: hidden;
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
-  height: 500px;
+  height: 600px;
   margin-top: 50px;
   border-radius: 20px;
   .modifyLabel {
@@ -18,6 +18,7 @@
   .modifyText {
     display: flex;
     margin-left: 10px;
+    margin-bottom: 20px;
   }
   //------------------------------닉네임 부분------------------------------
 
@@ -39,7 +40,12 @@
       width: 300px;
       margin-bottom: 20px;
     }
+    .passwordInput_1 {
+      width: 300px;
+      margin-bottom: 0px;
+    }
     .modifyCheckPasswordForm {
+      display: flex;
       margin-bottom: 100px;
     }
   }
@@ -47,14 +53,17 @@
     font-size: 12px;
     color: red;
     font-weight: bold;
-    //margin-bottom: 40px;
-    float: left;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
   }
   .okcode {
     font-size: 12px;
     color: blue;
     font-weight: bold;
     float: left;
+    display: flex;
+    align-items: center;
   }
   //------------------------------버튼 부분------------------------------
   #buttonGroup {

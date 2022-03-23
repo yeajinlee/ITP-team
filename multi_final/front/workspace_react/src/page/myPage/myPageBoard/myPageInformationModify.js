@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {  useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../sidebar';
 import './myPageInformationModify.scss';
 import CryptoJS from 'crypto-js';
@@ -125,13 +125,13 @@ const MyPageInformationModify = () => {
                         <Form.Control className='passwordInput' type="password" value={decryptedData} disabled/>
                     </Form.Group>
                     <Form.Group className='modifyNewPasswordForm' controlId="formBasicPassword">
-                        <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호" minlength="8" maxlength="16" onChange={changePasswd} onBlur={checkPassword}/>
-                        <Form.Text className='modifyText'>
-                            영문 대소문자, 숫자, 특수문자 포함 8자리 이상 16자리 이하
-                        </Form.Text>
-                    </Form.Group>
+                        <Form.Control className='passwordInput_1' type="password" placeholder="새 비밀번호" minlength="8" maxlength="16" onChange={changePasswd} onBlur={checkPassword}/>
                         {isPassword===false ? (<p className='errorcode'>패스워드를 다시입력해주세요</p>)  :
-                        (<p className='okcode'>사용가능한 형식입니다</p>)}                
+                        (<p className='okcode'>사용가능한 형식입니다</p>)}
+                    </Form.Group>  
+                    <Form.Text className='modifyText'>
+                            영문 대소문자, 숫자, 특수문자 포함 8자리 이상 16자리 이하
+                        </Form.Text>               
                     <Form.Group className='modifyCheckPasswordForm' controlId="formBasicPassword">
                         <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호 확인" minlength="8" maxlength="16" onChange={(e)=>setm_passwdchecked(e.target.value)} onBlur={checkPassword2}/>
                         {isPasswordcheck===false ? (<p className='errorcode'>패스워드가 올바르지않습니다</p>)  :
