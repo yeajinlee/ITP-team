@@ -28,8 +28,7 @@ const GroupReply = () => {
      const [rg_name,setrg_name]=useState(''); //댓글쓴 이름
       const[rg_content,setrg_content]=useState('');
    
-    //   const rg_name=sessionStorage.getItem('m_name'); 
-    //   //로그인했을때 닉네임
+
       
       const handler_content=(e)=>{
         setrg_content(e.target.value);

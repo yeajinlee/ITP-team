@@ -185,6 +185,7 @@ if (!Groupdatas) return null;
               type="text"
               onChange={(e)=>settitle(e.target.value)} 
               className="searchInput"
+              placeholder='제목검색'
               value={title}
             />
             <BsSearch className='searchButton' type="button" onClick={handlesearch}/>
