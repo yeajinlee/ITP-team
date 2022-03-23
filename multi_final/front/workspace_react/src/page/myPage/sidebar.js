@@ -6,7 +6,6 @@ import SidebarItem from "./pageSide";
 function Sidebar() {
   const [issession,setissession]=useState();
   const [rg_name,setrg_name]=useState(''); //댓글쓴 이름
-  const [menuClicked, setMenuClicked] = useState();
 
   const myWrite = [
     { name: "작성 글", path: `/myPageBoard/${rg_name}` },
@@ -17,9 +16,7 @@ function Sidebar() {
     { name: "정보 수정", path: `/myPageInformationModify/${rg_name}`}
   ];
 
-  const getClickedMenu =() => {
-    setMenuClicked()
-  }
+
 
       
   useEffect(()=>{
@@ -32,40 +29,42 @@ function Sidebar() {
    
   },[issession]);
   return (
-  <div id='sideBar'>
-   {rg_name} 님의 정보
-    <div className="Menu">
-      {myWrite.map((menu, index) => (
+    <div id="sideBar">
+      {rg_name} 님의 정보
+      <div className="Menu">
+        {myWrite.map((menu, index) => {
+          return (
           <NavLink
             exact
-            style={{color: "gray", textDecoration: "none"}}
+            style={{ color: 'gray', textDecoration: 'none' }}
             to={menu.path}
             key={index}
-        activeStyle={{color: "black"}}
-        >
-          <SidebarItem menu={menu}/>
+            activeStyle={{ color: 'black' }}
+          >
+            {(window.location.pathname === menu.path ? <b><SidebarItem menu={menu} /></b> : <SidebarItem menu={menu} />)}
+            
           </NavLink>
+          )
+          
+        })}
+      </div>
+      <div className="Menu">
+        {menus.map((menu, index) => {
+          return (
+            <NavLink
+              exact
+              style={{ color: 'gray', textDecoration: 'none' }}
+              to={menu.path}
+              key={index}
+              activeStyle={{ color: 'black' }}
+            >
+              {(window.location.pathname === menu.path ? <b><SidebarItem menu={menu} /></b> : <SidebarItem menu={menu} />)}
+              {/* <SidebarItem menu={menu} /> */}
+            </NavLink>
           );
-          })}
+        })}
+      </div>
     </div>
-    <div className="Menu">
-      {menus.map((menu, index) => {
-        return (
-        <NavLink
-        exact
-        style={{color: "gray", textDecoration: "none"}}
-        to={menu.path}
-        key={index}
-        activeStyle={{color: "black"}}
-        >
-          <SidebarItem
-          menu={menu}
-          />
-          </NavLink>
-          );
-          })}
-    </div>
-  </div>   
   );
 }
 
