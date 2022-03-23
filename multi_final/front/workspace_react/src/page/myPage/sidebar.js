@@ -11,7 +11,7 @@ function Sidebar() {
   const myWrite = [
     { name: "작성 글", path: `/myPageBoard/${rg_name}` },
     { name: "댓글", path: `/myPageComment/${rg_name}` },
-    { name: "모임찾기 신청현황", path:`/applymylist/${rg_name}` }
+    { name: "모임신청", path:`/applymylist/${rg_name}` }
   ];
   const menus = [
     { name: "정보 수정", path: `/myPageInformationModify/${rg_name}`}

@@ -187,6 +187,7 @@ if (!Comdatas) return null;
               onChange={(e)=>settitle(e.target.value)} 
               className="searchInput"
               value={title}
+              placeholder='제목검색'
             />
             <BsSearch className='searchButton' type="button" onClick={handlesearch}/>
           </div>
