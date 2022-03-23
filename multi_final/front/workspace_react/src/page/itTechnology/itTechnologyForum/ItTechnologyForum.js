@@ -172,10 +172,10 @@ const ItTechnologyForum = () => {
         <div className='itTechPageTitle'> <BsChevronRight/> 기술 포럼</div>
         
         <TopCategory>
-        <TopLink to="/itTech/forum">전체</TopLink>|
-        <TopLink to="/itTech/forum/React">React</TopLink>|
-        <TopLink to="/itTech/forum/Spring">Spring</TopLink>|
-        <TopLink to="/itTech/forum/Vue">Vue</TopLink>
+        {(window.location.pathname === "/itTech/forum" ? <b><TopLink to="/itTech/forum">전체</TopLink></b> : <TopLink to="/itTech/forum">전체</TopLink>)}|
+        {(window.location.pathname === "/itTech/forum/React" ? <b><TopLink to="/itTech/forum/React">React</TopLink></b> : <TopLink to="/itTech/forum/React">React</TopLink>)}|
+        {(window.location.pathname === "/itTech/forum/Spring" ? <b><TopLink to="/itTech/forum/Spring">Spring</TopLink></b> : <TopLink to="/itTech/forum/Spring">Spring</TopLink>)}|
+        {(window.location.pathname === "/itTech/forum/Vue" ? <b><TopLink to="/itTech/forum/Vue">Vue</TopLink></b> : <TopLink to="/itTech/forum/Vue">Vue</TopLink>)}
         </TopCategory>
         <br />
         <ItTechnologyWrite />
@@ -193,7 +193,7 @@ const ItTechnologyForum = () => {
                                         </button>
                                         <button id='cancelBtn' onClick={() => editCancel()}>취소</button>
                                     </div>
-                                    <span style={{color:'grey'}}>&nbsp; {contentCnt}/300</span>
+                                    <span style={{color:'grey'}}>&nbsp; {contentCnt}/900</span>
                                 </div>
                     </Content>
                 ) : (

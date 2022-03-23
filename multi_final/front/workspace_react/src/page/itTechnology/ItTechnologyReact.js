@@ -29,7 +29,7 @@ const ItTechnologyReact = () => {
     return (
         <div>
             <span className="itTechSpan">
-                <Link to={'/itTech/forum'} style={{ textDecoration: 'none'}}>
+                <Link to={'/itTech/forum/React'} style={{ textDecoration: 'none'}}>
                     <img width="220px" height="150px" src="./assets/reactLogo.png" alt="img"/>
                     <br/><span className='shortcut'>☝ React 포럼 바로가기</span>
                 </Link>
