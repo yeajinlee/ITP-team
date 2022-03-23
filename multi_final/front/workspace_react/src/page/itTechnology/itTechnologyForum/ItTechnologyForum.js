@@ -95,8 +95,7 @@ const ItTechnologyForum = () => {
     const [content, setContent] = useState(null);
     let [editNo, setEditNo] = useState('');
     const[contentCnt, setContentCnt] = useState(null);
-
-
+    const[forumCnt, setForumCnt] = useState('0');
 
     const handleContent = (e) => {
         setContent(e.target.value);
@@ -110,6 +109,22 @@ const ItTechnologyForum = () => {
     }
 
     useEffect(() => {
+        const fetchForumCnt = async() => {
+            setLoading(true);
+            try {
+                const response = await axios.get('http://localhost:8085/itTech/forum/count');
+                setForumCnt(response.data);
+                console.log(response);
+            } catch (error) {
+                setError(error);
+            }
+            setLoading(false);
+        };
+        fetchForumCnt();
+    }, []);
+
+
+    useEffect(() => {
         const fetchForum = async() => {
             setLoading(true);
             try {
@@ -117,6 +132,7 @@ const ItTechnologyForum = () => {
                     const response = await axios.get('http://localhost:8085/itTech/forum');
                     setTechForum(response.data);
                     console.log(response);
+                    console.log(response.data.length);
                 }
                 else {
                     const response = await axios.get(`http://localhost:8085/itTech/forum/${tag}`)
@@ -172,10 +188,10 @@ const ItTechnologyForum = () => {
         <div className='itTechPageTitle'> <BsChevronRight/> 기술 포럼</div>
         
         <TopCategory>
-        {(window.location.pathname === "/itTech/forum" ? <b><TopLink to="/itTech/forum">전체</TopLink></b> : <TopLink to="/itTech/forum">전체</TopLink>)}|
-        {(window.location.pathname === "/itTech/forum/React" ? <b><TopLink to="/itTech/forum/React">React</TopLink></b> : <TopLink to="/itTech/forum/React">React</TopLink>)}|
-        {(window.location.pathname === "/itTech/forum/Spring" ? <b><TopLink to="/itTech/forum/Spring">Spring</TopLink></b> : <TopLink to="/itTech/forum/Spring">Spring</TopLink>)}|
-        {(window.location.pathname === "/itTech/forum/Vue" ? <b><TopLink to="/itTech/forum/Vue">Vue</TopLink></b> : <TopLink to="/itTech/forum/Vue">Vue</TopLink>)}
+        {(window.location.pathname === "/itTech/forum" ? <b><TopLink to="/itTech/forum">전체 ({forumCnt.allCount})</TopLink></b> : <TopLink to="/itTech/forum">전체 ({forumCnt.allCount})</TopLink>)}|
+        {(window.location.pathname === "/itTech/forum/React" ? <b><TopLink to="/itTech/forum/React">React ({forumCnt.React})</TopLink></b> : <TopLink to="/itTech/forum/React">React ({forumCnt.React})</TopLink>)}|
+        {(window.location.pathname === "/itTech/forum/Spring" ? <b><TopLink to="/itTech/forum/Spring">Spring ({forumCnt.Spring})</TopLink></b> : <TopLink to="/itTech/forum/Spring">Spring ({forumCnt.Spring})</TopLink>)}|
+        {(window.location.pathname === "/itTech/forum/Vue" ? <b><TopLink to="/itTech/forum/Vue">Vue ({forumCnt.Vue})</TopLink></b> : <TopLink to="/itTech/forum/Vue">Vue ({forumCnt.Vue})</TopLink>)}
         </TopCategory>
         <br />
         <ItTechnologyWrite />

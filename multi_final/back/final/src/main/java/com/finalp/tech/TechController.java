@@ -47,6 +47,12 @@ public class TechController {
 			return mapper.getTechList(tag);
 		}
 		
+		@GetMapping("/itTech/forum/count")
+		public Map<String, Object> getTechCount(){
+			return mapper.getTechCount();
+		}
+		
+		
 		@GetMapping("/mypage/forum")
 		public List<techDTO> getMyForum(@RequestParam("m_name") String m_name) {
 			return mapper.getMyForum(m_name);
