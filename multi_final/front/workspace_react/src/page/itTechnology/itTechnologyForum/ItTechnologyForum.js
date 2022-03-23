@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import ItTechnologyWrite from '../ItTechnologyWrite';
 import styled from 'styled-components';
+import { BsChevronRight } from 'react-icons/bs';
 
 const TopCategory = styled.h5`
 text-align: center;
@@ -21,17 +22,16 @@ const Reply = styled.div`
   width: 1024px; // 2560(QHD), 1920(FHD), 1680, 1440
   margin: 0 auto;
   overflow: hidden;
-  
   input {
     width: 900px;
     border-radius: 5px;
     border: 1px solid black;
     height: 60px;
-    margin-right: 16px;
+    margin-bottom: 15px;
   }
 
   #editBtn, #delBtn {
-    margin-right: 8px;
+    margin-left: 8px;
     width: 45px;
     border: 1px solid #3b9d9d;
     background-color: #3b9d9d;
@@ -40,15 +40,17 @@ const Reply = styled.div`
     outline: 0;
   }
   #editRight {
-    width: 122px;
+    width: 120px;
+    flex-direction: column;
   }
   #editBtns {
+      float:right;
       margin-bottom: 8px;
   }
   
 
   #doneBtn, #cancelBtn {
-    margin-right: 8px;
+    margin-left: 8px;
     height: 26px;
     width: 45px;
     border: 1px solid #3b9d9d;
@@ -58,11 +60,11 @@ const Reply = styled.div`
     outline: 0;
     
   }
-  #counter {
-    color: grey;
-  }
+
 `;
 const Content = styled.div`
+margin-top: 20px;
+margin-bottom: 5px;
 display: flex;
 
 `
@@ -71,11 +73,12 @@ font-weight: bold;
 width: 128px;
 `
 const ReplyContent = styled.p`
-width: 850px;
+width: 700px;
+line-height: 25px;
 `
 
 const ReplyNameAndDate = styled.p`
-width: 512px;
+width: 410px;
 text-align: right;
 span{
     margin-left: 10px;
@@ -92,6 +95,7 @@ const ItTechnologyForum = () => {
     const [content, setContent] = useState(null);
     let [editNo, setEditNo] = useState('');
     const[contentCnt, setContentCnt] = useState(null);
+
 
 
     const handleContent = (e) => {
@@ -137,7 +141,7 @@ const ItTechnologyForum = () => {
 
     const doneEdit = (no) => {
         console.log(no);
-        if (content === null) {
+        if (document.getElementById('editInput') === null) {
             alert("내용을 입력하세요.");
         } else {
             axios.put(`http://localhost:8085/itTech/forum/updateTech/${no}`, null,{params: {'content': content}})
@@ -165,6 +169,8 @@ const ItTechnologyForum = () => {
 
     return (
       <div>
+        <div className='itTechPageTitle'> <BsChevronRight/> 기술 포럼</div>
+        
         <TopCategory>
         <TopLink to="/itTech/forum">전체</TopLink>|
         <TopLink to="/itTech/forum/React">React</TopLink>|
@@ -179,16 +185,16 @@ const ItTechnologyForum = () => {
                 {editClicked && techForum.t_no === editNo ? (
                     <Content>
                         <ReplyTag>{techForum.t_tag}</ReplyTag>
-                            <input type="text" defaultValue={techForum.t_content} onChange={(e) => handleContent(e)}></input>
-                                <p id="editRight">
-                                <div id='editBtns'>
+                            <input type="text" id="editInput" defaultValue={techForum.t_content} onChange={(e) => handleContent(e)}></input>
+                                <div id="editRight">
+                                    <div id='editBtns'>
                                         <button id="doneBtn" onClick={() => doneEdit(techForum.t_no)}>
                                         수정
                                         </button>
                                         <button id='cancelBtn' onClick={() => editCancel()}>취소</button>
+                                    </div>
+                                    <span style={{color:'grey'}}>&nbsp; {contentCnt}/300</span>
                                 </div>
-                                    <span id='counter'>{contentCnt}/300</span>
-                                    </p>
                     </Content>
                 ) : (
                     <Content>

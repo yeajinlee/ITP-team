@@ -3,11 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import styled from 'styled-components';
+import './itTechnologyForum.scss';
 
 const Write = styled.div`
 display: flex;
 justify-content: center;
-
+margin-bottom: 40px;
 button {
       float: right;
       margin-left: 8px;
@@ -19,27 +20,27 @@ button {
       border-radius: 5px;
       outline: 0;
     }
+    
 `
 
 const WriteForm = styled(Form)`
 width: 1024px;
 display: flex;
 height: 60px;
-margin-bottom: 20px;
+// margin-bottom: 20px;
 .tagSelect{
     height: 30px;
     width: 128px;
     margin-right: 8px;
     font-size: 13px;
 }
-#counter {
-    margin-top: 8px;
-    margin-right: 8px;
-    float: right;
-    color: grey;
-}
-
 `
+//input태그 하나일 때 엔터치면 submit되는 것 막기
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    };
+  }, true);
 
 const ItTechnologyWrite = () => {
     const[t_tag,sett_tag] = useState(null);
@@ -96,7 +97,9 @@ const ItTechnologyWrite = () => {
     }, [])
 
     return (
+        
         <Write>
+            <div>
             <WriteForm>
                 <span>
                 <Form.Select className='tagSelect' onChange={(e) => handleTag(e)}>
@@ -105,15 +108,18 @@ const ItTechnologyWrite = () => {
                     <option value="Spring">Spring</option>
                     <option value="Vue">Vue</option>
                 </Form.Select>
-                <span id='counter'>{contentCnt}/300</span>
                 </span>
-                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)} maxLength={300}/>
+                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)} maxLength={300} onsubmit="return false"/>
                 
             <button type="submitBtn" onClick={() => addTechComment()}>
                 등록
             </button>
             </WriteForm>
+            <div id='counter'>{contentCnt}/300</div>
+            </div>
         </Write>
+        
+        
     );
 };
 
