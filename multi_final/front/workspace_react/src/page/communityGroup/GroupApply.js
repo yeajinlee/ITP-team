@@ -11,7 +11,8 @@ const GroupApply = () => {
     const [issession,setissession]=useState();
     const[g_name,setg_name]=useState('');
     const[g_email,setg_email]=useState('');
-    const[g_content,setg_content]=useState('')
+    const[g_content,setg_content]=useState('');
+    const[g_nameorigin,setg_nameorigin]=useState('');
 
     
     const handleg_content=(e)=>{
@@ -20,10 +21,35 @@ const GroupApply = () => {
     }
 
     useEffect(()=>{
+        const fetchGroup=async()=>{
+            try {
+                //error 와 notice 를 초기화
+            
+                // loading 상태를 true
+          
+                const response=await axios.get(`http://localhost:8085/group/${no}`);
+                console.log(response.data);
+
+                setg_nameorigin(response.data[0].g_name);
+             
+            }catch(e){
+           
+            }
+   
+          
+        
+    };
+    fetchGroup();
+    
+  },[no]);
+  
+  
+ 
+    useEffect(()=>{
         if(sessionStorage.getItem('m_name')===null || localStorage.getItem('m_name')!==null){
-          setissession(true);setg_name(localStorage.getItem('m_name')); setg_email(localStorage.getItem('loginemail'));
-        }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')!==null){
-          setissession(false); setg_name(sessionStorage.getItem('m_name'));
+          setissession(false);setg_name(localStorage.getItem('m_name')); setg_email(localStorage.getItem('loginemail'));
+        }else if(sessionStorage.getItem('m_name')!==null ||localStorage.getItem('m_name')===null){
+          setissession(true); setg_name(sessionStorage.getItem('m_name'));
           setg_email(sessionStorage.getItem('loginemail'));
          
         }
@@ -39,8 +65,10 @@ const GroupApply = () => {
         params:{
             'a_name':g_name,
             'a_email':g_email, 
-          'a_content':g_content,
-          'a_gno':no
+            'a_content':g_content,
+            'a_gno':no,
+            'g_name':g_nameorigin,
+            'a_auth':'확인중',
          
          
         }
