@@ -15,6 +15,7 @@ const GroupReply = () => {
   const [error, setError] = useState(null);
   const [isLogin,setIslogin]=useState();
   const [issession,setissession]=useState();
+  const[contentCnt, setContentCnt] = useState(0);
 
   function Delete(num){
        
@@ -27,11 +28,11 @@ const GroupReply = () => {
      const [rg_name,setrg_name]=useState(''); //댓글쓴 이름
       const[rg_content,setrg_content]=useState('');
    
-    //   const rg_name=sessionStorage.getItem('m_name'); 
-    //   //로그인했을때 닉네임
+
       
       const handler_content=(e)=>{
-        setrg_content(e.target.value)
+        setrg_content(e.target.value);
+        setContentCnt(e.target.value.length);
       }
       var today = new Date();
 
@@ -165,11 +166,11 @@ if (!Repdatas) return null;
 
   return (
       <div id='replyAll'>
-        <p>댓글 {Grouprepdatas}</p>
+         <p>댓글 {Grouprepdatas} <span id='counter' style={{float:'right'}}>{contentCnt}/300</span></p>
         <div id='replyRegi'>
         {(isLogin)?
         <>
-        <input type="text" onChange={(e)=>handler_content(e)}id="rg_content" name="rg_content" value={rg_content} />
+        <input type="text" onChange={(e)=>handler_content(e)}id="rg_content" name="rg_content" value={rg_content} maxLength={300} />
         <button value="등록하기" onClick={()=>submit()}>
           등록하기
         </button>
@@ -186,6 +187,7 @@ if (!Repdatas) return null;
               <div key={index} className='replyContent'>
 
                   <p>{Repdata.rg_content}</p>
+ 
                   <p>{Repdata.rg_name} | {Repdata.rg_date}</p>
                   {
             ((sessionStorage.getItem('m_name'))===Repdata.rg_name||(localStorage.getItem('m_name'))===Repdata.rg_name) ?

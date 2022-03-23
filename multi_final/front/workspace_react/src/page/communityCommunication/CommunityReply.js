@@ -14,6 +14,7 @@ const CommunityReply = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [isLogin,setIslogin]=useState();
+  const[contentCnt, setContentCnt] = useState(0);
   
   function Delete(num){
        
@@ -29,7 +30,8 @@ const CommunityReply = () => {
 
       
       const handler_content=(e)=>{
-        setr_content(e.target.value)
+        setr_content(e.target.value);
+        setContentCnt(e.target.value.length);
       }
       var today = new Date();
 
@@ -161,11 +163,11 @@ if (!Repdatas) return null;
 
   return (
       <div id='replyAll'>
-            <p>댓글 {Comrepdatas}</p>
+            <p>댓글 {Comrepdatas} <span id='counter' style={{float:'right'}}>{contentCnt}/300</span></p>
         <div id='replyRegi'>
         {(isLogin)?
         <>
-        <input type="text" onChange={(e)=>handler_content(e)}id="r_content" name="r_content" value={r_content} />
+        <input type="text" onChange={(e)=>handler_content(e)}id="r_content" name="r_content" value={r_content} maxLength={300} />
         <button value="등록하기" onClick={()=>submit()}>
           등록하기
         </button>

@@ -123,6 +123,7 @@ const hideDropdown = e => {
               zindex={1}
             >
               <NavDropdown.Item href="/itTech">업데이트</NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item href="/itTech/forum">
                 포럼
               </NavDropdown.Item>

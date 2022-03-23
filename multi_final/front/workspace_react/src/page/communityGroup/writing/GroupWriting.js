@@ -104,7 +104,7 @@ const GroupWriting = () => {
             
             </Form.Select>
           </Form.Group>
-            <Form.Control as='textarea' onChange={(e)=>handleg_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" value={g_content}/>
+            <Form.Control as='textarea' onChange={(e)=>handleg_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" value={g_content} maxLength={900}/>
         </Form>
         <div id='button'>
           <Link to='/communityGroup'>
