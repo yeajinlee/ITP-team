@@ -7,11 +7,11 @@ import axios from 'axios';
 
 const MyPageCommunityComment = () => {
     const { m_name } = useParams();
-    const[Repdatas,setRepdata]=useState(null);
+    const[Repdatas,setRepdata]=useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const[Groupdatas,setGroupdata]=useState([]);
-    const [forumData, setForumData] = useState(null);
+    const [forumData, setForumData] = useState([]);
     
   useEffect(()=>{
     const fetchGroup=async()=>{
