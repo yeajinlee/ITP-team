@@ -37,10 +37,12 @@ public class ApplyController {
     		 @RequestParam(value="a_name",required=false) String a_name,
     		 @RequestParam(value="a_email",required=false) String a_email,
 			@RequestParam(value="a_content",required=false) String a_content,
-			@RequestParam(value="a_gno",required=false) int a_gno
+			@RequestParam(value="a_gno",required=false) int a_gno,
+			@RequestParam(value="g_name",required=false) String g_name,
+			@RequestParam(value="a_auth",required=false) String a_auth
 			) {
 		
-		return mapper.insertGroupapply(a_name,a_email,a_content,a_gno);
+		return mapper.insertGroupapply(a_name,a_email,a_content,a_gno,g_name,a_auth);
 	}
 	
 	//아이디에 해당하는 내용만 조회
