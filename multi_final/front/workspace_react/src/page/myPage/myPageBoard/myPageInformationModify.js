@@ -9,17 +9,16 @@ import axios from 'axios';
 
 const MyPageInformationModify = () => {
 
-    const [isLogin,setIslogin]=useState();
-
     const navigate = useNavigate();
 
     const { m_name } = useParams();
-    //const myname=sessionStorage.getItem('m_name');
 
+    const [isLogin,setIslogin]=useState();
     const [m_passwd, setm_passwd]=useState(""); //변경할 비밀번호
     const [m_passwdd, setm_passwdd]=useState(""); //기존 비밀번호
-
     const [m_passwdchecked, setm_passwdchecked]=useState("");
+    const [isPassword, setIsPassword] = useState(false);
+    const [isPasswordcheck, setIsPasswordcheck] = useState(false);
 
     //암호화
     //const encrypted=CryptoJS.AES.encrypt(JSON.stringify(m_passwd), 'itp123').toString();
@@ -28,6 +27,31 @@ const MyPageInformationModify = () => {
     //    var decryptedData = decrypted.toString(CryptoJS.enc.Utf8);
     //console.log(m_passwdd);
 
+    const checkPassword = (e) => {
+        const pwdRegex=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,16}$/
+        //const pwdRegex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
+
+        if(m_passwd===''){
+            setIsPassword(false); 
+        }
+        else if(!pwdRegex.test(e.target.value))
+           {
+           setIsPassword(false); 
+        }
+        else setIsPassword(true); 
+        
+    }
+    const checkPassword2=()=>{
+        if(m_passwdchecked===''){
+             setIsPasswordcheck(false);  
+            }
+        else if(!(m_passwd===m_passwdchecked)){
+             setIsPasswordcheck(false); 
+            }
+        else setIsPasswordcheck(true); 
+        
+    }
+    //새 비밀번호
     const changePasswd = (e) => { 
         setm_passwd(e.target.value);
      };
@@ -48,17 +72,22 @@ const MyPageInformationModify = () => {
 
      //회원정보 수정 버튼
      const submit=()=>{
+         if(isPassword===false||isPasswordcheck===false){
+            alert('입력이 올바르지 않은 항목이 있습니다. 확인해주세요')
+         } else if(isPassword===true&&isPasswordcheck===true){
         console.log(m_passwd)
          //암호화
         const encrypted=CryptoJS.AES.encrypt(m_passwd, 'itp123').toString();
+        alert('회원정보가 정상적으로 변경되었습니다')
         axios.put(`http://localhost:8085/member/${m_name}`,null,{
           params:{
             'm_passwd': encrypted
           }
         })
         .then(
-            navigate('/')//성공시 마이페이지 정보수정 화면으로 돌아가기
+            navigate('/')//성공시 메인 화면으로 돌아가기
         )   
+       }
       }
 
       //회원탈퇴 버튼
@@ -78,10 +107,6 @@ const MyPageInformationModify = () => {
         }
       
 
-
-   
-
-
     return (
         <div id='myPageMain'>
             <Sidebar />
@@ -100,13 +125,17 @@ const MyPageInformationModify = () => {
                         <Form.Control className='passwordInput' type="password" value={decryptedData} disabled/>
                     </Form.Group>
                     <Form.Group className='modifyNewPasswordForm' controlId="formBasicPassword">
-                        <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호" onChange={changePasswd}/>
+                        <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호" minlength="8" maxlength="16" onChange={changePasswd} onBlur={checkPassword}/>
                         <Form.Text className='modifyText'>
                             영문 대소문자, 숫자, 특수문자 포함 8자리 이상 16자리 이하
                         </Form.Text>
                     </Form.Group>
+                        {isPassword===false ? (<p className='errorcode'>패스워드를 다시입력해주세요</p>)  :
+                        (<p className='okcode'>사용가능한 형식입니다</p>)}                
                     <Form.Group className='modifyCheckPasswordForm' controlId="formBasicPassword">
-                        <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호 확인" />
+                        <Form.Control className='passwordInput' type="password" placeholder="새 비밀번호 확인" minlength="8" maxlength="16" onChange={(e)=>setm_passwdchecked(e.target.value)} onBlur={checkPassword2}/>
+                        {isPasswordcheck===false ? (<p className='errorcode'>패스워드가 올바르지않습니다</p>)  :
+                        (<p className='okcode'>일치합니다</p>)}
                     </Form.Group>
                     </div>
                 </Form>
