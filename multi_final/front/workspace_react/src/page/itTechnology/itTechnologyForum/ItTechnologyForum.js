@@ -170,11 +170,16 @@ const ItTechnologyForum = () => {
 
     const deleteComment = (no) => {
         console.log(no);
-        axios.delete(`http://localhost:8085/itTech/forum/deleteTech/${no}`)
-        .then(document.location.href='/itTech/forum')
-        .catch(error => {
+        if(window.confirm("댓글을 삭제할까요?")){
+            axios.delete(`http://localhost:8085/itTech/forum/deleteTech/${no}`)
+            .then(document.location.href='/itTech/forum')
+            .catch(error => {
             console.log(error);
-        })
+            })
+        } else {
+            console.log("삭제 취소");
+        }
+        
     }
     
 
