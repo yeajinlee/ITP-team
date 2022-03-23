@@ -24,10 +24,13 @@ const CommunityDetail = () => {
    navigate(`/changeCom/${no}`)
   }
   function Delete(no){
-       
-    axios.delete(`http://localhost:8085/deleteCom/${no}`)
+    if(window.confirm("게시글을 삭제할까요?")){
+      axios.delete(`http://localhost:8085/deleteCom/${no}`)
          .then(navigate('/communication')).catch(err=>console.log(err))
-      }
+    } else {
+      console.log("삭제 취소");
+    }
+  }
   
     
   
