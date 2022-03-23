@@ -183,6 +183,7 @@ if (!Comdatas) return null;
           </div>
           <div id='communitySearch'>
             <input 
+              as='input'
               type="text"
               onChange={(e)=>settitle(e.target.value)} 
               className="searchInput"
