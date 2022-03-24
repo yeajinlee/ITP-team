@@ -28,7 +28,7 @@ const GroupBoardDetail = () => {
   function Delete(no){
     if(window.confirm("게시글을 삭제하시겠습니까?")){
       axios.delete(`http://localhost:8085/deleteGroup/${no}`)
-         .then(navigate('/communityGroup')).catch(err=>console.log(err))
+      .then(window.location='/communityGroup').catch(err=>console.log(err))
     }
   }
 

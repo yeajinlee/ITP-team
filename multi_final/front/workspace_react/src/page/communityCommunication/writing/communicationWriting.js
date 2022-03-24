@@ -44,8 +44,8 @@ const CommunicationWriting = () => {
      console.log(c_title);
 
      console.log(c_content);
-      
-      
+     if(c_title===''||c_content===''){alert('제목,내용 모두 입력해주세요')}
+     else{      
       axios.post(`http://localhost:8085/addCom`,null,{
         params:{
           'c_name':c_name,
@@ -64,6 +64,7 @@ const CommunicationWriting = () => {
         document.location.href=`/communication`;//성공시 목록으로 돌아가기
       })
       .catch()
+    }
     }
    
     return (
