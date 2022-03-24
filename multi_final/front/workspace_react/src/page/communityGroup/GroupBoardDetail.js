@@ -28,7 +28,7 @@ const GroupBoardDetail = () => {
   function Delete(no){
        
     axios.delete(`http://localhost:8085/deleteGroup/${no}`)
-         .then(navigate('/communityGroup')).catch(err=>console.log(err))
+         .then(window.location='/communityGroup').catch(err=>console.log(err))
       }
 
   
