@@ -53,7 +53,7 @@ const GroupBoardChange= () => {
      })
      .then(
        
-       navigate('/communityGroup')//성공시 목록으로 돌아가기
+      window.location='/communityGroup'//성공시 목록으로 돌아가기
      )
      
    }

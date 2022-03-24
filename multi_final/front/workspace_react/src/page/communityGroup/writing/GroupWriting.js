@@ -46,7 +46,7 @@ const GroupWriting = () => {
     }
                     
     
-
+    console.log(g_tag);
 
 
     const submit=()=>{
@@ -54,7 +54,7 @@ const GroupWriting = () => {
      console.log(g_subtitle);
      console.log(g_content);
       
-      if(g_title===''||g_subtitle===''||g_content===''){alert('제목,소제목,내용,카테고리 모두 입력해주세요')}
+      if(g_title===''||g_subtitle===''||g_content===''||g_tag===''||g_tag==='주제'){alert('제목,소제목,내용,카테고리 모두 입력해주세요')}
       else{
         axios.post(`http://localhost:8085/addgroup`,null,{
         params:{
