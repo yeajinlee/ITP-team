@@ -1,6 +1,7 @@
 package com.finalp.tech;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -35,6 +36,12 @@ public interface techMapper {
 	
 	@Delete("delete from itp_tech where t_no = #{no}")
 	public int deleteTech(@Param("no") int no);
+
+	@Select("select count(*) as allCount, "
+			+ "count(case when t_tag='React' then 1 end) as React, "
+			+ "count(case when t_tag='Spring' then 1 end) as Spring, "
+			+ "count(case when t_tag='Vue' then 1 end) as Vue from itp_tech; ")
+	public Map<String, Object> getTechCount();
 	
 }
 

@@ -51,7 +51,11 @@ const ItTechnologyWrite = () => {
 
     const checkLogin = () => {
         if (t_name === null) {
-            alert('글을 쓰기 위해 로그인이 필요합니다.');
+            if(window.confirm('글을 쓰기 위해 로그인이 필요합니다. 로그인 화면으로 이동할까요?')) {
+                document.location.href='/login';
+            } else {
+                document.location.href='/itTech/forum';
+            }
         }
     }
 
@@ -67,24 +71,30 @@ const ItTechnologyWrite = () => {
     }
 
     const addTechComment = () => {
-        checkLogin();
-        if (t_tag === null) {
-            alert("기술 카테고리를 선택하세요");
-        } else if (t_content === null) {
-            alert("내용을 입력하세요.");
+        if (t_name === null) {
+            checkLogin();
         } else {
-            console.log(localStorage.getItem('m_name'))
-            console.log("axios t_name: " + t_name);
-            console.log("axios t_tag: " + t_tag);
-            console.log("axios t_contet: " + t_content);
-            axios.post('http://localhost:8085/itTech/forum/addTech', null, {params: {'t_name': t_name, 't_tag': t_tag, 't_content': t_content}})
-            .then(response => {
-                console.log(response);
-                document.location.href='/itTech/forum';
-            }).catch(response => {
-                console.log(response);
-            })
+            if (t_tag === null) {
+                if(alert("기술 카테고리를 선택하세요")) {
+                    console.log('');
+                }
+            } else if (t_content === null) {
+                alert("내용을 입력하세요.");
+            } else {
+                console.log(localStorage.getItem('m_name'))
+                console.log("axios t_name: " + t_name);
+                console.log("axios t_tag: " + t_tag);
+                console.log("axios t_contet: " + t_content);
+                axios.post('http://localhost:8085/itTech/forum/addTech', null, {params: {'t_name': t_name, 't_tag': t_tag, 't_content': t_content}})
+                .then(response => {
+                    console.log(response);
+                    document.location.href='/itTech/forum';
+                }).catch(response => {
+                    console.log(response);
+                })
+            }
         }
+        
         
     }
 
@@ -109,9 +119,9 @@ const ItTechnologyWrite = () => {
                     <option value="Vue">Vue</option>
                 </Form.Select>
                 </span>
-                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)} maxLength={300} onsubmit="return false"/>
+                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)} maxLength={900} onsubmit="return false"/>
                 
-            <button type="submitBtn" onClick={() => addTechComment()}>
+            <button onClick={() => addTechComment()}>
                 등록
             </button>
             </WriteForm>

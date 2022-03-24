@@ -26,10 +26,11 @@ const GroupBoardDetail = () => {
   
   }
   function Delete(no){
-       
-    axios.delete(`http://localhost:8085/deleteGroup/${no}`)
-         .then(window.location='/communityGroup').catch(err=>console.log(err))
-      }
+    if(window.confirm("게시글을 삭제하시겠습니까?")){
+      axios.delete(`http://localhost:8085/deleteGroup/${no}`)
+      .then(window.location='/communityGroup').catch(err=>console.log(err))
+    }
+  }
 
   
 
