@@ -18,12 +18,12 @@ const GroupReply = () => {
   const[contentCnt, setContentCnt] = useState(0);
 
   function Delete(num){
-       
-    axios.delete(`http://localhost:8085/deleteGroupRep/${num}`)
+    if(window.confirm("댓글을 삭제하시겠습니까?")){  
+      axios.delete(`http://localhost:8085/deleteGroupRep/${num}`)
          .then(window.location='/communityGroup/'+no).catch(err=>console.log(err))
 
-      }
-  
+    }
+  }
 
      const [rg_name,setrg_name]=useState(''); //댓글쓴 이름
       const[rg_content,setrg_content]=useState('');
