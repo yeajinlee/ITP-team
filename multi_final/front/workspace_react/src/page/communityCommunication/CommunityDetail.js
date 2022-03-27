@@ -25,8 +25,8 @@ const CommunityDetail = () => {
   }
   function Delete(no){
     if(window.confirm("게시글을 삭제하시겠습니까?")){
-      axios.delete(`http://localhost:8085/deleteCom/${no}`)
-         .then(navigate('/communication')).catch(err=>console.log(err))
+      axios.delete(`http://115.85.181.164:8085/deleteCom/${no}`)
+         .then(window.location='/communication').catch(err=>console.log(err))
     }
   }
   
@@ -41,7 +41,7 @@ const CommunityDetail = () => {
               setComdata(null);
               // loading 상태를 true
               setLoading(true);    
-              const response=await axios.get(`http://localhost:8085/com/${no}`);
+              const response=await axios.get(`http://115.85.181.164:8085/com/${no}`);
               console.log(response.data);
               setComdata(response.data);
               setc_name(response.data[0].c_name);

@@ -74,7 +74,7 @@ const ItTechnologyWrite = () => {
         if (t_name === null) {
             checkLogin();
         } else {
-            if (t_tag === null) {
+            if (t_tag === null || t_tag === "선택") {
                 if(alert("기술 카테고리를 선택하세요")) {
                     console.log('');
                 }
@@ -85,7 +85,7 @@ const ItTechnologyWrite = () => {
                 console.log("axios t_name: " + t_name);
                 console.log("axios t_tag: " + t_tag);
                 console.log("axios t_contet: " + t_content);
-                axios.post('http://localhost:8085/itTech/forum/addTech', null, {params: {'t_name': t_name, 't_tag': t_tag, 't_content': t_content}})
+                axios.post('http://115.85.181.164:8085/itTech/forum/addTech', null, {params: {'t_name': t_name, 't_tag': t_tag, 't_content': t_content}})
                 .then(response => {
                     console.log(response);
                     document.location.href='/itTech/forum';
@@ -119,7 +119,7 @@ const ItTechnologyWrite = () => {
                     <option value="Vue">Vue</option>
                 </Form.Select>
                 </span>
-                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" onClick={() => checkLogin()} onChange={(content) => handleContent(content)} maxLength={900} onsubmit="return false"/>
+                <Form.Control as='input' type="text" placeholder="내용을 입력해주세요" autocomplete="off" onClick={() => checkLogin()} onChange={(content) => handleContent(content)} maxLength={900} onsubmit="return false"/>
                 
             <button onClick={() => addTechComment()}>
                 등록

@@ -68,6 +68,7 @@ $color-background: white;
     display: flex;
     font-size: 17px;
     box-shadow: 3px 4px 10px 2px rgb(0 0 0 / 20%);
+    min-width: 1024px;
     #navbarMain {
       justify-content: center;
       margin-left: 20px;
