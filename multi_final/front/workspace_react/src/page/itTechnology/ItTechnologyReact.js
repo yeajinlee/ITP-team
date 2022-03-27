@@ -13,7 +13,7 @@ const ItTechnologyReact = () => {
         const fetchData = async() => {
             setLoading(true);
             try {
-                const response = await axios.get("http://localhost:8085/itTech/react");
+                const response = await axios.get("http://115.85.181.164:8085/itTech/react"); //axios 이용, 스프링부트에 기술 업데이트 데이터 요청
                 console.log(response);
                 setTechReact(response.data);
             } catch (error) {
@@ -37,9 +37,11 @@ const ItTechnologyReact = () => {
                     {techReact.articles.map((a, index) => (
                         <div key={index}>
                                 <p>
+                                    {/* 글 제목 */}
                                     <span className="boardTitle" onClick={() => window.open(`https://ko.reactjs.org${a.titleLink}`, "_blank")}>
                                         {a.title}
                                         </span>
+                                    {/* 날짜 */}
                                     <span className='boardDate'>{a.date}</span>
                                 </p>
                         </div>

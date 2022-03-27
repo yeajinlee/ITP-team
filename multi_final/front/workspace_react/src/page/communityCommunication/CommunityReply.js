@@ -18,7 +18,7 @@ const CommunityReply = () => {
   
   function Delete(num){
     if(window.confirm("댓글을 삭제하시겠습니까?")){
-      axios.delete(`http://localhost:8085/deleteRep/${num}`)
+      axios.delete(`http://115.85.181.164:8085/deleteRep/${num}`)
          .then(window.location='/communication/'+no).catch(err=>console.log(err))
     }
   }
@@ -48,7 +48,7 @@ const CommunityReply = () => {
         console.log(r_content)
         if(r_content!==''){
        
-        axios.put(`http://localhost:8085/updateRep/${num}`,null,{
+        axios.put(`http://115.85.181.164:8085/updateRep/${num}`,null,{
           params:{
          
             'r_content':r_content,
@@ -64,7 +64,7 @@ const CommunityReply = () => {
       const submit=()=>{
         
         if(r_content!==''){
-          axios.post(`http://localhost:8085/addRep/${no}`,null,{
+          axios.post(`http://115.85.181.164:8085/addRep/${no}`,null,{
           params:{
             'r_no':no,
             'r_content':r_content,
@@ -85,28 +85,7 @@ const CommunityReply = () => {
         .catch()
       }else{ alert('입력되지않았습니다');}
     }
-    useEffect(()=>{
-      const fetchGroup=async()=>{
-          try {
-              //error 와 notice 를 초기화
-              setError(null);
-              setComrepdata(null);
-              // loading 상태를 true
-              setLoading(true);    
-              const response=await axios.get(`http://localhost:8085/com/repnum/${no}`);
-              console.log(response.data);
-              setComrepdata(response.data);
-           
-          }catch(e){
-              setError(e);
-          }
-          setLoading(false);
-        
-      
-  };
-  fetchGroup();
-  
-},[no]);
+    
 
 
       useEffect(()=>{
@@ -139,7 +118,7 @@ const CommunityReply = () => {
               setRepdata(null);
               // loading 상태를 true
               setLoading(true);    
-              const response=await axios.get(`http://localhost:8085/rep/${no}`);
+              const response=await axios.get(`http://115.85.181.164:8085/rep/${no}`);
               console.log(response.data);
               setRepdata(response.data);
               //setr_name(response.data[0].r_name);
@@ -155,7 +134,28 @@ const CommunityReply = () => {
   
 },[no]);
 
+useEffect(()=>{
+  const fetchGroup=async()=>{
+      try {
+          //error 와 notice 를 초기화
+          setError(null);
+          setComrepdata(null);
+          // loading 상태를 true
+          setLoading(true);    
+          const response=await axios.get(`http://115.85.181.164:8085/com/repnum/${no}`);
+          console.log(response.data);
+          setComrepdata(response.data);
+       
+      }catch(e){
+          setError(e);
+      }
+      setLoading(false);
+    
+  
+};
+fetchGroup();
 
+},[no]);
 
 if (loading) return <div>로딩중..</div>;
 if (error) return <div>에러가 발생했습니다</div>;
@@ -163,11 +163,12 @@ if (!Repdatas) return null;
 
   return (
       <div id='replyAll'>
-            <p>댓글 {Comrepdatas} <span id='counter' style={{float:'right'}}>{contentCnt}/300</span></p>
+            <p>댓글 {Comrepdatas} </p>
         <div id='replyRegi'>
         {(isLogin)?
         <>
         <input type="text" onChange={(e)=>handler_content(e)}id="r_content" name="r_content" value={r_content} maxLength={300} />
+        <span id='countercom'>{contentCnt}/300</span>
         <button value="등록하기" onClick={()=>submit()}>
           등록하기
         </button>
@@ -176,6 +177,8 @@ if (!Repdatas) return null;
         <></>
         }
         </div>
+        {(isLogin)?
+         <>
         <div id='replyBottom'>
         {Repdatas.map((Repdata,index) => (
           <Table>
@@ -201,7 +204,11 @@ if (!Repdatas) return null;
             </tbody>
           </Table>
         ))}
+         
       </div>
+      </>:
+      <><p>로그인후 확인가능합니다</p></>
+              }
     </div>
   );
 };

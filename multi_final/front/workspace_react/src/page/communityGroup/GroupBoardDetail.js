@@ -27,7 +27,7 @@ const GroupBoardDetail = () => {
   }
   function Delete(no){
     if(window.confirm("게시글을 삭제하시겠습니까?")){
-      axios.delete(`http://localhost:8085/deleteGroup/${no}`)
+      axios.delete(`http://115.85.181.164:8085/deleteGroup/${no}`)
       .then(window.location='/communityGroup').catch(err=>console.log(err))
     }
   }
@@ -42,7 +42,7 @@ const GroupBoardDetail = () => {
               setGroupdata(null);
               // loading 상태를 true
               setLoading(true);    
-              const response=await axios.get(`http://localhost:8085/group/${no}`);
+              const response=await axios.get(`http://115.85.181.164:8085/group/${no}`);
               console.log(response.data);
               setGroupdata(response.data);
              setg_name(response.data[0].g_name);
@@ -93,8 +93,17 @@ if (!Groupdatas) return null;
       :
       <>
       <button className='groupDetailButton' value="목록으로" onClick={BackToGroupBoard} > 목록 </button>
-      <button className='groupDetailButton' value="신청" onClick={gotoapply} > 신청 </button>
+      
       </>
+     }
+     {
+        ((sessionStorage.getItem('m_name'))===null&&(localStorage.getItem('m_name'))=== null) ?
+        <>
+       </>
+       :
+       <>
+      <button className='groupDetailButton' value="신청" onClick={gotoapply} > 신청 </button>
+       </>
      }
         
       </div>

@@ -46,7 +46,7 @@ const CommunicationWriting = () => {
      console.log(c_content);
      if(c_title===''||c_content===''){alert('제목,내용 모두 입력해주세요')}
      else{      
-      axios.post(`http://localhost:8085/addCom`,null,{
+      axios.post(`http://115.85.181.164:8085/addCom`,null,{
         params:{
           'c_name':c_name,
           'c_title':c_title,
@@ -75,7 +75,7 @@ const CommunicationWriting = () => {
         <Form className='writingForm'>
           <Form.Group id='writingTop' controlId="exampleForm.ControlInput1">
            
-            <Form.Control type="text" onChange={(e)=>handlec_title(e)} placeholder="글 제목을 입력해주세요" />
+            <Form.Control type="text" onChange={(e)=>handlec_title(e)} placeholder="글 제목을 입력해주세요" autocomplete="off" />
           </Form.Group>
             <Form.Control as='textarea' onChange={(e)=>handlec_content(e)} className='writingText' type="text" placeholder="내용을 입력해주세요" />
         </Form>

@@ -43,7 +43,7 @@ const GroupBoardChange= () => {
      console.log(g_content)
      
     
-     axios.put(`http://localhost:8085/updateGroup/${no}`,null,{
+     axios.put(`http://115.85.181.164:8085/updateGroup/${no}`,null,{
        params:{
          'g_title':g_title,
          'g_subtitle':g_subtitle,
@@ -66,7 +66,7 @@ const GroupBoardChange= () => {
             setGroupdata(null);
             // loading 상태를 true
             setLoading(true);    
-            const response=await axios.get(`http://localhost:8085/group/${no}`);
+            const response=await axios.get(`http://115.85.181.164:8085/group/${no}`);
             console.log(response.data);
             setGroupdata(response.data);
             setg_title(response.data[0].g_title)
@@ -95,10 +95,10 @@ if (!Groupdatas) return null;
       <div id='groupModifyAll'>   
        <Form className='modifyForm'>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control type="text" onChange={(e)=>handlen_title(e)} placeholder="글 제목을 입력해주세요" value={g_title} />
+            <Form.Control type="text" onChange={(e)=>handlen_title(e)} placeholder="글 제목을 입력해주세요" value={g_title} autocomplete="off"/>
           </Form.Group>
           <Form.Group id='modifySub' controlId="exampleForm.ControlTextarea1">
-            <Form.Control className='modifySubTitle' onChange={(e)=>handlen_subtitle(e)} type="text" placeholder='소제목 입력' value={g_subtitle} />
+            <Form.Control className='modifySubTitle' onChange={(e)=>handlen_subtitle(e)} type="text" placeholder='소제목 입력' value={g_subtitle} autocomplete="off" />
             <Form.Select className='modifySelect' onChange={(e)=>handlen_tag(e)} aria-label="Default select example" value={g_tag}>
               <option>주제</option>
               <option value="스터디" >스터디</option>

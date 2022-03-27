@@ -30,7 +30,7 @@ const CommunityChange= () => {
      console.log(c_content)
      
     
-     axios.put(`http://localhost:8085/updateCom/${no}`,null,{
+     axios.put(`http://115.85.181.164:8085/updateCom/${no}`,null,{
        params:{
          'c_title':c_title,
          'c_content':c_content,
@@ -38,7 +38,7 @@ const CommunityChange= () => {
      })
      .then(
        
-       navigate('/communication')//성공시 목록으로 돌아가기
+      window.location='/communication'//성공시 목록으로 돌아가기
      )
      
    }
@@ -52,7 +52,7 @@ const CommunityChange= () => {
           // loading 상태를 true
           setLoading(true); 
           
-          const response=await axios.get(`http://localhost:8085/com/${no}`);
+          const response=await axios.get(`http://115.85.181.164:8085/com/${no}`);
           setComdata(response.data);
           setc_title(response.data[0].c_title)
           setc_content(response.data[0].c_content)
@@ -76,7 +76,7 @@ if (!Comdatas) return null;
       <p className='communityTitle'>소통공간</p>
       <Form className='writingForm'>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Control type="text" onChange={(e)=>handlec_title(e)} value={c_title} placeholder="글 제목을 입력해주세요" />
+          <Form.Control type="text" onChange={(e)=>handlec_title(e)} value={c_title} placeholder="글 제목을 입력해주세요" autocomplete="off" />
         </Form.Group>
           <Form.Control as='textarea' onChange={(e)=>handlec_content(e)} value={c_content} className='writingText' type="text" placeholder="내용을 입력해주세요" />
       </Form>
